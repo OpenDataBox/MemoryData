@@ -1,0 +1,31 @@
+agent_name: Agentic_memory_simplemem
+model: Qwen3-8B    # local Qwen3-8B vLLM service
+temperature: 0.7
+input_length_limit: 10000000
+buffer_length: 1000
+output_dir: ./results/outputs/Qwen3-8B-simplemem
+provider: openai_compatible
+api_key_env: OPENAI_API_KEY
+base_url: http://127.0.0.1:9911/v1    # keep the top-level client aligned with SimpleMem's own chat endpoint
+base_url_env:
+tokenizer_encoding: cl100k_base
+
+simplemem_base_url: http://127.0.0.1:9911/v1    # local Qwen3-8B chat service for overnight lane 4
+simplemem_enable_thinking: false
+simplemem_use_streaming: false
+simplemem_enable_planning: true
+simplemem_enable_reflection: true
+simplemem_max_reflection_rounds: 2
+simplemem_enable_parallel_processing: true
+simplemem_max_parallel_workers: 4
+simplemem_enable_parallel_retrieval: true
+simplemem_max_retrieval_workers: 3
+embedding_model: Qwen3-Embedding-4B
+embedding_api_key_env: OPENAI_API_KEY
+embedding_base_url: http://127.0.0.1:9009/v1
+embedding_dim: 2560
+simplemem_semantic_top_k: 25
+simplemem_keyword_top_k: 5
+simplemem_structured_top_k: 5
+simplemem_window_size: 8 # was 60
+simplemem_overlap_size: 2

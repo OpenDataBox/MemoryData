@@ -1,0 +1,33 @@
+# ── required ──────────────────────────────────────────────────────────────────
+agent_name: Structure_rag_cognee
+model: Qwen3-8B
+temperature: 0.0
+input_length_limit: 1280000
+model_context_window: 32768
+buffer_length: 2000
+output_dir: ./results/outputs/Qwen3-8B-cognee
+agent_chunk_size: 2048
+retrieve_num: 10
+
+# ── optional ──────────────────────────────────────────────────────────────────
+provider: openai_compatible    # openai(default) | openai_compatible
+api_key:
+api_key_env: OPENAI_API_KEY    # env var name for API key; synced into cognee's internal LLM config
+base_url: http://127.0.0.1:9909/v1    # custom LLM endpoint; synced into cognee's internal LLM config
+base_url_env:       # env var name for base_url
+tokenizer_encoding: cl100k_base  # e.g. cl100k_base
+
+# ── optional (embedding) ──────────────────────────────────────────────────────
+# IMPORTANT: when provider is openai_compatible (e.g. deepseek), cognee's embedding
+# falls back to the same LLM endpoint and key, which will fail for OpenAI embedding models.
+# You MUST set embedding_api_key_env to a real OPENAI_API_KEY, OR set embedding_base_url
+# to an endpoint that supports the chosen embedding model.
+embedding_model: Qwen3-Embedding-4B    # e.g. text-embedding-3-small; defaults to cognee's internal default
+embedding_provider: openai_compatible    # openai(default) | gemini | mistral | fastembed | ollama
+embedding_api_key:
+embedding_api_key_env: OPENAI_API_KEY    # env var for embedding API key (must be OPENAI_API_KEY if using OpenAI embedding)
+embedding_base_url: http://127.0.0.1:9009/v1    # custom embedding endpoint; omit to use https://api.openai.com/v1
+embedding_base_url_env:
+
+# ── optional (runtime) ────────────────────────────────────────────────────────
+cognee_skip_connection_test: true

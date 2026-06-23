@@ -1,0 +1,89 @@
+# Core Python packages
+numpy
+pandas
+pillow
+tqdm
+dill
+toml
+python-dotenv
+
+# Machine Learning & Deep Learning
+# NOTE: Install PyTorch separately with CUDA support:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+torch
+torchvision
+transformers
+tokenizers
+tiktoken
+timm
+datasets
+sentence_transformers
+bitsandbytes
+# deepspeed: not supported on Windows, skip
+# flash_attn: not supported on Windows, skip
+
+# NVIDIA CUDA packages
+# Removed: nvidia-*-cu12 packages are Linux-only
+# PyTorch on Windows bundles CUDA components internally
+
+# NLP & Text Processing
+nltk
+spacy
+semantic_text_splitter
+langdetect
+editdistance
+rank_bm25
+
+# LangChain ecosystem
+langchain
+langchain-cohere
+langchain-community
+langchain-core
+langchain-experimental
+langchain-groq
+langchain-openai
+langchain-text-splitters
+langchain_google_genai
+
+# AI/LLM APIs
+openai
+anthropic
+google-genai
+litellm
+instructor
+
+# Database & Vector Storage
+###psycopg2
+pgvector
+qdrant_client
+lancedb
+faiss-cpu
+igraph
+
+# Web & API
+fastapi_users
+fastapi-users-db-sqlalchemy
+# frontend: not a valid PyPI package, removed
+
+# Development & Testing
+rouge_score
+deepeval
+ipdb
+swe-rex
+
+# Utilities & Infrastructure
+matplotlib
+structlog
+limits
+graphistry
+s3fs
+dlt
+mem0ai
+accelerate
+
+# Cognee
+owlready2
+
+# Memo RAG
+minference
+# flash_attn: not supported on Windows, skip

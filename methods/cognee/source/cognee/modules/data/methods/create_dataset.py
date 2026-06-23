@@ -1,0 +1,38 @@
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+from sqlalchemy.orm import joinedload
+
+from cognee.infrastructure.databases.relational import with_async_session
+
+from cognee.modules.data.models import Dataset
+from cognee.modules.data.methods.get_unique_dataset_id import get_unique_dataset_id
+
+from cognee.modules.users.models import User
+
+
+@with_async_session
+async def create_dataset(dataset_name: str, user: User, session: AsyncSession) -> Dataset:
+    owner_id = user.id
+
+    dataset = (
+        await session.scalars(
+            select(Dataset)
+            .options(joinedload(Dataset.data))
+            .filter(Dataset.name == dataset_name)
+            .filter(Dataset.owner_id == owner_id)
+            .filter(Dataset.tenant_id == user.tenant_id)
+        )
+    ).first()
+
+    if dataset is None:
+        # Dataset id should be generated based on dataset_name and owner_id/user so multiple users can use the same dataset_name
+        dataset_id = await get_unique_dataset_id(dataset_name=dataset_name, user=user)
+        dataset = Dataset(
+            id=dataset_id, name=dataset_name, data=[], owner_id=owner_id, tenant_id=user.tenant_id
+        )
+
+        session.add(dataset)
+
+        await session.commit()
+
+    return dataset

@@ -1,0 +1,17 @@
+# Data/Task configuration
+dataset: Test_Time_Learning
+chunk_size: 4096
+debug: false
+seed: 42
+
+#  specific configuration
+context_max_length: 131072
+sub_dataset: icl_banking77_5900shot_balance
+generation_max_length: 20
+test_files: ''
+demo_files: ''
+use_chat_template: false
+max_test_samples: 100
+shots: 0
+stop_new_line: true
+tag: null

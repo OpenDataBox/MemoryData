@@ -1,0 +1,20 @@
+# -- required ---------------------------------------------------------------
+agent_name: memagent_7b
+model: Qwen3-8B    # local Qwen3-8B vLLM service
+tokenizer_model: /data/models/Qwen3-8B    # tokenizer path for the locally served Qwen3-8B endpoint
+provider: openai_compatible
+base_url: http://127.0.0.1:9911/v1    # local Qwen3-8B chat service for overnight lane 4
+api_key_env: OPENAI_API_KEY
+temperature: 0.7
+top_p: 0.95
+input_length_limit: 120000
+buffer_length: 5000
+output_dir: ./results/outputs/Qwen3-8B-memagent
+recurrent_chunk_size: 5000
+recurrent_max_new: 1024
+recurrent_max_context_len: 120000
+
+# -- optional ---------------------------------------------------------------
+base_url_env:       # env var name for base_url
+tokenizer_encoding: cl100k_base  # e.g. cl100k_base
+api_key:            # explicit API key string; overrides api_key_env in methods/memagent/agent.py

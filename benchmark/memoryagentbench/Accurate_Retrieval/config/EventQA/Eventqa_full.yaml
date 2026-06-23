@@ -1,0 +1,16 @@
+# Data/Task configuration
+dataset: Accurate_Retrieval
+chunk_size: 4096
+debug: false
+seed: 42
+
+#  specific configuration
+context_max_length: 800000
+sub_dataset: eventqa_full
+generation_max_length: 40
+test_files: ''
+demo_files: ''
+use_chat_template: true
+max_test_samples: 5
+shots: 0
+tag: null

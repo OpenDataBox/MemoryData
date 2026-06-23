@@ -1,0 +1,17 @@
+agent_name: Agentic_memory_lightmem
+model: Qwen3-8B    # local Qwen3-8B vLLM service
+temperature: 0.0
+input_length_limit: 10000000
+buffer_length: 1000
+output_dir: ./results/outputs/Qwen3-8B-lightmem
+agent_chunk_size: 4096
+
+retrieve_num: 10  
+lightmem_ingest_mode: direct
+lightmem_base_url: http://127.0.0.1:9910/v1    # local Qwen3-8B chat service for overnight lane 3
+lightmem_api_key_env: OPENAI_API_KEY
+lightmem_embedding_backend: huggingface
+lightmem_embedding_model: sentence-transformers/all-MiniLM-L6-v2
+lightmem_embedding_dims: 384
+lightmem_memory_manager_backend: openai
+lightmem_qdrant_on_disk: true

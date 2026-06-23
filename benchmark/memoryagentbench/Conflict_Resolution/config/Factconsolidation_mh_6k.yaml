@@ -1,0 +1,16 @@
+# Data/Task configuration
+dataset: Conflict_Resolution
+chunk_size: 4096
+debug: false
+seed: 42
+
+# specific configuration
+context_max_length: 6000
+sub_dataset: factconsolidation_mh_6k
+generation_max_length: 10
+test_files: ''
+demo_files: ''
+use_chat_template: true
+max_test_samples: 1
+shots: 0
+tag: null

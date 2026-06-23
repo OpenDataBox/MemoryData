@@ -1,0 +1,27 @@
+agent_name: Structure_rag_hippo_rag_v2_openai
+model: Qwen3-8B
+temperature: 0.7
+input_length_limit: 10000000
+buffer_length: 200
+output_dir: ./results/outputs/Qwen3-8B-hippo_rag_v2_openai
+retrieve_num: 10
+
+# Optional (LLM)
+# HippoRAG uses an OpenAI-compatible client for generation when base_url is provided.
+provider: openai_compatible    # openai(default) | openai_compatible
+api_key_env: OPENAI_API_KEY    # env var name for API key (default: OPENAI_API_KEY)
+base_url: http://127.0.0.1:9909/v1    # custom LLM endpoint
+base_url_env:       # env var name for base_url
+tokenizer_encoding: cl100k_base  # e.g. cl100k_base
+
+# Optional (embedding)
+# Set embedding_model to select the embedding backend explicitly.
+# When embedding_model is set, the agent_name suffix is ignored for backend selection.
+# Common choices:
+#   text-embedding-ada-002   — OpenAI API (default when this field is left empty)
+#   text-embedding-3-small   — OpenAI API
+#   nvidia/NV-Embed-v2       — local NVIDIA model (requires GPU + transformers)
+embedding_model: Qwen3-Embedding-4B    # e.g. text-embedding-ada-002 | nvidia/NV-Embed-v2
+embedding_api_key_env: OPENAI_API_KEY    # env var name for embedding API key
+embedding_base_url: http://127.0.0.1:9009/v1    # custom embedding endpoint (omit for OpenAI default)
+embedding_base_url_env:   # env var name for embedding base_url

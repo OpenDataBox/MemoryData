@@ -1,0 +1,27 @@
+# ── required ──────────────────────────────────────────────────────────────────
+agent_name: Structure_rag_raptor
+model: Qwen2.5-7B
+temperature: 0.7
+input_length_limit: 30000    # was 280000; capped for local 32768-token backend
+buffer_length: 200
+output_dir: ./results/outputs/Qwen2.5-7B-raptor
+retrieve_num: 10
+
+# ── optional (LLM) ────────────────────────────────────────────────────────────
+provider: openai_compatible    # openai(default) | openai_compatible | azure_openai
+api_key_env: OPENAI_API_KEY    # env var name for API key (default: OPENAI_API_KEY)
+base_url: http://127.0.0.1:9909/v1    # custom LLM endpoint
+base_url_env:       # env var name for base_url
+azure_endpoint:
+azure_api_version:
+tokenizer_encoding: cl100k_base  # e.g. cl100k_base
+
+# ── optional (embedding) ──────────────────────────────────────────────────────
+# Required when using a non-OpenAI chat backend.
+embedding_model: Qwen3-Embedding-4B    # override default embedding model
+embedding_provider: openai_compatible    # openai(default) | openai_compatible | azure_openai
+embedding_api_key_env: OPENAI_API_KEY    # env var name for embedding API key
+embedding_base_url: http://127.0.0.1:9009/v1    # custom embedding endpoint
+embedding_base_url_env:   # env var name for embedding base_url
+embedding_azure_endpoint:
+embedding_azure_api_version:

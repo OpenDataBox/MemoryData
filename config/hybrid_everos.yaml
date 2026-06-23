@@ -1,0 +1,24 @@
+agent_name: Agentic_memory_everos
+model: gpt-4o-mini
+provider: openai_compatible
+api_key_env: OPENAI_API_KEY
+base_url: https://openrouter.ai/api/v1
+temperature: 0.0
+input_length_limit: 110000
+buffer_length: 1000
+output_dir: ./results/outputs/gpt-4o-mini-everos
+agent_chunk_size: 4096
+retrieve_num: 10
+tokenizer_model: gpt-4o-mini
+
+# -- EverOS service -----------------------------------------------------------
+everos_base_url: http://localhost:1995
+everos_api_key_env:
+everos_scene: assistant
+everos_default_timezone: UTC
+everos_retrieve_method: rrf
+everos_memory_types:
+  - episodic_memory
+everos_timeout_seconds: 60
+everos_sync_mode: true
+everos_chunk_time_gap_minutes: 360

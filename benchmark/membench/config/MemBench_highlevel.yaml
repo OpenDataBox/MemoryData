@@ -1,0 +1,26 @@
+# Data/Task configuration
+dataset: MemBench
+chunk_size: 4096
+debug: false
+seed: 42
+
+# specific configuration
+context_max_length: 200000
+sub_dataset: membench_highlevel
+generation_max_length: 8
+test_files: ''
+demo_files: ''
+use_chat_template: true
+max_test_samples: 150
+shots: 0
+tag: light
+
+# MemBench-specific options
+membench_slice: highlevel
+membench_agent_view: FirstAgent
+membench_branches: movie,food,book
+membench_variant_indices: '0'
+membench_max_scenarios_per_branch: 50
+membench_scenario_ids: ''
+membench_scenario_stride: ''
+membench_trajectory_group_size: 3

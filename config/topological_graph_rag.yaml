@@ -1,0 +1,28 @@
+# ── required ──────────────────────────────────────────────────────────────────
+agent_name: Structure_rag_graph_rag
+model: Qwen3-8B
+temperature: 0.7
+input_length_limit: 250000
+buffer_length: 500
+output_dir: ./results/outputs/Qwen3-8B-graph-rag
+retrieve_num: 10
+graph_rag_internal_max_tokens: 1024    # was 256 in local fix; only used for internal structured steps
+
+# ── optional (LLM) ────────────────────────────────────────────────────────────
+provider: openai_compatible    # openai(default) | openai_compatible | azure_openai
+api_key_env: OPENAI_API_KEY    # env var name for API key (default: OPENAI_API_KEY)
+base_url: http://127.0.0.1:9908/v1    # custom LLM endpoint
+base_url_env:       # env var name for base_url
+azure_endpoint:
+azure_api_version:
+tokenizer_encoding: cl100k_base  # e.g. cl100k_base
+
+# ── optional (embedding) ──────────────────────────────────────────────────────
+# REQUIRED when using a non-OpenAI chat backend (provider: openai_compatible / azure_openai).
+embedding_model: Qwen3-Embedding-4B    # embedding model name
+embedding_provider: openai_compatible    # openai(default) | openai_compatible | azure_openai
+embedding_api_key_env: OPENAI_API_KEY    # env var name for embedding API key
+embedding_base_url: http://127.0.0.1:9010/v1    # custom embedding endpoint
+embedding_base_url_env:   # env var name for embedding base_url
+embedding_azure_endpoint:
+embedding_azure_api_version:

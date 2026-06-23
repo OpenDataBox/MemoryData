@@ -1,0 +1,31 @@
+# ── required ──────────────────────────────────────────────────────────────────
+agent_name: Agentic_memory_letta
+model: Qwen3-8B
+text_embedding: Qwen3-Embedding-4B
+system_path: ./methods/letta/prompts/system.txt
+temperature: 0.7
+input_length_limit: 10000000
+buffer_length: 5000
+output_dir: ./results/outputs/Qwen3-8B-letta
+agent_chunk_size: 2048  # was 4096; smaller passages reduce post-tool prompt blowup on the local 32768-token model
+letta_mode: insert          # insert | chat
+letta_retrieval_page_size: 3  # was 10 in vendored Letta; lower top-k keeps archival search tool outputs inside 32k
+
+# ── optional (LLM) ────────────────────────────────────────────────────────────
+provider: openai_compatible    # openai(default) | openai_compatible
+api_key_env: OPENAI_API_KEY    # env var name for API key; written to OPENAI_API_KEY for Letta internally
+base_url: http://127.0.0.1:9911/v1    # custom LLM endpoint
+base_url_env:       # env var name for base_url
+context_window: 32768    # was blank; local Qwen2.5-7B endpoint tops out at 32768
+tokenizer_encoding: cl100k_base  # e.g. cl100k_base
+
+# ── optional (embedding) ──────────────────────────────────────────────────────
+# IMPORTANT: embedding is called by the local Letta server directly.
+# Default endpoint is https://api.openai.com/v1 — requires a real OPENAI_API_KEY.
+# If you set api_key_env to a non-OpenAI key (e.g. DEEPSEEK_API_KEY), you MUST also set
+# embedding_base_url to an endpoint that accepts that key, or set embedding_api_key_env
+# to a separate env var holding a real OpenAI key.
+embedding_api_key_env: OPENAI_API_KEY    # env var for embedding API key (default: OPENAI_API_KEY)
+embedding_base_url: http://127.0.0.1:9010/v1    # custom embedding endpoint (default: https://api.openai.com/v1)
+embedding_base_url_env:   # env var name for embedding base_url
+embedding_dim: 2560       # was blank; local Qwen3-Embedding-4B endpoint returns 2560-d vectors

@@ -1,0 +1,39 @@
+# ── required ──────────────────────────────────────────────────────────────────
+agent_name: Agentic_memory_memochat
+model: Qwen3-8B
+temperature: 0.7
+input_length_limit: 1280000
+model_context_window: 32768
+buffer_length: 2000
+output_dir: ./results/outputs/Qwen3-8B-memochat
+agent_chunk_size: 4096
+retrieve_num: 10
+
+# ── optional (chat model) ─────────────────────────────────────────────────────
+provider: openai_compatible
+api_key:
+api_key_env: OPENAI_API_KEY
+base_url: http://127.0.0.1:9910/v1
+base_url_env:
+tokenizer_encoding: cl100k_base
+
+# ── optional (fallback embedding model) ───────────────────────────────────────
+embedding_model: local-hashing-1024
+embedding_provider: hashing
+embedding_api_key:
+embedding_api_key_env:
+embedding_base_url:
+embedding_base_url_env:
+embedding_dim: 1024
+
+# ── optional (memochat adapter tuning) ────────────────────────────────────────
+memochat_summary_trigger_chunks: 6
+memochat_keep_recent_chunks: 2
+memochat_max_topics_per_window: 3
+memochat_summary_chars: 320
+memochat_keyword_limit: 16
+memochat_topic_top_k: 4
+memochat_recent_top_k: 2
+memochat_dialogs_per_topic: 2
+memochat_llm_max_tokens: 384
+memochat_use_llm_topic_segmentation: true

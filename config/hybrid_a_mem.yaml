@@ -1,0 +1,24 @@
+# -- required ---------------------------------------------------------------
+agent_name: Agentic_memory_a_mem
+model: Qwen3-8B
+temperature: 0.0
+input_length_limit: 10000000
+buffer_length: 1000
+output_dir: ./results/outputs/Qwen3-8B-a_mem
+agent_chunk_size: 4096
+retrieve_num: 2
+
+# -- optional (tokenizer / provider metadata) ------------------------------
+provider: openai_compatible    # openai(default) | openai_compatible
+tokenizer_encoding: cl100k_base  # e.g. cl100k_base
+
+# -- optional (A-MEM runtime) ----------------------------------------------
+a_mem_backend: openai          # openai | sglang
+a_mem_api_key_env: OPENAI_API_KEY  # local OpenAI-compatible chat endpoint key
+a_mem_base_url: http://127.0.0.1:9910/v1  # local Qwen3-8B chat service endpoint for overnight lane 3
+a_mem_embedding_provider: openai_compatible
+a_mem_embedding_api_key_env: OPENAI_API_KEY
+a_mem_embedding_base_url: http://127.0.0.1:9010/v1  # local embedding service endpoint
+a_mem_embedding_model: Qwen3-Embedding-4B  # local 9009 service exposes this deployed short name
+a_mem_sglang_host: http://localhost
+a_mem_sglang_port: 30000

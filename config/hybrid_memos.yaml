@@ -1,0 +1,33 @@
+# -- required (benchmark framework) -----------------------------------------
+agent_name: MemOS_general_text
+model: qwen/qwen-2.5-7b-instruct
+temperature: 0.0
+input_length_limit: 10000000
+buffer_length: 1000
+output_dir: ./results/outputs/gpt-4o-mini-MemOS
+agent_chunk_size: 4096    # framework-level compatibility field; MemOS internal chunking uses chunk_size below
+
+retrieve_num: 10
+
+# -- provider / API (standard framework fields) ----------------------------
+provider: openai_compatible
+api_key_env: OPENAI_API_KEY          # env var name holding the API key
+base_url: "https://openrouter.ai/api/v1"
+
+# -- embedding (defaults to OpenAI official endpoint) -----------------------
+embedding_base_url: "https://openrouter.ai/api/v1"
+embedding_api_key_env: OPENAI_API_KEY
+
+# -- MemOS-specific ---------------------------------------------------------
+text_mem_type: general_text      # "general_text" or "tree_text"
+embedder_model: openai/text-embedding-3-large
+chunk_size: 512
+chunk_overlap: 128
+max_turns_window: 20
+memos_embedder_timeout: 30
+
+# Scheduler (disabled by default)
+enable_mem_scheduler: false
+
+# PRO mode - Chain of Thought decomposition for complex queries
+pro_mode: false

@@ -1,0 +1,16 @@
+# Data/Task configuration
+dataset: LoCoMo
+chunk_size: 4096
+debug: false
+seed: 42
+
+# specific configuration
+context_max_length: 150000
+sub_dataset: locomo_qa
+generation_max_length: 64
+test_files: datasets/LoCoMo/rq1_4cat_600_dist/locomo_4cat_600_dist.json
+demo_files: ''
+use_chat_template: true
+max_test_samples: 10
+shots: 0
+tag: 4cat_600_dist

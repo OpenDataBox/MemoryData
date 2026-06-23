@@ -1,0 +1,17 @@
+# ── required ──────────────────────────────────────────────────────────────────
+agent_name: Long_context_agent_gpt-4o-mini
+model: Qwen3-8B
+temperature: 0.7
+input_length_limit: 30000    # was 128000; capped for local 32768-token backend
+buffer_length: 4000
+output_dir: ./results/outputs/Qwen3-8B
+
+# ── optional ──────────────────────────────────────────────────────────────────
+provider: openai_compatible    # openai(default) | openai_compatible | azure_openai | anthropic | gemini
+api_key_env: OPENAI_API_KEY    # env var name for API key (default: OPENAI_API_KEY / Anthropic_API_KEY / Google_API_KEY)
+base_url: http://127.0.0.1:9908/v1    # custom LLM endpoint for OpenAI-compatible providers
+base_url_env:       # env var name for base_url
+azure_endpoint:     # Azure OpenAI resource endpoint
+azure_api_version:  # Azure OpenAI API version
+tokenizer_encoding: cl100k_base  # tiktoken encoding (e.g. cl100k_base) for non-GPT models
+tokenizer_model:    # model name passed to tiktoken.encoding_for_model

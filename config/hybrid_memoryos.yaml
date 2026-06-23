@@ -1,0 +1,39 @@
+# ── required ──────────────────────────────────────────────────────────────────
+agent_name: Agentic_memory_memoryos
+model: Qwen3-8B
+temperature: 0.7
+input_length_limit: 1280000
+model_context_window: 32768
+buffer_length: 2000
+output_dir: ./results/outputs/Qwen3-8B-memoryos
+agent_chunk_size: 4096
+retrieve_num: 10
+
+# ── optional (chat model) ─────────────────────────────────────────────────────
+provider: openai_compatible
+api_key:
+api_key_env: OPENAI_API_KEY
+base_url: http://127.0.0.1:9910/v1
+base_url_env:
+tokenizer_encoding: cl100k_base
+
+# ── optional (embedding model) ────────────────────────────────────────────────
+embedding_model: Qwen3-Embedding-4B
+embedding_provider: openai_compatible
+embedding_api_key:
+embedding_api_key_env: OPENAI_API_KEY
+embedding_base_url: http://127.0.0.1:9009/v1
+embedding_base_url_env:
+
+# ── optional (memoryos adapter tuning) ────────────────────────────────────────
+memoryos_short_term_capacity: 1
+memoryos_mid_term_capacity: 2000
+memoryos_queue_capacity: 10
+memoryos_topic_similarity_threshold: 0.6
+memoryos_heat_threshold: 5.0
+memoryos_summary_chars: 384
+memoryos_keyword_limit: 16
+memoryos_segment_threshold: 0.1
+memoryos_page_threshold: 0.1
+memoryos_knowledge_threshold: 0.1
+memoryos_llm_max_tokens: 512

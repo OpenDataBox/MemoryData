@@ -1,0 +1,22 @@
+# Proportional 150-sample LongBench-v2 subset.
+dataset: LongBench
+chunk_size: 4096
+debug: false
+seed: 42
+
+context_max_length: 2000000
+sub_dataset: longbench_rep150_proportional
+generation_max_length: 32
+test_files: 'datasets/longBench_rep150_proportional/datasets'
+demo_files: ''
+use_chat_template: true
+max_test_samples: 150
+shots: 0
+tag: rep150_proportional
+
+longbench_split: train
+longbench_lengths: ''
+longbench_difficulties: ''
+longbench_domains: ''
+longbench_sub_domains: ''
+longbench_ids: ''

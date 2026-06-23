@@ -1,0 +1,28 @@
+# ── required ──────────────────────────────────────────────────────────────────
+agent_name: Agentic_memory_self_rag
+model: Qwen2.5-7B
+temperature: 0.7
+input_length_limit: 280000
+buffer_length: 200
+output_dir: ./results/outputs/Qwen2.5-7B-self_rag
+retrieve_num: 10
+
+# ── optional ──────────────────────────────────────────────────────────────────
+provider: openai_compatible    # openai(default) | openai_compatible | azure_openai
+api_key_env: OPENAI_API_KEY    # env var name for API key (default: OPENAI_API_KEY)
+base_url: http://127.0.0.1:9909/v1    # custom LLM endpoint
+base_url_env:       # env var name for base_url
+azure_endpoint:
+azure_api_version:
+tokenizer_encoding: cl100k_base  # e.g. cl100k_base
+
+# ── optional (embedding) ──────────────────────────────────────────────────────
+# embedding_api_key_env defaults to OPENAI_API_KEY — independent of the LLM key above.
+# Set it explicitly if your OpenAI key env var has a different name.
+embedding_model: Qwen3-Embedding-4B
+embedding_provider: openai_compatible    # openai(default) | openai_compatible | azure_openai
+embedding_api_key_env: OPENAI_API_KEY    # env var for embedding API key (default: OPENAI_API_KEY)
+embedding_base_url: http://127.0.0.1:9009/v1    # custom embedding endpoint; omit to use https://api.openai.com/v1
+embedding_base_url_env:
+embedding_azure_endpoint:
+embedding_azure_api_version:

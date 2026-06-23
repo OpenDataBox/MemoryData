@@ -1,0 +1,135 @@
+# Core Python packages
+# Keep NumPy < 2 for FAISS / MemoRAG wheel compatibility.
+numpy<2
+pandas
+pillow
+tqdm
+dill
+toml
+python-dotenv
+PyYAML
+pydantic==2.12.5
+pydantic_core==2.41.5
+
+# Machine Learning & Deep Learning
+torch
+torchvision
+# Transformers 4.46.x works with the current MemoRAG/minference path
+# without reintroducing the 5.x compatibility breakage.
+transformers==4.46.3
+tokenizers==0.20.4
+huggingface-hub==0.36.2
+tiktoken
+timm
+datasets
+sentence_transformers
+gritlm
+bitsandbytes
+deepspeed
+
+# NVIDIA CUDA packages are managed by torch as dependencies, no need to list them explicitly
+
+# NLP & Text Processing
+nltk
+spacy
+semantic_text_splitter
+langdetect
+dateparser  # vendored SimpleMem dependency
+editdistance
+rank_bm25
+
+# LangChain ecosystem
+langchain==1.2.14
+langchain-cohere
+langchain-community==0.4.1
+langchain-core==1.2.25
+langchain-experimental
+langchain-groq
+langchain-openai
+langchain-text-splitters==1.1.1
+langchain_google_genai
+
+# AI/LLM APIs
+openai==2.30.0
+anthropic
+google-genai
+litellm
+instructor
+zep-cloud==2.22.1
+letta-client==1.10.2
+ollama>=0.5.0,<0.5.1
+tenacity>=9.1.2,<10.0.0
+
+# Letta batch-critical extras
+opentelemetry-exporter-otlp-proto-grpc
+opentelemetry-instrumentation-requests
+marshmallow-sqlalchemy
+datamodel-code-generator
+
+# Database & Vector Storage
+###psycopg2
+pgvector
+qdrant-client
+lancedb
+pylance
+faiss-gpu==1.7.2
+igraph
+neo4j==5.28.1
+graphiti-core==0.24.1
+sqlalchemy>=2.0.41,<3.0.0
+scikit-learn>=1.7.0,<2.0.0
+
+# Web & API
+fastapi[all]>=0.115.12,<0.116.0
+fastapi_users
+fastapi-users-db-sqlalchemy
+frontend
+fastmcp>=2.10.5,<3.0.0
+prometheus-client>=0.23.1,<0.24.0
+concurrent-log-handler>=0.9.28,<1.0.0
+
+# Development & Testing
+rouge_score
+deepeval
+ipdb
+swe-rex
+
+# Utilities & Infrastructure
+matplotlib
+structlog
+limits
+graphistry
+fsspec==2026.3.0
+s3fs
+dlt
+mem0ai==1.0.10
+accelerate
+llmlingua
+python-dateutil>=2.9.0.post0,<3.0.0
+pymysql>=1.1.0,<2.0.0
+chonkie>=1.0.7,<2.0.0
+markitdown[docx,pdf,pptx,xls,xlsx]>=0.1.1,<0.2.0
+schedule>=1.2.2,<2.0.0
+redis>=6.2.0,<7.0.0
+pika>=1.3.2,<2.0.0
+
+
+# Cognee
+aiolimiter
+aiosqlite
+alembic
+cbor2
+diskcache
+fakeredis
+filetype
+Jinja2
+kuzu==0.11.3
+networkx
+owlready2==0.50
+pydantic-settings
+python-multipart
+rdflib
+
+# Memo RAG
+minference
+#flash_attn

@@ -1,0 +1,34 @@
+# ── required ──────────────────────────────────────────────────────────────────
+agent_name: Agentic_memory_memtree
+model: Qwen3-8B
+temperature: 0.0
+input_length_limit: 10000000
+model_context_window: 32768
+buffer_length: 1000
+output_dir: ./results/outputs/Qwen3-8B-memtree
+agent_chunk_size: 4096
+retrieve_num: 2 # was 10
+
+# ── optional (chat model) ─────────────────────────────────────────────────────
+provider: openai_compatible
+api_key:
+api_key_env: OPENAI_API_KEY
+base_url: http://127.0.0.1:9910/v1
+base_url_env:
+tokenizer_encoding: cl100k_base
+
+# ── optional (embedding model) ────────────────────────────────────────────────
+embedding_model: Qwen3-Embedding-4B
+embedding_provider: openai_compatible
+embedding_api_key:
+embedding_api_key_env: OPENAI_API_KEY
+embedding_base_url: http://127.0.0.1:9010/v1
+embedding_base_url_env:
+
+# ── optional (memtree adapter tuning) ────────────────────────────────────────
+memtree_base_threshold: 0.4
+memtree_rate: 0.5
+memtree_max_depth: 15
+memtree_summary_max_tokens: 256
+memtree_aggregate_temperature: 0.0
+memtree_aggregate_model:
