@@ -1,0 +1,30 @@
+# Nova Memory — Sequential Context method preset
+# ★ Self-contained lexical + morphology memory baseline
+# Drop into: config/sequential_nova_memory.yaml
+#
+# Required: an OpenAI-compatible chat endpoint (vLLM / OpenAI / Azure).
+# If unset, NovaMemoryAgent falls back to returning the top recalled chunk
+# as the "answer" — useful for smoke testing the recall pipeline.
+#
+# Override via env: NOVA_LLM_MODEL, NOVA_BASE_URL, NOVA_API_KEY
+
+# -- required ---------------------------------------------------------------
+agent_name: Nova_memory_agent
+model: gpt-4o-mini
+temperature: 0.0
+input_length_limit: 10000000
+buffer_length: 1000
+output_dir: ./results/outputs/nova-default
+agent_chunk_size: 4096
+retrieve_num: 5
+
+# -- LLM (OpenAI-compatible) ------------------------------------------------
+provider: openai_compatible
+api_key_env: OPENAI_API_KEY
+base_url_env: OPENAI_BASE_URL
+base_url:
+tokenizer_encoding: cl100k_base
+
+# -- embedding (NOT USED — lexical only) ------------------------------------
+embedding_api_key_env: OPENAI_API_KEY
+embedding_base_url:

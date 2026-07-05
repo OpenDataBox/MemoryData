@@ -230,6 +230,8 @@ class AgentWrapper:
             self._initialize_zep_agent(agent_config)
         elif self._is_agent_type("memagent"):
             self._initialize_memagent(agent_config)
+        elif self._is_nova_agent():
+            self._initialize_nova_agent(agent_config, dataset_config)
         elif self._is_agent_type("MemOS"):
             self._initialize_memos_agent(agent_config, dataset_config)
         elif self._is_agent_type("rag"):
@@ -4551,3 +4553,40 @@ class AgentWrapper:
                 )
 
         print("\n\n Agent loaded successfully...\n\n")
+
+    # ================== Nova Memory agent ==================
+    # Injected by methods/nova_memory/adapter_patch.py
+    def _is_nova_agent(self):
+        return 'nova' in self.agent_name.lower()
+
+    def _initialize_nova_agent(self, agent_config, dataset_config):
+        """Initialize Nova lexical baseline agent."""
+        import sys as _sys
+        _src = str('E:\\进化引擎\\a\\MemoryData') + "/methods/nova_memory/source".replace("/", __import__("os").sep)
+        if _src not in _sys.path:
+            _sys.path.insert(0, _src)
+        from nova_agent import NovaMemoryAgent
+
+        api_key = self.api_key or self._resolve_llm_api_key(["OPENAI_API_KEY"])
+        base_url = self._resolve_base_url() if hasattr(self, "_resolve_base_url") else None
+
+        self._nova_agent = NovaMemoryAgent(
+            model=self.model,
+            retrieve_num=agent_config.get('retrieve_num', 5),
+            api_key=api_key,
+            base_url=base_url,
+            agent_save_to_folder=self.agent_save_to_folder,
+            chunk_size=agent_config.get('agent_chunk_size', 4096),
+        )
+        self._nova_agent.load()
+        self.retrieve_num = agent_config.get('retrieve_num', 5)
+        self.context = ''
+
+    def send_message(self, text, memorizing=False, **kwargs):
+        """MemoryData calls this. If Nova, delegate to NovaMemoryAgent."""
+        if getattr(self, '_nova_agent', None) is not None:
+            return self._nova_agent.send_message(text, memorizing=memorizing)
+        raise NotImplementedError(
+            "send_message reached but no _nova_agent. Set agent_name containing 'nova'."
+        )
+
