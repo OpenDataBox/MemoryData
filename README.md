@@ -14,6 +14,14 @@
 
 </div>
 
+<br/>
+
+<div align="center">
+  <b>English</b> &nbsp;|&nbsp; <a href="./README_ZH.md">简体中文</a>
+</div>
+
+<br/>
+
 <div align="center">
   <a href="#-introduction">Introduction</a> &nbsp;•&nbsp;
   <a href="#-features">Features</a> &nbsp;•&nbsp;
@@ -29,11 +37,19 @@
 
 <br/>
 
-<div align="center">
+<div align="left">
   <img src="./MemoryData_overview.png" alt="MemoryData main results" width="920" />
   <br/>
   <sub>Main results from the accompanying paper: memory-augmented agent methods compared across the <b>LongMemEval</b>, <b>LoCoMo</b>, and <b>DB-Bench</b> benchmarks under exact-match, ROUGE-L, and LLM-judge metric families. Bars are grouped by paradigm — Reference Baselines, Sequential Context, Structural Topological, and Multi-Paradigm Hybrid.</sub>
 </div>
+
+<br/>
+
+> 📣 **Get involved**
+> - 📝 Need a reading list? See **[Awesome Agent Memory](https://github.com/OpenDataBox/awesome-agent-memory)** — our companion paper collection.
+> - 🚧 **Actively growing** — new methods & benchmark datasets landing continuously.
+> - ⭐ **Stay tuned** — Star the repo, open an [issue](../../issues) for requests, PRs welcome!
+
 
 
 ## ✨ Introduction
