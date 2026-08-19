@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-# One-shot Vast.ai launcher for MemoryData + Mem0 + local Qwen3.5-9B.
+# One-shot Vast.ai launcher for MemoryData + Mem0 + local Qwen3.5-4B.
 #
 # The script creates/reuses a virtual environment, starts two OpenAI-compatible
 # vLLM servers, waits for both APIs, writes a runtime YAML config, and runs the
@@ -15,10 +15,11 @@ PYTHON_BIN="${PYTHON_BIN:-python3}"
 VENV_DIR="${VENV_DIR:-${REPO_ROOT}/.venv-vast-mem0}"
 RUNTIME_ROOT="${RUNTIME_ROOT:-${REPO_ROOT}/.runtime-cache/vastai-mem0-qwen35}"
 LOG_DIR="${RUNTIME_ROOT}/logs"
-RUNTIME_CONFIG="${RUNTIME_ROOT}/sequential_mem0_qwen35_9b.runtime.yaml"
+RUNTIME_CONFIG="${RUNTIME_ROOT}/sequential_mem0_qwen35_4b.runtime.yaml"
+RUNTIME_DATASET_CONFIG="${RUNTIME_ROOT}/dataset.runtime.yaml"
 
-LLM_MODEL="${LLM_MODEL:-Qwen/Qwen3.5-9B}"
-LLM_SERVED_NAME="${LLM_SERVED_NAME:-Qwen3.5-9B}"
+LLM_MODEL="${LLM_MODEL:-Qwen/Qwen3.5-4B}"
+LLM_SERVED_NAME="${LLM_SERVED_NAME:-Qwen3.5-4B}"
 LLM_HOST="${LLM_HOST:-127.0.0.1}"
 LLM_PORT="${LLM_PORT:-9909}"
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-32768}"
@@ -63,9 +64,9 @@ if (( EMBED_GPU >= GPU_COUNT )); then
 fi
 
 if [[ "${LLM_GPU}" == "${EMBED_GPU}" ]]; then
-  LLM_GPU_MEMORY_UTILIZATION="${LLM_GPU_MEMORY_UTILIZATION:-0.65}"
-  EMBED_GPU_MEMORY_UTILIZATION="${EMBED_GPU_MEMORY_UTILIZATION:-0.28}"
-  echo "WARNING: Chat and embedding servers share GPU ${LLM_GPU}. A 48 GB or larger GPU is recommended." >&2
+  LLM_GPU_MEMORY_UTILIZATION="${LLM_GPU_MEMORY_UTILIZATION:-0.52}"
+  EMBED_GPU_MEMORY_UTILIZATION="${EMBED_GPU_MEMORY_UTILIZATION:-0.40}"
+  echo "WARNING: Chat and embedding servers share GPU ${LLM_GPU}. A 24 GB or larger GPU is recommended." >&2
 else
   LLM_GPU_MEMORY_UTILIZATION="${LLM_GPU_MEMORY_UTILIZATION:-0.90}"
   EMBED_GPU_MEMORY_UTILIZATION="${EMBED_GPU_MEMORY_UTILIZATION:-0.85}"
@@ -74,13 +75,19 @@ fi
 OPENAI_API_KEY="${OPENAI_API_KEY:-local-vastai-key}"
 SERVER_WAIT_SECONDS="${SERVER_WAIT_SECONDS:-3600}"
 MAX_QUERIES="${MAX_QUERIES:-1}"
+MAX_TEST_SAMPLES="${MAX_TEST_SAMPLES:-}"
 FORCE="${FORCE:-0}"
 KEEP_SERVERS="${KEEP_SERVERS:-0}"
 SKIP_INSTALL="${SKIP_INSTALL:-0}"
 VLLM_SPEC="${VLLM_SPEC:-vllm>=0.17.0}"
-BASE_AGENT_CONFIG="${BASE_AGENT_CONFIG:-config/sequential_mem0_qwen35_9b.yaml}"
-DATASET_CONFIG="${DATASET_CONFIG:-benchmark/memoryagentbench/Accurate_Retrieval/config/EventQA/Eventqa_full.yaml}"
-OUTPUT_DIR="${OUTPUT_DIR:-./results/outputs/Qwen3.5-9B-mem0}"
+BASE_AGENT_CONFIG="${BASE_AGENT_CONFIG:-config/sequential_mem0_qwen35_4b.yaml}"
+DATASET_CONFIG="${DATASET_CONFIG:-benchmark/memoryagentbench/Accurate_Retrieval/config/LongMemEval/Longmemeval_s.yaml}"
+OUTPUT_DIR="${OUTPUT_DIR:-./results/outputs/Qwen3.5-4B-mem0}"
+
+if [[ -n "${MAX_TEST_SAMPLES}" ]] && [[ ! "${MAX_TEST_SAMPLES}" =~ ^[1-9][0-9]*$ ]]; then
+  echo "ERROR: MAX_TEST_SAMPLES must be empty or a positive integer." >&2
+  exit 1
+fi
 
 export OPENAI_API_KEY
 export TOKENIZERS_PARALLELISM="${TOKENIZERS_PARALLELISM:-false}"
@@ -238,6 +245,7 @@ verify_served_model "Embedding" "${EMBED_BASE_URL}" "${EMBED_SERVED_NAME}"
 
 export BASE_AGENT_CONFIG RUNTIME_CONFIG LLM_SERVED_NAME LLM_BASE_URL
 export EMBED_SERVED_NAME EMBED_BASE_URL OUTPUT_DIR MAX_MODEL_LEN
+export DATASET_CONFIG RUNTIME_DATASET_CONFIG MAX_TEST_SAMPLES
 python - <<'PY'
 import os
 from pathlib import Path
@@ -262,12 +270,22 @@ target_path.parent.mkdir(parents=True, exist_ok=True)
 with target_path.open("w", encoding="utf-8") as handle:
     yaml.safe_dump(config, handle, sort_keys=False)
 print(f"Runtime agent config: {target_path}")
+
+dataset_source_path = Path(os.environ["DATASET_CONFIG"])
+dataset_target_path = Path(os.environ["RUNTIME_DATASET_CONFIG"])
+with dataset_source_path.open("r", encoding="utf-8") as handle:
+    dataset_config = yaml.safe_load(handle)
+if os.environ["MAX_TEST_SAMPLES"]:
+    dataset_config["max_test_samples"] = int(os.environ["MAX_TEST_SAMPLES"])
+with dataset_target_path.open("w", encoding="utf-8") as handle:
+    yaml.safe_dump(dataset_config, handle, sort_keys=False)
+print(f"Runtime dataset config: {dataset_target_path}")
 PY
 
 benchmark_args=(
   main.py
   --agent_config "${RUNTIME_CONFIG}"
-  --dataset_config "${DATASET_CONFIG}"
+  --dataset_config "${RUNTIME_DATASET_CONFIG}"
 )
 if [[ "${MAX_QUERIES}" =~ ^[0-9]+$ ]] && (( MAX_QUERIES > 0 )); then
   benchmark_args+=(--max_test_queries_ablation "${MAX_QUERIES}")
@@ -280,6 +298,9 @@ if [[ "${FORCE}" == "1" ]]; then
 fi
 
 echo "Running MemoryData with dataset config: ${DATASET_CONFIG}"
+if [[ -n "${MAX_TEST_SAMPLES}" ]]; then
+  echo "Dataset sample limit override: ${MAX_TEST_SAMPLES}"
+fi
 if (( MAX_QUERIES > 0 )); then
   echo "Query limit: ${MAX_QUERIES} (set MAX_QUERIES=0 for the full benchmark)"
 else
