@@ -1,0 +1,252 @@
+%%%%%%%% ICML 2026 EXAMPLE LATEX SUBMISSION FILE %%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+
+% Recommended, but optional, packages for figures and better typesetting:
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs} % for professional tables
+
+% hyperref makes hyperlinks in the resulting PDF.
+% If your build breaks (sometimes temporarily if a hyperlink spans a page)
+% please comment out the following usepackage line and replace
+% \usepackage{icml2026} with \usepackage[nohyperref]{icml2026} above.
+\usepackage{hyperref}
+
+
+% Attempt to make hyperref and algorithmic work together better:
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% Use the following line for the initial blind version submitted for review:
+% \usepackage{icml2026}
+
+% For preprint, use
+\usepackage[preprint]{icml2026}
+
+
+% If accepted, instead use the following line for the camera-ready submission:
+% \usepackage[accepted]{icml2026}
+
+% ---- Preprint-only patch: centered affiliations, manual emails, no preprint notice ----
+\makeatletter
+\ifdefined\ispreprint
+
+  % Remove the preprint notice everywhere (e.g., the bottom-left notice box)
+  \renewcommand{\Notice@String}{}%
+
+  % In preprint, IGNORE the built-in correspondence author mechanism
+  % (so \icmlcorrespondingauthor will not store anything)
+  \renewcommand{\icmlcorrespondingauthor}[2]{}%
+
+  % Manually set what you want to show under affiliations (emails only).
+  % Edit this line to your preferred merged format.
+  \newcommand{\ICMLPreprintEmails}{\texttt{\{key4,xuanhe4,jizej2,hanj,czhai\}@illinois.edu}\\\texttt{chenzixi23@mails.tsinghua.edu.cn}\\\texttt{\{mgalley,chenwang,jfgao\}@microsoft.com}}
+
+  % Print affiliations centered under the author list (not as a footnote)
+  \renewcommand{\printAffiliationsAndNotice}[1]{%
+    % Mark that affiliations/notice have been printed (to satisfy ICML safety check)
+    \global\icml@noticeprintedtrue%
+    % Keep the affiliation counter behavior consistent with the original style
+    \stepcounter{@affiliationcounter}%
+    \vspace{0.5em}%
+    {\footnotesize
+    \begin{center}
+      % Optional extra text (e.g., equal contribution note). Use {} if none.
+      \ificmlshowauthors #1\fi%
+      \ifx\relax#1\relax\else\par\vspace{0.25em}\fi%
+
+      % Print all affiliations in a single centered block:
+      % ¹ Institution A   ² Institution B   ...
+      \def\icml@affilsep{\hspace{0.75em}}%
+      \forloop{@affilnum}{1}{\value{@affilnum} < \value{@affiliationcounter}}{%
+        \textsuperscript{\arabic{@affilnum}}%
+        \ifcsname @affilname\the@affilnum\endcsname
+          \csname @affilname\the@affilnum\endcsname
+        \else
+          {\bf AUTHORERR: Missing \string\icmlaffiliation.}%
+        \fi
+        \icml@affilsep
+      }%
+
+      % Emails only (manually defined above; no "Correspondence to:", no names)
+      \ifdefined\ICMLPreprintEmails
+        \par\vspace{0.25em}%
+        \ICMLPreprintEmails%
+      \fi
+    \end{center}
+    }%
+    \vspace{0.5em}%
+  }
+
+\fi
+\makeatother
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+%%%%%%%%%%%%% newly added packages
+\usepackage{algorithm}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{pifont}
+\usepackage[draft]{fixme}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage[most]{tcolorbox}
+\usepackage[dvipsnames]{xcolor} 
+
+% lstlistings for showing prompts
+\usepackage{listings}
+
+% style reference: https://stackoverflow.com/questions/741985/latex-source-code-listing-like-in-professional-books
+% Set style for prompt
+\lstset{
+    basicstyle=\footnotesize\ttfamily, % Default font
+    % numbers=left,              % Location of line numbers
+    numberstyle=\tiny,          % Style of line numbers
+    % stepnumber=2,              % Margin between line numbers
+    numbersep=5pt,              % Margin between line numbers and text
+    tabsize=2,                  % Size of tabs
+    extendedchars=true,
+    breaklines=true,            % Lines will be wrapped
+    keywordstyle=\color{red},
+    frame=b,
+    % keywordstyle=[1]\textbf,
+    % keywordstyle=[2]\textbf,
+    % keywordstyle=[3]\textbf,
+    % keywordstyle=[4]\textbf,   \sqrt{\sqrt{}}
+    stringstyle=\color{white}\ttfamily, % Color of strings
+    showspaces=false,
+    showtabs=false,
+    xleftmargin=17pt,
+    framexleftmargin=17pt,
+    framexrightmargin=5pt,
+    framexbottommargin=4pt,
+    % backgroundcolor=\color{CadetBlue},
+    showstringspaces=false,
+    title=\lstname
+    }
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{bluegray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% if you use cleveref..
+\usepackage[capitalize,noabbrev]{cleveref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THEOREMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength{\floatsep}{6pt}
+\setlength{\textfloatsep}{6pt}
+\setlength{\intextsep}{6pt}
+\usepackage{setspace}
+
+
+\input{Sections/packages}
+
+% The \icmltitle you define below is probably too long as a header.
+% Therefore, a short form for the running title is supplied here:
+\icmltitlerunning{PlugMem: A Task-Agnostic Plugin Memory Module for LLM Agents}
+
+\begin{document}
+
+\twocolumn[
+  \icmltitle{PlugMem: A Task-Agnostic Plugin Memory Module for LLM Agents}
+
+  \icmlsetsymbol{equal}{*}
+
+\begin{icmlauthorlist}
+  \icmlauthor{Ke Yang}{equal,uiuc}
+  \icmlauthor{Zixi Chen}{equal,thu}
+  \icmlauthor{Xuan He}{equal,uiuc}
+  \icmlauthor{Jize Jiang}{equal,uiuc} \\
+  \icmlauthor{Michel Galley}{msr}
+  \icmlauthor{Chenglong Wang}{msr}
+  \icmlauthor{Jianfeng Gao}{msr}
+  \icmlauthor{Jiawei Han}{uiuc}
+  \icmlauthor{ChengXiang Zhai}{uiuc}
+\end{icmlauthorlist}
+
+
+\icmlaffiliation{uiuc}{University of Illinois Urbana-Champaign}
+\icmlaffiliation{thu}{Tsinghua University}
+\icmlaffiliation{msr}{Microsoft Research}
+
+\icmlcorrespondingauthor{Ke Yang}{key4@illinois.edu}
+\icmlcorrespondingauthor{ChengXiang Zhai}{czhai@illinois.edu}
+
+% Preprint: print affiliations/notice INSIDE the full-width title block
+\ifdefined\ispreprint
+  \printAffiliationsAndNotice{\icmlEqualContribution}
+\fi
+
+  \vskip 0.3in
+]
+
+% Non-preprint: print affiliations/notice OUTSIDE the title block (default ICML behavior)
+\ifdefined\ispreprint\else
+  \printAffiliationsAndNotice{\icmlEqualContribution}
+\fi
+
+
+\input{Sections/0_abstract}
+
+\input{Sections/1_introduction}
+\input{Sections/2_related_work_compact}
+\input{Sections/3_methodology}
+\input{Sections/4_experiments}
+\input{Sections/5_conclusions}
+
+
+
+\input{Sections/references}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Sections/appendix}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+% This document was modified from the file originally made available by
+% Pat Langley and Andrea Danyluk for ICML-2K. This version was created
+% by Iain Murray in 2018, and modified by Alexandre Bouchard in
+% 2019 and 2021 and by Csaba Szepesvari, Gang Niu and Sivan Sabato in 2022.
+% Modified again in 2023 and 2024 by Sivan Sabato and Jonathan Scarlett.
+% Previous contributors include Dan Roy, Lise Getoor and Tobias
+% Scheffer, which was slightly modified from the 2010 version by
+% Thorsten Joachims & Johannes Fuernkranz, slightly modified from the
+% 2009 version by Kiri Wagstaff and Sam Roweis's 2008 version, which is
+% slightly modified from Prasad Tadepalli's 2007 version which is a
+% lightly changed version of the previous year's version by Andrew
+% Moore, which was in turn edited from those of Kristian Kersting and
+% Codrina Lauth. Alex Smola contributed to the algorithmic style files.

@@ -1,0 +1,15 @@
+policy:
+  - section:
+      - id: ['component']
+        block-list: ['Other']
+        label:
+          - name: 'sdk-python'
+            keys: ['Python SDK']
+          - name: 'sdk-typescript'
+            keys: ['TypeScript SDK']
+          - name: 'vector-store'
+            keys: ['Vector Store']
+          - name: 'plugin'
+            keys: ['Plugin']
+          - name: 'rest-api'
+            keys: ['REST API']

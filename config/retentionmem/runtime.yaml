@@ -1,0 +1,33 @@
+mode: learned_residual
+policy_checkpoint: results/retentionmem/policies/policy_seed0.npz
+tokenizer_encoding: cl100k_base
+compressor: structured
+region_size: 8
+buffer_size: 8
+compression_ratio: 4
+max_probes: 8
+max_source_tokens: 24000
+query_budget: 4096
+answer_max_tokens: 128
+generation_max_tokens: 3072
+sparse_weight: 0.5
+llm:
+  base_url: http://127.0.0.1:9909/v1
+  model: Qwen3-8B
+  disable_thinking: true
+reader:
+  base_url: http://127.0.0.1:9909/v1
+  model: Qwen3-8B
+  disable_thinking: true
+embedding:
+  base_url: http://127.0.0.1:9009/v1
+  model: Qwen3-Embedding-4B
+judge:
+  base_url: http://127.0.0.1:9910/v1
+  model: Qwen2.5-7B-Instruct
+transfer_reader:
+  base_url: http://127.0.0.1:9910/v1
+  model: Qwen2.5-7B-Instruct
+datasets:
+  locomo: datasets/retentionmem/locomo10.json
+  longmemeval: datasets/retentionmem/longmemeval_s_cleaned.json

@@ -1,0 +1,19 @@
+\begin{lstlisting}[
+  caption=Additional instruction for AgentOccam to incorporate retrieved memory.,
+  label=lst:webarena_ao_prompt,
+]
+============================================================
+Prompt AgentOccam Retrieved Memory Instruction
+============================================================
+
+The retrieved memory contains relevant information from past experiences that may help you complete the current task. Use this memory to:
+- Learn from similar past tasks and their successful strategies
+- Avoid repeating previous mistakes
+- Apply proven approaches that worked in similar situations
+- Understand patterns and relationships that can guide your actions
+When retrieved memory is provided, carefully consider how it relates to your current task and incorporate relevant insights into your decision-making process.
+
+Some task may require access to Wikipedia, the only way you may access Wikipedia is through the url "http://<BASE_URL>:8888/wikipedia_en_all_maxi_2022-05/A/User:The_other_Kiwix_guy/Landing"
+BASE_URL: localhost
+
+\end{lstlisting}

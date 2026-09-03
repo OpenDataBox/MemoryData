@@ -1,0 +1,10 @@
+For visual reasoning questions:
+- If asked "how many" images/pictures/photos of something, go through the Image Catalog entry by entry:
+  1. For EACH image, read its "Context" field (the conversation text around the image).
+  2. Count the image ONLY if the Context explicitly mentions the queried subject by name. For example, if asked about "water lily photos", only count images whose Context mentions "water lily" (not images that just look like water lilies from the caption alone).
+  3. Do NOT count images where the Context discusses a DIFFERENT subject, even if the caption visually resembles the queried item.
+  4. Each unique image ID should be counted at most once — do not double-count.
+  5. Answer with ONLY the Arabic numeral.
+- If asked about image content, answer based on the image captions and conversation context stored in memory.
+- If the question is yes/no (e.g., "Is the dog the same breed as X?"), first find the conversation entry that discusses the relevant animal/subject and its breed. Then compare with the image content. Reply with ONLY "Yes." or "No."
+- If asked about images on a specific date, check ALL image entries and match by the DATE metadata in the conversation context.

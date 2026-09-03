@@ -1,0 +1,63 @@
+\begin{lstlisting}[
+  caption={Prompt template for extracting semantic knowledge from episodic trajectories.},
+  label={lst:apdx_prompt_get_semantic},
+]
+============================================================
+Prompt Get_Semantic
+============================================================
+
+You are an expert at extracting precise, factual information from documents.
+Your output must prioritize specificity, avoid ambiguity, eliminate redundancy, and strictly follow all formatting rules.
+
+**CORE INSTRUCTIONS:**
+
+1. Fact/Statement Extraction & Deduplication:
+* Identify distinct, factual statements from the document.
+* Resolving Vague References: If the subject of a statement is a pronoun or a vague description (e.g., 'the film', 'the band', 'the company', 'he', 'she', 'they'), you MUST rewrite the statement based on understanding of whole document so that the subject is a fully specified and concrete entity name taken from the document. You are NOT allowed to keep vague subjects in the final fact/statement.
+* Example of Resolving Vague References:
+BAD: 'The film was directed by xxx.', 'This movie is produced by xxx'
+GOOD: 'Vaada Poda Nanbargal was directed by Manikai.', 'Vaada Poda Nanbargal is produced by xxx'
+* Concrete Phrasing: Every statement MUST be phrased using explicit, identifiable names or titles. You are FORBIDDEN from using ANY vague references including but not limited to: 'the tour', 'the film', 'the movie', 'the band', 'it', 'he', 'she', or 'they'.
+* Example of Concrete Phrasing:
+BAD: 'The tour earned over $50 million.'
+GOOD: 'NSYNC's Second II None Tour earned over $50 million.'
+* Statement Length Policy (IMPORTANT): Each fact/statement does NOT have to be a single short sentence. A statement MAY be a compact multi-sentence block that groups tightly related information, but it must contain AT MOST 4 sentences total. These sentences should come from the original document material, potentially lightly edited ONLY to resolve vague references.
+* Avoid Redundancy: You MUST merge similar or overlapping facts into single, comprehensive statements. Do NOT create multiple statements that repeat the same core information with minor variations.
+
+
+2. Tag Generation:
+* For each fact/statement, generate a list of tags.
+* The number of tags per fact is flexible and should reflect the information density of the statement.
+* Tags should cover key spans such as: entity names, years, numbers, nationalities, languages, genres, roles, object types, descriptive words, etc.
+* The MAJORITY of tags SHOULD be SHORT TEXT SPANS copied VERBATIM from the statement (exact substrings). These tags are directly grounded in the surface form of the text.
+* You MAY occasionally create additional tags that are not literal substrings of the current statement, in the following cases:
+* You combine adjacent words into a single phrase (e.g., 'romantic comedy film').
+* You import a surface span (exact phrase) from ANOTHER part of the document to make the meaning of the current statement explicit (for example, when resolving pronouns or phrases like 'the film', 'the band', etc.).
+
+
+* When the subject of a statement is a pronoun or a vague description (e.g., 'the movie', 'the band', 'the hotel'), you MUST add at least one tag that names the underlying entity explicitly, using the exact surface form that appeared elsewhere in the document. This cross-statement tag may come from a previous or later sentence as long as it is clearly the same entity.
+* If a tag is a verb, you MUST use its base (lemma) form (e.g., 'play', not 'played', 'playing', or 'to play').
+* No Schema/Type Labels: You are FORBIDDEN from using meta-labels or ontology-like category names such as: 'Name', 'Person', 'Year', 'Date', 'City', 'Country', 'Location', 'Genre', 'Language', 'FilmTitle', etc. Tags are NOT type labels; they are content-bearing phrases.
+* Tags should be relatively short and as fine-grained as needed. For example, adjectives and modifiers like 'Indian', 'Tamil-language', 'romantic', 'comedy' SHOULD usually be separate tags if they appear in the statement.
+
+
+
+OUTPUT CONSTRAINTS:
+* Extract up to 10 facts, but prioritize QUALITY over quantity. If there are fewer than 10 truly distinct facts, output fewer.
+* Each fact must provide unique information not covered by other facts.
+* ABSOLUTELY NO generic references -- every statement must explicitly name the specific entity.
+
+**DOCUMENT:**
+{observation}
+
+OUTPUT FORMAT:
+
+### Facts
+
+1. **Statement:** [statement]
+**Tags:** [tag0, tag1, tag2, tag3, ...]
+2. **Statement:** [statement]
+**Tags:** [tag0, tag1, tag2, tag3, ...]
+...
+
+\end{lstlisting}

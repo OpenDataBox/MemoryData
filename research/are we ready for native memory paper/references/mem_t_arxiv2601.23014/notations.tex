@@ -1,0 +1,115 @@
+% \newcommand{\zdh}[1]{\textcolor{brown}{ZDH: #1}}
+\newcommand{\yz}[1]{\textcolor{blue}{YZ: #1}}
+% \newcommand{\rebuttal}[1]{{\color{blue}{#1}}}
+% \newcommand{\rebuttal}[1]{{#1}}
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\med}[1]{\textcolor{magenta}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+
+\usepackage{xspace}
+\newcommand*{\eg}{\textit{e.g.}\xspace}
+\newcommand*{\ie}{\textit{i.e.}\xspace}
+\newcommand*{\cf}{\textit{cf.}\xspace}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THEOREMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}%[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+% \theoremstyle{remark}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+
+
+% modifed \bar{}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+% \DeclareMathOperator*{\argmax}{arg\,max}
+% \DeclareMathOperator*{\argmin}{arg\,min}
+
+% \newcommand{\refe}{\text{ref}} % \ref is used by latex default
+
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+% \newcommand{\KL}[2]{\mathcal{D}_{\mathrm{KL}}\left(#1\Vert #2\right)}
+\newcommand{\tr}[1]{\text{tr}\left(#1\right)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\def\viz{\emph{viz}\onedot}
+\newcommand{\diag}[1]{\text{diag}\left(#1\right)}
+\newcommand{\dt}{\frac{\dif}{\dif t}}
+
+\newcommand{\aaa}{\mathbf{a}}
+% \newcommand{\ccc}{\mathbf{c} % weird
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\s}{\mathbf{s}}
+\newcommand{\g}{\mathbf{g}}
+\newcommand{\f}{\mathbf{f}}
+\newcommand{\w}{\mathbf{w}}
+\newcommand{\0}{\mathbf{0}}
+
+\newcommand{\dd}{{\boldsymbol{\delta}}}
+\newcommand{\eps}{{\boldsymbol{\epsilon}}}
+\newcommand{\vtheta}{{\boldsymbol{\theta}}}
+\newcommand{\vphi}{{\boldsymbol{\phi}}}
+\newcommand{\ra}{{\rightarrow}}
+\newcommand{\disteq}{{\stackrel{d}{=}}}
+
+% \newcommand{\W}{\mathbf{W}}
+% \newcommand{\Q}{\mathcal{Q}}
+\newcommand{\A}{\mathcal{A}}
+% \newcommand{\gB}{\mathcal{B}}
+% \newcommand{\D}{\mathfrak{D}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\gE}{\mathcal{E}}
+\newcommand{\LL}{{\mathcal{L}}}
+\newcommand{\LDB}{\LL_{\text{DB}}}
+\newcommand{\lDB}{\ell_{\text{DB}}}
+\newcommand{\lFL}{\ell_{\text{FL}}}
+\newcommand{\lFLDB}{\ell_{\text{FL-DB}}}
+\newcommand{\lST}{\ell_{\text{SubTB}}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\I}{\mathbf{I}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\gS}{\mathcal{S}}
+% \newcommand{\Sm}{\Sigma}
+% \newcommand{\La}{\Lambda}
+
+
+
+% Figure reference, lower-case.
+\def\figref#1{figure~\ref{#1}}
+% Figure reference, capital. For start of sentence
+\def\Figref#1{Figure~\ref{#1}}
+\def\twofigref#1#2{figures \ref{#1} and \ref{#2}}
+\def\quadfigref#1#2#3#4{figures \ref{#1}, \ref{#2}, \ref{#3} and \ref{#4}}
+% Section reference, lower-case.
+\def\secref#1{section~\ref{#1}}
+% Section reference, capital.
+\def\Secref#1{Section~\ref{#1}}
+% Reference to two sections.
+\def\twosecrefs#1#2{sections \ref{#1} and \ref{#2}}
+% Reference to three sections.
+\def\secrefs#1#2#3{sections \ref{#1}, \ref{#2} and \ref{#3}}
+% Reference to an equation, lower-case.
+\def\eqref#1{equation~\ref{#1}}
+% Reference to an equation, upper case
+\def\Eqref#1{Equation~\ref{#1}}
+\def\TwoEqref#1#2{Equation \ref{#1} and \ref{#2}}
+% Reference to an algorithm, lower-case.
+\def\algref#1{algorithm~\ref{#1}}
+% Reference to an algorithm, upper case.
+\def\Algref#1{Algorithm~\ref{#1}}
+\def\twoalgref#1#2{algorithms \ref{#1} and \ref{#2}}
+\def\Twoalgref#1#2{Algorithms \ref{#1} and \ref{#2}}

@@ -1,0 +1,33 @@
+\begin{table}[t]
+\centering
+
+\caption{Ablation study on HotpotQA.}
+\label{tab:hotpotqa_ablation}
+\begin{threeparttable}
+\resizebox{0.48\textwidth}{!}{
+\begin{tabular}{c|cc|cc|c|c}
+\toprule
+Method     & Emb & LLM & EM & F1 & $\text{\#Tok}_{\text{Avg.}}$ & Info. Density\\
+\midrule
+\rowcolor{ShadowBlue}
+\plugmem       & NVE   & Q32 & \textbf{61.4} & \textbf{74.1} & \textbf{81.6} & \textbf{1.4e-1}  \\
+\specialrule{0.6pt}{0pt}{2pt}
+ No Structuring & NVE & Q32 & 51.4 & 62.0 & 116.7 & 6.8e-2  \\
+ No Retrieval & -  & Q32 & 20.0  & 24.3  & 8.0\tnote{1} & -3.8e-1    \\
+ No Reasoning  & NVE & Q32 & 59.3 & 71.8 & 635.1 &  1.7e-2      \\
+\bottomrule
+\end{tabular}
+}
+
+\begin{tablenotes}[flushleft]
+\scriptsize
+
+\parbox{0.48\textwidth}{
+\vspace{3pt}
+\item[1] In No Retrieval, we randomly sample corpus items to fit the reasoning module's context window. The sampled items are often irrelevant, so the reasoning module outputs little to no distilled context, yielding a much smaller $\text{\#Tok}_{\text{Avg.}}$ (e.g., 8).
+}
+
+\end{tablenotes}
+\end{threeparttable}
+
+\end{table}

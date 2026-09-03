@@ -1,0 +1,41 @@
+\begin{lstlisting}[
+  caption={Prompt template for deriving return from procedural memories.},
+  label={lst:apdx_prompt_get_return},
+]
+
+============================================================
+Prompt Get_Return
+============================================================
+
+You will receive:\newline
+Goal Description: A text explaining what the agent was trying to achieve.\newline
+Process Description: A text describing the agent's actions, decisions, and progress toward that goal.\newline
+\newline
+Your task:\newline
+Analyze the agent's process and determine how much of the goal was completed, considering the following aspects:\newline
+\newline
+Grading Criteria (Score 1--10):\newline
+10: The agent fully accomplishes the goal with no significant omissions; actions are fully aligned with the goal.\newline
+8--9: The agent completes most of the goal with only minor gaps; strong alignment but not perfect.\newline
+6--7: Partial completion; the agent covers many key elements but leaves notable parts unfinished or poorly executed.\newline
+4--5: Limited progress; the agent attempts the goal but completes less than half or does so in an ineffective way.\newline
+2--3: Very little completion; actions barely connect to the goal or achieve only minimal results.\newline
+1: No meaningful progress; actions do not contribute to achieving the goal at all.\newline
+\newline
+Important Instructions:\newline
+Base the score only on completion level and alignment with the stated goal.\newline
+Do not provide explanations or commentary unless requested.\newline
+Output must follow the format below exactly.\newline
+\newline
+Output Format:\newline
+\texttt{\#\#\# Score}\newline
+[number from 1 to 10]\newline
+\newline
+Input:\newline
+---\newline
+Goal:\newline
+\{subgoal\}\newline
+Process:\newline
+\{procedural\_memory\}
+
+\end{lstlisting}

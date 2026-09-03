@@ -1,0 +1,27 @@
+\begin{lstlisting}[
+  caption={Prompt template for reasoning and compressing for retrieved semantic memories.},
+  label={lst:apdx_prompt_reasoning_semantic},
+]
+============================================================
+Prompt Reason_Semantic
+============================================================
+
+I will give you several retrieved facts. Extract all the useful information relevant to the question.
+In the output reasoning information, use the original wording from the retrieved facts as much as possible, and do not replace it with synonyms or near-synonyms.
+If no useful information found, just return "null".
+
+## Output format:
+
+### Reasoning
+
+(process of extract information)
+
+### Information
+
+## (The useful information you extract)
+
+Input:
+Facts: {semantic_memory}
+Current Date: {time}
+Question: {observation}
+\end{lstlisting}

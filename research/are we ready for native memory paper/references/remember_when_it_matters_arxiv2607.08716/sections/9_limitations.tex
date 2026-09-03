@@ -1,0 +1,18 @@
+\section*{Limitations}
+
+Our memory architecture introduces additional computation. Each memory step
+invokes a separate LLM call that processes the recent trajectory window and
+the current memory bank, adding token and latency overhead on top of the
+action agent. For frontier-model deployments this can roughly double the
+inference cost on steps where memory is triggered. Cheaper trigger functions,
+shorter trajectory windows, and distillation into smaller memory models are
+natural directions for reducing this cost.
+
+Our training results are also preliminary. We train an open-weight memory
+agent with SFT and a single-turn GRPO recipe over pivot turns, but have not
+yet explored multi-turn RL training in which the memory and action agents are
+optimized jointly across full trajectories. Multi-turn RL is our planned
+next step: it would replace offline pivot-turn labels with proper
+trajectory-level credit assignment, and could yield intervention policies
+that adapt to the action agent's behavior rather than imitating a prompted
+teacher.

@@ -1,0 +1,41 @@
+\section{Real Benchmark Cases Illustrating Why \plugmem Outperforms Task-Agnostic and Task-Specific Baselines}
+\label{app:real_benchmark_cases}
+\subsection{LongMemEval}
+
+\paragraph{Case Study: Hierrachical Retrieval for Episodic Memory.}
+Table~\ref{tab:case_longmemeval_2} show an examples of \plugmem retrieving episodic memory hierrachically on LongMemEval. 
+
+\input{Tables/longmemeval_example2}
+\paragraph{Takeaways}
+The example highlights a key reason why \plugmem outperforms task-agnostic baselines on LongMemEval. Unlike Zep \cite{rasmussen2025zeptemporalknowledgegraph}, which contains episode nodes in its graph but only performs retrieval at the semantic level (semantic entities and facts), and LiCoMemory \cite{huang2026licomemorylightweightcognitiveagentic}, which performs graph retrieval for original dialogue chunks solely based on entities, \plugmem retrieves episodic memories by leveraging semantic memory extracted from those episodic memories. Specifically, the retrieval module first identifies semantic memories relevant to the query. In the example, semantic memory 669, semantic memroy 141, and semantic memory 146 are all related to wedding, which is the topic of the question. It then locates the source episodic memory corresponding to each retrieved semantic memory and selects those containing a sufficient number of semantic memories retrieved. In the example, semantic memory 669 and some other retrieved memories are extracted from episodic memory session 24, so episodic memory session 24 is selected. So does episodic memory session 6. We can notice that, although question-related, semantic memory 141 and 146 do give sufficient information about which wedding they are describing, making them ambiguous when counting the number. But by tracing back to its source episodic memory, \plugmem successfully distinguishes them, showing the importance of episodic memory which is neglected in Zep. Also, although LiCoMemory retrieves back origin dialogue chunks, the retrieval process is based on semantic entities. Due to the fact that episodic memory related a single entity is definitely more than episodic memory related to a specific piece of semantic memory, it is less efficiency and may bring more noise. 
+
+\subsection{HotpotQA}
+\paragraph{Case Study: Bridge-Entity Multi-hop Retrieval.}
+Table~\ref{tab:case_hotpotqa_1} and Table ~\ref{tab:case_hotpotqa_2} show two examples of multi-hop retrieval on HotpotQA alternating abstract node like concept and specific node like semantic node. 
+
+\input{Tables/hotpotqa_example1}
+
+\input{Tables/hotpotqa_example2}
+
+\paragraph{Takeaways. } 
+Across both case studies, \plugmem succeeds by explicitly separating \emph{what to retrieve next} from \emph{where the evidence resides}. In Hop0, the retriever typically surfaces a small set of low-level propositions that are semantically close to the question but may only partially resolve it. Crucially, rather than repeatedly expanding within a local neighborhood around these propositions (as in many graph-based retrievers that rely on $1$--$2$ hop adjacency), \plugmem elevates the intermediate result into an \emph{abstract routing signal}, a bridge concept (e.g., \emph{Jim Croce}) or a bridge entity/context (e.g., \emph{Space Shuttle Columbia}). This abstraction step turns multi-hop QA into a sequence of targeted sub-queries: first identify the missing bridge, then retrieve the specific fact needed to answer. 
+
+
+Technically, this behavior is enabled by the bipartite organization of our memory graphs, where high-level nodes (concepts/intents) connect to many low-level nodes (propositions/prescriptions).
+Routing through the abstract layer allows the retriever to ``jump'' beyond the narrow vicinity of an initial seed proposition and activate a much broader set of candidate evidence, which is especially important on HotpotQA where supporting facts often lie in different articles or distant parts of the corpus. In both examples, the first hop retrieves a bridge-bearing statement; the next hop uses the bridge to directly access the answer-bearing statement (birth year or first-launch year), while irrelevant but superficially related candidates (e.g., other payload specialists, other singer-songwriters) are naturally deprioritized once the bridge entity is fixed.
+
+
+Finally, the reasoning module plays a complementary role by compressing the retrieved pool into a minimal sufficient evidence set (typically two propositions in these examples), which improves robustness and token efficiency. Overall, \plugmem's abstraction-to-specificity routing and budgeted candidate control expand the reachable search space and deepen evidence chaining, without being constrained to short range neighbor expansion from an arbitrary starting node. 
+
+
+\subsection{WebArena}
+
+\paragraph{Case Study: \plugmem Dynamically Construct Useful Guidance for Agent through Retrieval and Reasoning}
+
+This WebArena case study demonstrates that the advantage of \plugmem lies not in executing a particular workflow correctly, but in how guidance is constructed, adapted, and consumed during decision-making. As shown in Table~\ref{tab:case_webarena_1}, \plugmem enables the agent to solve the task without relying on static workflows or verbose episodic recall, instead producing compact, step-adaptive guidance that directly reflects the agent’s current informational bottleneck.\\
+Compared to \textbf{task-agnostic} retrieval-based methods, the core limitation exposed by this task is not retrieval coverage but retrieval granularity. Flat retrieval systems can surface past trajectories or similar task descriptions, but these memories are typically either too specific (tied to particular pages or layouts) or too verbose to be directly actionable. As a result, the agent must internally interpret and reconcile large amounts of loosely relevant information, leading to context explosion and brittle decision making. In contrast, \plugmem retrieves procedural knowledge units—such as category navigation, constraint-based filtering, and ranking under partial observability—and further compresses them through its reasoning module into concise, decision-aligned instructions. The benefit is not simply fewer tokens, but a sharper alignment between retrieved memory and the agent’s immediate control decision.\\
+On the other end of the spectrum, \textbf{task-specific} web agents such as AWM and SteP hard-code or accumulate a single canonical workflow per domain. While effective when tasks closely match the assumed structure, such workflows lack the ability to adapt their internal logic as the task unfolds. This case highlights that web navigation tasks are not monolithic: the agent alternates between qualitatively different reasoning regimes (e.g., locating the correct semantic scope, enforcing numeric constraints, and resolving ties under incomplete information). A static workflow cannot anticipate these shifts. Although AWM updates its workflow after task completion, it does not revise guidance within a task or condition it on intermediate observations. \plugmem, by contrast, recomputes guidance at each step, allowing the agent’s strategy to evolve as the environment reveals new structure.\\
+More broadly, this example illustrates that \plugmem’s advantage comes from treating knowledge as the unit of memory access, rather than raw trajectories or fixed workflows. Task-agnostic methods fail because they retrieve too much unstructured experience; task-specific methods fail because they retrieve too little adaptability. \plugmem occupies a middle ground: it abstracts experience into reusable procedural knowledge while retaining the ability to contextualize and re-specialize that knowledge through reasoning. This combination allows \plugmem to generalize across WebArena tasks while still producing highly targeted, step-specific guidance, which neither task-agnostic nor task-specific designs can reliably achieve.
+
+
+\input{Tables/webarena_example1}

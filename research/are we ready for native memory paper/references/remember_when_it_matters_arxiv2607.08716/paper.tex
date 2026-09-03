@@ -1,0 +1,52 @@
+\documentclass[]{fairmeta}
+\usepackage{xspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{threeparttable}
+\usepackage{tabularx}
+\captionsetup[subfigure]{font=footnotesize}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{comment}
+\newcommand{\imp}[1]{#1\,\textcolor{green!55!black}{\scriptsize$\uparrow$}}
+\newcommand{\zz}[1]{{\color{magenta}[ZZ: {#1}]}}
+\newcommand{\reg}[1]{#1\,\textcolor{red!75!black}{\scriptsize$\downarrow$}}
+\title{Remember When It Matters: Proactive Memory Agent for Long-Horizon Agents}
+
+\author{Yifan Wu}
+\author{Lizhu Zhang}
+\author{Yuhang Zhou}
+\author{Mingyi Wang}
+\author{Bo Peng}
+\author{Serena Li}
+\author{Xiangjun Fan}
+\author{Zhuokai Zhao}
+\affiliation{Meta AI}
+
+\abstract{\input{sections/0_abstract}}
+
+\date{\today}
+\correspondence{Yifan Wu and Zhuokai Zhao at \email{\{yfwu, zhuokai\}@meta.com}}
+
+\metadata[Code]{\url{https://github.com/yifannnwu/proactive-memory-agent}}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/1_introduction}
+\input{sections/2_related}
+\input{sections/3_method}
+\input{sections/5_experiments}
+\input{sections/7_conclusion}
+\bibliographystyle{assets/plainnat}
+\bibliography{paper}
+
+%\clearpage
+%\newpage
+%\beginappendix
+%\input{sections/8_appendix}
+
+\end{document}

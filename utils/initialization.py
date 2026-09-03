@@ -293,6 +293,8 @@ def initialize_and_memorize_agent(agent_config, dataset_config, agent_save_folde
     # Handle memorization or loading based on whether saved state exists
     should_load_existing_agent = (not force_rebuild) and os.path.exists(agent_save_folder)
     agent_name = agent_config.get("agent_name", "")
+    if "retentionmem" in agent_name:
+        should_load_existing_agent = (not force_rebuild) and os.path.isfile(os.path.join(agent_save_folder, "retentionmem_ready.json"))
     if "letta" in agent_name:
         letta_agent_id_path = os.path.join(agent_save_folder, "agent_id.txt")
         if "api" in agent_name:

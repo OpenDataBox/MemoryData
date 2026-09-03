@@ -1,0 +1,31 @@
+% Adapted from ../related_work_20260903.tex. All 38 original citations are retained.
+% The former evaluation-study positioning is replaced by this method's positioning.
+\section{Related Work}
+\label{sec:related_work}
+
+\paragraph{Foundations of agent memory.}
+RAG complements parametric knowledge with an external corpus~\citep{mrw_rag}. Early agent systems extend external memory to interaction histories through experience streams and summaries~\citep{mrw_generative_agents,mrw_memorybank}, explicit context hierarchies~\citep{mrw_memgpt}, verbal feedback~\citep{mrw_reflexion}, and reusable executable skills~\citep{mrw_voyager}. These approaches establish complementary forms of persistent state: factual records, compressed context, and experience that can guide subsequent decisions.
+
+\paragraph{Representation, maintenance, and efficient access.}
+Later systems organize memory as linked notes or extracted facts~\citep{mrw_amem,mrw_mem0}, associative and temporal graphs~\citep{mrw_hipporag,mrw_hipporag2,mrw_zep,mrw_magma}, and hierarchical or heterogeneous stores~\citep{mrw_memtree,mrw_memoryos,mrw_memos}. Hindsight further distinguishes evidence from synthesized summaries and beliefs~\citep{mrw_hindsight}. Efficiency-oriented approaches combine compression, selective access, and consolidation~\citep{mrw_readagent,mrw_lightmem,mrw_simplemem}; recent systems additionally adapt memory types and structure selection to query requirements~\citep{mrw_leanmem,mrw_mesa}. Their differences concern both how evidence is represented and when computational work is performed. Our question is whether dependencies established across these stages can support targeted revision after new evidence arrives.
+
+\paragraph{Learned policies and execution-time adaptation.}
+MEM1, MemAgent, and Memory-R1 learn memory updates or utilization policies through reinforcement learning~\citep{mrw_mem1,mrw_memagent,mrw_memory_r1}. MemRL instead learns the utility of episodic memories without updating model weights~\citep{mrw_memrl}, while MemGen generates latent memory conditioned on the reasoning state~\citep{mrw_memgen}. AdaMEM synthesizes strategies from retrieved trajectories during execution~\citep{mrw_adamem}, and MAGE maintains revisable execution-state trees~\citep{mrw_execution_state}. These approaches already connect memory to decision-making. We distinguish a procedure's applicability and evidence dependencies from its observed usefulness; neither a high retrieval score nor a successful answer establishes that its factual premises remain valid.
+
+\paragraph{Evaluation and unified analyses.}
+Conversational benchmarks test long-term recall, reasoning, updates, and reflective memory~\citep{mrw_locomo,mrw_longmemeval,mrw_membench}; incremental interaction and implicit-constraint benchmarks broaden the assessed capabilities~\citep{mrw_memoryagentbench,mrw_locomo_plus}. MemoryArena evaluates memory-dependent multi-session execution, whereas AMA-Bench evaluates understanding of long agent-environment trajectories~\citep{mrw_memoryarena,mrw_amabench}. These settings require distinguishing answer correctness from evidence recovery and successful action. Surveys systematize memory designs and evaluation protocols~\citep{mrw_survey2024,mrw_survey}, and Wu et al. already provide a modular framework and unified empirical comparison~\citep{mrw_memoryeab}. We build on these distinctions, but propose a memory mechanism rather than claim novelty for unified evaluation itself.
+
+\paragraph{Closest overlap and the remaining hypothesis.}
+Human-memory-inspired staging is already explicit in LightMem, and associative
+binding is central to HippoRAG. Hindsight regenerates synthesized observations
+when underlying facts change; A-MEM evolves linked representations. TierMem
+uses source-linked retrieval and verified write-back~\citep{brain_tiermem},
+while TrustMem verifies memory transitions and learns better update
+behavior~\citep{brain_trustmem}. Continuous consolidation can also degrade
+useful memory~\citep{brain_faulty}. Consequently, typed storage, source access,
+feedback, and selective updates are not individually new. The proposed
+distinction is their coupling through \emph{versioned dependencies across
+episodic evidence, semantic claims, procedural conditions, and actual use
+traces}, with fast invalidation followed by bounded background repair. Its
+benefit over these strong alternatives is a hypothesis requiring a matched
+comparison, not an established first-of-its-kind claim.

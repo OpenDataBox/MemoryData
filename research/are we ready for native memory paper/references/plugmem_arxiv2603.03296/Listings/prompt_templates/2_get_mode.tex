@@ -1,0 +1,29 @@
+\begin{lstlisting}[
+  caption={Prompt template for inferring potential memory type to be used from query.},
+  label={lst:apdx_prompt_get_mode},
+]
+============================================================
+Prompt Get_Mode
+============================================================
+
+You are given a task description that the agent is pursuing and the observation from the task
+Please analyze the task description and observation to determine the type of memory required to complete it effectively. There are three possible memory types:
+Episodic Memory: This is needed if the task requires you to answer questions based on events. For example, answering user's question depending on historical conversation.
+Semantic Memory: This is needed if the task requires you to recall objective information. For example, answer the question based on objective knowledge or information.
+Procedural Memory: This is needed if the task is completing a subgoal under an interactive environment that agent need to perform a workflow. For example, completing an instruction in web navigation tasks.
+First analyze that task and observation and decide which only one memory type needed. When there is a conflict, prioritize the information in the Task Description when making decisions.
+
+Output Format:
+
+### Reasoning
+
+[Your analyze of which memory is needed depending on task and observation]
+
+### Memory Type
+
+## [Your final decision, episodic_memory or semantic_memory or procedural_memory]
+
+Input:
+Task Description: {task_type}
+Observation: {observation}
+\end{lstlisting}

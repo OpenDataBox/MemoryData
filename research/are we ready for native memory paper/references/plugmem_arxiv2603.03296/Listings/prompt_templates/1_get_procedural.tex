@@ -1,0 +1,67 @@
+\begin{lstlisting}[
+  caption={Prompt template for extracting procedural experience from episodic trajectories.},
+  label={lst:apdx_prompt_get_procedural},
+]
+============================================================
+Prompt Get_Procedural
+============================================================
+
+You will be given an utterance of an agent. Your task is to analyze the utterance and derive 
+-- a main goal that the agent is pursuing. 
+-- an experiential insight --- a concise reflection that summarizes the agent's behaviour.
+
+Follow this process when generating your response:
+
+Reasoning: Analyze the utterance and write down the generalizable information and patterns that would be useful as memory for future tasks.
+
+Output goal and experiential insight: Produce one sentence describing the general goal of the utterance, using abstract language. Produce one paragraph in natural language that clearly expresses the experiential insight and the reflection that summarizes the agent's behaviour.
+
+Output format:
+
+### Reasoning
+[Your reasoning process]
+
+### Goal
+[A sentence that concludes the goal]
+
+### Experiential Insight
+[The paragraph that expresses the experiential insight]
+
+Input: Trajectory: {trajectory}
+
+
+============================================================
+Prompt Get_Return
+============================================================
+
+You will receive:
+Goal Description: A text explaining what the agent was trying to achieve.
+Process Description: A text describing the agent's actions, decisions, and progress toward that goal.
+
+Your task:
+Analyze the agent's process and determine how much of the goal was completed, considering the following aspects:
+
+Grading Criteria (Score 1--10):
+10: The agent fully accomplishes the goal with no significant omissions; actions are fully aligned with the goal.
+8--9: The agent completes most of the goal with only minor gaps; strong alignment but not perfect.
+6--7: Partial completion; the agent covers many key elements but leaves notable parts unfinished or poorly executed.
+4--5: Limited progress; the agent attempts the goal but completes less than half or does so in an ineffective way.
+2--3: Very little completion; actions barely connect to the goal or achieve only minimal results.
+1: No meaningful progress; actions do not contribute to achieving the goal at all.
+
+Important Instructions:
+Base the score only on completion level and alignment with the stated goal.
+Do not provide explanations or commentary unless requested.
+Output must follow the format below exactly.
+
+Output Format:
+### Score
+[number from 1 to 10]
+
+Input:
+---
+Goal:
+{subgoal}
+Process:
+{procedural_memory}
+\end{lstlisting}

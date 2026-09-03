@@ -204,6 +204,8 @@ class AgentWrapper:
 
         if 'Long_context_agent' in self.agent_name:
             self._initialize_long_context_agent()
+        elif self._is_agent_type("retentionmem"):
+            self._initialize_retentionmem_agent(agent_config, dataset_config)
         elif self._is_agent_type("letta"):
             self._initialize_letta_agent(agent_config, dataset_config)
         elif self._is_agent_type("mem0"):
@@ -505,6 +507,7 @@ class AgentWrapper:
     def _supports_locomo_recall(self):
         """Return whether the current agent should persist LoCoMo source metadata."""
         return any([
+            self._is_agent_type("retentionmem"),
             self._is_agent_type("cognee"),
             self._is_agent_type("mem0"),
             self._is_agent_type("memoryos"),
@@ -1521,6 +1524,14 @@ class AgentWrapper:
 
 
 
+    def _initialize_retentionmem_agent(self, agent_config, dataset_config):
+        from methods.retentionmem.adapter import RetentionMemAdapter
+        self.retentionmem = RetentionMemAdapter(agent_config, self.agent_save_to_folder)
+        self.chunk_size = dataset_config.get("chunk_size", 4096)
+        self.retrieve_num = agent_config.get("retrieve_num", 100)
+        self.client = self._create_oai_client()
+        self.agent_start_time = time.time()
+
     def _initialize_mem0_agent(self, agent_config, dataset_config):
         """Initialize Mem0 agent with retrieval configuration."""
         os.environ.setdefault("MEM0_DIR", os.path.join(self.agent_save_to_folder, "mem0_home"))
@@ -2404,7 +2415,7 @@ class AgentWrapper:
         # Route to appropriate agent handler based on agent type
         if 'Long_context_agent' in self.agent_name:
             return self._handle_long_context_agent(message, memorizing)
-        elif any(self._is_agent_type(agent_type) for agent_type in ["letta", "cognee", "mem0", "memtree", "memochat", "memoryos", "zep", "simplemem", "lightmem", "a_mem", "everos", "memagent", "MemOS"]):
+        elif any(self._is_agent_type(agent_type) for agent_type in ["retentionmem", "letta", "cognee", "mem0", "memtree", "memochat", "memoryos", "zep", "simplemem", "lightmem", "a_mem", "everos", "memagent", "MemOS"]):
             return self._handle_memory_agent(message, memorizing, query_id, context_id)
         elif self._is_agent_type("rag"):
             return self._handle_rag_agent(message, memorizing, query_id, context_id)
@@ -2625,7 +2636,9 @@ class AgentWrapper:
 
     def _handle_memory_agent(self, message, memorizing, query_id, context_id):
         """Handle message processing for memory-based agents."""
-        if self._is_agent_type("letta"):
+        if self._is_agent_type("retentionmem"):
+            return self._handle_retentionmem_agent(message, memorizing, query_id, context_id)
+        elif self._is_agent_type("letta"):
             return self._handle_letta_agent(message, memorizing, query_id, context_id)
         elif self._is_agent_type("cognee"):
             return self._handle_cognee_agent(message, memorizing, query_id, context_id)
@@ -3039,6 +3052,27 @@ class AgentWrapper:
         )
         self.agent_start_time = time.time()
         return self._attach_locomo_recall_metadata(output, retrieved_source_id_groups)
+
+    def _handle_retentionmem_agent(self, message, memorizing, query_id, context_id):
+        if memorizing:
+            self.retentionmem.add_chunk(strip_locomo_metadata(message), parse_locomo_source_ids(message))
+            return "Memorized"
+        construction_time = time.time() - self.agent_start_time
+        query_start = time.time()
+        question_date = str((self._current_eval_metadata or {}).get("question_date", ""))
+        response, retrieved, context = self.retentionmem.answer(message, question_date, self.max_tokens)
+        groups = [list(item.source_ids) for item in retrieved]
+        output = self._create_standard_response(
+            response, self._count_tokens(context + "\n" + message), self._count_tokens(response),
+            construction_time, time.time() - query_start,
+        )
+        output["retentionmem"] = self.retentionmem.memory.stats()
+        self._save_retrieval_debug_payload({"query": message, "response": response,
+            "retrieved_context_paragraphs": [item.text for item in retrieved],
+            "retrieved_source_id_groups": groups, "provenance_semantics": "source references, not guaranteed answer-span coverage"},
+            query_id, context_id)
+        self.agent_start_time = time.time()
+        return self._attach_locomo_recall_metadata(output, groups)
 
     def _handle_mem0_agent(self, message, memorizing, query_id, context_id):
         """Handle message processing for Mem0 agents."""
@@ -4343,6 +4377,9 @@ class AgentWrapper:
 
     def save_agent(self):
         """Save agent state to disk for persistence."""
+        if self._is_agent_type("retentionmem"):
+            self.retentionmem.save()
+            return
         # Currently only implemented for Letta agents
         if not self._is_agent_type("letta") and not self._is_agent_type("mem0") and not self._is_agent_type("cognee") and not self._is_agent_type("memtree") and not self._is_agent_type("memochat") and not self._is_agent_type("memoryos") and not self._is_agent_type("zep") and not self._is_agent_type("simplemem") and not self._is_agent_type("lightmem") and not self._is_agent_type("a_mem") and not self._is_agent_type("everos") and not self._is_agent_type("MemOS"):
             print("\n\n Agent not saved (not implemented for this agent type) \n\n")
@@ -4448,6 +4485,9 @@ class AgentWrapper:
 
     def load_agent(self):
         """Load agent state from disk."""
+        if self._is_agent_type("retentionmem"):
+            self.retentionmem.load()
+            return
         agent_save_folder = self.agent_save_to_folder
         assert os.path.exists(agent_save_folder), f"Folder {agent_save_folder} does not exist."
 

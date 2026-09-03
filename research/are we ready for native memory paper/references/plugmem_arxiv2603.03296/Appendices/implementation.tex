@@ -1,0 +1,151 @@
+\section{Implementation Details}
+\label{app:implementation}
+
+\input{Tables/memory_implementation}
+\paragraph{Overview.} {This appendix provides implementation-oriented details that complement the high-level description in Section~\ref{subsec:structuring}. As summarized in Table~\ref{tab:memory_implementation}, the memory structuring module includes two main phases: Phase 1 ``Standardize'' and Phase 2 ``Structure.'' In Phase 1, to handle different types of episodic memory, \plugmem standardize the raw agent trajectory $\tau$ into uniformed episodic memory $M_{epi}$. Specifically, for each turns of observation and action $\{o_t, a_t\}$, we prompt LLM to derive the state $s_t$, the subgoal $g_t$ and the reward $r_t$. In Phase 2, \plugmem employs induction processes to distill this episodic memory $M_{epi}$ into Semantic Memory and Procedural Memory. These memory are the inserted into the memory graph, with a series of universal API that manage them.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newpage
+\subsection{Episodic Standardization}
+\label{app:implementation_standardize_episodic}
+
+To standardize episodic memory at time $t$, we represent each turns of the raw agent trajectory as an observation-action pair $\{o_t,a_t\}$ and formalize it through a three-stage process:\\
+We first derive the agent state $s_t$ using the previous state $s_{t-1}$, the previous action $a_{t-1}$, the current observation $o_t$, and the initial goal $G$. Incorporating $G$ ensures the state remains grounded in the agent's initial objective. The derivation is achieved by querying an LLM with the prompt in Listing~\ref{lst:apdx_prompt_get_state}. The resulting state serves as a concise context summary, effectively reducing overall context length for distilling procedural memory when pursuing long-context agentic tasks~\cite{wu2024longmemeval,zhou2024webarenarealisticwebenvironment}.\\
+Next, we infer a subgoal $g_t$ from $s_t$, $o_t$, $a_t$ and $G$ to analyze how the agent decomposes the global task into incremental steps. Using the prompt in Listing~\ref{lst:apdx_prompt_get_subgoal}, this step serves two purposes: it enriches the information available for knowledge extraction and enables trajectory segmentation. Specifically, we can structure the raw trajectory into workflow by chunking episodic memory based on the cosine similarity of adjacent subgoal embeddings.\\
+Finally, we determine the reward $r_t$ based on $s_t$, $a_t$, $g_t$ and $o_{t+1}$ using the prompt in Listing~\ref{lst:apdx_prompt_get_reward}. This reward quantifies the effectiveness of the action in achieving its intended goal, facilitating the extraction of quality-aware procedural memory.
+
+\input{Listings/prompt_templates/1_epis_get_state}
+
+\input{Listings/prompt_templates/1_epis_get_subgoal}
+
+
+\input{Listings/prompt_templates/1_epis_get_return}
+
+\input{Listings/prompt_templates/1_epis_get_reward}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newpage
+\subsection{Extract Knowledge}
+\label{app:implementation_extract_knowledge}
+\paragraph{Semantic}
+
+Given a standardized episodic unit $e_t$, we extract semantic memories as proposition--tag pairs.
+We query an LLM using the prompt in Listing~\ref{lst:apdx_prompt_get_semantic}, which returns up to $N_{\max}=10$ items in a fixed schema.
+Each item contains a \texttt{Statement} field (a proposition in the main paper) and a \texttt{Tags} field (a list of associated concepts).
+We deterministically parse the LLM output into $(p, \mathcal{T})$ pairs, where $p$ is the proposition text and $\mathcal{T}$ is the corresponding concept set.
+
+
+
+We materialize these outputs into the semantic graph $G^{S}$ by creating a low-level proposition node for each $p$ and high-level concept nodes for each $c \in \mathcal{T}$, caching dense embeddings and metadata for all nodes.
+We add two edge types: \textit{i)} \emph{membership} edges linking propositions to their concept tags ($p \rightarrow c$), and \textit{ii)} \emph{provenance} edges linking each proposition back to its source episodic unit in the episodic graph $G^{E}$ ($p \rightarrow e_t$).
+When multiple propositions originate from the same episodic unit, we additionally connect them with \emph{sibling} edges to preserve local co-occurrence structure.
+
+
+\input{Listings/prompt_templates/1_get_semantic}
+
+
+\paragraph{Procedural} Given a standardized episodic sequence $M_{\mathrm{epi}}=[e_t]_{t=1}^{T}$ with subgoal annotations $g_t$, we first segment the full trajectory into coherent workflow chunks by detecting shifts in adjacent subgoals. We compute embeddings of each subgoal and start a new segment if the two adjacent subgoals have similarity below a set threshold. Each segment $M^{(i)}_{\mathrm{epi}}$ is then linearized into a compact process trace (e.g., a stepwise state--action--reward description) and fed to an LLM using the prompt in Table~\ref{lst:apdx_prompt_get_procedural} to produce a structured \emph{(intent, prescription)} pair $(u^{(i)}, \pi^{(i)})$, where $u^{(i)}$ abstracts the segment objective and $\pi^{(i)}$ describes an environment-agnostic procedure that can be reused in future tasks.
+
+To support quality-aware reuse, we assign each prescription a scalar return score $\rho^{(i)}\in[1,10]$ via a separate LLM evaluator (Table~\ref{lst:apdx_prompt_get_return}), conditioned on the intent and the segment trace. We then materialize $(u^{(i)}, \pi^{(i)}, \rho^{(i)})$ into the procedural graph $G_P$ by creating an intent node and a prescription node, caching embeddings and metadata for both. To reduce intent proliferation, an incoming intent embedding $\phi(u)$ is matched against existing intent nodes; if the best cosine similarity exceeds threshold $\theta_{\mathrm{equal}}$, we merge the two intent strings via an LLM rewrite (Table~\ref{lst:apdx_prompt_get_new_subgoal}) and refresh the node embedding, otherwise we create a new intent node. The hierarchical relation is represented as a directed adjacency from intent to its prescriptions, i.e., $u \xrightarrow{\textsc{solves}} \pi$ (implemented as intent-node child lists, hence unidirectional). Finally, each prescription node is linked back to its originating episodic evidence through provenance edges $\pi \rightarrow e_t$ for all $e_t \in M^{(i)}_{\mathrm{epi}}$, enabling downstream verification and optional recovery of concrete interaction context when a retrieved procedure requires elaboration.
+\input{Listings/prompt_templates/1_get_procedural}
+
+\input{Listings/prompt_templates/1_procedural_new_goal}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newpage
+\subsection{Retrieval with Interleaved Abstraction and Specificity}
+\label{app:implementation_retrieval}
+
+
+This appendix provides implementation-oriented details that complement the high-level description in Section~\ref{subsec:retrieval}.
+\plugmem performs interleaved multi-hop retrieval over the semantic graph $G^{S}$ and procedural graph $G^{P}$ by alternating between \textit{i)} abstraction-level routing through concept/intent nodes and \textit{ii)} specificity-level expansion over proposition/prescription nodes.
+Given a query $Q$, the retriever is orchestrated by three LLM prompts: \textsc{GetMode} (Listing~\ref{lst:apdx_prompt_get_mode}) selects the memory type(s) to emphasize; \textsc{GetPlan} (Table~\ref{lst:apdx_prompt_get_plan}) proposes the next-hop abstract signals (concept tags for $G^{S}$ or subgoals/intents for $G^{P}$); and \textsc{MultiHopCtrl} (Listing~\ref{lst:apdx_prompt_multi_hop_retrieval}) serves as a retrieval controller that decides whether the current evidence is sufficient to stop, or which low-level nodes to prioritize in the next hop.
+
+
+
+At hop $t$, retrieval starts from a low-level candidate pool $C_t$.
+We first expand candidates through two complementary channels.
+\emph{(Embedding channel)} We embed the current query text $Q_t$ and retrieve a set of high-scoring low-level nodes by dense similarity.
+\emph{(Linking channel)} In parallel, we run \textsc{GetPlan} to produce an abstract plan (concept tags for $G^{S}$ or intents/subgoals for $G^{P}$), match it to the corresponding high-level nodes, and activate their adjacent low-level neighbors via membership edges.
+The two candidate sets are merged (union), then reranked and pruned back to a fixed budget (top-$K$) using a value function (primarily relevance, optionally combined with metadata such as importance/recency).
+Throughout the process, high-level nodes are used only as intermediate routing signals and are not retained in $C_t$.
+
+
+
+After obtaining the budgeted candidate set, we invoke \textsc{MultiHopCtrl} to assess sufficiency.
+Concretely, \textsc{MultiHopCtrl} returns a strict JSON object with an \texttt{enough} flag and an optional list of selected low-level node IDs (\texttt{top\_node\_ids}), constrained to be a subset of the available candidates; if \texttt{enough=true}, it returns an empty list.
+If \texttt{enough=true}, retrieval terminates early and the current candidates are returned (or mapped to provenance-linked episodic nodes when episodic memory is requested).
+Otherwise, we keep only the selected nodes (capped in our experiments) as the ``focus set'' and integrate them with the previous query to form the next-hop query $Q_{t+1}$.
+This integration can be performed by an LLM-based rewriter, but we find that simple concatenation of $Q_t$ and the selected facts performs comparably well and is used as the default for efficiency.
+
+
+The retrieval loop repeats until \textsc{MultiHopCtrl} signals sufficiency or a hop limit is reached.
+The overall control flow is summarized in Listing~\ref{lst:apdx_multi_hop_retrieval_pseudo_code}.
+
+
+\input{Listings/prompt_templates/2_get_mode}
+
+\input{Listings/prompt_templates/2_get_plan}
+
+\input{Listings/prompt_templates/2_multi-hop_retrieval}
+
+\input{Listings/prompt_templates/2_multi-hop_retrieval_pseudo_code}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newpage
+\subsection{Reasoning}
+
+We design tailored reasoning prompts for each memory type based on their unique structural characteristics.\\
+In alignment with the objective of the reasoning module is to aggregate and condense retrieved memory mentioned in Section~\ref{subsec:reasoning}, we query the LLM to extract information relevant to the question, utilizing the prompt structure detailed in Listing~\ref{lst:apdx_prompt_reasoning_semantic}.\\
+Given that episodic memory is often long and unstructured, we observed that information extraction is inefficient as most of the LLM is not deliberately trained on the task. Instead, we find that, like prompt in Listing~\ref{lst:apdx_prompt_reasoning_episodic}, directly asks the LLM to reason over every memory and answer the question successfully leveraging the reasoning ability of LLM while containing most of the useful information in the reasoning process. The entire output including the reasoning process is then preserved as the extracted information.\\
+Procedural memory is primarily utilized during multi-turn decision-making tasks. To support that, we prompt the LLM to integrate diverse experiences consisting of both successful and failed memory from similar tasks. As shown in Listing~\ref{lst:apdx_prompt_reasoning_procedural}, this process generates coherent and actionable guidance to fuel the agent's next action.
+
+\label{app:implementation_reasoning}
+\input{Listings/prompt_templates/3_episodic_mem_reasoning}
+
+\input{Listings/prompt_templates/3_semantic_mem_reasoning}
+
+\input{Listings/prompt_templates/3_procedural_mem_reasoning}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newpage
+\subsection{Full Operations on Memory Graph}
+
+\label{app:full_operation}
+
+
+\paragraph{Setup.} We conduct multiple rounds of controlled experiments on the HotpotQA-induced semantic subgraph. We choose HotpotQA for two practical reasons: \textit{i)} its evidence is largely factual and extractive, which makes semantic memories comparatively stable and less sensitive to stylistic variance; and \textit{ii)} the resulting subgraph is lightweight enough to support fast iteration over different merge thresholds and update policies.
+
+Given a semantic node, our update routine first performs \emph{candidate discovery} by collecting all semantic nodes that share at least one concept/tag with it (i.e., neighbors under the tag-induced projection). We then compute embedding similarity between the current node and each candidate, rank candidates by similarity, and select the top-$m$ candidates whose similarity exceeds a pre-defined threshold $\tau$ (we use $m{=}1$ by default, i.e., only the most similar candidate above threshold is considered). If a pair $(s_i, s_j)$ is selected, we trigger a merge operation by calling an LLM to \textit{i)} synthesize a new semantic memory that better summarizes the combined information, and \textit{ii)} decide whether to deactivate the original nodes (delete neither, delete both, etc.) according to explicit rules encoded in the prompt; the full prompt is shown in Listing~\ref{lst:apdx_prompt_merge_semantic}.
+
+\input{Listings/prompt_templates/4_merge_semantic}
+
+\paragraph{Thresholds and evaluation.}
+We evaluate two merge thresholds, $\tau \in \{0.6, 0.7\}$, on the same HotpotQA subset. We report downstream QA performance (EM/F1) as well as graph statistics before and after update.
+The results show that performance remains within normal fluctuation, while the graph becomes more compact with more controllable candidate fan-out. Concretely, with $\tau{=}0.6$, $477/3413$ semantic nodes trigger a merge; with $\tau{=}0.7$, $171/3413$ nodes trigger a merge, reflecting the expected trade-off between aggressiveness and conservativeness.
+
+We compare the downstream QA performance on the same HotpotQA subset before and after semantic graph update under two merge thresholds. Without update, the system achieves an EM/F1 of $61.00/74.39$. With update at $\tau{=}0.6$, the EM/F1 becomes $63.00/73.97$, and with update at $\tau{=}0.7$, the EM/F1 becomes $62.00/74.65$. Overall, these differences are within normal run-to-run fluctuation, suggesting that semantic graph update/merge does not materially degrade end-to-end performance on this subset.
+
+\paragraph{Graph quality: compactness and candidate controllability.}
+We characterize the structural effect of update/merge along two axes.
+\begin{itemize}
+    \item \textbf{Compactness.}
+We measure compactness using the number of active semantic nodes $N_s$, the number of used tags $N_t$, and the number of semantic--tag bipartite edges $E_{\text{bip}}$ (attachments).
+With the stricter threshold $\tau{=}0.7$, the updated graph reduces active semantic nodes from $3413$ to $3242$ ($-5.0\%$), used tags from $12501$ to $11812$ ($-5.5\%$), and bipartite edges from $23230$ to $20604$ ($-11.3\%$), indicating lower redundancy in semantic memories and their tag attachments.
+We also report the (non-deduplicated) upper bound of tag-induced semantic co-occurrence pairs, $\sum_{t} \binom{\deg(t)}{2}$, which decreases from $78279$ to $57581$ ($-26.5\%$). This suggests that update/merge effectively prunes redundant co-attachments that would otherwise create dense but uninformative connectivity.
+  \item \textbf{Candidate controllability.}
+Our retrieval/update pipeline uses tag-induced candidate generation: for a semantic node, we take the union of semantic IDs attached to its tags as the candidate set. To quantify how controllable the candidate fan-out is, we sample active semantic nodes and compute the size of their candidate sets (unique neighbors reachable via tags, excluding itself).
+With $\tau{=}0.7$, the candidate set size becomes substantially smaller and thus more controllable: the sampled mean decreases from $38.36$ to $31.28$ ($-18.5\%$), and the sampled median decreases from $18.0$ to $14.0$ ($-22.2\%$). Intuitively, by merging near-duplicate semantic items and deactivating redundant originals, the graph reduces unnecessary expansions through shared tags, improving computational stability without degrading downstream EM/F1.
+  
+\end{itemize}
+
+
+Overall, these results indicate that semantic update/merge can improve graph compactness and reduce redundancy while preserving retrieval support, as evidenced by stable HotpotQA accuracy under both thresholds.

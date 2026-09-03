@@ -1,0 +1,38 @@
+\begin{table}[t!]
+\centering
+\caption{Results on WebArena. SR means Success Rate. Each site-domain is split into (online/offline) sets. Shopping contains (38/149) tasks, GitLab contains (37/143), and Multi-set contains (10/38). * denotes results taken from previous work. AWM does not natively support Multi-site tasks. Best SR is \textbf{bolded}.}
+\label{tab:webarena-main}
+\resizebox{0.48\textwidth}{!}{
+\begin{tabular}{c|cc|ccc|cc}
+\toprule
+ &  &  & \multicolumn{3}{c|}{SR \% (on/off)} & \\
+\cmidrule(lr){4-6}
+Method & Emb & Agent 
+& Shopping  
+& GitLab
+& Multi-site
+
+& $\text{\#Tok}_{\text{Avg.}}$
+
+& Info. Density \\
+
+\rowcolor{groupgray}\multicolumn{8}{c}{Vanilla Baseline} \\
+
+AgentOccam*  & -   & 4o   & 42.1/43.6 & 37.8/39.2 & \textbf{20.0}/15.8 & - & - \\
+
+\rowcolor{groupgray}\multicolumn{8}{c}{Task-Agnostic} \\
+
+Van. Retrieval & NVE & Q32+4o  & 43.0 /42.3& 40.5/41.3 & 10.0/18.4 & 8733 & 2.0e-6\\
+A-Mem & NVE & Q32+4o & 44.7/44.3 & 37.8/38.5 & \textbf{20.0}/15.8 & 20516 & 3.4e-7\\
+
+\rowcolor{groupgray}\multicolumn{8}{c}{Task-Specific} \\
+
+AWM & - & 4o & 26.3/28.2 & 27.0/27.3 & - & 696 & -7.9e-4 \\
+
+\rowcolor{ShadowBlue}\multicolumn{8}{c}{Ours} \\
+
+\plugmem & NVE & Q32+4o & \textbf{52.6}\textbf{/58.4} & \textbf{51.4}\textbf{/55.2}  & \textbf{20.0}\textbf{/21.6} & \textbf{301} & \textbf{1.4e-3}\\
+\bottomrule
+\end{tabular}
+}
+\end{table}

@@ -1,0 +1,4 @@
+\section{Conclusion}
+\label{section:conclusion}
+
+We propose agent memory as proactive intervention policy rather than passive storage and retrieval. Long-horizon agents suffer from \emph{behavioral state decay}, where execution state that should guide future actions stops influencing behavior. Our memory agent maintains this state and injects grounded context when they are likely to affect the next decision. Across Terminal-Bench 2.0 and $\tau^2$-Bench, our memory agent consistently improves task success across different action agent models. Training on SETA further shows that this intervention policy is learnable: SFT teaches memory management, while RL improves when remembered state should re-enter the control loop. Open directions include jointly training the memory and action agents, learning when memory is invoked rather than running on a fixed schedule, and identifying when verbatim reminders versus task-specific abstractions are most effective.

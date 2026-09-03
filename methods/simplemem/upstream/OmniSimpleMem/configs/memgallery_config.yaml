@@ -1,0 +1,33 @@
+# Mem-Gallery Benchmark Configuration
+# Uses local all-MiniLM-L6-v2 (384-dim) — proxy doesn't support OpenAI embeddings
+# Model: gpt-4o (best quality for multimodal QA)
+# OpenVision-L-14 for visual embeddings
+
+embedding_preset: "local"  # all-MiniLM-L6-v2, 384-dim (no API needed)
+
+entropy_trigger:
+  visual_encoder: "clip"
+  visual_model_name: "UCSC-VLAA/openvision-vit-large-patch14-224"
+
+embedding:
+  model_name: "all-MiniLM-L6-v2"
+  embedding_dim: 384
+  visual_embedding_model: "UCSC-VLAA/openvision-vit-large-patch14-224"
+  visual_embedding_dim: 768
+
+llm:
+  summary_model: "gpt-4o"
+  query_model: "gpt-4o"
+  caption_model: "gpt-4o"
+  temperature: 0.0
+  max_tokens: 1000
+
+retrieval:
+  default_top_k: 20
+  enable_hybrid_search: true
+  enable_graph_traversal: true
+
+router:
+  router_mode: "heuristic"
+
+enable_self_evolution: false

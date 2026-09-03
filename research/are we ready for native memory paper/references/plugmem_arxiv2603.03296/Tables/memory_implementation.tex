@@ -1,0 +1,45 @@
+\begin{table*}[ht]
+\centering
+\caption{\textbf{Layered Memory System Construction via Standardized Formalization.} \plugmem adopts a layered memory graph: raw interactions ($\tau$) are first formalized into episodic memory (Phase 1). This formalized history then serves as the input for inducing semantic and procedural knowledge blocks (Phase 2). All memory types are managed through a universal API by standard data operations.}
+\label{tab:memory_implementation}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}l l l l@{}}
+\toprule
+\textbf{Memory Type} & \textbf{Construction Logic (Input $\rightarrow$ Output)} & \textbf{Graph Structure} & \textbf{Universal API \& Cognitive Heuristics} \\ \midrule
+
+% --- Phase 1 Header ---
+\multicolumn{3}{c}{\textbf{\textit{Phase 1: Standardize}}} & \multirow{14}{*}{\begin{tabular}[t]{@{}l@{}} 
+\textbf{1. Create (Ingestion \& Induction)} \\ 
+\quad $\bullet$ \texttt{memory.create(trajectory)} \\ 
+\quad $\bullet$ Formalizes raw $\tau$ into standardized Episodic, and \\ 
+\quad then triggers induction to abstract Facts/Skills from \\ 
+\quad new Episodic entities.\\ 
+\textbf{2. Retrieve (Association)} \\ 
+\quad $\bullet$ \texttt{memory.retrieve(goal, state)} \\
+\quad $\bullet$ Maps Goal and State to Intent/Concept indices \\ 
+\quad and retrieve Knowledge Blocks, then traces back to \\ 
+\quad Episodic Sources for context. \\ 
+\textbf{3. Update (Reflection \& Refinement)} \\ 
+\quad $\bullet$ \texttt{memory.update(feedback)} \\
+\quad $\bullet$ Detect and mitigate contradictions (Semantic) or \\ 
+\quad optimize workflow efficiency (Procedural). \\ 
+\textbf{4. Delete (Forgetting \& Pruning)} \\ 
+\quad $\bullet$ \texttt{memory.delete(criteria)} \\
+\quad $\bullet$ Decays low-utility Nodes (Semantic/Procedural) \\ 
+\quad  while compressing old Episodic Nodes to save space.\\ 
+\end{tabular}} \\ \cmidrule(r){1-3}
+
+% --- Episodic Row ---
+\textbf{Episodic} & \begin{tabular}[c]{@{}l@{}}\textbf{Formalization} \\ \textit{Input:} Raw Agent Trajectory ($\tau$) \\ \textit{Process:} $Formalize(\tau) \rightarrow M_{epi}$ \\ \textit{Role:} Converts unstructured logs into \\ standardized Source Nodes.\end{tabular} & \begin{tabular}[c]{@{}l@{}}\textbf{Source Node (Event Window)} \\ \textit{Edge:} \texttt{Knowledge} $\xleftarrow{proves}$ \texttt{Source}\end{tabular} & \\ \cmidrule(r){1-3}
+
+% --- Phase 2 Header ---
+\multicolumn{3}{c}{\textbf{\textit{Phase 2: Structure}}} & \\ \cmidrule(r){1-3}
+
+% --- Semantic Row ---
+\textbf{Semantic} & \begin{tabular}[c]{@{}l@{}}\textbf{Fact Induction} \\ \textit{Input:} Episodic Memory ($M_{epi}$) \\ \textit{Process:} $Induce_{fact}(M_{epi}) \rightarrow M_{sem}$ \\ \textit{Role:} Distills static truths from \\ specific event traces.\end{tabular} & \begin{tabular}[c]{@{}l@{}}\textbf{Proposition Node (Fact Block)} \\ \textbf{Concept Node (Entity/Term)} \\\textit{Edge:} \texttt{Concept} $\xleftarrow{mentions}$ \texttt{Proposition}\end{tabular} & \\ \cmidrule(r){1-3}
+
+% --- Procedural Row ---
+\textbf{Procedural} & \begin{tabular}[c]{@{}l@{}}\textbf{Skill Induction} \\ \textit{Input:} Episodic Memory ($M_{epi}$) \\ \textit{Process:} $Induce_{skill}(M_{epi}) \rightarrow M_{proc}$ \\ \textit{Role:} Synthesizes reusable workflows \\ from successful history.\end{tabular} & \begin{tabular}[c]{@{}l@{}}\textbf{Prescription Node (Workflow Block)} \\ \textbf{Intent Node (User Goal/Task)}\\ \textit{Edge:} \texttt{Intent} $\xleftarrow{solves}$ \texttt{Prescription}\end{tabular} & \\ \bottomrule
+\end{tabular}%
+}
+\end{table*}

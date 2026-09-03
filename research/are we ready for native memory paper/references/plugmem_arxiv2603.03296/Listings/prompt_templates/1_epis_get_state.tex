@@ -1,0 +1,42 @@
+\begin{lstlisting}[
+  caption={Template for deriving the current state $s_t$ given previous state $s_{t-1}$, previous action $a_{t-1}$, and current observation $o_t$.},
+  label={lst:apdx_prompt_get_state},
+]
+============================================================
+Prompt Get_State
+============================================================
+
+You will receive four pieces of information:
+Goal: The agent's current objective or task.
+Previous State (at time t): A natural language summary describing the agent's context, history, and partial progress so far.
+Action (at time t): The action the agent decided to take next, expressed in natural language.
+Observation (at time t+1): The outcome or feedback resulting from that action.
+
+Your task is to derive the new updated state---a coherent natural language summary that integrates all relevant information from the previous state, the action, and the new observation.
+
+Steps to Follow:
+Interpret the Inputs:
+Examine the goal, the previous state, the action, and the observation to understand what has changed in the agent's situation and the detailed information about location and time.
+
+Reason about the Update:
+Describe the logical process by which the new state should differ from the previous one. Identify what progress has been made, what new information was gained, and how the context or focus may have shifted.
+
+Generate the Updated State:
+Write a clear and concise natural-language description summarizing the new state of the agent at time t+1. The new state should:
+-- Include all the detailed information in the action and observation, especially information about location and time.
+-- Integrate the outcome of the latest action and observation.
+
+Output Format:
+### Reasoning
+(Explain step by step how the new state should be updated based on the inputs.)
+
+### State
+(Provide the final updated state summary here.)
+
+---
+Input:
+Goal: {goal}
+Previous State (at time t): {state}
+Action (at time t): {action}
+Observation (at time t+1): {observation}
+\end{lstlisting}

@@ -1,0 +1,88 @@
+\section{Task Adaptation via Integrating Task-Specific Heuristics on Top of \plugmem}
+\label{app:task_adaptation}
+\subsection{LongMemEval}
+\paragraph{Reflective Memory Management.}
+
+RMM~\cite{tan2025prospectretrospectreflectivememory} introduces a novel reflective mechanism for long-term memory management. In general, RMM employs Prospective Reflection for knowledge extraction and memory updating, and Retrospective Reflection to refine memory retrieval in an online reinforcement learning manner.
+
+
+
+Inspired by these ideas, we perform task adaptation of \plugmem to LongMemEval by incorporating the Prospective Reflection mechanism from RMM for semantic memory extraction and semantic node updating. Specifically, for memory extraction, we adopt the memory extraction prompt proposed in RMM to distill semantic memory for \plugmem. Compared to the original semantic memory extraction prompt used in \plugmem (Listing~\ref{lst:apdx_prompt_get_semantic}), the task-adapted version places greater emphasis on extracting user-specific personal information and includes in-context examples to better align with the LongMemEval setting. For memory updating, we follow the reflective updating strategy introduced in RMM to update semantic memory within the memory graph. Specifically, unlike the original \plugmem, which directly inserts newly extracted memory, the task-adapted version first retrieves the Top-K most similar existing semantic memories from the memory graph by computing cosine similarity between semantic memory embeddings and ranking them accordingly. The LLM is then queried to decide whether the new memory should be added as a new node or merged with an existing similar node. The prompt to extract memory and update memory is shown in Listing~\ref{lst:apdx_prompt_adpt_extract} and Listing~\ref{lst:apdx_prompt_adpt_update}.
+
+\paragraph{Experiment.}
+
+We conduct experiments on the multi-session subset of LongMemEval, with results shown in Table~\ref{tab:apdx_longmemeval_task_adpt}. The multi-session subset is among the most challenging portions of LongMemEval, as it requires the agent to answer questions that primarily involve counting the occurrences of a series of similar events across multiple sessions. This setting not only places significant demands on the retrieval module of the memory module to retrieve multiple gold memories simultaneously, but also challenges the structuring and reasoning module to generate precise semantic memories and perform accurate counting over them. The task-adapted version outperforms the original method for two main reasons: first, the task-adapted memory extraction prompt produces more precise semantic memories; second, the reflective updating strategy prevents redundant and repetitive semantic memories from being inserted into the memory graph, thereby enabling more efficient retrieval.
+
+\begin{table}[ht]
+\centering
+\caption{Task Adaptation on the multi-session subset of LongMemEval.}
+\label{tab:apdx_longmemeval_task_adpt}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{l|cccc}
+\toprule
+Method & Acc. (Multi-session) & PMI & $\text{\#Tok}_{\text{Avg.}}$ & Info. Density\\
+\midrule
+\plugmem & 64.7 & 5.06 & 311.9 & 1.62e-2 \\
+\plugmem$_{\text{adapt}}$ & 70.7 & 5.62 & 327.5 & 1.71e-2\\
+\bottomrule
+\end{tabular}
+\end{table}
+\input{Listings/prompt_templates/longmemeval_task_adpt_memory_extract}
+\input{Listings/prompt_templates/longmemeval_task_adpt_memory_update}
+
+\subsection{HotpotQA}
+
+\paragraph{Inspiration from HippoRAG2.}
+Our retrieval design is partly inspired by HippoRAG2, which demonstrates that introducing an explicit graph structure and a controlled multi-hop traversal can outperform purely similarity-based retrieval on multi-hop QA.
+In particular, HippoRAG2 separates \emph{recognition} (filtering/selecting relevant structured units) from \emph{expansion} (graph-based propagation to retrieve supporting evidence), reducing spurious hops and improving evidence quality.
+\plugmem adopts this high-level principle but generalizes it to typed agent memory.
+We construct semantic and procedural memory graphs and use abstract nodes (concepts/intents) as routing signals to activate specific proposition/prescription nodes, enabling abstraction-to-specificity traversal.
+Moreover, analogous to HippoRAG2's recognition step, PlugMem employs an LLM-based controller to \textit{i)} select memory types (\textsc{GetMode}), \textit{ii)} propose next-hop abstract signals (\textsc{GetPlan}), and \textit{iii)} decide early stopping or focus candidates under a fixed budget (\textsc{MultiHopCtrl}).
+Finally, we integrate a two-channel candidate update---link-based expansion through abstract nodes and embedding-based retrieval from a refined query---followed by reranking/pruning and optional reasoning-based compression. 
+
+\paragraph{Test-time Scaling. }
+Beyond the default configuration, \plugmem admits two practical test-time ``knobs'' that consistently improve performance.
+First, we can increase the hop limit $T_{\max}$, effectively scaling the amount of retrieval computation at inference time.
+This allows the retriever to chain additional abstraction--specificity steps and is analogous to test-time scaling in reasoning-centric methods. We experiment with a subset on HotpotQA, when increasing the multi-hop limit $T_{\max}$ from 2 to 4, we observe a performance gain from 66.00/74.73 to 69.00/78.11 (measured in Exact Match/F1-Score).
+
+
+Secondly, when forming the next-hop query $Q_{t+1}$, we optionally replace naive concatenation of $(Q_t, \text{selected facts})$ with an LLM-based query synthesizer that rewrites a focused and self-contained query. Empirically, synthesis-based refinement reduces lexical drift and redundancy, and helps the embedding channel retrieve more targeted evidence in later hops.
+We treat both mechanisms as controllable components within the retrieval controller, enabling a smooth accuracy--cost trade-off depending on the task budget.
+
+
+\subsection{WebArena}
+Prior work designed specifically for WebArena often incorporates manually engineered
+\emph{domain-level instructions} (or ``tips'') into the agent’s input context.
+A common pattern in task-specific adaptations—such as AWM~\cite{wang2024agentworkflowmemory},
+SteP~\cite{sodhi2024stepstackedllmpolicies}, and more recently ColorBrowserAgent~\cite{zhou2026colorbrowseragentintelligentguiagent}—
+is the inclusion of explicit guidance that biases the agent toward particular interaction
+patterns within a site domain (e.g., navigation conventions or preferred UI elements).
+In contrast, in our main experiments we deliberately avoid injecting such handcrafted
+instructions or explicitly defined action policies.
+Instead, we rely solely on \plugmem’s ability to automatically store, retrieve, and
+re-apply both agent-generated and human demonstration trajectories as structured memory,
+allowing behavior to emerge from experience rather than prompt engineering.
+
+\paragraph{Further task adaptation}
+We additionally conduct a targeted case study to examine whether \plugmem can benefit
+from manual task adaptation when such domain-specific constraints are known.
+We identify a subset of WebArena tasks that remain challenging for \plugmem and introduce
+a small set of manually designed instructions into the reasoning module.
+Specifically, we observe that \plugmem occasionally instructs the agent to navigate via
+category dropdown menus when the correct strategy in WebArena is to use the search bar.
+By incorporating the additional guidance shown in
+Prompt~\ref{lst:webarena_task_adapt}, we resolve several previously failing cases
+(see Example~\ref{tab:webarena_task_adapt_case}) by explicitly conditioning the agent’s
+action selection. WebArena uses strict, programmatic success criteria but concise queries, where
+otherwise reasonable strategies may be scored as incorrect.
+Although \plugmem successfully retrieves relevant procedural knowledge for tasks such as
+``searching for teeth grinding mouth guards,'' it does not, by default, infer that certain
+plausible actions are disallowed by the benchmark’s implicit rules.
+This case study demonstrates that \plugmem natively supports fine-grained manual
+conditioning when necessary, while remaining effective without task-specific prompting
+in the general case.
+ 
+\input{Listings/prompt_templates/webarena_task_adapt}
+\input{Tables/webarena_task_adapt_case} 
+

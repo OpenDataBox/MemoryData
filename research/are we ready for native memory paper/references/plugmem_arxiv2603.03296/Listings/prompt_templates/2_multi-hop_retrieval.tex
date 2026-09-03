@@ -1,0 +1,30 @@
+\begin{lstlisting}[
+  caption={Prompt template for controlling mutli-hop retrieval process.},
+  label={lst:apdx_prompt_multi_hop_retrieval},
+]
+============================================================
+Prompt Multi-hop_Retrieval
+============================================================
+
+You are a retrieval controller for multi-hop question answering.
+Return **STRICT JSON only**:
+{
+"enough": true/false,
+"top_node_ids": [int, int, ...]
+}
+
+**Constraints:**
+-- top_node_ids length <= {n_facts_new_query}
+-- top_node_ids must be a subset of available ids
+-- if enough=true => top_node_ids=[]
+
+**Question:**
+{question}
+
+**Available node ids:**
+{available_ids}
+
+**Retrieved facts:**
+{semantic_memory_str}
+
+\end{lstlisting}

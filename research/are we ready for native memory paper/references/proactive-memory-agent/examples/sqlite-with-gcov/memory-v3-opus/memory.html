@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Visualization</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1a2e;
+            color: #eee;
+        }
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        .header p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+        .memory-stats {
+            background: #16213e;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+        }
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #f5576c;
+        }
+        .memory-section {
+            background: #16213e;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .section-header {
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 16px;
+            border-bottom: 2px solid;
+        }
+        .section-header.status {
+            background-color: #2d2d5e;
+            border-bottom-color: #9c27b0;
+            color: #ce93d8;
+        }
+        .section-header.knowledge {
+            background-color: #1e3a5f;
+            border-bottom-color: #2196f3;
+            color: #64b5f6;
+        }
+        .section-header.procedural {
+            background-color: #1e4d2b;
+            border-bottom-color: #4caf50;
+            color: #81c784;
+        }
+        .section-content {
+            padding: 20px;
+        }
+        .memory-entry {
+            background: #0f0f1a;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            border-left: 3px solid #444;
+        }
+        .memory-entry.env { border-left-color: #ff9800; }
+        .memory-entry.path { border-left-color: #2196f3; }
+        .memory-entry.fact { border-left-color: #9c27b0; }
+        .memory-entry.bug { border-left-color: #f44336; }
+        .memory-entry.perf { border-left-color: #4caf50; }
+        .entry-id {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .entry-content {
+            color: #ddd;
+        }
+        .entry-meta {
+            font-size: 11px;
+            color: #555;
+            margin-top: 8px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .tag-env { background: #ff9800; color: #000; }
+        .tag-path { background: #2196f3; color: #fff; }
+        .tag-fact { background: #9c27b0; color: #fff; }
+        .tag-bug { background: #f44336; color: #fff; }
+        .tag-perf { background: #4caf50; color: #fff; }
+        .status-box {
+            background: #0f0f1a;
+            border-radius: 6px;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            border-left: 3px solid #9c27b0;
+        }
+        .empty-state {
+            color: #666;
+            font-style: italic;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🧠 Memory Visualization</h1>
+        <p><strong>Total Entries:</strong> 3</p>
+    </div>
+    <div class="memory-stats">
+        <div class="stat-item">
+            <span class="stat-label">Status Length</span>
+            <span class="stat-value">349 chars</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Knowledge Entries</span>
+            <span class="stat-value">2</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Procedural Entries</span>
+            <span class="stat-value">1</span>
+        </div>
+    </div>
+
+    <div class="memory-section">
+        <div class="section-header status">
+            📊 Working Status
+        </div>
+        <div class="section-content">
+            <div class="status-box">Step 10: Task COMPLETE. SQLite 3.50.4 compiled with gcov instrumentation (--coverage -fprofile-arcs -ftest-coverage) and installed to /app/sqlite. Binary at /app/sqlite/bin/sqlite3, added to PATH via /etc/profile.d/sqlite.sh and export. .gcno files confirmed present (sqlite3.gcno, sqlite3-sqlite3.gcno, sqlite3-shell.gcno). sqlite3 --version works.</div>
+        </div>
+    </div>
+
+    <div class="memory-section">
+        <div class="section-header knowledge">
+            📚 Knowledge Memory
+        </div>
+        <div class="section-content">
+            <div class="memory-entry ">
+                <div class="entry-id">ID: hqSJamCm</div>
+                <div class="entry-content">Task: Compile SQLite in /app/sqlite with gcov instrumentation and make it available in PATH. Source tarball is at /app/vendor/sqlite-fossil-release.tar.gz. Do not fetch sources over network.</div>
+                <div class="entry-meta">Created: 2026-03-24T06:55:01 | Accessed: 0 times</div>
+            </div>
+            <div class="memory-entry ">
+                <div class="entry-id">ID: Gq8qF7J3</div>
+                <div class="entry-content">SQLite source tree at /app/sqlite/sqlite contains: configure (autosetup-based, not autoconf), Makefile.in, Makefile.linux-generic, auto.def, src/, ext/, test/. Build system requires a C compiler (gcc/cc) and optionally tclsh/jimsh. There&#x27;s also a simple Makefile.linux-generic that might be usable as fallback.</div>
+                <div class="entry-meta">Created: 2026-03-24T06:58:52 | Accessed: 0 times</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="memory-section">
+        <div class="section-header procedural">
+            🔧 Procedural Memory
+        </div>
+        <div class="section-content">
+            <div class="memory-entry ">
+                <div class="entry-id">ID: BFA6PduD</div>
+                <div class="entry-content">Extracting sqlite-fossil-release.tar.gz into /app/sqlite creates a nested /app/sqlite/sqlite directory (13 subdirs). The source tree is inside that nested dir.</div>
+                <div class="entry-meta">Created: 2026-03-24T06:57:31 | Accessed: 0 times</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

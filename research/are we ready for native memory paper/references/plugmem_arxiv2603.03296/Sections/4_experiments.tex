@@ -1,0 +1,116 @@
+\input{Figures/z_utility_cost}
+\section{Experiments}
+\label{sec:experiments}
+\subsection{Evaluation Framework}
+\label{sec:4.1}
+We evaluate \plugmem using standard benchmark-wise metrics (e.g., accuracy, F1-score, success rate, etc.) to measure end-task performance.
+However, such metrics alone are insufficient for evaluating agentic memory, as they fail to capture the trade-off between decision-relevant utility and agent-side cost.
+We therefore propose an information-theoretic measure that quantifies the \emph{decision-relevant information gain per memory token} contributed by the memory module.
+Specifically, for each decision instance with state $s$ and gold optimal action $a^{*}$, let the base agent’s prior belief be $P_{\text{base}}(a^{*}\mid s)$ and the memory-augmented posterior be $P_{\text{mem}}(a^{*}\mid s,m)$ after consuming memory $m$.
+We define the \emph{Decision Information Gain} as point-wise mutual information (PMI):
+\begin{equation}
+\label{eq:pmi}
+\mathrm{PMI}(a^{*}; m \mid s)=\log_{2}\frac{P_{\text{mem}}(a^{*}\mid s,m)}{P_{\text{base}}(a^{*}\mid s)}
+\end{equation}
+%
+and normalize by memory length $|m|$ (in tokens) to obtain \emph{Memory Information Density} (bits / token):
+\begin{equation}
+\label{eq:density_single}
+\rho(a^{*},m)=\frac{\mathrm{PMI}(a^{*}; m \mid s)}{|m|} %.
+\end{equation}
+%
+Over a dataset, we report a global, amortized density via a ratio-of-sums:
+\begin{equation}
+\label{eq:density_global}
+\rho_{\text{global}}=\frac{\sum_{i}\mathrm{PMI}(a^{*}_{i}; m_{i}\mid s_{i})}{\sum_{i}|m_{i}|} %.
+\end{equation}
+
+Measured in bits per token, our metric is task-agnostic and thus comparable across tasks. Cross-task variation in its magnitude reflects a utility–cost trade-off: higher density arises when memory yields larger decision-relevant gains or does so with fewer tokens, while lower density occurs when the base agent already solves the task well or when useful memory must be expressed verbosely. Appendix~\ref{app:memory_information_density} details the complete analysis framework and additional components beyond the main-text description.
+
+\subsection{Common Experimental Setup}
+
+We evaluate \plugmem unchanged across three heterogeneous benchmarks that stress different aspects of agentic memory: 
+\textit{i)} LongMemEval~\citep{wu2024longmemeval} for long-horizon conversational memory,
+\textit{ii)} HotpotQA~\citep{yang2018hotpotqadatasetdiverseexplainable} for multi-hop knowledge retrieval and reasoning, and 
+\textit{iii)} WebArena~\citep{zhou2024webarenarealisticwebenvironment} for interactive web-based decision-making.
+
+Across all benchmarks, we adopt a unified memory evaluation protocol to ensure fair comparison.
+Unless otherwise specified, we use NV-Embed-v2~\citep{lee2025nvembedimprovedtechniquestraining} for embedding-based retrieval.
+Retrieval is performed under a fixed budget (e.g., top-K retrieval), which is held constant across methods within each benchmark.
+For \plugmem, the structuring and reasoning modules are instantiated using Qwen2.5-32B/72B-Instruct~\citep{qwen2025qwen25technicalreport} and GPT-4o~\citep{openai2024gpt4o}, while all base agents are driven by the same model unless explicitly stated.
+Decoding parameters are fixed across methods to eliminate confounding effects.
+For WebArena, we distinguish between online and offline evaluation phases to assess knowledge transfer and reuse; the detailed experimental design is described in Section~\ref{subsec:knowledge_transfer}.
+
+Baselines are grouped into three categories:
+\textit{i)} Vanilla, which do not rely on external memory;
+\textit{ii)} Task-agnostic, which employ generic retrieval or agentic memory mechanisms not tailored to the benchmark;
+and \textit{iii)} Task-specific, which incorporate benchmark-specific memory representations or retrieval heuristics.
+
+Detailed benchmark-specific settings, prompt templates, and benchmark-level analysis are provided in Appendix~\ref{app:add_exp_details}.
+
+\input{Tables/longmemeval_res_main}
+\input{Tables/hotpotqa_res_main}
+\input{Tables/webarena_res_main}
+
+\subsection{RQ1: Does \plugmem Improve Performance and Memory Efficiency Across Tasks?}
+Our first research question examines whether a single, task-agnostic memory module can consistently improve agent performance while reducing memory consumption across heterogeneous tasks.
+Results on LongMemEval, HotpotQA, and WebArena (Tables~\ref{tab:longmemeval_res_main}, \ref{tab:hotpotqa_res_main}, \ref{tab:webarena-main}) show a consistent pattern despite large differences in task structure and interaction modality.
+First, \plugmem improves end-task performance over both task-agnostic and task-specific baselines.
+Second, these gains are achieved with substantially fewer memory tokens injected into the agent context. 
+Thus, \plugmem attains the highest \emph{information-gain density} under the unified information-theoretic analysis introduced in Section~\ref{sec:4.1}.
+This trade-off is further illustrated by the utility–cost visualization in Figure~\ref{fig:utility_cost}, where \plugmem consistently shifts toward higher utility and lower agent-side cost across all three benchmarks.
+
+The results indicate that \plugmem retrieves \emph{more decision-relevant memory}.
+By abstracting raw experience into compact propositional and prescriptive knowledge, the memory module provides higher utility per token, enabling the base agent to reason more effectively under tight context budgets.
+
+\subsection{RQ2: What Is the Role of Each Component in \plugmem?}
+
+We next analyze the contribution of each component in \plugmem via ablations on all benchmarks (Tables~\ref{tab:longmemeval_ablation}, \ref{tab:hotpotqa_ablation}, \ref{tab:webarena_ablation}).
+Removing retrieval leads to the most severe performance degradation across tasks, underscoring that memory is \textit{only} useful when relevant experience can be accessed at decision time.
+However, this does not imply that retrieval alone drives performance gains.
+Rather, retrieval determines whether memory is operative at all, while its effectiveness is bounded by how memory is represented.
+The structuring module improves retrieval by organizing memory at appropriate abstraction levels, allowing the retriever to more effectively identify and access task-relevant knowledge.
+The reasoning module plays a complementary role, primarily affecting memory efficiency by controlling how retrieved knowledge is compressed and consumed.
+
+Overall, retrieval determines \emph{whether} memory helps, structuring determines \emph{what} can be retrieved, and reasoning determines \emph{how efficiently} retrieved memory can be used.
+Retrieval thus constitutes the defining bottleneck, while structuring and reasoning modulate effectiveness and efficiency once retrieval is in place.
+\input{Tables/longmemeval_ablation}
+\input{Tables/hotpotqa_ablation}
+\input{Tables/webarena_ablation}
+\subsection{RQ3: Knowledge Transfer and Memory Reuse}
+\label{subsec:knowledge_transfer}
+Our third research question evaluates whether agent memory can support transferable knowledge that generalizes across task instantiations and environments.
+To this end, we design a specialized evaluation protocol on WebArena.
+
+We focus on the Shopping, GitLab, and Multi-site subsets.
+Shopping and GitLab are procedure-heavy domains with large task volumes and relatively low baseline success rates~\citep{ICLR2025_f2c6e459}, avoiding saturation effects.
+The Multi-site subset further requires compositional skills across multiple websites, making it particularly challenging and well-suited for evaluating cross-task knowledge reuse.
+
+To explicitly test memory evolution and reuse, we split tasks into an \emph{online} set and an \emph{offline} set based on WebArena's intent templates.
+For each template, one instantiation is assigned to the online set, while the remaining instantiations form the offline set.
+The agent is first evaluated on the online set, during which \plugmem is allowed to insert and retrieve memory.
+We then augment the memory module with a small number of high-quality human demonstrations, representing external sources of procedural knowledge analogous to tutorials or experience sharing.
+Finally, we evaluate on the offline set, where memory insertion is largely disabled and only retrieval is allowed.
+This protocol evaluates memory as reusable knowledge rather than episodic recall.
+The agent evaluated on the offline set can be viewed as a new agent that inherits a pre-built memory graph, testing whether accumulated procedural and semantic knowledge can mitigate cold-start issues. Additional experimental details and implementation specifics are provided in Appendix~\ref{app:webarena_details}.
+
+As shown in Table~\ref{tab:webarena-main}, \plugmem significantly improves success rates on the offline set across domains, with strong gains on the Multi-site tasks.
+These results demonstrate effective reuse of accumulated procedural and semantic knowledge, mitigating cold-start issues and supporting compositional generalization.
+
+\subsection{Discussion: Why Can a Task-Agnostic Memory Outperform Task-Specific Designs?}
+
+
+A natural question is why a task-agnostic memory module can outperform systems tailored to individual benchmarks.
+Our results suggest that the key difference lies not in rejecting task-specific heuristics, but in prioritizing what fundamentally makes agentic memory effective.
+Task-specific designs often encode benchmark-specific insights through customized memory units or transformations, implicitly assuming that relevant memory will be available when needed.
+While effective within their scope, such approaches conflate memory transformation with memory utility.
+In contrast, our findings highlight that agentic memory is fundamentally retrieval-driven.
+Without effective retrieval, neither task-specific abstractions nor carefully engineered memory representations translate into performance gains, as consistently shown in our ablations.
+At the same time, retrieval alone is insufficient.
+Its effectiveness is bounded by how memory is structured, since structuring determines which aspects of experience can be indexed and recovered.
+Our knowledge-centric structuring enables retrieval over semantically meaningful and decision-relevant abstractions, allowing useful information to surface at decision time.
+
+Importantly, \plugmem is designed as a task-agnostic memory backbone that targets the shared retrieval and representation challenges underlying agentic memory designs.
+From this perspective, task-specific memory approaches and heuristics can be naturally layered on top of \plugmem, rather than viewed as alternatives to it. Our framework therefore provides a common foundation on which task-specific adaptations can be applied to further improve performance.
+We empirically validate this view through additional task-adaptation experiments, where representative task-specific heuristics and memory transformation strategies from prior baselines are integrated into \plugmem.
+These adaptations consistently lead to further performance improvements beyond using \plugmem alone, indicating that task-specific techniques and our task-agnostic memory design are \textit{complementary}. Detailed experimental setups and results are provided in Appendix~\ref{app:task_adaptation}.

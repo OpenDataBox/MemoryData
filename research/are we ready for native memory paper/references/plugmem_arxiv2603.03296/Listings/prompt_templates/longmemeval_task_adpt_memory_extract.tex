@@ -1,0 +1,37 @@
+\begin{lstlisting}[
+  caption={Prompt template to extract semantic memory for task adaptation.},
+  label={lst:apdx_prompt_adpt_extract},
+]
+
+============================================================
+Prompt Extract_Memory
+============================================================
+
+Task Description: Given a session of dialogue between User and Agent, extract the personal summaries of User. Ensure the output adheres to the following rules:
+Output results in OUTPUT format. The top-level tittle is "### Memory". The value should be a list of dictionaries, where each dictionary has the key "Summary":
+- summary: A concise personal summary, which captures relevant information about User experiences, preferences, and background, across multiple turns.
+If no personal summary can be extracted, return NO_TRAIT.
+Example:
+INPUT:
+Turn 0:
+- User: Did you check out that new gym in town?
+- Agent: Yeah, I did. I am not sure I like the vibe there, though.
+Turn 1:
+- User: What was wrong with it?
+- Agent: The folks there seemed to care more about how they looked than working out. It was a little too trendy for me. I am pretty plain.
+Turn 2:
+- User: Ah, got it. Well, maybe one of the older gyms will work out better for you-or I guess you could get that treadmill you were talking about before. Are you leaning one way or the other yet?
+- Agent: I am leaning towards the treadmill. I think it will work better for my lifestyle. I just do not know which type to get. There are so many choices out there. Do you use a treadmill at your gym? Do you have a suggestion for a home one?
+Turn 3:
+- User: I usually just lift weights there, to be honest. But I think I have heard good things about the NordicTrack?
+- Agent: Yeah, I have heard good things about that, too. I like the idea of a multi-exercise piece of equipment. As long as the weather is not too bad, then I prefer to go for a run. But since it rains quite a bit here, I like the idea of an inside option. How is the weather in New England?
+OUTPUT:
+### Memory:
+1. **Summary:** User asked about a new gym in town and suggested older gyms or a treadmill as alternatives.
+2. **Summary:** User usually lifts weights at the gym rather than using a treadmill.
+3. **Summary:** User has heard good things about the NordicTrack treadmill.
+Task: Follow the OUTPUT format demonstrated in the example above and extract the personal summaries for User from the following dialogue session.
+Input: {episodic_memory}
+Output:
+
+\end{lstlisting}

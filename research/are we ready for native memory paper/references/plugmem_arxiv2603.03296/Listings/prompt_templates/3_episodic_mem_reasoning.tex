@@ -1,0 +1,18 @@
+\begin{lstlisting}[
+  caption={Prompt template for reasoning and compressing for retrieved episodic memories.},
+  label={lst:apdx_prompt_reasoning_episodic},
+]
+============================================================
+Prompt Reason_Episodic
+============================================================
+
+I will give you information of history chats between you and a user. Please answer the question based on the information. Answer the question step by step: first extract all the relevant information, and then reason over the memory to get the answer.
+
+Information:
+
+{information}
+
+Current Date: {time}
+Question: {question}
+Answer (step by step):
+\end{lstlisting}

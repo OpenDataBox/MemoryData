@@ -1,0 +1,37 @@
+name: Documentation Issue
+description: Report an issue or suggest an improvement to the mem0 docs
+labels: ["documentation"]
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      value: |
+        ### Page
+
+        Link to the docs page: https://docs.mem0.ai/...
+
+        ### What's Wrong or Missing
+
+        Describe what's incorrect, unclear, or missing.
+
+        ### Suggested Fix
+
+        How should the docs be improved?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ai_assistance
+    attributes:
+      label: AI Assistance
+      description: >-
+        This asks how the problem was found, not how the text was written.
+        Drafting the write-up with AI is fine.
+      options:
+        - No AI involved, I hit this reading the docs
+        - AI-assisted, but I checked the page myself
+        - AI found this, and I have not opened the page
+    validations:
+      required: true

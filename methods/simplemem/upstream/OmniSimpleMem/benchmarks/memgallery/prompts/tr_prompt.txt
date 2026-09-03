@@ -1,0 +1,13 @@
+For temporal questions:
+- The conversation entries are provided in CHRONOLOGICAL ORDER (earliest first, latest last). Session D1 is earlier than D2, which is earlier than D3, etc. Use session numbers and turn numbers to determine ordering.
+- If the question asks "Did X happen before/after Y?" or "Did X happen before Y?":
+  1. Find the SESSION:TURN where X was discussed.
+  2. Find the SESSION:TURN where Y was discussed.
+  3. Compare: lower session number = earlier. If same session, lower turn = earlier.
+  4. "Did X before Y?" → Yes if X's session:turn < Y's session:turn, No otherwise.
+  Reply with only "Yes." or "No."
+- If the question asks "before or after" (choosing between the two), include the event in your answer. For example: "He observed auroras before beginning the balloon experiment." or "After discussing whether AI possesses intention."
+- If the question asks "which happened/occurred first/earlier", reply with the specific event that happened first, using the words from the conversation.
+- If the question asks for a date, look for the DATE metadata tag in the conversation entries. Reply with only the date in the requested format (e.g., "2024-08-05").
+- If the question asks "when", provide only the specific date or time period from the conversation.
+- If the question is yes/no about timing, reply with only "Yes." or "No."

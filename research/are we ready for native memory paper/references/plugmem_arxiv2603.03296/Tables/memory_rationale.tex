@@ -1,0 +1,22 @@
+\begin{table*}[ht]
+\centering
+\caption{\textbf{Mapping Memory Properties to Graph Architecture.} We analyze long-term memory properties to derive our memory graph design. The main rationale is \textbf{aligning memory structure with the granularity at which knowledge is acquired, stored, and reasoned over}, reflected here as ensuring core nodes represent complete, self-contained, and verifiable \textbf{knowledge blocks} (Propositions/Prescriptions), thus improving the efficiency and fidelity of downstream graph operations.}
+\label{tab:memory_rationale}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}l l l l@{}}
+\toprule
+\textbf{Memory Type} & \textbf{Nature \& Description} & \textbf{Knowledge-Dense Unit} & \textbf{Subgraph Structuring Logic} \\ 
+\midrule
+
+\textbf{Semantic} & \begin{tabular}[c]{@{}l@{}}\textbf{Declarative \& Static} \\ Context-independent concepts, \\ facts, and world knowledge.\end{tabular} & \begin{tabular}[c]{@{}l@{}}\textbf{The Proposition (Fact Block)} \\ A complete statement conveying \\ verifiable truth.\end{tabular} & \begin{tabular}[c]{@{}l@{}}\textbf{Concept-Centric Semantic Mem Structuring} \\ \textit{Logic:} Concepts acts as lightweight indices \\ pointing to heavy Proposition payloads. \\ \textit{Structure:} \texttt{Concept} $\xleftarrow{mentions}$ \texttt{Proposition}\end{tabular} \\ 
+\midrule
+
+\textbf{Procedural} & \begin{tabular}[c]{@{}l@{}}\textbf{Executive \& Goal-Oriented} \\ Dynamic ``how-to'' knowledge \\ for problem solving.\end{tabular} & \begin{tabular}[c]{@{}l@{}}\textbf{The Prescription (Workflow Block)} \\ A full action sequence to execute a\\ complex task.\end{tabular} & \begin{tabular}[c]{@{}l@{}}\textbf{Intent-Centric Procedural Mem Structuring} \\ \textit{Logic:} Intents (User Goals) serve as keys to \\ find holistic Solution blocks. \\ \textit{Structure:} \texttt{Intent} $\xleftarrow{solves}$ \texttt{Prescription}\end{tabular} \\ 
+\midrule
+
+\textbf{Episodic} & \begin{tabular}[c]{@{}l@{}}\textbf{Autobiographical \& Linear} \\ Raw record of past interactions \\ and observations. Large volume.\end{tabular} & \begin{tabular}[c]{@{}l@{}}\textbf{The Source Trace (Event Window)} \\ A trajectory segment for grounding and \\ verification.\end{tabular} & \begin{tabular}[c]{@{}l@{}}\textbf{Episodic Mem as the Anchor} \\ \textit{Logic:} Episodic acts as the ``ground truth'' layer \\ validating the abstract knowledge graphs. \\ \textit{Structure:} \texttt{Knowledge} $\xleftarrow{proves}$ \texttt{Source}\end{tabular} \\
+
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
