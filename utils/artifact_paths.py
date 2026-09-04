@@ -5,6 +5,7 @@ from utils.locomo_utils import get_locomo_category_slug
 
 
 _MEMORY_AGENT_HINTS = (
+    "langmem",
     "mem0",
     "cognee",
     "memtree",

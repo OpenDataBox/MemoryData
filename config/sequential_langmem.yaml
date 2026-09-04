@@ -1,0 +1,17 @@
+agent_name: Agentic_memory_langmem
+model: Qwen3-8B
+provider: openai_compatible
+api_key_env: OPENAI_API_KEY
+base_url_env: OPENAI_BASE_URL
+temperature: 0.0
+input_length_limit: 32768
+buffer_length: 1000
+output_dir: ./results/outputs/langmem
+agent_chunk_size: 4096
+retrieve_num: 10
+langmem_query_limit: 5
+tokenizer_encoding: cl100k_base
+embedding_model: Qwen3-Embedding-4B
+embedding_base_url_env: EMBEDDING_BASE_URL
+embedding_api_key_env: OPENAI_API_KEY
+embedding_dim: 2560

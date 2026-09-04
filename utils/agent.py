@@ -208,6 +208,8 @@ class AgentWrapper:
             self._initialize_retentionmem_agent(agent_config, dataset_config)
         elif self._is_agent_type("letta"):
             self._initialize_letta_agent(agent_config, dataset_config)
+        elif self._is_agent_type("langmem"):
+            self._initialize_langmem_agent(agent_config, dataset_config)
         elif self._is_agent_type("mem0"):
             self._initialize_mem0_agent(agent_config, dataset_config)
         elif self._is_agent_type("simplemem"):
@@ -514,6 +516,7 @@ class AgentWrapper:
             self._is_agent_type("simplemem"),
             self._is_agent_type("lightmem"),
             self._is_agent_type("a_mem"),
+            self._is_agent_type("langmem"),
             self._is_agent_type("memtree"),
             self._is_agent_type("everos"),
             self._is_agent_type("zep_local"),
@@ -2415,7 +2418,7 @@ class AgentWrapper:
         # Route to appropriate agent handler based on agent type
         if 'Long_context_agent' in self.agent_name:
             return self._handle_long_context_agent(message, memorizing)
-        elif any(self._is_agent_type(agent_type) for agent_type in ["retentionmem", "letta", "cognee", "mem0", "memtree", "memochat", "memoryos", "zep", "simplemem", "lightmem", "a_mem", "everos", "memagent", "MemOS"]):
+        elif any(self._is_agent_type(agent_type) for agent_type in ["langmem", "retentionmem", "letta", "cognee", "mem0", "memtree", "memochat", "memoryos", "zep", "simplemem", "lightmem", "a_mem", "everos", "memagent", "MemOS"]):
             return self._handle_memory_agent(message, memorizing, query_id, context_id)
         elif self._is_agent_type("rag"):
             return self._handle_rag_agent(message, memorizing, query_id, context_id)
@@ -2652,6 +2655,8 @@ class AgentWrapper:
             return self._handle_memoryos_agent(message, memorizing, query_id, context_id)
         elif self._is_agent_type("simplemem"):
             return self._handle_simplemem_agent(message, memorizing, query_id, context_id)
+        elif self._is_agent_type("langmem"):
+            return self._handle_langmem_agent(message, memorizing, query_id, context_id)
         elif self._is_agent_type("lightmem"):
             return self._handle_lightmem_agent(message, memorizing, query_id, context_id)
         elif self._is_agent_type("a_mem"):
@@ -4380,6 +4385,12 @@ class AgentWrapper:
         if self._is_agent_type("retentionmem"):
             self.retentionmem.save()
             return
+        if self._is_agent_type("langmem"):
+            self.langmem.save()
+            with open(self.langmem_marker, "w", encoding="utf-8") as handle:
+                handle.write("ready")
+            return
+
         # Currently only implemented for Letta agents
         if not self._is_agent_type("letta") and not self._is_agent_type("mem0") and not self._is_agent_type("cognee") and not self._is_agent_type("memtree") and not self._is_agent_type("memochat") and not self._is_agent_type("memoryos") and not self._is_agent_type("zep") and not self._is_agent_type("simplemem") and not self._is_agent_type("lightmem") and not self._is_agent_type("a_mem") and not self._is_agent_type("everos") and not self._is_agent_type("MemOS"):
             print("\n\n Agent not saved (not implemented for this agent type) \n\n")
@@ -4485,6 +4496,9 @@ class AgentWrapper:
 
     def load_agent(self):
         """Load agent state from disk."""
+        if self._is_agent_type("langmem"):
+            self.langmem.load()
+            return
         if self._is_agent_type("retentionmem"):
             self.retentionmem.load()
             return
@@ -4591,3 +4605,75 @@ class AgentWrapper:
                 )
 
         print("\n\n Agent loaded successfully...\n\n")
+
+    def _initialize_langmem_agent(self, agent_config, dataset_config):
+        """Initialize LangMem with the benchmark model and embedding endpoints."""
+        self.retrieve_num = agent_config.get("retrieve_num", 10)
+        self.chunk_size = agent_config.get("agent_chunk_size", dataset_config["chunk_size"])
+        self.agent_start_time = time.time()
+        self.client = self._create_oai_client()
+        base_url = self._resolve_base_url()
+        api_key = self._resolve_llm_api_key(["OPENAI_API_KEY"]) or "EMPTY"
+        embedding_url = (
+            self.embedding_base_url
+            or self._get_env_value(self.embedding_base_url_env)
+            or base_url
+        )
+        embedding_key = self._resolve_embedding_api_key(["OPENAI_API_KEY"]) or api_key
+
+        from methods.langmem.langmem_adapter import LangMemAdapter
+
+        self.langmem = LangMemAdapter(
+            model=self.model,
+            api_key=api_key,
+            base_url=base_url,
+            state_dir=self.agent_save_to_folder,
+            retrieve_num=self.retrieve_num,
+            embedding_model=self.embedding_model or "text-embedding-3-small",
+            embedding_api_key=embedding_key,
+            embedding_base_url=embedding_url,
+            embedding_dims=int(agent_config.get("embedding_dim", 1536)),
+            query_limit=int(agent_config.get("langmem_query_limit", 5)),
+        )
+        self.langmem_marker = os.path.join(
+            self.agent_save_to_folder, "langmem_ready.txt"
+        )
+
+    def _handle_langmem_agent(self, message, memorizing, query_id, context_id):
+        """Store or retrieve LangMem memories through the common benchmark response path."""
+        if memorizing:
+            self.langmem.add_chunk(
+                self._prepare_memory_chunk_for_storage(message),
+                source_ids=parse_locomo_source_ids(message),
+            )
+            return "Memorized"
+
+        memory_time = time.time() - self.agent_start_time
+        started = time.time()
+        contexts, source_id_groups = self.langmem.retrieve_with_source_groups(message)
+        fitted = self._fit_memories_for_answer(message, contexts)
+        evidence = "\n".join(fitted) or "(No retrieved memories found.)"
+        response, input_tokens, output_tokens = self._generate_answer_from_memories(
+            question=message,
+            memories_text=evidence,
+        )
+        output = self._create_standard_response(
+            response,
+            input_tokens,
+            output_tokens,
+            memory_time,
+            time.time() - started,
+        )
+        output["token_usage_scope"] = "final_answer_only"
+        self._save_retrieval_debug_payload(
+            {
+                "retrieved_context_paragraphs": contexts,
+                "retrieved_source_id_groups": source_id_groups,
+                "query": message,
+                "response": response,
+            },
+            query_id,
+            context_id,
+        )
+        self.agent_start_time = time.time()
+        return self._attach_locomo_recall_metadata(output, source_id_groups)
