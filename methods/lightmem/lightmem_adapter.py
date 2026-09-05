@@ -32,7 +32,7 @@ class LightMemAdapter:
     """Compatibility wrapper for using LightMem in repository evaluations."""
 
     _SESSION_HEADER_RE = re.compile(
-        r"^Session\s+\d+(?:\s*\((?P<session_time>.+)\))?$",
+        r"^Session\s+\S+(?:\s*\((?P<session_time>.+)\))?$",
         flags=re.IGNORECASE,
     )
     _SPEAKER_LINE_RE = re.compile(
@@ -263,12 +263,25 @@ class LightMemAdapter:
     def finalize(self) -> None:
         return None
 
+    def close(self) -> None:
+        """Release the local Qdrant lock after all queries finish."""
+        retriever = getattr(self.lightmem, "embedding_retriever", None)
+        client = getattr(retriever, "client", None)
+        if callable(getattr(client, "close", None)):
+            client.close()
+
     @staticmethod
     def _parse_timestamp(timestamp: Optional[str]) -> datetime:
         if not timestamp:
             return datetime.now()
 
-        for fmt in ("%Y/%m/%d (%a) %H:%M:%S", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%d %H:%M:%S"):
+        for fmt in (
+            "%Y/%m/%d (%a) %H:%M:%S",
+            "%Y/%m/%d (%a) %H:%M",
+            "%Y-%m-%dT%H:%M:%S",
+            "%Y-%m-%d %H:%M:%S",
+            "%I:%M %p on %d %B, %Y",
+        ):
             try:
                 return datetime.strptime(timestamp, fmt)
             except ValueError:

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "SimpleMem 텍스트 핵심: 대화에서 답변까지",
+  "description": "SimpleMem의 공개 API, 쓰기 시점 압축, 3중 관점 저장, 의도 인식 검색, 최종 답변 합성을 따라가는 입문자용 투어입니다.",
+  "steps": [
+    {
+      "file": "examples/quickstart.py",
+      "line": 8,
+      "title": "사용자 관점에서 시작하기",
+      "description": "이 짧은 예제에 텍스트 모드의 전체 생명주기가 들어 있습니다. 메모리 생성, 대화 추가, 쓰기 버퍼 마무리, 질문의 네 호출을 기억한 채 구현을 따라가세요."
+    },
+    {
+      "file": "simplemem/__init__.py",
+      "line": 21,
+      "title": "공개 이름은 자동 라우터",
+      "description": "SimpleMem은 텍스트 엔진 자체가 아니라 AutoMemory의 별칭입니다. 이 간접 계층 덕분에 하나의 공개 클래스가 텍스트와 멀티모달 백엔드를 함께 제공합니다."
+    },
+    {
+      "file": "simplemem/router.py",
+      "line": 253,
+      "title": "첫 메서드가 백엔드를 고정",
+      "description": "AutoMemory는 첫 동작 전까지 실제 생성을 미룹니다. add_dialogue/finalize/ask는 텍스트를, add_image/add_audio/query는 omni를 선택하며, 선택 후 다른 모드의 API를 부르면 오류가 납니다."
+    },
+    {
+      "file": "simplemem/text/system.py",
+      "line": 17,
+      "title": "텍스트 모드의 조립 지점",
+      "description": "SimpleMemSystem은 LLM 클라이언트, 임베딩 모델, 벡터 저장소와 세 핵심 모듈 MemoryBuilder, HybridRetriever, AnswerGenerator를 연결합니다. 파이프라인을 조정하지만 알고리즘 대부분은 하위 모듈에 있습니다."
+    },
+    {
+      "file": "simplemem/text/system.py",
+      "line": 112,
+      "title": "쓰기 경로의 입구",
+      "description": "add_dialogue는 원시 인자를 Dialogue로 감싸 MemoryBuilder에 넘깁니다. 대화 ID는 처리 완료 수와 버퍼 수에서 계산되므로 버퍼링이 공개 쓰기 동작의 일부입니다."
+    },
+    {
+      "file": "simplemem/core/memory_builder.py",
+      "line": 132,
+      "title": "창 단위 메모리 생성",
+      "description": "가득 찬 대화 창을 꺼내되 연속성을 위한 겹침 구간은 남기고, LLM 추출 후 MemoryEntry로 저장합니다. 창을 채우지 못한 나머지는 finalize가 처리합니다."
+    },
+    {
+      "file": "simplemem/core/memory_builder.py",
+      "line": 229,
+      "title": "압축 규칙은 프롬프트에 있다",
+      "description": "추출 프롬프트는 정보 전체 보존, 대명사 해소, 상대 시간을 절대 시간으로 변환, 구조화 JSON 출력을 요구합니다. 따라서 의미 압축은 결정적 코덱이 아니라 LLM 변환입니다."
+    },
+    {
+      "file": "simplemem/core/models/memory_entry.py",
+      "line": 13,
+      "title": "메모리 하나를 세 관점으로",
+      "description": "MemoryEntry는 의미 검색용 독립 재서술, 어휘 검색용 키워드, 기호 필터용 시간·장소·인물·엔티티를 저장합니다. 세 검색 경로는 모두 같은 메모리 단위를 가리킵니다."
+    },
+    {
+      "file": "simplemem/core/database/vector_store.py",
+      "line": 55,
+      "title": "임베딩 후 저장",
+      "description": "VectorStore는 lossless_restatement만 문서 벡터로 임베딩하고 나머지 필드는 메타데이터로 묶어 백엔드에 넘깁니다. 기본 백엔드는 LanceDB이며, 파사드를 통해 다른 백엔드를 주입할 수 있습니다."
+    },
+    {
+      "file": "simplemem/core/database/vector_store_backend.py",
+      "line": 93,
+      "title": "세 물리 검색 경로를 맡는 LanceDB",
+      "description": "백엔드 스키마는 텍스트, 메타데이터, 벡터를 함께 보관합니다. 밀집 검색은 벡터 거리, 어휘 검색은 lossless_restatement의 전문 색인, 구조 검색은 메타데이터 필터식을 사용합니다."
+    },
+    {
+      "file": "simplemem/core/hybrid_retriever.py",
+      "line": 75,
+      "title": "읽기 경로는 계획부터",
+      "description": "검색기는 질문마다 필요한 정보를 LLM으로 분석하고 소수의 표적 의미 질의를 만듭니다. 이어 원 질문에서 키워드와 구조 조건을 뽑아 추가 검색한 뒤 entry_id로 중복을 제거합니다."
+    },
+    {
+      "file": "simplemem/core/hybrid_retriever.py",
+      "line": 794,
+      "title": "성찰은 추가 검색을 일으킨다",
+      "description": "성찰이 켜져 있으면 또 다른 LLM 검사가 문맥의 완전성을 판단합니다. 정보가 부족하면 max_reflection_rounds까지 의미 질의를 추가하므로 재현율은 높아질 수 있지만 모델 호출과 지연도 늘어납니다."
+    },
+    {
+      "file": "simplemem/core/answer_generator.py",
+      "line": 22,
+      "title": "검색된 메모리가 최종 답이 된다",
+      "description": "선택된 MemoryEntry를 문맥 문자열로 만들고, 문맥에만 근거한 간결한 JSON 답변을 요구하며 LLM에 보냅니다. 다음 학습으로 계획·성찰 설정을 바꿔 어떤 모델 호출이 사라지는지 관찰해 보세요."
+    }
+  ]
+}

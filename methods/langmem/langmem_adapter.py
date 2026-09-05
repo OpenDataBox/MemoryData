@@ -3,15 +3,19 @@
 from __future__ import annotations
 
 import json
+import logging
 import sys
 from pathlib import Path
 from typing import Any
 
+from langgraph.errors import GraphRecursionError
 from utils.locomo_utils import (
     dedupe_preserve_order,
     parse_locomo_source_ids,
     strip_locomo_metadata,
 )
+
+logger = logging.getLogger(__name__)
 
 _LANGMEM_SOURCE = Path(__file__).resolve().parent / "src"
 if str(_LANGMEM_SOURCE) not in sys.path:
@@ -102,9 +106,17 @@ class LangMemAdapter:
             list(source_ids or []) + parse_locomo_source_ids(text)
         )
         clean_text = strip_locomo_metadata(text)
-        final_puts = self.manager.invoke(
-            {"messages": [{"role": "user", "content": clean_text}]}
-        )
+        try:
+            final_puts = self.manager.invoke(
+                {"messages": [{"role": "user", "content": clean_text}]}
+            )
+        except GraphRecursionError as exc:
+            logger.warning(
+                "LangMem skipped chunk after graph recursion limit; source_ids=%s: %s",
+                chunk_source_ids,
+                exc,
+            )
+            return
 
         for put in final_puts:
             key = str(put["key"])

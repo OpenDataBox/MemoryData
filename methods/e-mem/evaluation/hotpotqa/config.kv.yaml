@@ -1,0 +1,66 @@
+# HotpotQA evaluation configuration example for KV cache mode
+
+tokenizer:
+  model_id: "Qwen/Qwen3-4B"  # Tokenizer used for token counting and block sizing
+
+model:
+  memory_agent_model:
+    model_id: "Qwen/Qwen3-4B"  # The actual KV-cache memory model
+    model_context_window: 32768  # Controls block size together with block_size_ratio
+    attn_implementation: "sdpa"
+    device_map: "auto"
+    quantization_config: null
+
+  general_model:
+    # Default OpenAI-compatible model for manager / aggregator / QA / router fallback
+    openai_config: {
+      "api_key":"your api-key here",
+      "base_url":"the base url here",
+      "model":"gpt-4o-mini"
+    }
+
+  manager_model: null  # Optional override; defaults to general_model
+  aggregator_model: null  # Optional override; defaults to general_model
+  question_answer_model: null  # Optional override for evaluation final answers
+  router_fallback_model: null  # Optional override when router needs an LLM
+
+memory:
+  storage_mode: "kv_cache"
+  clean_cache_first: true
+  router_system_prompt: null
+  overlap_ratio: 0.025
+  overlap_mode: "token"
+  block_size_ratio: 0.125
+  max_concurrent_gpu_operations: 2
+  max_memory_segments: 8
+  max_blocks: 5
+  query_batch_size: 4
+  max_parallel_cache_loads: 8
+  enable_router: true
+  router_type: "hybrid"
+
+  hybrid_router:
+    embedding_provider: "huggingface"
+    embedding_model: null
+    embedding_config: null
+    summary_weight: 0.3
+    text_weight: 0.4
+    bm25_weight: 0.3
+    summary_top_k: 10
+    text_top_k: 20
+    bm25_top_k: 10
+    text_chunk_size: 512
+    text_chunk_overlap: 50
+    use_llm_fallback: false
+    bm25_use_jieba: false
+    bm25_boost_threshold: 0.4
+
+hotpotqa_eval:
+  dataset_path: "evaluation/eval_data/hotpotqa/eval_50.json"
+  output_dir: "evaluation/hotpotqa/results"
+  ratio: 1.0
+  max_tokens_per_chunk: 2048
+
+logging:
+  log_dir: "evaluation/hotpotqa/logs"
+  log_level: "INFO"

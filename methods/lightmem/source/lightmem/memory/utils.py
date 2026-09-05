@@ -6,8 +6,6 @@ from typing import List, Dict, Literal, Optional, Any, Tuple, Union
 import tiktoken
 import uuid
 from dataclasses import dataclass, field
-from transformers.tokenization_utils_fast import PreTrainedTokenizerFast
-from transformers.tokenization_utils import PreTrainedTokenizer
 from typing import Optional, Union, Dict
 
 @dataclass
@@ -178,7 +176,9 @@ def resolve_tokenizer(tokenizer_or_name: Union[str, Any]) -> Union[tiktoken.Enco
     """
 
     # --- Case: already a tokenizer object (transformers local model) ---
-    if isinstance(tokenizer_or_name, (PreTrainedTokenizer, PreTrainedTokenizerFast)):
+    if not isinstance(tokenizer_or_name, str) and callable(
+        getattr(tokenizer_or_name, "encode", None)
+    ):
         return tokenizer_or_name
 
     # --- Case: OpenAI tiktoken model name ---

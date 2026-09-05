@@ -37,10 +37,10 @@ data
 !paper/data/RQ5/
 !paper/data/RQ5/README.md
 !paper/data/RQ5/*.csv
-!methods/cognee/source/cognee/infrastructure/data/
-!methods/cognee/source/cognee/infrastructure/data/**
-!methods/cognee/source/cognee/modules/data/
-!methods/cognee/source/cognee/modules/data/**
+!methods/other/cognee/source/cognee/infrastructure/data/
+!methods/other/cognee/source/cognee/infrastructure/data/**
+!methods/other/cognee/source/cognee/modules/data/
+!methods/other/cognee/source/cognee/modules/data/**
 agents
 __pycache__
 .DS_Store
@@ -63,12 +63,21 @@ croissant_files
 results/*
 !results/README.md
 benchmark/memoryagentbench/resources/raw
-methods/cognee/source/cognee/.cognee_system/
-methods/cognee/source/cognee/.data_storage/
+methods/other/cognee/source/cognee/.cognee_system/
+methods/other/cognee/source/cognee/.data_storage/
 .codex
-!methods/cognee/source/cognee/api/v1/datasets/
-!methods/cognee/source/cognee/api/v1/datasets/**
+!methods/other/cognee/source/cognee/api/v1/datasets/
+!methods/other/cognee/source/cognee/api/v1/datasets/**
 !methods/lightmem/source/lightmem/memory_toolkits/memories/datasets/
 !methods/lightmem/source/lightmem/memory_toolkits/memories/datasets/**
 .spec-workspace
 .memos
+
+# Isolated environment for the six common memory baselines
+.venv-six/
+
+# Local downloaded runtimes and document render intermediates
+/tools/llama-b10796/
+/.tmp_docs/
+/.pytest_cache/
+/.ruff_cache/

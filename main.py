@@ -64,6 +64,8 @@ def parse_command_line_arguments():
                        help='When resuming, retry previously failed queries instead of skipping them')
     parser.add_argument('--backfill_longmemeval_recall_debug', action='store_true', default=False,
                        help='Reuse saved state to rerun queries and backfill LongMemEval recall debug files without touching the main results JSON')
+    parser.add_argument("--fail-on-query-error", action="store_true",
+                        help="Exit nonzero if any recorded query failed")
     return parser.parse_args()
 
 
@@ -629,13 +631,18 @@ def process_context(context_index, context_chunks, query_answer_pairs, agent_con
         force_rebuild=force_rerun,
     )
     
-    # Process all queries for this context
-    metrics, results, query_index = process_queries_for_context(
-        agent, query_answer_pairs, dataset_config, metrics, results,
-        query_index, context_index, skipped_query_ids, max_queries,
-        agent_config, output_path, time_cost_list, start_time,
-        context_native_timing=context_native_timing,
-    )
+    # Process all queries for this context, then release local storage locks.
+    try:
+        metrics, results, query_index = process_queries_for_context(
+            agent, query_answer_pairs, dataset_config, metrics, results,
+            query_index, context_index, skipped_query_ids, max_queries,
+            agent_config, output_path, time_cost_list, start_time,
+            context_native_timing=context_native_timing,
+        )
+    finally:
+        close_agent = getattr(agent, "close", None)
+        if callable(close_agent):
+            close_agent()
     
     return metrics, results, query_index, False
 
@@ -867,6 +874,8 @@ def main():
     
     # Log completion
     logger.info(f"Total time taken: {time.time() - start_time}")
+    if args.fail_on_query_error and any(row.get("status") == "failed" for row in results):
+        raise SystemExit("One or more queries failed; see the saved results and logs.")
 
 
 def _maybe_generate_post_run_reports(output_path, dataset_config):

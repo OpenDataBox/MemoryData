@@ -1,0 +1,14 @@
+dataset: LongMemEval
+sub_dataset: longmemeval_s_official
+test_files: datasets/LongMemEval/longmemeval_s_cleaned.json
+chunk_size: 4096
+context_max_length: 10000000
+generation_max_length: 256
+max_test_samples: 500
+seed: 42
+debug: false
+demo_files: ''
+use_chat_template: true
+shots: 0
+tag: official_cleaned
+

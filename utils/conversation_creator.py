@@ -14,6 +14,7 @@ logger.setLevel(logging.INFO)
 
 MEMORY_AGENT_NAME_HINTS = (
     "langmem",
+    "e_mem",
     "mem0",
     "letta",
     "cognee",

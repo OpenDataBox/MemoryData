@@ -185,12 +185,37 @@ python main.py \
   --dataset_config benchmark/memoryagentbench/Accurate_Retrieval/config/EventQA/Eventqa_full.yaml
 ```
 
+### Run the six memory baselines on LoCoMo and LongMemEval-S
+
+The convenience wrapper runs LangMem, Mem0, A-MEM, LightMem, SimpleMem, and E-Mem through the same benchmark launcher. It expects OpenAI-compatible chat and embedding servers to be running. The safe default processes one history and one question for every method/dataset pair:
+
+```bash
+export OPENAI_API_KEY=EMPTY
+export OPENAI_BASE_URL=http://127.0.0.1:9911/v1
+export EMBEDDING_BASE_URL=http://127.0.0.1:9010/v1
+
+bash scripts/run_six_baselines.sh
+```
+
+The defaults are `Qwen3.5-0.8B`, `Qwen3-Embedding-0.6B`, and 1,024-dimensional embeddings. Override `MODEL`, `EMBEDDING_MODEL`, or `EMBEDDING_DIM` when the server exposes different values. Use `--dry-run` to inspect all generated commands without making model calls.
+
+For larger models, use `CHAT_SIZE=9B bash scripts/run_large_baselines.sh` (also supports `4B` and `27B`). See [`scripts/LARGE_BASELINES.md`](scripts/LARGE_BASELINES.md) for vLLM server commands, multi-GPU serving, and 4B/8B embedding experiments.
+
+Run the complete LoCoMo and LongMemEval-S datasets only with the explicit full flag:
+
+```bash
+bash scripts/run_six_baselines.sh --full
+```
+
+LongMemEval-S histories are large, so even one question can require processing hundreds of memory chunks. A smoke run proves that the integration works; it is not a comparable full-dataset score. See [`scripts/SIX_BASELINES.md`](scripts/SIX_BASELINES.md) for dataset preparation, method selection, artifact layout, and LongMemEval judge instructions.
+
 
 ## 🗂 Repository Layout
 
 ```text
 project-root/
 ├── main.py                        # unified experiment entry point
+├── scripts/run_six_baselines.sh   # six baselines × LoCoMo/LongMemEval-S wrapper
 ├── config/                        # flattened presets: reference, sequential, topological, hybrid
 ├── benchmark/
 │   ├── memoryagentbench/          # MemoryAgentBench loaders and benchmark configs

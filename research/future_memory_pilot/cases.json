@@ -1,0 +1,592 @@
+{
+  "version": 1,
+  "description": "Six synthetic conditional-plan smoke cases. Every prefix contains three possible plans but does not reveal which will become active. Only the first two branches may be used for candidate selection; the final branch is held out. These cases are not LoCoMo or LongMemEval examples and do not establish general benchmark performance.",
+  "cases": [
+    {
+      "id": "travel_plan",
+      "domain": "travel",
+      "answer_fields": [
+        "city",
+        "hotel",
+        "transport",
+        "contact"
+      ],
+      "prefix": "I am arranging a short break, but my manager has not decided how many days of leave I can take. Please keep all three alternatives until that decision arrives. The possible leave lengths are one day, two days, and four days; exactly one will eventually apply. None has been approved yet.\n\nFor two days of leave, my destination will be Luma, my hotel will be Coral, my transport will be a coach, and my contact will be Mina. For four days of leave, the destination will be Neris, the hotel will be Birch, the transport will be a train, and the contact will be Ada. For one day of leave, the destination will be Tarin, the hotel will be Cedar, the transport will be a ferry, and the contact will be Owen. These are alternative complete plans, not consecutive stops on one journey.\n\nI have already packed a blue notebook, a spare charging cable, and a rain jacket. I prefer a quiet room and would like to take photographs of buildings. Those preferences are the same for all three plans and do not select a destination. My suitcase is currently beside the door. The travel folder also contains an old map and several blank postcards. I do not need to buy any more luggage. When the leave decision arrives, use the matching plan exactly as recorded above. Until then, do not assume that my favorite destination or the longest trip will be selected.",
+      "branches": [
+        {
+          "id": "four_days",
+          "split": "selection",
+          "future": "My manager has now approved exactly four days of leave. That is the final decision.",
+          "gold": {
+            "city": "Neris",
+            "hotel": "Birch",
+            "transport": "train",
+            "contact": "Ada"
+          },
+          "aliases": {
+            "city": [
+              "Neris"
+            ],
+            "hotel": [
+              "Birch",
+              "Birch Hotel"
+            ],
+            "transport": [
+              "train",
+              "rail"
+            ],
+            "contact": [
+              "Ada"
+            ]
+          },
+          "question": "After the latest decision, what are the city, hotel, transport, contact? Return a JSON object with exactly those four keys."
+        },
+        {
+          "id": "one_day",
+          "split": "selection",
+          "future": "My manager has now approved exactly one day of leave. That is the final decision.",
+          "gold": {
+            "city": "Tarin",
+            "hotel": "Cedar",
+            "transport": "ferry",
+            "contact": "Owen"
+          },
+          "aliases": {
+            "city": [
+              "Tarin"
+            ],
+            "hotel": [
+              "Cedar",
+              "Cedar Hotel"
+            ],
+            "transport": [
+              "ferry"
+            ],
+            "contact": [
+              "Owen"
+            ]
+          },
+          "question": "After the latest decision, what are the city, hotel, transport, contact? Return a JSON object with exactly those four keys."
+        },
+        {
+          "id": "two_days",
+          "split": "heldout",
+          "future": "My manager has now approved exactly two days of leave. That is the final decision.",
+          "gold": {
+            "city": "Luma",
+            "hotel": "Coral",
+            "transport": "coach",
+            "contact": "Mina"
+          },
+          "aliases": {
+            "city": [
+              "Luma"
+            ],
+            "hotel": [
+              "Coral",
+              "Coral Hotel"
+            ],
+            "transport": [
+              "coach",
+              "bus"
+            ],
+            "contact": [
+              "Mina"
+            ]
+          },
+          "question": "After the latest decision, what are the city, hotel, transport, contact? Return a JSON object with exactly those four keys."
+        }
+      ]
+    },
+    {
+      "id": "workshop_weather",
+      "domain": "event_planning",
+      "answer_fields": [
+        "venue",
+        "start_time",
+        "snack",
+        "lead"
+      ],
+      "prefix": "Our drawing club has prepared three alternatives for Saturday's workshop. The organizer will later classify the weather as mild, rainy, or hot. That official category, rather than anyone's personal guess, will choose the plan. We do not have the category yet, and all three arrangements remain possible.\n\nIf the official category is rainy, the venue will be Studio, the start time will be 11:00, the snack will be rolls, and the lead will be Ivan. If the category is mild, the venue will be Orchard, the start time will be 09:00, the snack will be pears, and the lead will be Nora. If the category is hot, the venue will be Library, the start time will be 16:00, the snack will be melon, and the lead will be Uma. Venue names refer to our three reserved rooms or sites; they are not suggestions to search for another location.\n\nEveryone should bring pencils, an eraser, and a small sketchbook. We will practice drawing ordinary objects and then display the sketches on a shared board. The club has already bought paper, so participants should not purchase more. Attendance will be taken at the entrance, and the finished drawings will go into the club folder. None of these supplies or activities changes with the weather category. I am putting the attendance sheets in a green envelope tonight. Please preserve the separate arrangements until the organizer announces which category applies, and then report the four details belonging to that category.",
+      "branches": [
+        {
+          "id": "mild",
+          "split": "selection",
+          "future": "The organizer has officially classified Saturday's weather as mild. Use that category for the workshop.",
+          "gold": {
+            "venue": "Orchard",
+            "start_time": "09:00",
+            "snack": "pears",
+            "lead": "Nora"
+          },
+          "aliases": {
+            "venue": [
+              "Orchard",
+              "the Orchard"
+            ],
+            "start_time": [
+              "09:00",
+              "9:00",
+              "9 AM",
+              "9:00 AM"
+            ],
+            "snack": [
+              "pears",
+              "pear"
+            ],
+            "lead": [
+              "Nora"
+            ]
+          },
+          "question": "After the latest decision, what are the venue, start_time, snack, lead? Return a JSON object with exactly those four keys. Use a 24-hour clock for start_time."
+        },
+        {
+          "id": "rainy",
+          "split": "selection",
+          "future": "The organizer has officially classified Saturday's weather as rainy. Use that category for the workshop.",
+          "gold": {
+            "venue": "Studio",
+            "start_time": "11:00",
+            "snack": "rolls",
+            "lead": "Ivan"
+          },
+          "aliases": {
+            "venue": [
+              "Studio",
+              "the Studio"
+            ],
+            "start_time": [
+              "11:00",
+              "11 AM",
+              "11:00 AM"
+            ],
+            "snack": [
+              "rolls",
+              "roll",
+              "bread rolls"
+            ],
+            "lead": [
+              "Ivan"
+            ]
+          },
+          "question": "After the latest decision, what are the venue, start_time, snack, lead? Return a JSON object with exactly those four keys. Use a 24-hour clock for start_time."
+        },
+        {
+          "id": "hot",
+          "split": "heldout",
+          "future": "The organizer has officially classified Saturday's weather as hot. Use that category for the workshop.",
+          "gold": {
+            "venue": "Library",
+            "start_time": "16:00",
+            "snack": "melon",
+            "lead": "Uma"
+          },
+          "aliases": {
+            "venue": [
+              "Library",
+              "the Library"
+            ],
+            "start_time": [
+              "16:00",
+              "4 PM",
+              "4:00 PM"
+            ],
+            "snack": [
+              "melon"
+            ],
+            "lead": [
+              "Uma"
+            ]
+          },
+          "question": "After the latest decision, what are the venue, start_time, snack, lead? Return a JSON object with exactly those four keys. Use a 24-hour clock for start_time."
+        }
+      ]
+    },
+    {
+      "id": "parcel_delivery",
+      "domain": "delivery",
+      "answer_fields": [
+        "dropoff",
+        "day",
+        "container",
+        "contact"
+      ],
+      "prefix": "I need to send the club's display materials next week. The recipient has not yet confirmed whether they will be at home, at the office, or away. I have made one complete delivery arrangement for each of those three statuses. The eventual message from the recipient will select exactly one arrangement; these are not three separate deliveries.\n\nIf the recipient will be away, use the dropoff named Harbor, deliver on Friday, use a tube as the container, and put Soren as the contact. If the recipient will be at home, use the dropoff named Willow, deliver on Tuesday, use a crate as the container, and put Lena as the contact. If the recipient will be at the office, use the dropoff named Maple, deliver on Thursday, use a pouch as the container, and put Ravi as the contact. The named dropoffs are already registered with the courier, so their street addresses do not need to be copied into the note.\n\nThe package contains printed signs, a cloth banner, and a small stand. I have checked that the printed names are spelled correctly. A packing checklist is clipped to the materials, and the courier account has already been paid. I also have extra tape in a drawer and a pair of scissors beside the packing table. These preparation details do not determine which arrangement is active. Please wait for the recipient's status instead of guessing from a weekday or choosing the closest sounding dropoff. Once their status is known, keep the four fields of the matching arrangement together.",
+      "branches": [
+        {
+          "id": "home",
+          "split": "selection",
+          "future": "The recipient has confirmed that they will be at home next week. This is their final status for the delivery.",
+          "gold": {
+            "dropoff": "Willow",
+            "day": "Tuesday",
+            "container": "crate",
+            "contact": "Lena"
+          },
+          "aliases": {
+            "dropoff": [
+              "Willow"
+            ],
+            "day": [
+              "Tuesday",
+              "Tue"
+            ],
+            "container": [
+              "crate"
+            ],
+            "contact": [
+              "Lena"
+            ]
+          },
+          "question": "After the latest decision, what are the dropoff, day, container, contact? Return a JSON object with exactly those four keys."
+        },
+        {
+          "id": "office",
+          "split": "selection",
+          "future": "The recipient has confirmed that they will be at the office next week. This is their final status for the delivery.",
+          "gold": {
+            "dropoff": "Maple",
+            "day": "Thursday",
+            "container": "pouch",
+            "contact": "Ravi"
+          },
+          "aliases": {
+            "dropoff": [
+              "Maple"
+            ],
+            "day": [
+              "Thursday",
+              "Thu",
+              "Thurs"
+            ],
+            "container": [
+              "pouch"
+            ],
+            "contact": [
+              "Ravi"
+            ]
+          },
+          "question": "After the latest decision, what are the dropoff, day, container, contact? Return a JSON object with exactly those four keys."
+        },
+        {
+          "id": "away",
+          "split": "heldout",
+          "future": "The recipient has confirmed that they will be away next week. This is their final status for the delivery.",
+          "gold": {
+            "dropoff": "Harbor",
+            "day": "Friday",
+            "container": "tube",
+            "contact": "Soren"
+          },
+          "aliases": {
+            "dropoff": [
+              "Harbor",
+              "Harbour"
+            ],
+            "day": [
+              "Friday",
+              "Fri"
+            ],
+            "container": [
+              "tube"
+            ],
+            "contact": [
+              "Soren"
+            ]
+          },
+          "question": "After the latest decision, what are the dropoff, day, container, contact? Return a JSON object with exactly those four keys."
+        }
+      ]
+    },
+    {
+      "id": "reading_class",
+      "domain": "education",
+      "answer_fields": [
+        "room",
+        "book",
+        "exercise",
+        "tutor"
+      ],
+      "prefix": "I enrolled in the community reading course, and the placement result is still pending. The coordinator will assign me to beginner, intermediate, or advanced. I have the arrangements for all three levels because I need to prepare before the result arrives. My previous experience does not itself decide the placement, and I should not pick a level on my own.\n\nFor the beginner level, the room is Cedar, the book is Maps, the exercise is a puzzle, and the tutor is Vera. For the intermediate level, the room is Elm, the book is Rivers, the exercise is a timeline, and the tutor is Liam. For the advanced level, the room is Ash, the book is Lanterns, the exercise is sorting, and the tutor is Nia. Maps, Rivers, and Lanterns are the exact short titles used by the course. The exercise names are labels on the prepared worksheets, not descriptions from which to infer a different activity.\n\nI have bought a plain notebook and found a reusable pencil case. All students can borrow a dictionary from the shelf at reception. The building has a coat rack near its entrance, and completed worksheets will be kept in a shared folder. I prefer to make notes in dark ink, although the tutors accept pencil as well. These general details apply to every level. I will wait for the coordinator's message before choosing which book to bring. When the placement is confirmed, I need the room, book, exercise, and tutor from that one level, without mixing details from the alternatives.",
+      "branches": [
+        {
+          "id": "beginner",
+          "split": "selection",
+          "future": "The coordinator has now assigned me to the beginner level. My placement is final.",
+          "gold": {
+            "room": "Cedar",
+            "book": "Maps",
+            "exercise": "puzzle",
+            "tutor": "Vera"
+          },
+          "aliases": {
+            "room": [
+              "Cedar",
+              "Cedar room"
+            ],
+            "book": [
+              "Maps"
+            ],
+            "exercise": [
+              "puzzle",
+              "a puzzle"
+            ],
+            "tutor": [
+              "Vera"
+            ]
+          },
+          "question": "After the latest decision, what are the room, book, exercise, tutor? Return a JSON object with exactly those four keys."
+        },
+        {
+          "id": "advanced",
+          "split": "selection",
+          "future": "The coordinator has now assigned me to the advanced level. My placement is final.",
+          "gold": {
+            "room": "Ash",
+            "book": "Lanterns",
+            "exercise": "sorting",
+            "tutor": "Nia"
+          },
+          "aliases": {
+            "room": [
+              "Ash",
+              "Ash room"
+            ],
+            "book": [
+              "Lanterns"
+            ],
+            "exercise": [
+              "sorting"
+            ],
+            "tutor": [
+              "Nia"
+            ]
+          },
+          "question": "After the latest decision, what are the room, book, exercise, tutor? Return a JSON object with exactly those four keys."
+        },
+        {
+          "id": "intermediate",
+          "split": "heldout",
+          "future": "The coordinator has now assigned me to the intermediate level. My placement is final.",
+          "gold": {
+            "room": "Elm",
+            "book": "Rivers",
+            "exercise": "timeline",
+            "tutor": "Liam"
+          },
+          "aliases": {
+            "room": [
+              "Elm",
+              "Elm room"
+            ],
+            "book": [
+              "Rivers"
+            ],
+            "exercise": [
+              "timeline",
+              "a timeline"
+            ],
+            "tutor": [
+              "Liam"
+            ]
+          },
+          "question": "After the latest decision, what are the room, book, exercise, tutor? Return a JSON object with exactly those four keys."
+        }
+      ]
+    },
+    {
+      "id": "device_repair",
+      "domain": "repair",
+      "answer_fields": [
+        "workshop",
+        "technician",
+        "day",
+        "ticket"
+      ],
+      "prefix": "The small display device from our club is waiting for a diagnostic report. The report will identify exactly one fault category: motor, sensor, or battery. I have already arranged a different repair booking for each category. The device has not been diagnosed yet, so the sound it made yesterday should not be treated as a confirmed result.\n\nIf the report identifies a battery fault, the workshop is East, the technician is Tessa, the booking day is Monday, and the ticket is B32. If it identifies a sensor fault, the workshop is West, the technician is Omar, the booking day is Thursday, and the ticket is S27. If it identifies a motor fault, the workshop is North, the technician is Ivo, the booking day is Wednesday, and the ticket is M14. The workshop names are the short names printed in our booking folder. The ticket belongs to its complete booking and must not be borrowed from another alternative.\n\nI have cleaned the outside of the device and put its detached cover in a separate bag. The instruction booklet and the purchase receipt are together in a transparent sleeve. A photograph of the device is saved in the club folder for identification. None of these items tells us which fault category the diagnostic report will confirm. The club does not need to decide on replacement parts itself; the booked technician will handle that. Once the diagnostic result arrives, I only need the workshop, technician, day, and ticket for the matching category. Keep all three possibilities available until then.",
+      "branches": [
+        {
+          "id": "motor",
+          "split": "selection",
+          "future": "The diagnostic report has now confirmed a motor fault. It identifies no other fault category.",
+          "gold": {
+            "workshop": "North",
+            "technician": "Ivo",
+            "day": "Wednesday",
+            "ticket": "M14"
+          },
+          "aliases": {
+            "workshop": [
+              "North",
+              "North workshop"
+            ],
+            "technician": [
+              "Ivo"
+            ],
+            "day": [
+              "Wednesday",
+              "Wed"
+            ],
+            "ticket": [
+              "M14",
+              "M-14"
+            ]
+          },
+          "question": "After the latest decision, what are the workshop, technician, day, ticket? Return a JSON object with exactly those four keys."
+        },
+        {
+          "id": "battery",
+          "split": "selection",
+          "future": "The diagnostic report has now confirmed a battery fault. It identifies no other fault category.",
+          "gold": {
+            "workshop": "East",
+            "technician": "Tessa",
+            "day": "Monday",
+            "ticket": "B32"
+          },
+          "aliases": {
+            "workshop": [
+              "East",
+              "East workshop"
+            ],
+            "technician": [
+              "Tessa"
+            ],
+            "day": [
+              "Monday",
+              "Mon"
+            ],
+            "ticket": [
+              "B32",
+              "B-32"
+            ]
+          },
+          "question": "After the latest decision, what are the workshop, technician, day, ticket? Return a JSON object with exactly those four keys."
+        },
+        {
+          "id": "sensor",
+          "split": "heldout",
+          "future": "The diagnostic report has now confirmed a sensor fault. It identifies no other fault category.",
+          "gold": {
+            "workshop": "West",
+            "technician": "Omar",
+            "day": "Thursday",
+            "ticket": "S27"
+          },
+          "aliases": {
+            "workshop": [
+              "West",
+              "West workshop"
+            ],
+            "technician": [
+              "Omar"
+            ],
+            "day": [
+              "Thursday",
+              "Thu",
+              "Thurs"
+            ],
+            "ticket": [
+              "S27",
+              "S-27"
+            ]
+          },
+          "question": "After the latest decision, what are the workshop, technician, day, ticket? Return a JSON object with exactly those four keys."
+        }
+      ]
+    },
+    {
+      "id": "catering_plan",
+      "domain": "catering",
+      "answer_fields": [
+        "main",
+        "dessert",
+        "drink",
+        "chef"
+      ],
+      "prefix": "I am coordinating a catered club lunch, and the organizer will later choose one of three menu categories: dairy-free, nut-free, or standard. The kitchen has supplied a complete plan for each category. The final message will select one category only; it will not request a mixture of two menus. I do not know which category will be chosen yet.\n\nFor the dairy-free category, the main is rice bowl, the dessert is pear, the drink is mint tea, and the chef is Eli. For the standard category, the main is pasta, the dessert is plum tart, the drink is lemonade, and the chef is Alex. For the nut-free category, the main is potato stew, the dessert is apple jelly, the drink is peach juice, and the chef is Remy. These menu names and chef assignments are the kitchen's recorded arrangements. The category tells us which entire arrangement to use; it is not an invitation to design a replacement menu.\n\nI have counted the plates and napkins, and the serving table has already been reserved. The organizer will bring the attendance list. We will use reusable cups, and a box for collecting them will stand beside the exit. The club banner is being kept in a cupboard until the lunch begins. Everyone will receive the same chosen menu, so there are no individual orders to merge into the plan. None of these room or supply details determines the menu category. When the organizer's decision arrives, please return the main, dessert, drink, and chef for that exact category while keeping the recorded assignments together.",
+      "branches": [
+        {
+          "id": "dairy_free",
+          "split": "selection",
+          "future": "The organizer has selected the dairy-free category for the lunch. This is the final menu decision.",
+          "gold": {
+            "main": "rice bowl",
+            "dessert": "pear",
+            "drink": "mint tea",
+            "chef": "Eli"
+          },
+          "aliases": {
+            "main": [
+              "rice bowl",
+              "a rice bowl"
+            ],
+            "dessert": [
+              "pear",
+              "pears"
+            ],
+            "drink": [
+              "mint tea"
+            ],
+            "chef": [
+              "Eli"
+            ]
+          },
+          "question": "After the latest decision, what are the main, dessert, drink, chef? Return a JSON object with exactly those four keys."
+        },
+        {
+          "id": "nut_free",
+          "split": "selection",
+          "future": "The organizer has selected the nut-free category for the lunch. This is the final menu decision.",
+          "gold": {
+            "main": "potato stew",
+            "dessert": "apple jelly",
+            "drink": "peach juice",
+            "chef": "Remy"
+          },
+          "aliases": {
+            "main": [
+              "potato stew"
+            ],
+            "dessert": [
+              "apple jelly"
+            ],
+            "drink": [
+              "peach juice"
+            ],
+            "chef": [
+              "Remy"
+            ]
+          },
+          "question": "After the latest decision, what are the main, dessert, drink, chef? Return a JSON object with exactly those four keys."
+        },
+        {
+          "id": "standard",
+          "split": "heldout",
+          "future": "The organizer has selected the standard category for the lunch. This is the final menu decision.",
+          "gold": {
+            "main": "pasta",
+            "dessert": "plum tart",
+            "drink": "lemonade",
+            "chef": "Alex"
+          },
+          "aliases": {
+            "main": [
+              "pasta"
+            ],
+            "dessert": [
+              "plum tart"
+            ],
+            "drink": [
+              "lemonade"
+            ],
+            "chef": [
+              "Alex"
+            ]
+          },
+          "question": "After the latest decision, what are the main, dessert, drink, chef? Return a JSON object with exactly those four keys."
+        }
+      ]
+    }
+  ]
+}

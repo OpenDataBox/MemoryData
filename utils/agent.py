@@ -1,11 +1,11 @@
 import os
 import sys
 import json
+import hashlib
 import shutil
 import importlib
 import importlib.machinery
 import types
-import torch
 import tiktoken
 import httpx
 from openai import OpenAI
@@ -25,15 +25,13 @@ from utils.provider_utils import (
     load_local_hf_tokenizer,
 )
 from utils.artifact_paths import (
+    build_hashed_runtime_dir,
     build_memorag_cache_dir,
     resolve_artifact_root,
     resolve_results_artifact_path,
 )
 
 from langchain_core.documents import Document
-from transformers import BitsAndBytesConfig
-from transformers import AutoTokenizer, AutoModelForCausalLM, LlamaConfig
-
 for extra_path in [
     "./methods/letta/source",
     "./methods/mem0/source",
@@ -208,8 +206,8 @@ class AgentWrapper:
             self._initialize_retentionmem_agent(agent_config, dataset_config)
         elif self._is_agent_type("letta"):
             self._initialize_letta_agent(agent_config, dataset_config)
-        elif self._is_agent_type("langmem"):
-            self._initialize_langmem_agent(agent_config, dataset_config)
+        elif self._is_agent_type("langmem") or self._is_agent_type("e_mem"):
+            self._initialize_benchmark_memory_agent(agent_config, dataset_config)
         elif self._is_agent_type("mem0"):
             self._initialize_mem0_agent(agent_config, dataset_config)
         elif self._is_agent_type("simplemem"):
@@ -740,6 +738,10 @@ class AgentWrapper:
             completion_tokens,
         )
 
+    def _benchmark_question_time(self):
+        metadata = getattr(self, "_current_eval_metadata", None) or {}
+        return str(metadata.get("question_date") or time.strftime("%Y-%m-%d %H:%M:%S"))
+
     def _generate_answer_from_memories(self, question, memories_text, prompt_override=None):
         """Generate a benchmark answer from retrieved memories using the shared templates."""
         memory_answer_template = (
@@ -757,7 +759,7 @@ class AgentWrapper:
                         question=question,
                     )
                     + "\n\nCurrent Time: "
-                    + time.strftime("%Y-%m-%d %H:%M:%S")
+                    + self._benchmark_question_time()
                 ),
             },
         ]
@@ -784,7 +786,7 @@ class AgentWrapper:
                         question=question,
                     )
                     + "\n\nCurrent Time: "
-                    + time.strftime("%Y-%m-%d %H:%M:%S")
+                    + self._benchmark_question_time()
                 )
                 try:
                     response_text, prompt_tokens, completion_tokens = self._request_openai_completion(llm_messages)
@@ -815,7 +817,7 @@ class AgentWrapper:
         prompt_without_memories = (
             memory_answer_template.format(memories="", question=question)
             + "\n\nCurrent Time: "
-            + time.strftime("%Y-%m-%d %H:%M:%S")
+            + self._benchmark_question_time()
         )
         return self._fit_retrieved_contexts_to_token_limit(
             contexts=contexts,
@@ -1569,12 +1571,19 @@ class AgentWrapper:
         if api_key:
             mem0_config["llm"]["config"]["api_key"] = api_key
 
-        mem0_runtime_dir = os.path.join(self.agent_save_to_folder, "mem0_runtime")
+        # Qdrant appends collection and SQLite filenames to this path. Keeping it
+        # under the descriptive agent folder can exceed Windows' path limit.
+        runtime_key = hashlib.sha256(
+            os.path.abspath(self.agent_save_to_folder).encode("utf-8")
+        ).hexdigest()[:16]
+        agents_dir = os.path.dirname(os.path.dirname(self.agent_save_to_folder))
+        mem0_runtime_dir = os.path.join(agents_dir, "_mem0_runtime", runtime_key)
         mem0_qdrant_path = os.path.join(mem0_runtime_dir, "qdrant")
-        os.makedirs(mem0_runtime_dir, exist_ok=True)
+        os.makedirs(mem0_qdrant_path, exist_ok=True)
 
         mem0_embedder_model = agent_config.get("mem0_embedder_model", "")
-        embedding_dims = 2560 if "Qwen3-Embedding-4B" in mem0_embedder_model else 1536
+        embedding_dims = int(agent_config.get("embedding_dim") or
+                             (2560 if "Qwen3-Embedding-4B" in mem0_embedder_model else 1536))
         mem0_config["history_db_path"] = os.path.join(mem0_runtime_dir, "history.db")
         mem0_config["vector_store"] = {
             "provider": "qdrant",
@@ -1593,12 +1602,14 @@ class AgentWrapper:
                 or base_url
             )
             embedder_model_name = agent_config["mem0_embedder_model"]
-            if embedding_base_url and "/" in embedder_model_name:
+            if (embedding_base_url and "/" in embedder_model_name
+                    and not agent_config.get("mem0_use_model_name_verbatim", False)):
                 # Local OpenAI-compatible embedding services often expose the
                 # deployed short name instead of the Hugging Face repo id.
                 embedder_model_name = embedder_model_name.split("/")[-1]
             embedder_config = {
                 "model": embedder_model_name,
+                "embedding_dims": embedding_dims,
             }
             embedding_api_key = self._resolve_embedding_api_key(["OPENAI_API_KEY"]) or api_key
             if embedding_base_url:
@@ -1629,7 +1640,13 @@ class AgentWrapper:
         self.client = self._create_oai_client()
         self.simplemem_marker_path = os.path.join(self.agent_save_to_folder, "simplemem_ready.txt")
         self.simplemem_source_map_path = os.path.join(self.agent_save_to_folder, "simplemem_source_map.json")
-        self.simplemem_db_path = os.path.join(self.agent_save_to_folder, "lancedb_data")
+        runtime_key = hashlib.sha256(
+            os.path.abspath(self.agent_save_to_folder).encode("utf-8")
+        ).hexdigest()[:16]
+        agents_dir = os.path.dirname(os.path.dirname(self.agent_save_to_folder))
+        self.simplemem_db_path = os.path.join(
+            agents_dir, "_simplemem_runtime", runtime_key
+        )
         self.simplemem_table_name = _sanitize_storage_identifier(dataset_config['sub_dataset'], suffix="memory")
         api_key = (
             os.environ.get("SIMPLEMEM_API_KEY")
@@ -1699,7 +1716,10 @@ class AgentWrapper:
         self.chunk_size = agent_config.get('agent_chunk_size', dataset_config.get('chunk_size'))
         self.agent_start_time = time.time()
         self.lightmem_marker_path = os.path.join(self.agent_save_to_folder, "lightmem_ready.txt")
-        self.lightmem_db_path = os.path.join(self.agent_save_to_folder, "lightmem_data")
+        self.lightmem_db_path = build_hashed_runtime_dir(
+            self.agent_save_to_folder,
+            "_lightmem_runtime",
+        )
         self.lightmem_collection_name = f"{dataset_config['sub_dataset']}_lightmem"
 
         api_key_env = agent_config.get("lightmem_api_key_env", "OPENAI_API_KEY")
@@ -2418,7 +2438,7 @@ class AgentWrapper:
         # Route to appropriate agent handler based on agent type
         if 'Long_context_agent' in self.agent_name:
             return self._handle_long_context_agent(message, memorizing)
-        elif any(self._is_agent_type(agent_type) for agent_type in ["langmem", "retentionmem", "letta", "cognee", "mem0", "memtree", "memochat", "memoryos", "zep", "simplemem", "lightmem", "a_mem", "everos", "memagent", "MemOS"]):
+        elif any(self._is_agent_type(agent_type) for agent_type in ["langmem", "e_mem", "retentionmem", "letta", "cognee", "mem0", "memtree", "memochat", "memoryos", "zep", "simplemem", "lightmem", "a_mem", "everos", "memagent", "MemOS"]):
             return self._handle_memory_agent(message, memorizing, query_id, context_id)
         elif self._is_agent_type("rag"):
             return self._handle_rag_agent(message, memorizing, query_id, context_id)
@@ -2655,8 +2675,8 @@ class AgentWrapper:
             return self._handle_memoryos_agent(message, memorizing, query_id, context_id)
         elif self._is_agent_type("simplemem"):
             return self._handle_simplemem_agent(message, memorizing, query_id, context_id)
-        elif self._is_agent_type("langmem"):
-            return self._handle_langmem_agent(message, memorizing, query_id, context_id)
+        elif self._is_agent_type("langmem") or self._is_agent_type("e_mem"):
+            return self._handle_benchmark_memory_agent(message, memorizing, query_id, context_id)
         elif self._is_agent_type("lightmem"):
             return self._handle_lightmem_agent(message, memorizing, query_id, context_id)
         elif self._is_agent_type("a_mem"):
@@ -3151,7 +3171,7 @@ class AgentWrapper:
 
             llm_messages = [
                 {"role": "system", "content": get_template(self.sub_dataset, 'system', self.agent_name)},
-                {"role": "user", "content": formatted_query + "\n\nCurrent Time: " + time.strftime("%Y-%m-%d %H:%M:%S")},
+                {"role": "user", "content": formatted_query + "\n\nCurrent Time: " + self._benchmark_question_time()},
             ]
             request_kwargs = self._prepare_openai_request_kwargs(
                 {
@@ -4305,6 +4325,8 @@ class AgentWrapper:
         memorag_context_tokenizer = None
         if self.agent_config.get("memorag_max_context_tokens"):
             try:
+                from transformers import AutoTokenizer
+
                 memorag_context_tokenizer = AutoTokenizer.from_pretrained(
                     memorag_mem_model,
                     cache_dir=memorag_cache_dir,
@@ -4385,9 +4407,9 @@ class AgentWrapper:
         if self._is_agent_type("retentionmem"):
             self.retentionmem.save()
             return
-        if self._is_agent_type("langmem"):
-            self.langmem.save()
-            with open(self.langmem_marker, "w", encoding="utf-8") as handle:
+        if self._is_agent_type("langmem") or self._is_agent_type("e_mem"):
+            self.benchmark_memory.save()
+            with open(self.benchmark_memory_marker, "w", encoding="utf-8") as handle:
                 handle.write("ready")
             return
 
@@ -4494,11 +4516,16 @@ class AgentWrapper:
 
         print("\n\n Agent saved...\n\n")
 
+    def close(self):
+        """Release resources that must remain open through query evaluation."""
+        if self._is_agent_type("lightmem"):
+            self.lightmem.close()
+
     def load_agent(self):
-        """Load agent state from disk."""
-        if self._is_agent_type("langmem"):
-            self.langmem.load()
+        if self._is_agent_type("langmem") or self._is_agent_type("e_mem"):
+            self.benchmark_memory.load()
             return
+        """Load agent state from disk."""
         if self._is_agent_type("retentionmem"):
             self.retentionmem.load()
             return
@@ -4606,74 +4633,84 @@ class AgentWrapper:
 
         print("\n\n Agent loaded successfully...\n\n")
 
-    def _initialize_langmem_agent(self, agent_config, dataset_config):
-        """Initialize LangMem with the benchmark model and embedding endpoints."""
+    def _initialize_benchmark_memory_agent(self, agent_config, dataset_config):
+        """Initialize LangMem or E-mem through their native memory implementations."""
         self.retrieve_num = agent_config.get("retrieve_num", 10)
         self.chunk_size = agent_config.get("agent_chunk_size", dataset_config["chunk_size"])
         self.agent_start_time = time.time()
         self.client = self._create_oai_client()
         base_url = self._resolve_base_url()
         api_key = self._resolve_llm_api_key(["OPENAI_API_KEY"]) or "EMPTY"
-        embedding_url = (
-            self.embedding_base_url
-            or self._get_env_value(self.embedding_base_url_env)
-            or base_url
-        )
+        embedding_url = (self.embedding_base_url
+                         or self._get_env_value(self.embedding_base_url_env) or base_url)
         embedding_key = self._resolve_embedding_api_key(["OPENAI_API_KEY"]) or api_key
-
-        from methods.langmem.langmem_adapter import LangMemAdapter
-
-        self.langmem = LangMemAdapter(
-            model=self.model,
-            api_key=api_key,
-            base_url=base_url,
-            state_dir=self.agent_save_to_folder,
-            retrieve_num=self.retrieve_num,
+        common = dict(
+            model=self.model, api_key=api_key, base_url=base_url,
+            state_dir=self.agent_save_to_folder, retrieve_num=self.retrieve_num,
             embedding_model=self.embedding_model or "text-embedding-3-small",
-            embedding_api_key=embedding_key,
-            embedding_base_url=embedding_url,
-            embedding_dims=int(agent_config.get("embedding_dim", 1536)),
-            query_limit=int(agent_config.get("langmem_query_limit", 5)),
+            embedding_api_key=embedding_key, embedding_base_url=embedding_url,
         )
-        self.langmem_marker = os.path.join(
-            self.agent_save_to_folder, "langmem_ready.txt"
-        )
-
-    def _handle_langmem_agent(self, message, memorizing, query_id, context_id):
-        """Store or retrieve LangMem memories through the common benchmark response path."""
-        if memorizing:
-            self.langmem.add_chunk(
-                self._prepare_memory_chunk_for_storage(message),
-                source_ids=parse_locomo_source_ids(message),
+        if self._is_agent_type("langmem"):
+            from methods.langmem.langmem_adapter import LangMemAdapter
+            self.benchmark_memory = LangMemAdapter(
+                **common, embedding_dims=int(agent_config.get("embedding_dim", 1536)),
+                query_limit=int(agent_config.get("langmem_query_limit", 5)),
             )
-            return "Memorized"
+            marker = "langmem_ready.txt"
+        else:
+            from methods.e_mem.e_mem_adapter import EMemAdapter
+            self.benchmark_memory = EMemAdapter(
+                **common,
+                tokenizer_model=agent_config.get("e_mem_tokenizer_model", "Qwen/Qwen3-4B"),
+                memory_model=agent_config.get("e_mem_memory_model"),
+                context_window=int(agent_config.get("e_mem_context_window", 32768)),
+                block_size_ratio=float(agent_config.get("e_mem_block_size_ratio", 0.125)),
+                overlap_ratio=float(agent_config.get("e_mem_overlap_ratio", 0.1)),
+                summary_max_tokens=int(agent_config.get("e_mem_summary_max_tokens", 8192)),
+                query_max_tokens=int(agent_config.get("e_mem_query_max_tokens", 8192)),
+                aggregation_max_tokens=int(
+                    agent_config.get("e_mem_aggregation_max_tokens", 2048)
+                ),
+                parallel_queries=bool(agent_config.get("e_mem_parallel_queries", True)),
+            )
+            marker = "e_mem_ready.txt"
+        self.benchmark_memory_marker = os.path.join(self.agent_save_to_folder, marker)
 
+    def _handle_benchmark_memory_agent(self, message, memorizing, query_id, context_id):
+        if memorizing:
+            clean_message = self._prepare_memory_chunk_for_storage(message)
+            if self._is_agent_type("langmem"):
+                self.benchmark_memory.add_chunk(
+                    clean_message,
+                    source_ids=parse_locomo_source_ids(message),
+                )
+            else:
+                self.benchmark_memory.add_chunk(clean_message)
+            return "Memorized"
         memory_time = time.time() - self.agent_start_time
         started = time.time()
-        contexts, source_id_groups = self.langmem.retrieve_with_source_groups(message)
+        if self._is_agent_type("langmem"):
+            contexts, source_id_groups = (
+                self.benchmark_memory.retrieve_with_source_groups(message)
+            )
+        else:
+            contexts = self.benchmark_memory.retrieve(message)
+            source_id_groups = None
         fitted = self._fit_memories_for_answer(message, contexts)
         evidence = "\n".join(fitted) or "(No retrieved memories found.)"
         response, input_tokens, output_tokens = self._generate_answer_from_memories(
-            question=message,
-            memories_text=evidence,
+            question=message, memories_text=evidence,
         )
         output = self._create_standard_response(
-            response,
-            input_tokens,
-            output_tokens,
-            memory_time,
-            time.time() - started,
+            response, input_tokens, output_tokens, memory_time, time.time() - started,
         )
+        # Internal extraction/routing calls are not included in these counters.
         output["token_usage_scope"] = "final_answer_only"
-        self._save_retrieval_debug_payload(
-            {
-                "retrieved_context_paragraphs": contexts,
-                "retrieved_source_id_groups": source_id_groups,
-                "query": message,
-                "response": response,
-            },
-            query_id,
-            context_id,
-        )
+        self._save_retrieval_debug_payload({
+            "retrieved_context_paragraphs": contexts,
+            "retrieved_source_id_groups": source_id_groups,
+            "query": message,
+            "response": response,
+        }, query_id, context_id)
         self.agent_start_time = time.time()
         return self._attach_locomo_recall_metadata(output, source_id_groups)

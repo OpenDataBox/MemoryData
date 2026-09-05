@@ -1,6 +1,9 @@
 import json
 from types import SimpleNamespace
 
+import pytest
+from langgraph.errors import GraphRecursionError
+
 from methods.langmem.langmem_adapter import LangMemAdapter
 from utils.locomo_utils import build_locomo_storage_text
 
@@ -75,6 +78,55 @@ def test_add_chunk_tracks_update_provenance_and_prunes_deleted_keys(tmp_path):
 
     adapter.add_chunk("Forget the address")
     assert adapter.source_ids_by_key == {}
+
+
+def test_add_chunk_skips_graph_recursion_failures(tmp_path, caplog):
+    adapter = make_adapter(tmp_path)
+
+    class RecursingOnceManager:
+        calls = 0
+
+        def invoke(self, payload):
+            self.calls += 1
+            if self.calls == 1:
+                raise GraphRecursionError("recursion limit reached")
+            content = payload["messages"][0]["content"]
+            value = {"kind": "Memory", "content": content}
+            adapter.store.put(adapter.namespace, "recovered", value)
+            return [
+                {"namespace": adapter.namespace, "key": "recovered", "value": value}
+            ]
+
+    adapter.manager = RecursingOnceManager()
+    adapter.add_chunk(
+        build_locomo_storage_text("A pathological chunk", "c1", ["D1:1"])
+    )
+    adapter.add_chunk(build_locomo_storage_text("A valid chunk", "c2", ["D2:1"]))
+
+    assert adapter.store.items == {
+        (adapter.namespace, "recovered"): {
+            "kind": "Memory",
+            "content": "A valid chunk",
+        }
+    }
+    assert adapter.source_ids_by_key == {"recovered": ["D2:1"]}
+    assert "LangMem skipped chunk after graph recursion limit" in caplog.text
+    assert "source_ids=['D1:1']" in caplog.text
+    assert "recursion limit reached" in caplog.text
+
+
+def test_add_chunk_does_not_hide_unrelated_failures(tmp_path):
+    adapter = make_adapter(tmp_path)
+
+    class BrokenManager:
+        def invoke(self, payload):
+            del payload
+            raise RuntimeError("backend unavailable")
+
+    adapter.manager = BrokenManager()
+
+    with pytest.raises(RuntimeError, match="backend unavailable"):
+        adapter.add_chunk("A broken chunk")
 
 
 def test_retrieve_and_snapshot_preserve_ranked_source_groups(tmp_path):
