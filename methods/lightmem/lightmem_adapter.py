@@ -2,9 +2,14 @@
 
 from __future__ import annotations
 
+import ast
 from copy import deepcopy
+import json
+import os
 import re
 import sys
+import threading
+import time
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
@@ -72,7 +77,29 @@ class LightMemAdapter:
         index_strategy: str = "embedding",
         retrieve_strategy: str = "embedding",
         update_mode: str = "offline",
+        comparison_mode: bool = False,
+        compressor_model: str = "microsoft/llmlingua-2-bert-base-multilingual-cased-meetingbank",
+        compression_device: str = "cpu",
     ) -> None:
+        self.comparison_mode = comparison_mode
+        self._finalized = False
+        self._pipeline_dirty = False
+        self._last_session_time = ""
+        self._comparison_errors: list[Exception] = []
+        self._comparison_error_lock = threading.Lock()
+        self._auxiliary_hooks: list[Any] = []
+        self._auxiliary_written = False
+        if comparison_mode:
+            if memory_manager_backend != "openai" or embedding_backend != "openai":
+                raise ValueError("Comparison mode requires metered OpenAI-compatible backends")
+            if not base_url or not embedding_base_url:
+                raise ValueError("Comparison mode requires explicit LLM and embedding endpoints")
+            ingest_mode = "pipeline"
+            pre_compress = topic_segment = metadata_generate = text_summary = True
+            messages_use = "user_only"
+            index_strategy = retrieve_strategy = "embedding"
+            update_mode = "offline"
+            self._extraction_prompt = self._load_locomo_extraction_prompt()
         self.model = model
         self.retrieve_num = retrieve_num
         self.ingest_mode = ingest_mode
@@ -131,6 +158,22 @@ class LightMemAdapter:
         }
         if pre_compress:
             config_payload["pre_compressor"] = {"model_name": "llmlingua-2"}
+        if comparison_mode:
+            config_payload.update({
+                "precomp_topic_shared": True,
+                "topic_segmenter": {"model_name": "llmlingua-2"},
+                "extract_threshold": 0.1,
+                "extraction_mode": "flat",
+            })
+            config_payload["memory_manager"]["configs"]["max_tokens"] = 16000
+            config_payload["pre_compressor"]["configs"] = {
+                "llmlingua_config": {
+                    "model_name": compressor_model,
+                    "device_map": compression_device,
+                    "use_llmlingua2": True,
+                },
+                "compress_config": {"instruction": "", "rate": 0.6, "target_token": -1},
+            }
         try:
             self.lightmem = LightMemory.from_config(config_payload)
         except Exception as exc:
@@ -140,8 +183,18 @@ class LightMemAdapter:
                 self.lightmem = LightMemory.from_config(fallback_payload)
             else:
                 raise
+        if comparison_mode:
+            # The upstream manager prioritizes OPENROUTER_API_KEY over its config.
+            # Bind the explicitly supplied endpoint, never an ambient paid provider.
+            old_client = self.lightmem.manager.client
+            self.lightmem.manager.client = self.client
+            old_client.close()
+            self._install_comparison_guards()
+            self._install_auxiliary_meter(compressor_model, compression_device)
 
     def add_chunk(self, content: str, timestamp: Optional[str] = None) -> None:
+        if self.comparison_mode and self._finalized:
+            raise RuntimeError("LightMem comparison memory is already finalized")
         parsed_chunk = self._parse_chunk_messages(content, timestamp)
         if self.ingest_mode == "pipeline":
             payload = [
@@ -154,6 +207,19 @@ class LightMemAdapter:
                 }
                 for message in parsed_chunk["messages"]
             ]
+            if self.comparison_mode:
+                # The official LoCoMo builder supplies one user turn plus an empty
+                # assistant placeholder. Native segmentation indexes paired turns.
+                for message in payload:
+                    if not message["time_stamp"]:
+                        raise ValueError("LoCoMo comparison requires a session timestamp")
+                    message["time_stamp"] = self._parse_timestamp(message["time_stamp"]).strftime("%Y-%m-%d %H:%M:%S")
+                    message["role"] = "user"
+                    placeholder = dict(message, role="assistant", content="")
+                    self._run_pipeline([message, placeholder], force=False)
+                    self._memory_counter += 1
+                    self._pipeline_dirty = True
+                return
             self.lightmem.add_memory(payload, force_segment=True, force_extract=True)
             return
 
@@ -261,14 +327,208 @@ class LightMemAdapter:
         return ""
 
     def finalize(self) -> None:
-        return None
+        if not self.comparison_mode or self._finalized or not self._pipeline_dirty:
+            return
+        # A separate empty-input flush retains any segments emitted by the final
+        # real turn; upstream add_memory otherwise overwrites them when forced.
+        self._run_pipeline([], force=True)
+        self.lightmem.construct_update_queue_all_entries(propagate_errors=True)
+        self._raise_comparison_errors()
+        self.lightmem.offline_update_all_entries(score_threshold=0.9, propagate_errors=True)
+        self._raise_comparison_errors()
+        self._finalized = True
+        self._write_auxiliary_statistics("complete")
+
+    @staticmethod
+    def _load_locomo_extraction_prompt() -> str:
+        path = CURRENT_DIR / "upstream" / "experiments" / "locomo" / "prompts.py"
+        # Read only the upstream literal; do not import benchmark scripts or run
+        # arbitrary top-level code from a prompt file.
+        for node in ast.parse(path.read_text(encoding="utf-8")).body:
+            if isinstance(node, ast.Assign) and any(
+                isinstance(target, ast.Name) and target.id == "METADATA_GENERATE_PROMPT_locomo"
+                for target in node.targets
+            ):
+                value = ast.literal_eval(node.value)
+                if isinstance(value, str) and value.strip():
+                    return value
+        raise ValueError("Official LightMem LoCoMo extraction prompt is missing")
+
+    def _raise_comparison_errors(self) -> None:
+        with self._comparison_error_lock:
+            errors = list(self._comparison_errors)
+        if errors:
+            raise RuntimeError(f"LightMem internal operation failed: {errors[0]}") from errors[0]
+
+    def _run_pipeline(self, messages: list[dict[str, Any]], *, force: bool) -> None:
+        self._raise_comparison_errors()
+        self.lightmem.add_memory(
+            messages,
+            METADATA_GENERATE_PROMPT=self._extraction_prompt,
+            force_segment=force,
+            force_extract=force,
+            preserve_source_metadata=True,
+        )
+        self._raise_comparison_errors()
+
+    def _install_comparison_guards(self) -> None:
+        """Surface errors the native compressor or background update can swallow."""
+        def guard(function, *, validate_json=False):
+            def wrapped(*args, **kwargs):
+                try:
+                    result = function(*args, **kwargs)
+                    if validate_json and kwargs.get("response_format", {}).get("type") == "json_object":
+                        raw, usage = result
+                        cleaned = re.sub(r"^```(?:json)?\s*|\s*```$", "", str(raw).strip())
+                        try:
+                            parsed = json.loads(cleaned)
+                        except json.JSONDecodeError as exc:
+                            raise ValueError("LightMem returned invalid extraction/update JSON") from exc
+                        if not isinstance(parsed, dict) or not usage:
+                            raise ValueError("LightMem requires an object response with actual usage")
+                        if "data" in parsed and not isinstance(parsed["data"], list):
+                            raise ValueError("LightMem extraction data must be a list")
+                        if "data" not in parsed and parsed.get("action") not in {"ignore", "update", "delete"}:
+                            raise ValueError("LightMem response lacks extraction data or a valid update action")
+                        if parsed.get("action") == "update" and not str(parsed.get("new_memory") or "").strip():
+                            raise ValueError("LightMem update response lacks replacement memory")
+                    return result
+                except Exception as exc:
+                    with self._comparison_error_lock:
+                        self._comparison_errors.append(exc)
+                    raise
+            return wrapped
+
+        manager = self.lightmem.manager
+        manager.generate_response = guard(manager.generate_response, validate_json=True)
+        manager._call_update_llm = guard(manager._call_update_llm)
+        original_extract = manager.meta_text_extract
+
+        def checked_extract(*args, **kwargs):
+            results = original_extract(*args, **kwargs)
+            batches = kwargs["extract_list"]
+            if not isinstance(results, list) or len(results) != len(batches):
+                raise ValueError("LightMem extraction returned an incomplete batch list")
+            for batch, result in zip(batches, results):
+                if not isinstance(result, dict) or not result.get("usage"):
+                    raise RuntimeError("LightMem extraction failed without usage")
+                allowed_sources = {
+                    message["sequence_number"] // 2
+                    for segment in batch for message in segment
+                    if message["role"] == "user"
+                }
+                facts = result.get("cleaned_result")
+                if not isinstance(facts, list):
+                    raise ValueError("LightMem extraction facts must be a list")
+                for fact in facts:
+                    if not isinstance(fact, dict) or not str(fact.get("fact", "")).strip():
+                        raise ValueError("LightMem extraction returned a malformed fact")
+                    if int(fact.get("source_id", -1)) not in allowed_sources:
+                        raise ValueError("LightMem extraction returned an invalid source_id")
+            return results
+
+        manager.meta_text_extract = checked_extract
+        compressor = self.lightmem.compressor.inner_compressor
+        compressor.compress_prompt = guard(compressor.compress_prompt)
+        self.lightmem.text_embedder.embed = guard(self.lightmem.text_embedder.embed)
+        retriever = self.lightmem.embedding_retriever
+        for name in ("search", "insert", "update", "delete", "get_all"):
+            setattr(retriever, name, guard(getattr(retriever, name)))
+
+        sensory = self.lightmem.senmem_buffer_manager
+        original_cut = sensory.cut_with_segmenter
+
+        def cut_preserving_final_buffer(segmenter, embedder, force_segment=False):
+            before = list(sensory.buffer)
+            if force_segment and not before:
+                return []
+            segments = original_cut(segmenter, embedder, force_segment)
+            if force_segment:
+                emitted = [message for segment in segments for message in segment]
+                if [id(message) for message in emitted] != [id(message) for message in before]:
+                    raise RuntimeError("LightMem final segmentation did not preserve every buffered message")
+                # Native forced cut deletes len(boundaries), not the emitted
+                # message count. All original messages are verified emitted above.
+                sensory.buffer.clear()
+                sensory.token_count = 0
+            return segments
+
+        sensory.cut_with_segmenter = cut_preserving_final_buffer
+
+    def _install_auxiliary_meter(self, model_path: str, device: str) -> None:
+        model = self.lightmem.compressor.inner_compressor.model
+        revision = getattr(model.config, "_commit_hash", None)
+        if not revision and re.fullmatch(r"[0-9a-f]{40}", Path(model_path).name):
+            revision = Path(model_path).name
+        self.comparison_auxiliary_statistics = {
+            "model": model_path,
+            "revision": revision,
+            "device": device,
+            "dtype": str(model.dtype),
+            "actual_forward_calls": 0,
+            "attention_mask_tokens": 0,
+            "padded_token_slots": 0,
+            "forward_wall_seconds": 0.0,
+            "scope": "shared_llmlingua_compression_and_topic_segmentation",
+        }
+        starts = []
+
+        def before_forward(module, args, kwargs):
+            starts.append(time.perf_counter())
+            stats = self.comparison_auxiliary_statistics
+            stats["actual_forward_calls"] += 1
+            ids = kwargs.get("input_ids")
+            if ids is None and args:
+                ids = args[0]
+            mask = kwargs.get("attention_mask")
+            if ids is not None:
+                stats["padded_token_slots"] += int(ids.numel())
+                stats["attention_mask_tokens"] += int(mask.sum().item()) if mask is not None else int(ids.numel())
+
+        def after_forward(module, args, kwargs, output):
+            self.comparison_auxiliary_statistics["forward_wall_seconds"] += time.perf_counter() - starts.pop()
+
+        # The same module powers compression and segmentation: register once.
+        self._auxiliary_hooks = [
+            model.register_forward_pre_hook(before_forward, with_kwargs=True),
+            model.register_forward_hook(after_forward, with_kwargs=True, always_call=True),
+        ]
+
+    def _write_auxiliary_statistics(self, status: str) -> None:
+        journal = os.getenv("METER_AUXILIARY_JOURNAL")
+        if not journal or self._auxiliary_written:
+            return
+        from utils.request_metering import current_sample_id
+
+        row = {
+            "schema_version": 1,
+            "run_id": os.getenv("METER_RUN_ID"),
+            "method": os.getenv("METER_METHOD", "lightmem"),
+            "sample_id": current_sample_id(),
+            "status": status,
+            "conversation_turns_processed": self._memory_counter,
+            **self.comparison_auxiliary_statistics,
+        }
+        with Path(journal).open("a", encoding="utf-8") as stream:
+            stream.write(json.dumps(row, ensure_ascii=False) + "\n")
+            stream.flush()
+        self._auxiliary_written = True
 
     def close(self) -> None:
         """Release the local Qdrant lock after all queries finish."""
-        retriever = getattr(self.lightmem, "embedding_retriever", None)
-        client = getattr(retriever, "client", None)
-        if callable(getattr(client, "close", None)):
-            client.close()
+        try:
+            if getattr(self, "comparison_mode", False):
+                self._write_auxiliary_statistics("complete" if self._finalized else "incomplete")
+        finally:
+            if getattr(self, "comparison_mode", False):
+                for hook in self._auxiliary_hooks:
+                    hook.remove()
+                self._auxiliary_hooks.clear()
+                self.client.close()
+            retriever = getattr(self.lightmem, "embedding_retriever", None)
+            client = getattr(retriever, "client", None)
+            if callable(getattr(client, "close", None)):
+                client.close()
 
     @staticmethod
     def _parse_timestamp(timestamp: Optional[str]) -> datetime:
@@ -300,7 +560,10 @@ class LightMemAdapter:
         chunk_id = metadata_entries[0]["chunk_id"] if metadata_entries else None
         source_ids = metadata_entries[0]["source_ids"] if metadata_entries else parse_locomo_source_ids(content)
         body = strip_locomo_metadata(content).strip()
-        default_session_time = timestamp or datetime.now().strftime("%Y/%m/%d (%a) %H:%M:%S")
+        if getattr(self, "comparison_mode", False):
+            default_session_time = self._last_session_time or timestamp or ""
+        else:
+            default_session_time = timestamp or datetime.now().strftime("%Y/%m/%d (%a) %H:%M:%S")
 
         messages = []
         current_message = None
@@ -326,6 +589,8 @@ class LightMemAdapter:
                     str(session_match.group("session_time") or "").strip()
                     or default_session_time
                 )
+                if getattr(self, "comparison_mode", False):
+                    self._last_session_time = current_session_time
                 continue
 
             speaker_match = self._SPEAKER_LINE_RE.match(line)

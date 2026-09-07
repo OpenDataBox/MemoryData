@@ -40,6 +40,7 @@ class LangMemAdapter:
         state_dir: str | Path,
         retrieve_num: int = 10,
         query_limit: int = 5,
+        strict_comparison: bool = False,
     ) -> None:
         from langchain_openai import ChatOpenAI, OpenAIEmbeddings
         from langgraph.store.memory import InMemoryStore
@@ -49,6 +50,7 @@ class LangMemAdapter:
         self.state_dir = Path(state_dir)
         self.state_path = self.state_dir / "langmem_state.json"
         self.retrieve_num = int(retrieve_num)
+        self.strict_comparison = bool(strict_comparison)
         self.namespace = ("benchmark", "memories")
         self.source_ids_by_key: dict[str, list[str]] = {}
 
@@ -111,6 +113,8 @@ class LangMemAdapter:
                 {"messages": [{"role": "user", "content": clean_text}]}
             )
         except GraphRecursionError as exc:
+            if self.strict_comparison:
+                raise
             logger.warning(
                 "LangMem skipped chunk after graph recursion limit; source_ids=%s: %s",
                 chunk_source_ids,

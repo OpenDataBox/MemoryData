@@ -207,7 +207,8 @@ class LightMemory:
         METADATA_GENERATE_PROMPT: Optional[Union[str, Dict[str, str]]] = None,
         *,
         force_segment: bool = False, 
-        force_extract: bool = False
+        force_extract: bool = False,
+        preserve_source_metadata: bool = False,
     ):
         """
         Add new memory entries from message history.
@@ -236,6 +237,7 @@ class LightMemory:
                 - None: Use default prompts based on self.config.extraction_mode
             force_segment (bool, optional): If True, forces segmentation regardless of buffer conditions.
             force_extract (bool, optional): If True, forces memory extraction even if thresholds are not met.
+            preserve_source_metadata (bool): Validate global source IDs without batch-local clamping.
 
         Returns:
             dict: A dictionary containing the intermediate results of the memory addition pipeline.
@@ -358,6 +360,12 @@ class LightMemory:
             )
             self.logger.info(f"[{call_id}] Metadata generation completed with {result['api_call_nums']} API calls")
 
+        source_ids_by_batch = None
+        if preserve_source_metadata:
+            source_ids_by_batch = [
+                [msg["sequence_number"] // 2 for seg in batch for msg in seg if msg["role"] == "user"]
+                for batch in extract_list
+            ]
         memory_entries = convert_extraction_results_to_memory_entries(
             extracted_results=extracted_results,
             timestamps_list=timestamps_list,
@@ -365,7 +373,8 @@ class LightMemory:
             speaker_list=speaker_list,
             topic_id_map=topic_id_map,
             max_source_ids=max_source_ids,
-            logger=self.logger
+            logger=self.logger,
+            source_ids_by_batch=source_ids_by_batch,
         )
         self.logger.info(f"[{call_id}] Created {len(memory_entries)} MemoryEntry objects")
         for i, mem in enumerate(memory_entries):
@@ -442,7 +451,7 @@ class LightMemory:
                     update_sim_threshold = 0.8
                 )
 
-    def construct_update_queue_all_entries(self, top_k: int = 20, keep_top_n: int = 10, max_workers: int = 8):
+    def construct_update_queue_all_entries(self, top_k: int = 20, keep_top_n: int = 10, max_workers: int = 8, *, propagate_errors: bool = False):
 
         """
         Offline update all entries in parallel using multithreading.
@@ -517,14 +526,16 @@ class LightMemory:
         self.logger.info(f"[{call_id}] Starting parallel queue construction with {max_workers} workers")
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-            executor.map(_update_queue_construction, all_entries)
+            pending = executor.map(_update_queue_construction, all_entries)
+            if propagate_errors:
+                list(pending)
         self.logger.info(
             f"[{call_id}] Queue construction completed: {updated_count} updated, {skipped_count} skipped, "
             f"nonempty_queues={nonempty_queue_count}, empty_queues={empty_queue_count}"
         )
         self.logger.info(f"========== END {call_id} ==========")
 
-    def offline_update_all_entries(self, score_threshold: float = 0.9, max_workers: int = 5):
+    def offline_update_all_entries(self, score_threshold: float = 0.9, max_workers: int = 5, *, propagate_errors: bool = False):
         """
         Perform offline updates for all entries based on their update_queue, in parallel.
 
@@ -612,7 +623,9 @@ class LightMemory:
                 self.logger.debug(f"[{call_id}] Updated entry: {eid}")
         self.logger.info(f"[{call_id}] Starting parallel offline update with {max_workers} workers")
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-            executor.map(update_entry, all_entries)
+            pending = executor.map(update_entry, all_entries)
+            if propagate_errors:
+                list(pending)
         with lock:
             self.token_stats["update_calls"] += update_token_stats["calls"]
             self.token_stats["update_prompt_tokens"] += update_token_stats["prompt_tokens"]

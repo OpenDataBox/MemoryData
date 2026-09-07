@@ -11,6 +11,7 @@ def load_locomo_eval_data(dataset_config):
     dataset_path = _resolve_locomo_dataset_path(dataset_config)
     chunk_size = int(dataset_config.get("chunk_size", 4096))
     max_test_samples = dataset_config.get("max_test_samples")
+    repeat_session_header = bool(dataset_config.get("locomo_repeat_session_header", False))
     include_categories = _normalize_category_filter(dataset_config.get("locomo_categories"))
     exclude_categories = _normalize_category_filter(dataset_config.get("locomo_exclude_categories"))
 
@@ -22,6 +23,7 @@ def load_locomo_eval_data(dataset_config):
             sample,
             sample_index,
             chunk_size,
+            repeat_session_header=repeat_session_header,
             include_categories=include_categories,
             exclude_categories=exclude_categories,
         )
@@ -45,10 +47,22 @@ def _resolve_locomo_dataset_path(dataset_config):
     return repo_root / "datasets" / "LoCoMo" / "locomo10.json"
 
 
-def _convert_locomo_sample(sample, sample_index, chunk_size, include_categories=None, exclude_categories=None):
+def _convert_locomo_sample(
+    sample,
+    sample_index,
+    chunk_size,
+    repeat_session_header=False,
+    include_categories=None,
+    exclude_categories=None,
+):
     sample_id = str(sample.get("sample_id", f"locomo_{sample_index}"))
     conversation = sample.get("conversation", {})
-    context_chunks = _build_locomo_context_chunks(sample_id, conversation, chunk_size)
+    context_chunks = _build_locomo_context_chunks(
+        sample_id,
+        conversation,
+        chunk_size,
+        repeat_session_header=repeat_session_header,
+    )
 
     questions = []
     answers = []
@@ -103,7 +117,12 @@ def _convert_locomo_sample(sample, sample_index, chunk_size, include_categories=
     }
 
 
-def _build_locomo_context_chunks(sample_id, conversation, chunk_size):
+def _build_locomo_context_chunks(
+    sample_id,
+    conversation,
+    chunk_size,
+    repeat_session_header=False,
+):
     chunks = []
     current_units = []
     current_source_ids = []
@@ -125,6 +144,13 @@ def _build_locomo_context_chunks(sample_id, conversation, chunk_size):
                 current_units = []
                 current_source_ids = []
                 current_length = 0
+                if repeat_session_header and turn_index > 0:
+                    turn_text = _format_turn_text(
+                        turn,
+                        session_label,
+                        session_time,
+                        include_session_header=True,
+                    )
 
             current_units.append(turn_text)
             current_source_ids.extend([str(turn.get("dia_id", "")).strip()])

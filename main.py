@@ -19,6 +19,7 @@ import logging
 import numpy as np
 from utils.eval_other_utils import metrics_summarization
 from utils.locomo_utils import get_locomo_category_label
+from utils.request_metering import meter_operation
 
 # Configure logging
 logging.basicConfig(
@@ -524,6 +525,17 @@ def unpack_query_data(query_data):
     raise ValueError(f"Unexpected query tuple length: {len(query_data)}")
 
 
+def _resolve_context_sample_id(context_index, query_answer_pairs):
+    """Return the first dataset-native sample ID, falling back to context index."""
+    for query_data in query_answer_pairs:
+        if len(query_data) != 4:
+            continue
+        eval_metadata = query_data[3]
+        if isinstance(eval_metadata, dict) and eval_metadata.get("sample_id") is not None:
+            return eval_metadata["sample_id"]
+    return context_index
+
+
 def build_failed_query_record(query, answer, query_index, context_index, exc, qa_pair_id=None, eval_metadata=None):
     """Create a result entry for a query that failed mid-run."""
     result_record = {
@@ -621,15 +633,17 @@ def process_context(context_index, context_chunks, query_answer_pairs, agent_con
     
     # Initialize agent for the current context
     agent_save_folder = generate_agent_save_folder(agent_config, dataset_config, context_index)
-    agent, context_native_timing = initialize_and_memorize_agent(
-        agent_config,
-        dataset_config,
-        agent_save_folder,
-        context_chunks,
-        context_index,
-        total_contexts,
-        force_rebuild=force_rerun,
-    )
+    sample_id = _resolve_context_sample_id(context_index, query_answer_pairs)
+    with meter_operation("initialize", sample_id=sample_id):
+        agent, context_native_timing = initialize_and_memorize_agent(
+            agent_config,
+            dataset_config,
+            agent_save_folder,
+            context_chunks,
+            context_index,
+            total_contexts,
+            force_rebuild=force_rerun,
+        )
     
     # Process all queries for this context, then release local storage locks.
     try:

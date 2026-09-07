@@ -30,6 +30,12 @@ from utils.artifact_paths import (
     resolve_artifact_root,
     resolve_results_artifact_path,
 )
+from utils.request_metering import (
+    meter_operation,
+    metered_phase,
+    resolve_question_id,
+    resolve_sample_id,
+)
 
 from langchain_core.documents import Document
 for extra_path in [
@@ -137,6 +143,9 @@ class AgentWrapper:
         self.artifact_root = resolve_artifact_root(agent_config=agent_config)
         self.agent_save_to_folder = load_agent_from
         self.record_llm_io = bool(agent_config.get("record_llm_io", False))
+        self.strict_comparison = (
+            os.environ.get("BASELINE_STRICT_COMPARISON", "").strip() == "1"
+        )
         self._last_llm_trace = None
         self._current_query_id = None
         self._current_context_id = None
@@ -612,6 +621,11 @@ class AgentWrapper:
         tokens = self._encode_text(text)
         if len(tokens) <= max_tokens:
             return text
+        if getattr(self, "strict_comparison", False):
+            raise RuntimeError(
+                "Strict comparison mode would truncate input text "
+                f"from {len(tokens)} to {max_tokens} tokens"
+            )
 
         if truncation_strategy == "tail":
             truncated_tokens = tokens[-max_tokens:]
@@ -649,6 +663,10 @@ class AgentWrapper:
             - reserved_tokens,
         )
         if available_budget <= 0:
+            if getattr(self, "strict_comparison", False) and text:
+                raise RuntimeError(
+                    "Strict comparison mode would drop input text because no prompt budget remains"
+                )
             return ""
 
         return self._truncate_text_to_token_limit(
@@ -768,6 +786,8 @@ class AgentWrapper:
         except Exception as exc:
             error_text = str(exc).lower()
             if "maximum context length" not in error_text:
+                raise
+            if getattr(self, "strict_comparison", False):
                 raise
 
             memory_token_count = max(self._count_tokens(memories_text or ""), 1)
@@ -1777,6 +1797,12 @@ class AgentWrapper:
             index_strategy=agent_config.get('lightmem_index_strategy', 'embedding'),
             retrieve_strategy=agent_config.get('lightmem_retrieve_strategy', 'embedding'),
             update_mode=agent_config.get('lightmem_update', 'offline'),
+            comparison_mode=agent_config.get('lightmem_comparison_mode', False),
+            compressor_model=agent_config.get(
+                'lightmem_compressor_model',
+                'microsoft/llmlingua-2-bert-base-multilingual-cased-meetingbank',
+            ),
+            compression_device=agent_config.get('lightmem_compression_device', 'cpu'),
         )
 
     def _initialize_a_mem_agent(self, agent_config, dataset_config):
@@ -2422,28 +2448,32 @@ class AgentWrapper:
         Returns:
             dict or str: Agent response with metadata (for queries) or confirmation (for memorization)
         """
-        if memorizing:
-            self._current_query_id = None
-            self._current_context_id = context_id
-            self._current_eval_metadata = None
-            self._last_llm_trace = None
-        else:
-            self._current_query_id = query_id
-            self._current_context_id = context_id
-            self._current_eval_metadata = eval_metadata
-            self._last_llm_trace = None
+        phase = "memory_add" if memorizing else "qa"
+        sample_id = resolve_sample_id(context_id, None if memorizing else eval_metadata)
+        question_id = None if memorizing else resolve_question_id(query_id, eval_metadata)
+        with meter_operation(phase, sample_id=sample_id, question_id=question_id):
+            if memorizing:
+                self._current_query_id = None
+                self._current_context_id = context_id
+                self._current_eval_metadata = None
+                self._last_llm_trace = None
+            else:
+                self._current_query_id = query_id
+                self._current_context_id = context_id
+                self._current_eval_metadata = eval_metadata
+                self._last_llm_trace = None
 
-        message = self._normalize_message_payload(message, memorizing=memorizing)
+            message = self._normalize_message_payload(message, memorizing=memorizing)
 
-        # Route to appropriate agent handler based on agent type
-        if 'Long_context_agent' in self.agent_name:
-            return self._handle_long_context_agent(message, memorizing)
-        elif any(self._is_agent_type(agent_type) for agent_type in ["langmem", "e_mem", "retentionmem", "letta", "cognee", "mem0", "memtree", "memochat", "memoryos", "zep", "simplemem", "lightmem", "a_mem", "everos", "memagent", "MemOS"]):
-            return self._handle_memory_agent(message, memorizing, query_id, context_id)
-        elif self._is_agent_type("rag"):
-            return self._handle_rag_agent(message, memorizing, query_id, context_id)
-        else:
-            raise NotImplementedError(f"Agent type not supported: {self.agent_name}")
+            # Route to appropriate agent handler based on agent type
+            if 'Long_context_agent' in self.agent_name:
+                return self._handle_long_context_agent(message, memorizing)
+            elif any(self._is_agent_type(agent_type) for agent_type in ["langmem", "e_mem", "retentionmem", "letta", "cognee", "mem0", "memtree", "memochat", "memoryos", "zep", "simplemem", "lightmem", "a_mem", "everos", "memagent", "MemOS"]):
+                return self._handle_memory_agent(message, memorizing, query_id, context_id)
+            elif self._is_agent_type("rag"):
+                return self._handle_rag_agent(message, memorizing, query_id, context_id)
+            else:
+                raise NotImplementedError(f"Agent type not supported: {self.agent_name}")
 
     def _handle_long_context_agent(self, message, memorizing):
         """Handle message processing for long context agents."""
@@ -2597,9 +2627,19 @@ class AgentWrapper:
             remaining = budget - used_tokens - prefix_tokens
 
             if remaining <= 0:
+                if getattr(self, "strict_comparison", False):
+                    raise RuntimeError(
+                        "Strict comparison mode would drop retrieved context "
+                        f"{index} because no prompt budget remains"
+                    )
                 break
 
             if len(text_tokens) > remaining:
+                if getattr(self, "strict_comparison", False):
+                    raise RuntimeError(
+                        "Strict comparison mode would truncate retrieved context "
+                        f"{index} from {len(text_tokens)} to {remaining} tokens"
+                    )
                 truncated_text = _decode(text_tokens[:remaining]).strip()
                 if truncated_text:
                     fitted_contexts.append(truncated_text)
@@ -3185,7 +3225,7 @@ class AgentWrapper:
                 **request_kwargs
             )
 
-            memory_retrieval_length = len(self.tokenizer.encode(memories_str, disallowed_special=()))
+            memory_retrieval_length = self._count_tokens(memories_str)
             query_time_len = time.time() - self.agent_start_time - memory_construction_time
             print(f"\nmemory_length: {memory_retrieval_length}\n")
 
@@ -3325,12 +3365,11 @@ class AgentWrapper:
         memory_construction_time = time.time() - self.agent_start_time
         retrieved_context, retrieved_source_id_groups = self.a_mem.retrieve_with_source_groups(message)
         response = self.a_mem.ask_with_retrieved_context(message, retrieved_context)
-        tokenizer = self.tokenizer
         query_time_len = time.time() - self.agent_start_time - memory_construction_time
         output = self._create_standard_response(
             response,
-            len(tokenizer.encode(retrieved_context + "\n" + message, disallowed_special=())),
-            len(tokenizer.encode(response, disallowed_special=())),
+            self._count_tokens(retrieved_context + "\n" + message),
+            self._count_tokens(response),
             memory_construction_time,
             query_time_len
         )
@@ -4402,6 +4441,7 @@ class AgentWrapper:
             "retrieval_context": retrieval_context,
         }
 
+    @metered_phase("memory_finalize")
     def save_agent(self):
         """Save agent state to disk for persistence."""
         if self._is_agent_type("retentionmem"):
@@ -4655,6 +4695,7 @@ class AgentWrapper:
             self.benchmark_memory = LangMemAdapter(
                 **common, embedding_dims=int(agent_config.get("embedding_dim", 1536)),
                 query_limit=int(agent_config.get("langmem_query_limit", 5)),
+                strict_comparison=self.strict_comparison,
             )
             marker = "langmem_ready.txt"
         else:
