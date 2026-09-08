@@ -1,0 +1,69 @@
+{
+  "baseline": {
+    "n": 70,
+    "official_f1": 0.5927437370002834,
+    "generic_token_f1": 0.582176556376965,
+    "read_tokens": 2015.3857142857144,
+    "memory_tokens": 59112.857142857145,
+    "cited_source_recall": 0.8257142857142856,
+    "by_category": {
+      "1": {
+        "n": 12,
+        "f1": 0.4864197530864198
+      },
+      "2": {
+        "n": 14,
+        "f1": 0.6693877551020408
+      },
+      "3": {
+        "n": 5,
+        "f1": 0.0
+      },
+      "4": {
+        "n": 39,
+        "f1": 0.6739383585013907
+      }
+    },
+    "failures_below_half_f1": 24,
+    "failures_missing_cited_sources": 10
+  },
+  "comparisons": [
+    {
+      "name": "y_radius_003",
+      "f1": 0.5677097233948414,
+      "changed_contexts": 38,
+      "changed_predictions": 9,
+      "f1_improvements": 1,
+      "f1_regressions": 3,
+      "cited_source_recall": 0.8221428571428571,
+      "f1_delta_points": -2.5034013605441996,
+      "source_weighted_initial_loss": 1.0378350056205374,
+      "source_weighted_final_loss": 0.8756670530995433
+    },
+    {
+      "name": "y_radius_010",
+      "f1": 0.5734955232155761,
+      "changed_contexts": 62,
+      "changed_predictions": 17,
+      "f1_improvements": 3,
+      "f1_regressions": 8,
+      "cited_source_recall": 0.8397619047619047,
+      "f1_delta_points": -1.9248213784707313,
+      "source_weighted_initial_loss": 1.0378350056205374,
+      "source_weighted_final_loss": 0.5480996567423314
+    },
+    {
+      "name": "y_radius_030",
+      "f1": 0.5667315259437108,
+      "changed_contexts": 66,
+      "changed_predictions": 28,
+      "f1_improvements": 4,
+      "f1_regressions": 13,
+      "cited_source_recall": 0.854047619047619,
+      "f1_delta_points": -2.6012211056572587,
+      "source_weighted_initial_loss": 1.0378350056205374,
+      "source_weighted_final_loss": 0.07632896262980456
+    }
+  ],
+  "limits": "Aggregate development diagnostics only. These are already exposed development questions, not new audit results."
+}

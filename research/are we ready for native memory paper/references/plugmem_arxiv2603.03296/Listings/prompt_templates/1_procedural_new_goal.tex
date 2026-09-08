@@ -1,0 +1,20 @@
+\begin{lstlisting}[
+  caption={Prompt template for merging two similar intents.},
+  label={lst:apdx_prompt_get_new_subgoal},
+]
+============================================================
+Prompt Get_New_Subgoal
+============================================================
+
+Each goal may contain overlapping or complementary information.
+Your task is to carefully combine them into a single, coherent, and well-structured goal that preserves all important details from both.
+Avoid redundancy and ensure the merged goal sounds natural and consistent in tone.
+
+Input:
+Earlier goal: {goal_1}
+Later goal: {goal_2}
+
+Output:
+Merged goal: [Write the unified goal here]
+\end{lstlisting}
+

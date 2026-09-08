@@ -1,0 +1,29 @@
+# Install in a fresh Python 3.12 environment, from the repository root.
+# The repository-wide requirements.txt also includes unrelated GPU baselines.
+-e methods/langmem
+langchain>=0.3.30,<1
+langchain-openai>=0.3.35,<0.4
+langgraph>=1.0.1,<1.1
+openai>=2.30,<3
+transformers>=4.51,<5
+torch>=2.5
+sentence-transformers>=3,<6
+numpy
+scikit-learn
+qdrant-client
+lancedb
+mem0ai>=1.0.10,<3
+litellm
+nltk
+rouge-score
+rank-bm25
+tiktoken
+python-dotenv
+PyYAML
+tqdm
+pandas
+dateparser
+tantivy
+jieba
+accelerate
+llmlingua

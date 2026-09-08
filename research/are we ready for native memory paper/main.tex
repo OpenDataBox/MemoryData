@@ -1,0 +1,196 @@
+\documentclass[sigconf]{acmart}
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{pifont}
+\usepackage{multirow, makecell}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{subcaption}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+% \usepackage{comment}
+\usepackage{environ} % to redefine 
+\usepackage{pifont}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+
+% 【彻底去掉了 [1][] 和 #1，封闭环境防冲突】
+\newtcolorbox[auto counter]{findingbox}{
+    breakable,
+    enhanced,
+    before skip=3pt,          % 上下外边距
+    after skip=3pt,
+    top=2pt,                  % 上下内边距
+    bottom=2pt,
+    left=3pt,                 % 左右内边距
+    right=3pt,
+    pad at break=1pt,         % 消除跨页灰色大尾巴
+    bottomsep at break=0pt,   % 消除跨页底部额外间距
+    colback=gray!10,          % 浅灰背景
+    colframe=black,           % 黑边框
+    boxrule=1.1pt,            % 边框加粗
+    sharp corners,            % 直角
+    fontupper=\itshape,       % 内容斜体
+    title={Finding \thetcbcounter.},
+    colbacktitle=gray!10,
+    coltitle=black,
+    fonttitle=\bfseries\upshape,
+    attach title to upper,
+    after title={\hspace{0.5em}} % 使用了极其安全的空格命令，避免 \ 引起的乱码
+}
+
+\newcommand{\hi}[1]{\vspace{.25em} \noindent {\bf #1} }
+\newcommand{\bfit}[1]{\textbf{\textit{#1}}}
+
+\newcommand{\llm}{\textsc{LLM}\xspace}
+\newcommand{\llms}{\textsc{LLMs}\xspace}
+% \newcommand{\bfit}[1]{\textbf{\textit{#1}}}
+% \newcommand{\oursys}{\texttt{Bridge}\xspace}
+\newcommand{\oursys}{\bfit{DBCooker}\xspace} % NFCooker
+\newcommand{\functionsynthesis}{{function synthesis}\xspace}
+\newtheorem{definition}{DEFINITION}[section]
+
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+\newcommand{\lgl}[1]{\textcolor{blue}{LGL #1 LGL}}
+\newcommand{\zw}[1]{\textcolor{purple}{#1}}
+\newcommand{\zxh}[1]{\textcolor{blue}{#1}}
+\newcommand{\hsk}[1]{\textcolor{teal}{#1}}
+\newcommand{\xhm}[1]{\textcolor{brown}{#1}}
+
+\setcopyright{none}
+\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote 
+\settopmatter{printfolios=false,printccs=false,printacmref=false}
+
+\begin{document}
+
+\title{Memory as Data: An In-depth Study of Agent Memory Methods: \\ \protect [Experiments \& Analysis]}
+\title{Are We Ready For An Agent-Native Memory System? [E\&A]}
+\title{Are We Ready For An Agent-Native Memory System?}
+
+\settopmatter{authorsperrow=4}
+
+\author{Wei Zhou}
+\affiliation{
+    Shanghai Jiao Tong University
+    \country{}
+}
+\email{weizhoudb@sjtu.edu.cn}
+
+\author{Xuanhe Zhou}\authornote{Xuanhe Zhou is the corresponding author.}
+\affiliation{
+    Shanghai Jiao Tong University
+    \country{}
+}
+\email{zhouxuanhe@sjtu.edu.cn}
+
+\author{Shaokun Han}
+\affiliation{
+    Shanghai Jiao Tong University
+    \country{}
+}
+\email{areedd0@sjtu.edu.cn}
+
+\author{Hongming Xu}
+\affiliation{
+    Shanghai Jiao Tong University
+    \country{}
+}
+\email{muzhihai@sjtu.edu.cn}
+
+\author{Guoliang Li}
+\affiliation{
+    \institution{Tsinghua University}
+    \city{}
+    \country{}
+}
+\email{liguoliang@tsinghua.edu.cn}
+
+\author{Zhiyu Li}
+\affiliation{
+    MemTensor (Shanghai) Technology Co., Ltd
+    \country{}
+}
+\email{lizy@memtensor.cn}
+
+\author{Feiyu Xiong}
+\affiliation{
+    MemTensor (Shanghai) Technology Co., Ltd
+    \country{}
+}
+\email{xiongfy@memtensor.cn}
+
+\author{Fan Wu}
+\affiliation{
+    Shanghai Jiao Tong University
+    \country{}
+}
+\email{fwu@cs.sjtu.edu.cn}
+
+%%
+%% By default, the full list of authors will be used in the page
+%% headers. Often, this list is too long, and will overlap
+%% other information printed in the page headers. This command allows
+%% the author to define a more concise list
+%% of authors' names for this purpose.
+\renewcommand{\shortauthors}{Trovato et al.}
+
+\pagestyle{plain}
+\pagenumbering{arabic}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+\begin{abstract}
+Memory for large language model (LLM) agents has rapidly evolved from simple retrieval-augmented mechanisms into a data management system that supports persistent information storage, retrieval, update, consolidation, and dynamic lifecycle governance throughout agent execution. Despite this evolution, existing evaluations still benchmark agent memory mainly through end-to-end task success metrics (e.g., F1, BLEU), while treating the underlying system as a monolithic black box. As a result, critical system-level concerns, including operational costs, architectural trade-offs across memory modules, and robustness under dynamic knowledge updates, remain insufficiently explored.
+
+%Despite this evolution, existing evaluations largely treat agent memory as a monolithic algorithmic component, focusing on end-to-end task success metrics. As a result, they often overlook the fundamental nature of agent memory, leaving critical operational costs, structural trade-offs, and maintenance robustness insufficiently examined.
+
+In this paper, we present a systematic experimental study of agent memory from a data management perspective. We propose an analytical framework that decomposes agent memory into four core modules: memory representation and storage, extraction, retrieval and routing, and maintenance. Under this framework, we evaluate 12 representative memory systems and two reference baselines across five benchmark workloads spanning 11 datasets. Our extensive end-to-end evaluation shows that no single architecture dominates across all scenarios; instead, effectiveness depends heavily on how well the memory structure aligns with the workload bottleneck. Furthermore, through fine-grained ablation studies, we quantify their individual effects on representation fidelity, retrieval precision, update correctness, and long-horizon stability. Finally, we reveal cost-performance trade-offs under realistic workloads, showing localized maintenance is more cost-efficient than global reorganization. Based on these findings, we identify promising directions towards building truly agent-native memory systems.
+The code is publicly available at \blue{\emph{\url{https://github.com/OpenDataBox/MemoryData}}}.
+
+% Memory for LLM agents has rapidly evolved from early retrieval-augmented mechanisms into a foundational system (component), which supports both multi-granularity information management and dynamic lifecycle governance. Despite this trend, existing evaluations remain focused on task-level benchmarks that measure factual accuracy and long-context understanding, overlooking the fundamental nature of agent memory as a data management system. 
+
+% In this paper, we present a systematic experimental and analysis study of agent memory from a database systems perspective.
+% We propose an analytical framework that decomposes agent memory into four core modules: memory representation, storage and indexing, retrieval and routing, and maintenance, thereby mapping agent memory operations to fundamental database components. Using this framework, we evaluate memory systems by \zxh{xxx}, involving 11 representative ones across 7 benchmark workloads encompassing 11 datasets, revealing that no single architecture dominates all scenarios. Through fine-grained ablation studies that isolate each of the four modules, we quantify their individual impacts on representation fidelity, storage scalability, routing precision, and update correctness. Finally, we uncover fundamental cost-performance trade-offs under realistic workloads and identify promising research directions for future agent-native memory development.
+% \zw{investigate and assess agent memory into four modules (from database perspective)}
+\end{abstract}
+
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+\input{1_introduction}
+\input{2_definition}
+\input{3_taxonomy}
+\input{4_overall}
+\input{5_finegrained}
+% \input{6_findings}
+\input{7_conclusion}
+
+\clearpage
+
+\balance
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{sample}
+
+%%
+%% If your work has an appendix, this is the place to put it.
+% \appendix
+% \input{appendix}
+
+\end{document}

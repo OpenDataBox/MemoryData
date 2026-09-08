@@ -1,0 +1,31 @@
+services:
+  simplemem:
+    container_name: simplemem
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      # Named volume so container user (appuser) can write; bind mount ./data often has wrong host ownership
+      - simplemem_data:/app/MCP/data
+    ports:
+      - "8000:8000"
+    environment:
+      - DATA_DIR=/app/MCP/data
+      - LANCEDB_PATH=/app/MCP/data/lancedb
+      - USER_DB_PATH=/app/MCP/data/users.db
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-simplemem-secret-key-change-in-production}
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY:-simplemem-encryption-key-32bytes!}
+      - LLM_PROVIDER=${LLM_PROVIDER:-openrouter}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434/v1}
+      - OPENROUTER_BASE_URL=${OPENROUTER_BASE_URL:-https://openrouter.ai/api/v1}
+      - LLM_MODEL=${LLM_MODEL:-openai/gpt-4.1-mini}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-qwen3-embedding:4b}
+      - EMBEDDING_DIMENSION=${EMBEDDING_DIMENSION:-2560}
+    # Linux: enable host.docker.internal for Ollama on host
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # Optional: create .env from .env.example, then: docker compose --env-file .env up -d
+    restart: unless-stopped
+
+volumes:
+  simplemem_data:

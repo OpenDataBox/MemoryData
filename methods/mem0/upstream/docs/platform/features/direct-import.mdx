@@ -1,0 +1,127 @@
+---
+title: Direct Import
+description: 'Bypass the memory deduction phase and directly store pre-defined memories for efficient retrieval'
+---
+
+## How to Use Direct Import
+
+The Direct Import feature allows users to skip the memory deduction phase and directly input pre-defined memories into the system for storage and retrieval. To enable this feature, set the `infer` parameter to `False` in the `add` method.
+
+
+<CodeGroup>
+
+
+```python Python
+messages = [
+    {"role": "user", "content": "Alice loves playing badminton"},
+    {"role": "assistant", "content": "That's great! Alice is a fitness freak"},
+    {"role": "user", "content": "Alice mostly cooks at home because of her gym plan"},
+]
+
+
+client.add(messages, user_id="alice", infer=False)
+```
+
+```json Output
+{
+  "message": "Memories stored successfully",
+  "status": "SUCCEEDED",
+  "event_id": "8c1f5e2b-3d47-4a9e-b6c1-5f2a7d3e9b04",
+  "results": [
+    {
+      "id": "19d6d7aa-2454-4e58-96fc-e74d9e9f8dd1",
+      "data": { "memory": "Alice loves playing badminton" },
+      "event": "ADD"
+    },
+    {
+      "id": "8557f05d-7b3c-47e5-b409-9886f9e314fc",
+      "data": { "memory": "Alice mostly cooks at home because of her gym plan" },
+      "event": "ADD"
+    }
+  ]
+}
+```
+</CodeGroup>
+
+<Note>
+Direct import stores `"user"` and `"assistant"` messages alike, regardless of which entity ids you pass. Only `"system"` messages are dropped. Each surviving message becomes one memory, with its content stored verbatim.
+</Note>
+
+<Warning>
+Direct import skips semantic duplicate detection: two different phrasings of the same fact will be stored as two separate memories. Exact repeats in the same scope are deduplicated by an exact hash of the text, so resending identical text is safe. Mixing `infer=False` and `infer=True` for the same fact can still produce two memories, since neither path checks the other for duplicates.
+
+Direct import also does not support multimodal content (`image_url`, `pdf_url`, `txt_url`, `mdx_url`). Those messages are skipped without raising an error, so they are missing from `results` rather than reported as a failure. Pass plain string content only when `infer=False`.
+</Warning>
+
+## How to Retrieve Memories
+
+You can retrieve memories using the `search` method.
+
+<CodeGroup>
+
+```python Python
+client.search("What is Alice's favorite sport?", filters={"user_id": "alice"})
+```
+
+```json Output
+{
+  "results": [
+    {
+      "id": "19d6d7aa-2454-4e58-96fc-e74d9e9f8dd1",
+      "memory": "Alice loves playing badminton",
+      "user_id": "pc123",
+      "metadata": null,
+      "categories": null,
+      "created_at": "2024-10-15T21:52:11.474901-07:00",
+      "updated_at": "2024-10-15T21:52:11.474912-07:00"
+    }
+  ]
+}
+```
+
+</CodeGroup>
+
+## How to Retrieve All Memories
+
+You can retrieve all memories using the `get_all` method.
+
+<Callout type="warning" title="Filters Required">
+`get_all()` now requires filters to be specified.
+</Callout>
+
+<CodeGroup>
+
+```python Python
+client.get_all(filters={"AND": [{"user_id": "alice"}]})
+```
+
+```json Output
+{
+  "results": [
+    {
+      "id": "19d6d7aa-2454-4e58-96fc-e74d9e9f8dd1",
+      "memory": "Alice loves playing badminton",
+      "user_id": "pc123",
+      "metadata": null,
+      "categories": null,
+      "created_at": "2024-10-15T21:52:11.474901-07:00",
+      "updated_at": "2024-10-15T21:52:11.474912-07:00"
+    },
+    {
+      "id": "8557f05d-7b3c-47e5-b409-9886f9e314fc",
+      "memory": "Alice mostly cooks at home because of her gym plan",
+      "user_id": "pc123",
+      "metadata": null,
+      "categories": null,
+      "created_at": "2024-10-15T21:52:11.474929-07:00",
+      "updated_at": "2024-10-15T21:52:11.474932-07:00"
+    }
+  ]
+}
+```
+
+</CodeGroup>
+
+If you have any questions, please feel free to reach out to us using one of the following methods:
+
+<Snippet file="get-help.mdx" />

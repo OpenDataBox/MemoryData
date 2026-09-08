@@ -1,0 +1,18 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "optimize_prompts": "./src/langmem/graphs/prompts.py:optimize_prompts",
+    "extract_memories": "./src/langmem/graphs/semantic.py:graph"
+  },
+  "env": ".env",
+  "auth": {
+    "path": "./src/langmem/graphs/auth.py:auth"
+  },
+  "store": {
+    "index": {
+      "embed": "openai:text-embedding-3-small",
+      "dims": 1536,
+      "fields": ["$"]
+    }
+  }
+}

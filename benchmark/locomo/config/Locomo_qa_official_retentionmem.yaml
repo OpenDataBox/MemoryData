@@ -1,0 +1,16 @@
+dataset: LoCoMo
+chunk_size: 4096
+debug: false
+seed: 42
+context_max_length: 10000000
+sub_dataset: locomo_qa
+generation_max_length: 128
+test_files: datasets/retentionmem/locomo10.json
+demo_files: ''
+use_chat_template: true
+max_test_samples: 10
+shots: 0
+tag: official_retentionmem
+# This root-runner config loads all categories. Prefer the native RetentionMem
+# run command for categories 1-4 filtering, turn timestamps,
+# official category-specific F1, strict query budgets and complete cost accounting.

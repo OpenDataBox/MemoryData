@@ -1,0 +1,374 @@
+{
+  "question": "What did John say about his effort on the court?",
+  "answer": "Giving it my all every time I'm on the court",
+  "source_ids": [
+    "D2:18"
+  ],
+  "candidate_context_ids": [
+    "D2:17",
+    "D2:18",
+    "D2:19"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D2:18",
+      "start": 22,
+      "end": 66,
+      "verbatim": "Giving it my all every time I'm on the court"
+    }
+  ],
+  "session": 2,
+  "recorded_date": "5:08 pm on 15 June, 2023",
+  "conv_id": "conv-43",
+  "split": "probe_fit",
+  "id": "conv-43:source_probe:2",
+  "analysis": {
+    "full_advantage": 7.092148853685353,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D2:18"
+    ],
+    "best_pair_sources": [
+      "D2:17",
+      "D2:18"
+    ],
+    "minimum_sources": [
+      "D2:18"
+    ],
+    "minimum_tokens": 54,
+    "single_policy_sources": [
+      "D2:18"
+    ],
+    "single_policy_tokens": 54,
+    "full_tokens": 115,
+    "best_pair_lift_over_best_single": 0.00020380029045761395,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D2:17",
+          "D2:18"
+        ],
+        "joint_lift": 0.00020380029045761395,
+        "interaction": 0.2739975142883635,
+        "advantage": 7.092666063052762
+      },
+      {
+        "source_ids": [
+          "D2:17",
+          "D2:19"
+        ],
+        "joint_lift": -2.755568652604625,
+        "interaction": 0.4370242265776554,
+        "advantage": -3.0293623666025304
+      },
+      {
+        "source_ids": [
+          "D2:18",
+          "D2:19"
+        ],
+        "joint_lift": -0.00012583438166819343,
+        "interaction": 3.192467044800612,
+        "advantage": 7.092336428380636
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": false
+  },
+  "generations": {
+    "empty": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "full": {
+      "text": "Giving it my all every time I'm on the court.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D2:17",
+        "D2:18",
+        "D2:19"
+      ],
+      "context_tokens": 115,
+      "source_answer_f1": 1.0
+    },
+    "answer_removed": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D2:17",
+        "D2:19"
+      ],
+      "context_tokens": 83,
+      "source_answer_f1": 0.0
+    },
+    "best_single": {
+      "text": "Giving it my all every time I'm on the court.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D2:18"
+      ],
+      "context_tokens": 54,
+      "source_answer_f1": 1.0
+    },
+    "best_pair": {
+      "text": "Giving it my all every time I'm on the court.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D2:17",
+        "D2:18"
+      ],
+      "context_tokens": 89,
+      "source_answer_f1": 1.0
+    },
+    "minimum_bundle": {
+      "text": "Giving it my all every time I'm on the court.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D2:18"
+      ],
+      "context_tokens": 54,
+      "source_answer_f1": 1.0
+    },
+    "single_policy": {
+      "text": "Giving it my all every time I'm on the court.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D2:18"
+      ],
+      "context_tokens": 54,
+      "source_answer_f1": 1.0
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -7.092805874753385,
+        "sum_logprob": -78.02086462228723,
+        "answer_tokens": 11,
+        "token_logprobs": [
+          -38.14119338989258,
+          -0.0339726097881794,
+          -8.625683784484863,
+          -1.7165990357170813e-05,
+          -12.028162002563477,
+          -0.6404871344566345,
+          -0.0026712471153587103,
+          -18.500045776367188,
+          -0.048631273210048676,
+          -2.3841855067985307e-07,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D2:17",
+        "D2:18",
+        "D2:19"
+      ],
+      "context_tokens": 115,
+      "score": {
+        "mean_logprob": -0.0006570210680313886,
+        "sum_logprob": -0.007227231748345275,
+        "answer_tokens": 11,
+        "token_logprobs": [
+          -0.007226874120533466,
+          0.0,
+          0.0,
+          0.0,
+          -3.576278118089249e-07,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D2:17"
+      ],
+      "context_tokens": 57,
+      "score": {
+        "mean_logprob": -7.36659958875129,
+        "sum_logprob": -81.03259547626419,
+        "answer_tokens": 11,
+        "token_logprobs": [
+          -52.406803131103516,
+          -0.28175315260887146,
+          -4.886683464050293,
+          -7.390948667307384e-06,
+          -5.108415603637695,
+          -2.588749885559082,
+          -0.004697596654295921,
+          -15.7501859664917,
+          -0.0052398014813661575,
+          -5.8410845667822286e-05,
+          -1.0728830375228426e-06
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D2:18"
+      ],
+      "context_tokens": 54,
+      "score": {
+        "mean_logprob": -0.00034361199108058247,
+        "sum_logprob": -0.0037797319018864073,
+        "answer_tokens": 11,
+        "token_logprobs": [
+          -0.0036931897047907114,
+          0.0,
+          0.0,
+          0.0,
+          -8.654219709569588e-05,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D2:19"
+      ],
+      "context_tokens": 48,
+      "score": {
+        "mean_logprob": -10.285398753935665,
+        "sum_logprob": -113.13938629329232,
+        "answer_tokens": 11,
+        "token_logprobs": [
+          -53.92197036743164,
+          -25.75,
+          -7.003192901611328,
+          -7.509902934543788e-05,
+          -7.7918572425842285,
+          -0.4985843896865845,
+          -1.764281842042692e-05,
+          -18.125076293945312,
+          -0.04861140251159668,
+          -9.536738616588991e-07,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D2:17",
+        "D2:18"
+      ],
+      "context_tokens": 89,
+      "score": {
+        "mean_logprob": -0.00013981170062296852,
+        "sum_logprob": -0.0015379287068526537,
+        "answer_tokens": 11,
+        "token_logprobs": [
+          -0.0015374518698081374,
+          0.0,
+          0.0,
+          0.0,
+          -4.768370445162873e-07,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D2:17",
+        "D2:19"
+      ],
+      "context_tokens": 83,
+      "score": {
+        "mean_logprob": -10.122168241355915,
+        "sum_logprob": -111.34385065491506,
+        "answer_tokens": 11,
+        "token_logprobs": [
+          -55.287540435791016,
+          -23.0,
+          -6.7677130699157715,
+          -2.7894584491150454e-05,
+          -7.163812637329102,
+          -1.8658452033996582,
+          -1.823885577323381e-05,
+          -17.250267028808594,
+          -0.008621258661150932,
+          -4.768360213347478e-06,
+          -1.1920928244535389e-07
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D2:18",
+        "D2:19"
+      ],
+      "context_tokens": 80,
+      "score": {
+        "mean_logprob": -0.0004694463727487759,
+        "sum_logprob": -0.005163910100236535,
+        "answer_tokens": 11,
+        "token_logprobs": [
+          -0.0025446198415011168,
+          0.0,
+          0.0,
+          0.0,
+          -0.0026192902587354183,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [
+        "D2:17",
+        "D2:19"
+      ],
+      "context_tokens": 83,
+      "score": {
+        "mean_logprob": -10.109729749183606,
+        "sum_logprob": -111.20702724101966,
+        "answer_tokens": 11,
+        "token_logprobs": [
+          -55.357757568359375,
+          -22.625,
+          -7.01542329788208,
+          -2.7894584491150454e-05,
+          -7.291034698486328,
+          -1.6589312553405762,
+          -1.8715683836489916e-05,
+          -17.25020980834961,
+          -0.00862102210521698,
+          -2.861018856492592e-06,
+          -1.1920928244535389e-07
+        ]
+      }
+    }
+  ]
+}

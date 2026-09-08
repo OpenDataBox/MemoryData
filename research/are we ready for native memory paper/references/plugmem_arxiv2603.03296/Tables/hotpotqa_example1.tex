@@ -1,0 +1,38 @@
+\begin{table}[ht]
+\centering
+\small
+\caption{Example 1 of retrieval trace showing bridge-entity discovery and evidence compression.}
+\label{tab:case_hotpotqa_1}
+
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{p{0.97\linewidth}}
+\toprule
+\textbf{HotpotQA Case Study 1: Bridge-Entity Multi-hop Retrieval}\\
+\midrule
+\textbf{Query.} \emph{``\;`One Less Set of Footsteps' is a song written and performed by a singer born in which year?\;''}\\
+\midrule
+\textbf{Hop 0 (init).} Tags for query: {[\textcolor{yes}{One Less Set of Footsteps}, \textcolor{no}{songwriter}, \textcolor{no}{performer}, \textcolor{partial}{birthdate}]}\\
+\(\triangleright\) \textbf{node 5891} : \emph{``One Less Set of Footsteps'' is a song written and performed by Jim Croce. It was released in 1973 as the first single from his album ``Life and Times''.}   (\textcolor{yes}{bridge entity identified: \textbf{Jim Croce}})\\
+\(\triangleright\) node 5892 : "One Less Set of Footsteps" reached a peak of \#37 on the "Billboard" Hot 100, spending ten weeks on the chart.\\
+...... \\
+\(\triangleright\) node 15424: Mariah Carey, born on March 27, 1969 or 1970, is an American singer, songwriter, record producer, and actress.\\
+\midrule
+\textbf{Query\_new} = \texttt{Integrated} ( Query, top-k nodes)\\
+\midrule
+\textbf{Hop 1 (refine \& expand).} Tags for query:  {[\textcolor{yes}{Jim Croce}, \textcolor{yes}{birth year}]}\\
+\(\triangleright\) \textbf{node 5897} : \emph{James Joseph ``Jim'' Croce was born on January 10, 1943, and died on September 20, 1973.} (\textcolor{yes}{golden fact retrieved: \textbf{Jan 10, 1943}}) \\
+node 5895 : James Joseph "Jim" Croce was an American folk and rock singer active between 1966 and 1973. He released five studio albums and singles during this period. \\
+...... \\
+node 5883 : "It Doesn't Have to Be That Way" was originally released early in 1973 as the B-side of the "One Less Set of Footsteps" single and was reissued in December of the same year as the third and final single from the album "Life and Times".\\
+\midrule
+\textbf{Reasoning (compressed).}\\
+\(\triangleright\) \emph{``One Less Set of Footsteps'' is written and performed by Jim Croce.}\\
+\(\triangleright\) \emph{Jim Croce was born on January 10, 1943.}  \\
+\midrule
+\textbf{Answer.} \textbf{1943}.\\
+\bottomrule
+
+\end{tabular}
+
+\end{table}

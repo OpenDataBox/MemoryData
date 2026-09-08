@@ -1,0 +1,62 @@
+% \begin{lstlisting}[
+%   caption={Multi-hop retrieval algorithm procedure.},
+%   label={lst:apdx_multi_hop_retrieval_pseudo_code},
+% ]
+
+% \ttfamily
+% \textbf{Input:} query $Q$; graphs $(G^{E},G^{S},G^{P})$ with provenance links to $G^{E}$; budget $K$; hop limit $T_{\max}$\\
+% \textbf{Output:} retrieved context $\mathcal{R}$\\[2pt]
+
+% $\mathcal{F} \leftarrow \mathrm{TaskAdapter}(Q)$ \hfill \{ $\mathcal{F}\subseteq\{E,S,P\}$ \}\\
+% $C \leftarrow \mathrm{InitLowLevel}(Q,\{G^{S},G^{P}\})$ \hfill \{ score all low-level nodes \}\\
+% $C \leftarrow \mathrm{TopK}(C,K)$\\[2pt]
+
+% \textbf{for} $t=1$ \textbf{to} $T_{\max}$ \textbf{do}\\
+% \hspace*{1.5em}\textbf{if} $\mathrm{Stop}(Q,C)$ \textbf{then break}\\
+% \hspace*{1.5em}$q^{a} \leftarrow \mathrm{Abstract}(Q,C)$ \hfill \{ concepts for $G^{S}$; intents for $G^{P}$ \}\\
+% \hspace*{1.5em}$C \leftarrow C \cup \mathrm{ExpandLowLevel}(q^{a},\{G^{S},G^{P}\})$\\
+% \hspace*{1.5em}$C \leftarrow \mathrm{RerankPrune}(C,K)$ \hfill \{ e.g., relevance/importance/recency \}\\
+% \textbf{end for}\\[2pt]
+
+% \textbf{if} $E \in \mathcal{F}$ \textbf{then}\\
+% \hspace*{1.5em}$\mathcal{R} \leftarrow \mathrm{ToEpisodic}(C,G^{E})$ \hfill \{ map via provenance \}\\
+% \textbf{else}\\
+% \hspace*{1.5em}$\mathcal{R} \leftarrow C$\\
+% \textbf{end if}\\
+% \textbf{return} $\mathcal{R}$\\
+% \normalfont
+
+% \end{lstlisting}
+
+\begin{table}[t]
+\centering
+\caption{Multi-hop retrieval control flow (pseudo-code style).}
+\label{lst:apdx_multi_hop_retrieval_pseudo_code}
+
+\begin{tcolorbox}[colback=white,colframe=black!30,boxrule=0.6pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+width=0.8\linewidth]
+% ]
+\ttfamily
+\textbf{Input:} query $Q$; graphs $(G^{E},G^{S},G^{P})$ with provenance links to $G^{E}$; budget $K$; hop limit $T_{\max}$\\
+\textbf{Output:} retrieved context $\mathcal{R}$\\[2pt]
+
+$\mathcal{F} \leftarrow \mathrm{TaskAdapter}(Q)$ \hfill \{ $\mathcal{F}\subseteq\{E,S,P\}$ \}\\
+$C \leftarrow \mathrm{InitLowLevel}(Q,\{G^{S},G^{P}\})$ \hfill \{ score all low-level nodes \}\\
+$C \leftarrow \mathrm{TopK}(C,K)$\\[2pt]
+
+\textbf{for} $t=1$ \textbf{to} $T_{\max}$ \textbf{do}\\
+\hspace*{1.5em}\textbf{if} $\mathrm{Stop}(Q,C)$ \textbf{then break}\\
+\hspace*{1.5em}$q^{a} \leftarrow \mathrm{Abstract}(Q,C)$ \hfill \{ concepts for $G^{S}$; intents for $G^{P}$ \}\\
+\hspace*{1.5em}$C \leftarrow C \cup \mathrm{ExpandLowLevel}(q^{a},\{G^{S},G^{P}\})$\\
+\hspace*{1.5em}$C \leftarrow \mathrm{RerankPrune}(C,K)$ \hfill \{ e.g., relevance, etc. \}\\
+\textbf{end for}\\[2pt]
+
+\textbf{if} $E \in \mathcal{F}$ \textbf{then}\\
+\hspace*{1.5em}$\mathcal{R} \leftarrow \mathrm{ToEpisodic}(C,G^{E})$ \hfill \{ map via provenance \}\\
+\textbf{else}\\
+\hspace*{1.5em}$\mathcal{R} \leftarrow C$\\
+\textbf{end if}\\
+\textbf{return} $\mathcal{R}$
+\end{tcolorbox}
+
+\end{table}

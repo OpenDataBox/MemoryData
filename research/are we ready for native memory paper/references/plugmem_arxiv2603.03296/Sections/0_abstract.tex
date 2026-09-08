@@ -1,0 +1,9 @@
+\begin{abstract}
+Long-term memory is essential for large language model (LLM) agents operating in complex environments, yet existing memory designs are either task-specific and non-transferable, or task-agnostic but less effective due to low task-relevance and context explosion from raw memory retrieval.
+We propose \plugmem, a task-agnostic plugin memory module that can be attached to arbitrary LLM agents without task-specific redesign. 
+Motivated by the fact that decision-relevant information is concentrated as abstract knowledge rather than raw experience, we draw on cognitive science to structure episodic memories into a compact, extensible knowledge-centric memory graph that explicitly represents propositional and prescriptive knowledge.
+This representation enables efficient memory retrieval and reasoning over task-relevant knowledge, rather than verbose raw trajectories, and departs from other graph-based methods like GraphRAG by treating \textit{knowledge} as the unit of memory access and organization instead of entities or text chunks. 
+We evaluate \plugmem unchanged across three heterogeneous benchmarks (long-horizon conversational question answering, multi-hop knowledge retrieval, and web agent tasks). 
+The results show that \plugmem consistently outperforms task-agnostic baselines and exceeds task-specific memory designs, while also achieving the highest information density under a unified information-theoretic analysis. Code and data are available at \href{https://github.com/TIMAN-group/PlugMem}{https://github.com/TIMAN-group/PlugMem}.
+
+\end{abstract}

@@ -1,0 +1,293 @@
+{
+  "question": "Who is planning to share experiences when returning?",
+  "answer": "Calvin",
+  "source_ids": [
+    "D7:18"
+  ],
+  "candidate_context_ids": [
+    "D7:17",
+    "D7:18",
+    "D7:19"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D7:18",
+      "start": 7,
+      "end": 13,
+      "verbatim": "Calvin"
+    }
+  ],
+  "session": 7,
+  "recorded_date": "6:06 pm on 31 May, 2023",
+  "conv_id": "conv-50",
+  "split": "probe_fit",
+  "id": "conv-50:source_probe:12",
+  "analysis": {
+    "full_advantage": 11.321077431901358,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D7:18"
+    ],
+    "best_pair_sources": [
+      "D7:17",
+      "D7:18"
+    ],
+    "minimum_sources": [
+      "D7:19"
+    ],
+    "minimum_tokens": 50,
+    "single_policy_sources": [
+      "D7:19"
+    ],
+    "single_policy_tokens": 50,
+    "full_tokens": 112,
+    "best_pair_lift_over_best_single": 0.0,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D7:17",
+          "D7:18"
+        ],
+        "joint_lift": 0.0,
+        "interaction": -11.321076299414358,
+        "advantage": 11.321077431901358
+      },
+      {
+        "source_ids": [
+          "D7:17",
+          "D7:19"
+        ],
+        "joint_lift": 0.0,
+        "interaction": -11.321076299414358,
+        "advantage": 11.321077431901358
+      },
+      {
+        "source_ids": [
+          "D7:18",
+          "D7:19"
+        ],
+        "joint_lift": 0.0,
+        "interaction": -11.321077431901358,
+        "advantage": 11.321077431901358
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": false
+  },
+  "generations": {
+    "empty": {
+      "text": "Unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "full": {
+      "text": "Calvin",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D7:17",
+        "D7:18",
+        "D7:19"
+      ],
+      "context_tokens": 112,
+      "source_answer_f1": 1.0
+    },
+    "answer_removed": {
+      "text": "Calvin",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D7:17",
+        "D7:19"
+      ],
+      "context_tokens": 80,
+      "source_answer_f1": 1.0
+    },
+    "best_single": {
+      "text": "Calvin",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D7:18"
+      ],
+      "context_tokens": 54,
+      "source_answer_f1": 1.0
+    },
+    "best_pair": {
+      "text": "Calvin",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D7:17",
+        "D7:18"
+      ],
+      "context_tokens": 84,
+      "source_answer_f1": 1.0
+    },
+    "minimum_bundle": {
+      "text": "Calvin",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D7:19"
+      ],
+      "context_tokens": 50,
+      "source_answer_f1": 1.0
+    },
+    "single_policy": {
+      "text": "Calvin",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D7:19"
+      ],
+      "context_tokens": 50,
+      "source_answer_f1": 1.0
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -11.321077431901358,
+        "sum_logprob": -22.642154863802716,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -22.639638900756836,
+          -0.0025159630458801985
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D7:17",
+        "D7:18",
+        "D7:19"
+      ],
+      "context_tokens": 112,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D7:17"
+      ],
+      "context_tokens": 52,
+      "score": {
+        "mean_logprob": -1.132487000177207e-06,
+        "sum_logprob": -2.264974000354414e-06,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -2.264974000354414e-06,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D7:18"
+      ],
+      "context_tokens": 54,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D7:19"
+      ],
+      "context_tokens": 50,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D7:17",
+        "D7:18"
+      ],
+      "context_tokens": 84,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D7:17",
+        "D7:19"
+      ],
+      "context_tokens": 80,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D7:18",
+        "D7:19"
+      ],
+      "context_tokens": 82,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [
+        "D7:17",
+        "D7:19"
+      ],
+      "context_tokens": 80,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  ]
+}

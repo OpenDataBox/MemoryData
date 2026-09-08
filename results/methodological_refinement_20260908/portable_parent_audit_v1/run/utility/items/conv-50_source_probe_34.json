@@ -1,0 +1,496 @@
+{
+  "question": "What did Calvin say about Dave's impact on people?",
+  "answer": "it's awesome seeing people happy thanks to you!",
+  "source_ids": [
+    "D19:10"
+  ],
+  "candidate_context_ids": [
+    "D19:9",
+    "D19:10",
+    "D19:11",
+    "D19:12"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D19:10",
+      "start": 6,
+      "end": 53,
+      "verbatim": "it's awesome seeing people happy thanks to you!"
+    }
+  ],
+  "session": 19,
+  "recorded_date": "12:13 am on 15 September, 2023",
+  "conv_id": "conv-50",
+  "split": "probe_fit",
+  "id": "conv-50:source_probe:34",
+  "analysis": {
+    "full_advantage": 7.400807672739031,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D19:10"
+    ],
+    "best_pair_sources": [
+      "D19:9",
+      "D19:10"
+    ],
+    "minimum_sources": [
+      "D19:10"
+    ],
+    "minimum_tokens": 62,
+    "single_policy_sources": [
+      "D19:10"
+    ],
+    "single_policy_tokens": 62,
+    "full_tokens": 209,
+    "best_pair_lift_over_best_single": 0.3127109020947847,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D19:9",
+          "D19:10"
+        ],
+        "joint_lift": 0.3127109020947847,
+        "interaction": 2.85518605858082,
+        "advantage": 8.071944990754128
+      },
+      {
+        "source_ids": [
+          "D19:9",
+          "D19:11"
+        ],
+        "joint_lift": -2.580790340062247,
+        "interaction": -0.038315183576212775,
+        "advantage": -2.269306480884552
+      },
+      {
+        "source_ids": [
+          "D19:9",
+          "D19:12"
+        ],
+        "joint_lift": 1.1786907597811993,
+        "interaction": 3.7211659162672337,
+        "advantage": 0.6314242834691015
+      },
+      {
+        "source_ids": [
+          "D19:10",
+          "D19:11"
+        ],
+        "joint_lift": -0.2499986320733001,
+        "interaction": -0.5614824912509953,
+        "advantage": 7.509235456586042
+      },
+      {
+        "source_ids": [
+          "D19:10",
+          "D19:12"
+        ],
+        "joint_lift": -0.7626904249050201,
+        "interaction": -0.2154239485929228,
+        "advantage": 6.996543663754323
+      },
+      {
+        "source_ids": [
+          "D19:11",
+          "D19:12"
+        ],
+        "joint_lift": -0.7717574931099254,
+        "interaction": -0.22449101679782757,
+        "advantage": -0.4602736339322302
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": false
+  },
+  "generations": {
+    "empty": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "full": {
+      "text": "Calvin said Dave makes people happy.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D19:9",
+        "D19:10",
+        "D19:11",
+        "D19:12"
+      ],
+      "context_tokens": 209,
+      "source_answer_f1": 0.26666666666666666
+    },
+    "answer_removed": {
+      "text": "Calvin said Dave makes people happy.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D19:9",
+        "D19:11",
+        "D19:12"
+      ],
+      "context_tokens": 170,
+      "source_answer_f1": 0.26666666666666666
+    },
+    "best_single": {
+      "text": "Calvin said Dave's work inspires people and brings happiness.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D19:10"
+      ],
+      "context_tokens": 62,
+      "source_answer_f1": 0.21052631578947367
+    },
+    "best_pair": {
+      "text": "Calvin said Dave's work inspires people and brings happiness.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D19:9",
+        "D19:10"
+      ],
+      "context_tokens": 106,
+      "source_answer_f1": 0.21052631578947367
+    },
+    "minimum_bundle": {
+      "text": "Calvin said Dave's work inspires people and brings happiness.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D19:10"
+      ],
+      "context_tokens": 62,
+      "source_answer_f1": 0.21052631578947367
+    },
+    "single_policy": {
+      "text": "Calvin said Dave's work inspires people and brings happiness.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D19:10"
+      ],
+      "context_tokens": 62,
+      "source_answer_f1": 0.21052631578947367
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -10.204627257585525,
+        "sum_logprob": -102.04627257585526,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -27.625093460083008,
+          -0.3732171654701233,
+          -19.501279830932617,
+          -10.056573867797852,
+          -0.21646571159362793,
+          -8.92408561706543,
+          -12.775222778320312,
+          0.0,
+          -14.766122817993164,
+          -7.808211326599121
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D19:9",
+        "D19:10",
+        "D19:11",
+        "D19:12"
+      ],
+      "context_tokens": 209,
+      "score": {
+        "mean_logprob": -2.8038195848464937,
+        "sum_logprob": -28.038195848464937,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -24.50000762939453,
+          0.0,
+          -2.3841855067985307e-07,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -3.5381879806518555
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D19:9"
+      ],
+      "context_tokens": 67,
+      "score": {
+        "mean_logprob": -12.74710241407156,
+        "sum_logprob": -127.4710241407156,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -30.875593185424805,
+          0.0,
+          -41.37507629394531,
+          -8.75048542022705,
+          -0.0920635312795639,
+          -15.00191879272461,
+          -10.291706085205078,
+          0.0,
+          -16.37703514099121,
+          -4.707145690917969
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D19:10"
+      ],
+      "context_tokens": 62,
+      "score": {
+        "mean_logprob": -2.445393168926182,
+        "sum_logprob": -24.45393168926182,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -24.375036239624023,
+          0.0,
+          -1.0728830375228426e-06,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.07889437675476074
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D19:11"
+      ],
+      "context_tokens": 83,
+      "score": {
+        "mean_logprob": -9.89314339840783,
+        "sum_logprob": -98.9314339840783,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -13.637939453125,
+          -28.75,
+          -12.557640075683594,
+          -17.10890769958496,
+          -2.06192684173584,
+          -0.012059398926794529,
+          -7.212989807128906,
+          -5.960462772236497e-07,
+          -13.000100135803223,
+          -4.589869976043701
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D19:12"
+      ],
+      "context_tokens": 66,
+      "score": {
+        "mean_logprob": -10.751893733897623,
+        "sum_logprob": -107.51893733897623,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -30.94000816345215,
+          -4.768360213347478e-06,
+          -35.125553131103516,
+          -6.338702201843262,
+          -3.3070549964904785,
+          -0.00014375607133843005,
+          -8.703278541564941,
+          0.0,
+          -13.500004768371582,
+          -9.60418701171875
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D19:9",
+        "D19:10"
+      ],
+      "context_tokens": 106,
+      "score": {
+        "mean_logprob": -2.1326822668313974,
+        "sum_logprob": -21.326822668313973,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -21.12538719177246,
+          0.0,
+          -1.1920928244535389e-07,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.20143535733222961
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D19:9",
+        "D19:11"
+      ],
+      "context_tokens": 127,
+      "score": {
+        "mean_logprob": -12.473933738470077,
+        "sum_logprob": -124.73933738470078,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -27.002347946166992,
+          -23.0,
+          -29.011871337890625,
+          -9.899377822875977,
+          -0.7179494500160217,
+          -2.1301286220550537,
+          -7.420087814331055,
+          -1.1920928244535389e-07,
+          -20.25119400024414,
+          -5.306380271911621
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D19:9",
+        "D19:12"
+      ],
+      "context_tokens": 110,
+      "score": {
+        "mean_logprob": -9.573202974116423,
+        "sum_logprob": -95.73202974116424,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -27.37500762939453,
+          -3.576278118089249e-07,
+          -27.724807739257812,
+          -7.383955478668213,
+          -0.004095738288015127,
+          -1.9103062152862549,
+          -6.999484539031982,
+          0.0,
+          -16.750001907348633,
+          -7.584370136260986
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D19:10",
+        "D19:11"
+      ],
+      "context_tokens": 122,
+      "score": {
+        "mean_logprob": -2.695391800999482,
+        "sum_logprob": -26.953918009994823,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -26.875001907348633,
+          0.0,
+          -1.7881377516459906e-06,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.07891431450843811
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D19:10",
+        "D19:12"
+      ],
+      "context_tokens": 105,
+      "score": {
+        "mean_logprob": -3.2080835938312022,
+        "sum_logprob": -32.08083593831202,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -28.93754005432129,
+          0.0,
+          -1.7881377516459906e-06,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.6689160474925302e-05,
+          -3.143277406692505
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D19:11",
+        "D19:12"
+      ],
+      "context_tokens": 126,
+      "score": {
+        "mean_logprob": -10.664900891517755,
+        "sum_logprob": -106.64900891517755,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -30.687501907348633,
+          -17.25,
+          -19.2227725982666,
+          -17.73055648803711,
+          -1.0751954317092896,
+          -0.0010495636379346251,
+          -6.777446746826172,
+          0.0,
+          -7.500697612762451,
+          -6.4037885665893555
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [
+        "D19:9",
+        "D19:11",
+        "D19:12"
+      ],
+      "context_tokens": 170,
+      "score": {
+        "mean_logprob": -9.623819689452649,
+        "sum_logprob": -96.23819689452648,
+        "answer_tokens": 10,
+        "token_logprobs": [
+          -28.875011444091797,
+          -8.250282287597656,
+          -21.1618709564209,
+          -8.358184814453125,
+          -0.19601182639598846,
+          -2.58235764503479,
+          -7.245119094848633,
+          0.0,
+          -12.250066757202148,
+          -7.319292068481445
+        ]
+      }
+    }
+  ]
+}

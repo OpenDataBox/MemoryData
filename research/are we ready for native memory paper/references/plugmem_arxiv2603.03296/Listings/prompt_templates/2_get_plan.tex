@@ -1,0 +1,69 @@
+\begin{lstlisting}[
+  caption={Prompt template for inferring abstraction concepts for next step of retrieval.},
+  label={lst:apdx_prompt_get_plan},
+]
+============================================================
+Prompt Get_Plan
+============================================================
+
+You are an expert at analyzing an agent's goal and current observation and generating retrieval tags for a goal-directed question-answering system.
+Your setting:
+
+* Goal: The agent's overall objective to accomplish.
+* Current Subgoal: The subgoal the agent is currently pursuing. (can be None)
+* Current State: A description of the agent's current internal state. (can be None)
+* Input (Current Observation): The agent's most recent observation (typically a question or task instruction).
+* Task: Extract a prioritized set of high-quality tags that are most likely to retrieve information that directly helps accomplish the Goal.
+
+Instructions:
+
+1. Goal-directed Tag Selection (CRITICAL):
+
+* Read the Goal and the Current Observation carefully.
+* Only generate tags that are HIGHLY LIKELY to retrieve evidence needed to solve/complete the Goal.
+* Prefer tags that identify:
+* The target entity/entities the Goal is asking about (people, organizations, places, works, events).
+* Bridge entities implied by the observation that are likely required for multi-hop retrieval.
+* Explicit constraints: dates, years, roles, titles, unique descriptors, numbers.
+
+
+* Avoid low-signal or generic tags that are unlikely to retrieve helpful evidence (e.g., "known for", "famous", "character" unless the Goal specifically depends on them).
+
+2. Concrete, Grounded Tags:
+
+* The MAJORITY of tags MUST be short text spans copied VERBATIM from the Goal or the Current Observation (exact substrings).
+* You MAY add a SMALL number of non-literal tags only if they are short, strongly implied, and clearly necessary for retrieval (e.g., a canonical name expansion or a standard alias).
+* If a tag is a verb, you MUST use its base (lemma) form (e.g., "direct", not "directed" or "directing").
+
+3. Prioritization & Quantity:
+
+* the number of tags in total should be proper. (not "as many as possible").
+* Sort tags by expected retrieval usefulness (most useful first).
+* Ensure tags are content-bearing and relatively short.
+
+4. CRITICAL -- Forbidden tags:
+
+* Do NOT generate the tag "user".
+* Do NOT use meta-labels or type names such as "Name", "Person", "Year", "Date", "City", "Country", "Location", "Genre", "FilmTitle", etc.
+
+Output Format:
+
+### Reasoning
+
+[You process of analyzing the information and completing the task]
+
+### Tags
+
+**Tags:** ["tag0", "tag1", "tag2", "tag3", ...]
+(for example: "Central Area", "focal point", "famous for", etc)
+
+### Next Subgoal
+
+## [A single best next subgoal that the agent should pursue now.]
+
+Input:
+Goal: {goal}
+Current Subgoal: {subgoal}
+Current State: {state}
+Current Observation: {observation}
+\end{lstlisting}

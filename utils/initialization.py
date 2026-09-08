@@ -293,6 +293,8 @@ def initialize_and_memorize_agent(agent_config, dataset_config, agent_save_folde
     # Handle memorization or loading based on whether saved state exists
     should_load_existing_agent = (not force_rebuild) and os.path.exists(agent_save_folder)
     agent_name = agent_config.get("agent_name", "")
+    if "retentionmem" in agent_name:
+        should_load_existing_agent = (not force_rebuild) and os.path.isfile(os.path.join(agent_save_folder, "retentionmem_ready.json"))
     if "letta" in agent_name:
         letta_agent_id_path = os.path.join(agent_save_folder, "agent_id.txt")
         if "api" in agent_name:
@@ -343,6 +345,8 @@ def initialize_and_memorize_agent(agent_config, dataset_config, agent_save_folde
     if "MemOS" in agent_name:
         memos_marker_path = os.path.join(agent_save_folder, "memos_ready.txt")
         should_load_existing_agent = os.path.exists(memos_marker_path)
+    if "langmem" in agent_name or "e_mem" in agent_name:
+        should_load_existing_agent = (not force_rebuild) and os.path.isfile(agent.benchmark_memory_marker)
     a_mem_checkpoint = None
     if "a_mem" in agent_name:
         a_mem_checkpoint = _load_a_mem_checkpoint(agent_save_folder)
@@ -576,7 +580,7 @@ def _apply_chunk_size_ablation(command_line_args, agent_config, dataset_config):
     new_chunk_size = command_line_args.chunk_size_ablation
     
     # Check if this is a memory agent that uses agent_chunk_size
-    if any(agent_name in agent_config['agent_name'] for agent_name in ['mem0', 'letta', 'cognee', 'memtree', 'memochat', 'memoryos', 'zep', 'simplemem', 'lightmem', 'a_mem', 'everos', 'MemOS']):
+    if any(agent_name in agent_config['agent_name'] for agent_name in ['langmem', 'e_mem', 'mem0', 'letta', 'cognee', 'memtree', 'memochat', 'memoryos', 'zep', 'simplemem', 'lightmem', 'a_mem', 'everos', 'MemOS']):
         agent_config['agent_chunk_size'] = new_chunk_size
         dataset_config['chunk_size'] = new_chunk_size
         print(f"\n\nUsing agent chunk_size: {agent_config['agent_chunk_size']}\n\n")
@@ -718,7 +722,7 @@ def _generate_output_name_tag(agent_config, dataset_config):
             f"chunk{safe_get(agent_config, 'agent_chunk_size')}",
             f"mode{safe_get(agent_config, 'letta_mode')}"
         ]
-    elif any(agent_type in agent_name for agent_type in ["mem0", "cognee", "memtree", "memochat", "memoryos", "zep", "simplemem", "lightmem", "a_mem", "everos", "MemOS"]):
+    elif any(agent_type in agent_name for agent_type in ["langmem", "e_mem", "mem0", "cognee", "memtree", "memochat", "memoryos", "zep", "simplemem", "lightmem", "a_mem", "everos", "MemOS"]):
         agent_components = [
             f"k{_resolve_retrieve_component(agent_config, agent_name)}",
             f"chunk{_resolve_agent_chunk_component(agent_config, dataset_config)}"

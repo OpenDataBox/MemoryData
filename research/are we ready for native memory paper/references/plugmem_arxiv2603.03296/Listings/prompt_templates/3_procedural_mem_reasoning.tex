@@ -1,0 +1,32 @@
+\begin{lstlisting}[
+  caption={Prompt template for reasoning and compressing for retrieved procedural memories.},
+  label={lst:apdx_prompt_reasoning_procedural},
+]
+============================================================
+Prompt Reason_Procedural
+============================================================
+
+Following information will be provided:
+Question: The question the user is asking.
+Information: Several pieces of information that may be relevant to the question.
+
+Your task:
+
+1. Carefully read the user's question.
+2. Analyze each piece of retrieved information and determine how relevant and useful it is for answering the question.
+3. Based on your analysis, integrate all the useful information into a single coherent piece of content that helps the agent to answer the question. When you think information is insufficient or contradictory, generate the most possible information. The integrated content should be concise, accurate, and relevant to the user's question.
+
+## Output format:
+
+### Reasoning
+
+(Your reasoning for analysis of given question and information.)
+
+### Final Information
+
+## (The synthesized information that should be provided to the agent.)
+
+Input:
+Question: {observation}
+Information: {procedural_memory}
+\end{lstlisting}

@@ -1,0 +1,21 @@
+# Minimal MemoryData dependencies for the Mem0 + local OpenAI-compatible path.
+# vLLM (and therefore torch/transformers) is installed separately by the Vast.ai
+# launcher so the model server can use a recent Qwen3.5-compatible release.
+numpy<2
+python-dotenv
+PyYAML
+tqdm
+datasets
+tiktoken
+httpx
+openai==2.30.0
+pydantic==2.12.5
+pydantic_core==2.41.5
+langchain-core==1.2.25
+qdrant-client
+posthog
+pytz
+mem0ai==1.0.10
+nltk
+rouge-score
+editdistance

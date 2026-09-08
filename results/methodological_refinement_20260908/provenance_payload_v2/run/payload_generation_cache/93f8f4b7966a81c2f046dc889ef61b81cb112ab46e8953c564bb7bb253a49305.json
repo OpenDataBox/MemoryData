@@ -1,0 +1,39 @@
+{
+  "object": {
+    "facts": [
+      {
+        "text": "Sam consumed a dessert that featured raspberries and limes on top.",
+        "evidence": [
+          {
+            "source_id": "D23:18",
+            "quote": "Yeah, the lasagna was pretty awesome, but check out what I had for dessert, I'm sure you're drooling! [image: a photo of a pie with raspberries and limes on top]"
+          }
+        ]
+      },
+      {
+        "text": "The dessert with raspberries and limes was not made by Sam.",
+        "evidence": [
+          {
+            "source_id": "D23:19",
+            "quote": "Looks yummy! Did you make that?"
+          },
+          {
+            "source_id": "D23:20",
+            "quote": "No, I didn't make it. This is actually a pic from my cousin's wedding. It's super special."
+          }
+        ]
+      },
+      {
+        "text": "The dessert with raspberries and limes was taken from a photo of a cousin's wedding.",
+        "evidence": [
+          {
+            "source_id": "D23:20",
+            "quote": "No, I didn't make it. This is actually a pic from my cousin's wedding. It's super special."
+          }
+        ]
+      }
+    ]
+  },
+  "raw": "{\n  \"facts\": [\n    {\n      \"text\": \"Sam consumed a dessert that featured raspberries and limes on top.\",\n      \"evidence\": [\n        {\n          \"source_id\": \"D23:18\",\n          \"quote\": \"Yeah, the lasagna was pretty awesome, but check out what I had for dessert, I'm sure you're drooling! [image: a photo of a pie with raspberries and limes on top]\"\n        }\n      ]\n    },\n    {\n      \"text\": \"The dessert with raspberries and limes was not made by Sam.\",\n      \"evidence\": [\n        {\n          \"source_id\": \"D23:19\",\n          \"quote\": \"Looks yummy! Did you make that?\"\n        },\n        {\n          \"source_id\": \"D23:20\",\n          \"quote\": \"No, I didn't make it. This is actually a pic from my cousin's wedding. It's super special.\"\n        }\n      ]\n    },\n    {\n      \"text\": \"The dessert with raspberries and limes was taken from a photo of a cousin's wedding.\",\n      \"evidence\": [\n        {\n          \"source_id\": \"D23:20\",\n          \"quote\": \"No, I didn't make it. This is actually a pic from my cousin's wedding. It's super special.\"\n        }\n      ]\n    }\n  ]\n}",
+  "finish_reason": "stop"
+}

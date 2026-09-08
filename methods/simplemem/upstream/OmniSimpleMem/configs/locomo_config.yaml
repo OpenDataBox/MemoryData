@@ -1,0 +1,33 @@
+# LoCoMo Benchmark Configuration
+#
+# This configuration matches the settings used to achieve SOTA results:
+#   - GPT-4o:  F1 = 0.621
+#   - GPT-5.1: F1 = 0.610
+#
+# Embedding uses local all-MiniLM-L6-v2 (no API calls needed for embedding).
+# LLM calls require OPENAI_API_KEY environment variable.
+
+embedding:
+  model_name: "all-MiniLM-L6-v2"    # Local sentence-transformers model
+  embedding_dim: 384
+
+entropy_trigger:
+  visual_encoder: "none"              # Text-only benchmark, no visual encoder
+
+llm:
+  summary_model: "gpt-4o"
+  query_model: "gpt-4o"
+  caption_model: "gpt-4o"
+  temperature: 0.0
+  max_tokens: 1000
+
+retrieval:
+  default_top_k: 20
+  enable_hybrid_search: true          # FAISS + BM25 hybrid
+  enable_graph_traversal: true
+  enable_multi_query_retrieval: false
+
+router:
+  router_mode: "heuristic"
+
+enable_self_evolution: false

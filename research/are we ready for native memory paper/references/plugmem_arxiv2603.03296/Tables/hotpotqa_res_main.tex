@@ -1,0 +1,27 @@
+\begin{table}[t!]
+\centering
+\caption{Results on HotpotQA. EM means Exact Match.
+* denotes results taken from previous work. 
+We \underline{underline} the upper bound performance and \textbf{bold} the best.}
+\label{tab:hotpotqa_res_main}
+\resizebox{0.48\textwidth}{!}{
+\begin{tabular}{c|cc|cc|c|c}
+\toprule
+Mem. Method      & Emb & LLM & EM & F1 & $\text{\#Tok}_{\text{Avg.}}$ &  Info. Density\\
+\rowcolor{groupgray}\multicolumn{7}{c}{Vanilla Baseline}          \\
+No Context   & - & Q32 & 22.1 & 31.0 & - &  - \\
+Gold Context & - & Q32 & \underline{69.2} & \underline{82.1} & 86.5 &  \underline{1.6e-1} \\
+\rowcolor{groupgray}\multicolumn{7}{c}{Task-Agnostic}          \\
+Vanilla Retrieval & NVE & Q32  & 51.7 & 62.7 & 659.2 & 1.2e-2 \\
+A-Mem       & NVE & Q32 & 43.8 & 53.6 & 695.6 & 1.2e-2     \\
+\rowcolor{groupgray}\multicolumn{7}{c}{Task-Specific}          \\
+GraphRAG*   & NVE & L70 & 55.2 & 68.6 & - & -   \\
+RAPTOR      & NVE & Q32 & 56.7 & 69.7 & 806.3 &  1.1e-2     \\
+PropRAG     & NVE & Q32 & 57.8 & 72.1 & 626.1 & 1.9e-2    \\
+HippoRAG2   & NVE & Q32 & 60.0 & 73.3 & 595.1 & 1.9e-2       \\
+\rowcolor{ShadowBlue}\multicolumn{7}{c}{Ours}                   \\
+\plugmem         & NVE & Q32 & \textbf{61.4} & \textbf{74.1} & \textbf{81.6} & \textbf{1.4e-1}  \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

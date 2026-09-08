@@ -1,0 +1,52 @@
+{
+  "locked_at": 1788798992.4505744,
+  "source_history": [
+    {
+      "iteration": 0,
+      "accepted": true,
+      "name": "iter0_single_2000",
+      "family": "single",
+      "step_budget": 2000,
+      "total_storage": 422163,
+      "regressions": [],
+      "repairs": [
+        "conv-26:source_probe:9",
+        "conv-41:source_probe:44",
+        "conv-43:source_probe:51",
+        "conv-43:source_probe:52",
+        "conv-44:source_probe:28",
+        "conv-44:source_probe:33",
+        "conv-44:source_probe:40",
+        "conv-48:source_probe:40",
+        "conv-48:source_probe:51",
+        "conv-48:source_probe:58",
+        "conv-49:source_probe:40",
+        "conv-49:source_probe:49"
+      ],
+      "feasible": true
+    },
+    {
+      "iteration": 1,
+      "accepted": true,
+      "name": "iter1_joint_2000",
+      "family": "joint",
+      "step_budget": 2000,
+      "total_storage": 424449,
+      "regressions": [],
+      "repairs": [
+        "conv-30:source_probe:13",
+        "conv-49:source_probe:12"
+      ],
+      "feasible": true
+    },
+    {
+      "iteration": 2,
+      "accepted": false,
+      "reason": "No observed source-safe repair within the frozen proposal family and storage cap"
+    }
+  ],
+  "memory_sha256": "bf8ce1c208938f2f728e5acdd6bedf5edf812d3244241e7b398e358fb92a9822",
+  "source_preserved": 94,
+  "source_probes": 97,
+  "selection_used_benchmark_answers": false
+}

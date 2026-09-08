@@ -1,0 +1,189 @@
+% Working manuscript, not the ICLR 2027 submission template.
+% No empirical improvements are claimed before actual experiments finish.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,hyperref}
+\title{Learning What to Retain During Memory Consolidation}
+\author{Anonymous authors}
+\date{Working draft: September 3, 2026}
+\newcommand{\method}{RetentionMem}
+\begin{document}
+\maketitle
+\begin{abstract}
+Long-running language agents repeatedly consolidate past interactions to operate
+within bounded context and computation. Consolidation can erase distinctions
+needed for factual recall or action selection, causing tasks that previously
+succeeded to fail. We study consolidation-induced regression and propose a small
+policy trained on paired task outcomes before and after memory changes.
+\method{} selects among retaining existing memory, accepting a summary, and
+augmenting a summary with residual source information. The policy estimates
+regression risk from frozen representations and retention features, while a
+budgeted selection procedure preserves source spans with high predicted benefit
+per added token. Our evaluation protocol holds the writer, retriever and reader
+fixed to isolate this mechanism, then tests transfer across compressors and
+readers. It covers conversational question answering, agent trajectories,
+legitimate information updates, repeated consolidation and amortized cost.
+Empirical results will be added after the preregistered experiments are complete.
+\end{abstract}
+
+\section{Introduction}
+Memory compression must decide which distinctions an agent can afford to lose.
+For example, a history may state that a delivery address changed from Seoul to
+Busan, followed by a planned business trip to Daejeon. A summary containing all
+three city names can still lose the current address. Preserving a previous answer
+without accounting for the update can instead retain an obsolete fact. The desired
+object is the ability to answer correctly under the latest observations, including
+the temporal or conditional scope of a historical fact.
+
+Structured compression and retrieval planning offer efficient access to long
+histories \cite{simplemem}. Topic-based buffering and offline maintenance separate
+memory construction from online inference \cite{lightmem}. In action settings,
+raw experiences and dynamically constructed strategies serve different purposes
+\cite{adamem}. These designs motivate a local consolidation interface; they do
+not establish that a proposed rewrite preserves downstream capabilities.
+
+Our proposed contributions are (i) an operational measurement of task regressions
+induced by consolidation, (ii) a lightweight risk predictor and residual-selection
+policy, and (iii) a matched evaluation of accuracy and total resource use. These
+are hypotheses to test, not empirical conclusions of this working draft.
+
+\section{Consolidation-induced regression}
+Let $H_t$ be the source history available at time $t$, $M$ its active memory, and
+$M'$ a proposed local replacement. For a frozen reader $A$ and a correctness
+predicate $J$ evaluated against the current history, define
+\begin{equation}
+r(q;M,M',H_t)=J(A(M,q),q,H_t)\,[1-J(A(M',q),q,H_t)].
+\end{equation}
+We measure conditional regression among questions that are correct before the
+change. Questions already answered incorrectly are not counted as consolidation
+regressions. Correctness is semantic and task-specific, not equality of answer or
+action strings. A legitimate observation update changes the reference state.
+Historical questions retain their specified temporal scope.
+
+During training, source-derived diagnostic questions target rare details,
+numeric and temporal distinctions, exceptions, relations and action conditions.
+Each diagnostic has exact source offsets. A separate judge validates its target
+against the full available source prefix; ambiguous targets are excluded. The
+paired reader sees the memory and questions but not reference answers. Benchmark
+questions and future observations are excluded from this process.
+
+\section{Method}
+\paragraph{Storage and local candidates.}
+\method{} maintains an immutable archive and an active store. New observations
+enter both immediately. At a session boundary or a buffer threshold, it selects
+at most eight related active units. A frozen writer proposes a summary targeting
+a $4{:}1$ reduction. The writer sees only the active region: repeatedly rebuilding
+from the archive would conceal losses accumulated through earlier consolidation.
+A separate generator derives at most eight diagnostics from the source prefix.
+The archive can support maintenance but is not searched during primary QA.
+
+\paragraph{Risk prediction.}
+Frozen embeddings of the question, reference answer, source spans and candidate
+are combined with explicit numeric, temporal and conditional-retention features.
+The current implementation projects frozen embeddings with a fixed seed and
+uses 267 features with hidden widths 256 and 64 and a sigmoid output. Only this
+small MLP is trained. Its targets are observed regressions for summaries and
+partially repaired summaries. Online maintenance does not replay the paired
+reader; those calls are confined to offline label collection.
+
+\paragraph{Residual selection.}
+Let $p_\theta(q,M')$ denote predicted risk, $\tau$ the validation-selected
+threshold, and $B$ a replacement budget. If the summary meets both constraints,
+the policy accepts it. Otherwise, for high-risk diagnostics it considers adding
+their source spans, merging overlapping intervals. It greedily selects additions
+that reduce $\sum_q\max(p_\theta(q,M')-\tau,0)$ most per added token, subject to
+$B$. When the repaired candidate still violates risk or size constraints, it
+retains the original active region. Retention may leave the requested replacement
+budget unmet; this is recorded instead of silently deleting information. Query
+budgets remain hard limits.
+
+\paragraph{Calibration and provenance.}
+Training and validation are split by source family before generating variants.
+The implementation selects the largest validation threshold whose accepted
+candidates satisfy an empirical regression-rate target, with a minimum accepted
+count. It returns a retain-all threshold when no setting qualifies. This is not a
+distribution-free preservation guarantee. Source references are recorded, but
+reference recall is not equivalent to retaining the actual answer-bearing span.
+
+\section{Evaluation protocol}
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+Setting & Primary outcome & Resampling unit \\
+\midrule
+LoCoMo categories 1--4 & Category-specific F1, judge & Conversation \\
+LongMemEval cleaned S & Official-rubric judge & Independent history \\
+ALFWorld unseen & Environment success, actions & Environment \\
+\bottomrule
+\end{tabular}
+\caption{Planned evaluation. No result values have been inserted.}
+\end{table}
+
+Policy training uses synthetic sources and ALFWorld training experiences only.
+The pilot contains 500 source regions; full collection targets 3,000 training
+and 750 validation regions. Three policy seeds are evaluated. Official LoCoMo
+contains 1,540 questions in the primary four categories. LongMemEval uses its
+cleaned 500-question S release, with full session history and assistant turns.
+Question dates are taken from the dataset rather than the execution date.
+
+Mechanism controls share the candidate writer, hybrid retriever and reader:
+raw retrieval, unconditional consolidation, retention, lexical selection,
+coverage/preservation/faithfulness selection, learned selection, and learned
+selection with residuals. Raw retrieval and retention are operationally identical
+in the current implementation and are not counted as independent replications.
+Full-system baselines require audited original execution paths. In particular,
+an implementation of public verification criteria is not labeled as the trained
+TrustMem model \cite{trustmem}.
+
+For ALFWorld, the intervention transforms training trajectory values while
+preserving AdaMEM's retrieval keys, HNSW index, ordering and action/strategy flow.
+The official environment success flag supplies the task outcome. Changed action
+strings do not establish regressions. Environment-specific prerequisite-violation
+measurement remains an implementation item before the full action analysis.
+
+We compare memory query budgets of 2K, 4K and 8K and request repeated maintenance
+passes at 1, 2, 4 and 8. Requested passes are reported separately from actual
+consolidation lineage depth. A compression target is not a realized compression
+ratio; matched-size analysis must use measured active tokens or equal replacement
+ceilings. Transfer from structured to topical compression and from Qwen3-8B to
+Qwen2.5-7B-Instruct holds the learned policy fixed. This tests two readers, not
+generalization across all model families.
+
+\section{Cost and failure analysis}
+We separately record archive, active and index storage, writer and diagnostic
+calls, embedding computation, policy inference, reader calls and evaluation
+judges. Offline label collection and policy training are included when reporting
+total deployment cost. For $N$ subsequent queries,
+\begin{equation}
+C(N)=C_{\mathrm{train}}+C_{\mathrm{write}}+C_{\mathrm{maintain}}+N C_{\mathrm{read}}.
+\end{equation}
+Components must use a common declared unit for break-even calculations. Token
+volumes, wall time and monetary cost are not interchangeable. The implementation
+records unknown price or missing-usage fields instead of imputing zero cost.
+The principal figure should show accuracy against cumulative cost over repeated
+maintenance, with matched-size controls and uncertainty grouped by conversation
+or environment.
+
+\section{Related work and limitations}
+Repeated memory updates can damage useful knowledge \cite{faulty}; observing
+damage alone is therefore insufficient novelty. Tiered systems can recover
+information through provenance and source access \cite{tiermem}; the primary
+experiment excludes query-time archive lookup to isolate selective retention.
+TrustMem learns consolidation with explicit verification criteria \cite{trustmem}
+and is the nearest comparison. The required distinction is whether task-outcome
+supervision improves prediction and whether small residuals add value under equal
+budgets. Our system does not guarantee arbitrary future-query preservation.
+Diagnostics may miss capabilities; source targets and judges may be wrong;
+policies may overfit a compressor or a narrow synthetic distribution. These
+limitations must be tested rather than addressed by broader system claims.
+
+\section{Results status}
+The software pipeline has been exercised with deterministic fixtures and a mock
+model API. Actual Qwen labeling, benchmark QA, original-system baselines and
+ALFWorld unseen execution are pending. This manuscript intentionally contains no
+accuracy improvement, statistical significance or acceptance prediction.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

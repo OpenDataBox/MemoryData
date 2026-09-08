@@ -1,0 +1,245 @@
+\section{End-to-End Assessment}
+\label{sec:overall}
+
+In this section, we conduct a systematic evaluation of agent memory systems across five research questions.
+Across five distinct benchmark workloads and 11 datasets, we assess 12 representative memory systems against baselines to characterize their performance.
+Specifically, the five research questions are as follows.
+
+% We conduct an end-to-end evaluation of agent memory systems from five perspectives, covering task effectiveness, retrieval quality, update correctness, long-term stability, and system efficiency.
+
+\subsection{Overall Effectiveness (RQ1)}
+\label{subsec:effectiveness}
+
+\noindent \textbf{Experimental Setting.}
+For \textit{``Do different agent memory systems successfully improve end-to-end task performance across workloads?''}, we evaluate 12 representative memory systems and two reference baselines (\textit{Long Context} and \textit{Embedding RAG}) on the three end-to-end workloads to assess whether memory improves task success beyond the underlying \llm.
+Specifically, we use: (1) \textit{LoCoMo}~\cite{maharana2024locomo}: a long-conversation QA benchmark that tests episodic, temporal, and open-domain memory over multi-turn interactions, and report the unweighted mean of category-level \textit{Exact Match (EM)} and \textit{Answer F1} on the four-category queries;
+(2) \textit{LongMemEval}~\cite{wu2024longmemeval}: a multi-session long-memory benchmark that evaluates whether systems can reconnect facts across sessions and reason over temporally distributed evidence, and report \textit{Substring EM}, \textit{ROUGE-L F1}, \textit{ROUGE-L Recall}, and \textit{GPT-5.4-based \llm Judge Accuracy} from \textit{MemoryAgentBench}~\cite{memoryagentbench2026}; and (3) \textit{DB-Bench}: evaluates whether memory supports procedural execution across database operations from \textit{LifelongAgentBench}~\cite{DBLP:journals/corr/abs-2505-11942}, and report \textit{Exact Match (EM)} and \textit{Task Success Rate}.
+
+\noindent \textbf{O1-(Cross-Workload Effectiveness): No single memory system dominates all workloads, but methods that preserve task-critical evidence through structure-guided filtering remain the most competitive overall.}
+As shown in Figure~\ref{fig:RQ1_effectiveness}, the leading systems shift across workloads: (1) Structure-aware systems lead \textit{LongMemEval}, where Zep reaches \textit{48.0} \textit{\llm Judge Accuracy} and Cognee attains \textit{35.3} \textit{ROUGE-L F1}; 
+(2) Hybrid filtering is strongest on \textit{LoCoMo} exactness, where MemOS reaches \textit{11.5} \textit{Exact Match (EM)}; and (3) Trace-preserving memories remain strongest on \textit{DB-Bench}, where Long Context achieves \textit{48.20} \textit{EM} and MemoChat reaches \textit{55.40} \textit{Task Success Rate}.
+However, among methods with full workload coverage, MemoryOS and MemOS remain closest to the frontier overall, suggesting that robustness comes not from a single universal memory form, but from preserving the right evidence at the right level of abstraction before final matching.
+In particular, (1) Temporal or graph-organized memory is most useful for cross-session aggregation and event-order reasoning (e.g., scattered personal facts in \textit{LongMemEval}); (2) Summary-first or coarse-to-fine routing is useful for exact grounding in long but semantically coherent dialogues (e.g., recovering a specific date or personal detail in \textit{LoCoMo}); and (3) Trace-preserving memory is necessary when correctness depends on intermediate state changes and operation order (e.g., dependent \texttt{UPDATE} and \texttt{INSERT} operations in \textit{DB-Bench}).
+
+\noindent \textbf{O2-(Beyond Exact Match): \textit{EM} remains informative for tasks with canonical, directly grounded outputs, but it becomes insufficient when correctness depends on paraphrastic synthesis or executable success.}
+As shown in Figure~\ref{fig:RQ1_effectiveness}, \textit{Exact Match (EM)} is still a meaningful signal on \textit{LoCoMo}, where many questions target short grounded facts, as reflected by MemOS achieving the best \textit{Exact Match (EM)}. 
+On \textit{LongMemEval}, however, the stronger systems are more clearly separated once semantic equivalence is considered through \textit{ROUGE-L} and \textit{\llm Judge Accuracy}, indicating that cross-session reasoning often yields correct answers that do not share a single canonical surface form.
+On \textit{DB-Bench}, the limitation is even clearer: Long Context achieves the best \textit{Exact Match (EM)}, but MemoChat attains a substantially higher \textit{Task Success Rate}, showing that exact output matching does not fully capture whether memory supports successful execution.
+These results suggest that \textit{Exact Match (EM)} is most appropriate when answers are short, canonical, and locally verifiable (e.g., a venue name, or object attribute in \textit{LoCoMo}), but should be complemented once tasks require cross-session synthesis, or end-task state validation (e.g., composing a semantically correct answer from multiple sessions in \textit{LongMemEval} or reaching the correct table state in \textit{DB-Bench}).
+
+\begin{findingbox}
+\textbf{(Workload-Aligned Memory).}
+RQ1 suggests that strong agent memory is not defined by a single universal representation, but by how well it supports the dominant workload bottleneck: (1) for dispersed cross-session reasoning, relation- and time-aware retrieval is most effective, as in Zep and Cognee; (2) for long but semantically coherent dialogue, coarse-to-fine filtering improves exact grounding, as in MemOS and MemoryOS; and (3) for stateful execution, preserving interaction traces is more critical than exact lexical matching alone, as in Long Context.
+\end{findingbox}
+
+
+
+% \noindent $\bullet$ \textit{Metrics.} (1) Accuracy / Exact Match (EM); (2) Success Rate / Pass@k; (3) Memory-Action Alignment; (4) Temporal / Graph Accuracy; (5) Bottom-up Connectivity Score.
+
+
+% \begin{figure*}[!t]
+%   % \vspace{-.5cm}
+%   \centering
+%   \includegraphics[width=\linewidth]{figures/dataset_metric_overview.pdf}  
+%   % \vspace{-.25cm}
+%   \caption{Performance of Different Agent Memory Systems \zw{(to be refined)}.}
+%   \label{fig:intro_performance}
+%   % \vspace{-.68cm}
+% \end{figure*}
+
+\subsection{Memory Retrieval Fidelity (RQ2)}
+\label{subsec:retrieval}
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/RQ2_recall_barline_plot_v2.pdf}
+  \vspace{-.75cm}
+  \caption{Retrieval Results of Memory Systems over LoCoMo.}
+  \label{fig:RQ2_recall}
+  \vspace{-.5cm}
+\end{figure}
+
+
+\noindent \textbf{Experimental Setting.}
+For \textit{``How accurately can a memory system surface the stored evidence required by a query?''}, we evaluate eight representative memory systems to assess evidence-level retrieval fidelity independently of downstream answer generation.
+Specifically, we use \textit{LoCoMo}~\cite{maharana2024locomo}, which provides source-level gold evidence for queries with diverse evidence distances.
+We report: (1) \textit{Recall@K}, where a hit requires the top-$k$ retrieved source-id groups to contain the annotated gold evidence, and (2) \textit{Recall@10} over six \textit{evidence distance gap} bins (1--5 to 26--31), defined by the session distance between the query's final session and the earliest supporting evidence, to measure long-range retrieval accuracy.
+
+\noindent \textbf{O1-(Structured Evidence Expansion): Retrieval fidelity depends less on surfacing one relevant memory early than on preserving an explicitly organized memory structure that can gather complete and temporally distant evidence.}
+As shown in Figure~\ref{fig:RQ2_recall}, the results show a clear difference between early-hit precision and overall evidence completeness: \textit{SimpleMem} achieves the highest \textit{Recall@1} (39.0), but \textit{A-MEM} and \textit{MemTree} become clearly stronger at larger retrieval budgets, reaching 69.5/85.9 and 59.7/80.5 on \textit{Recall@5}/\textit{@10}, respectively, while also remaining much more stable as the \textit{evidence distance gap} increases; by contrast, the flat \textit{Embedding RAG} baseline drops sharply after the shortest-gap bin.
+This pattern suggests that strong memory retrieval is not mainly a top-1 ranking problem, but an evidence-completion problem in which the required support may be old, scattered, or spread across multiple turns (e.g., personal details mentioned in different sessions or dated events referenced much later).
+More specifically, the results point to three different retrieval behaviors:
+(1) compression-oriented memory is effective for surfacing one highly relevant item early (e.g., a single salient personal detail or recent conversational fact);
+(2) linked or hierarchical memory organization is more effective for gathering complementary supporting evidence across the ranked results (e.g., combining pet names or dated events mentioned in different sessions);
+and (3) flat dense retrieval remains competitive mainly when the needed evidence is still close to the current context (e.g., recent conversational facts).
+For queries that require scattered or temporally distant support, the most competitive systems are therefore those that organize memory as a structured evidence space rather than a flat similarity cache.
+
+\begin{findingbox}
+\textbf{(Evidence-Centric Memory Organization).} RQ2 shows that retrieval quality depends more on how a system organizes evidence for later reconstruction than on how well it ranks one relevant memory first.
+Specifically, (1) early localization and evidence assembly should be treated as separate design targets;
+(2) explicit structure, such as links or hierarchy, is most valuable when supporting evidence is scattered or temporally distant, as in \textit{A-MEM} and \textit{MemTree};
+and (3) flat similarity search is mainly effective for short-range access. 
+\end{findingbox}
+
+\subsection{Memory Evolution Robustness (RQ3)}
+\label{subsec:robustness}
+
+\begin{table}[t]
+\vspace{-1.25cm}
+\caption{Robustness over Memory Update Settings.}
+\vspace{-.35cm}
+\label{tab:RQ3_robustness}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.2pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{ccccccc}
+\toprule
+\multirow{3}{*}{\textbf{Method}} & \multicolumn{2}{c}{\textbf{LoCoMo}} & \multicolumn{4}{c}{\textbf{LongMemEval}} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-7}
+ & \multicolumn{2}{c}{\textbf{Temporal}} & \multicolumn{2}{c}{\textbf{Knowledge Update}} & \multicolumn{2}{c}{\textbf{Temporal Reasoning}} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+ & \shortstack{\textbf{Exact} \\ \textbf{Match}} & \shortstack{\textbf{Answer} \\ \textbf{F1}} & \shortstack{\textbf{Substring} \\ \textbf{EM}} & \shortstack{\textbf{ROUGE-L} \\ \textbf{F1}} & \shortstack{\textbf{Substring} \\ \textbf{EM}} & \shortstack{\textbf{ROUGE-L} \\ \textbf{F1}} \\
+\midrule
+\textbf{Long Context} & 8.1 & 26.9 & 20.0 & 18.0 & 12.0 & 24.0 \\
+\textbf{Embedding RAG} & 1.6 & 7.9 & 20.0 & 17.8 & 10.7 & 22.7 \\
+\midrule
+\textbf{Mem0} & 3.2 & 6.0 & 15.6 & 17.1 & 10.7 & 22.4 \\
+\textbf{MemoChat} & 2.4 & 15.4 & 8.9 & 12.9 & 10.7 & 25.3 \\
+\midrule
+\textbf{Cognee} & 4.0 & \textbf{28.1} & 37.8 & 34.0 & \textbf{18.7} & \textbf{35.8} \\
+\textbf{Zep} & 4.8 & 18.1 & \textbf{44.4} & \textbf{36.8} & 13.3 & 30.5 \\
+\textbf{MemTree} & 5.6 & 18.6 & 31.1 & 30.6 & 8.0 & 29.9 \\
+\midrule
+\textbf{Letta (MemGPT)} & 0.0 & 7.1 & 17.8 & 5.7 & 12.0 & 8.8 \\
+\textbf{LightMem} & 4.0 & 20.1 & 15.6 & 20.2 & 12.0 & 28.6 \\
+\textbf{SimpleMem} & 4.4 & 8.1 & 6.7 & 7.4 & 8.0 & 22.6 \\
+\textbf{MemOS} & \textbf{8.9} & 28.0 & 28.9 & 30.5 & 12.0 & 31.1 \\
+\textbf{MemoryOS} & 3.2 & 22.7 & 35.6 & 32.2 & 16.0 & 31.6 \\
+\textbf{A-MEM} & 4.8 & 17.7 & 26.7 & 22.8 & 8.0 & 22.5 \\
+\bottomrule
+\end{tabular}
+}
+\vspace{-.75cm}
+\end{table}
+
+\noindent \textbf{Experimental Setting.}
+For \textit{``Can agent memory systems reliably incorporate revised facts, preserve the correct temporal state after updates, and remain robust across answer backbones?''}, we conduct two experiments: \textit{(1) Update Robustness Comparison}, which evaluates whether systems can absorb fact revisions and answer temporally grounded queries after updates; and \textit{(2) Backbone Robustness Ablation}, which tests whether this behavior remains stable when only the \llm backbone changes.
+In \textit{(1) Update Robustness Comparison}, Table~\ref{tab:RQ3_robustness} compares 11 representative memory systems on \textit{Knowledge Update} and \textit{Temporal Reasoning} from \textit{LongMemEval}~\cite{wu2024longmemeval}, and \textit{Temporal} from \textit{LoCoMo}~\cite{maharana2024locomo}.
+The two \textit{LongMemEval}~\cite{wu2024longmemeval} slices are reported with \textit{Substring EM} and \textit{ROUGE-L F1}, while the \textit{LoCoMo}~\cite{maharana2024locomo} slice is reported with \textit{Exact Match (EM)} and \textit{Answer F1};
+In \textit{(2) Backbone Robustness Ablation}, Figure~\ref{fig:RQ3_llm_backbone} evaluates 6 representative memory settings under 4 \llm backbones on the \textit{LoCoMo}~\cite{maharana2024locomo}.
+% reporting \textit{Answer F1}, and \textit{Recall}.
+
+\noindent \textbf{O4-(Temporal State Externalization): No single memory system dominates all update-oriented slices, but methods that preserve temporally valid evidence through structured organization remain the most competitive overall.}
+As shown in Table~\ref{tab:RQ3_robustness}, the leading systems shift across slices:
+(1) Graph- or relation-organized memory is strongest on direct fact revision, where Zep leads \textit{Knowledge Update} with 44.4 \textit{Substring EM} and 36.8 \textit{ROUGE-L F1};
+(2) Relationally organized retrieval is strongest on temporally dispersed evidence, where Cognee leads \textit{Temporal Reasoning} with 18.7 \textit{Substring EM} and 35.8 \textit{ROUGE-L F1};
+and (3) Hybrid filtered memory is strongest on exact latest-state grounding, where MemOS attains the highest \textit{LoCoMo} \textit{Exact Match (EM)} at 8.9 while Cognee attains the highest \textit{Answer F1} at 28.1.
+However, among methods with full slice coverage, Cognee, MemOS, and MemoryOS remain closest to the frontier overall, indicating that robustness comes not from a single universal memory form, but from preserving the right temporal evidence at the right structure level.
+In particular, (1) temporal or graph-organized memory is most useful for revised personal facts and dated events (e.g., aggregating scattered updates to preferences, purchases, or past activities in \textit{LongMemEval}); (2) hybrid or coarse-to-fine filtering is most useful when correctness depends on the currently valid state (e.g., recovering the latest date, attribute, or event order from long but semantically coherent dialogues in \textit{LoCoMo}); and (3) flat context accumulation or dense similarity alone is weakest when stale mentions must be separated from updated ones (e.g., distinguishing an earlier personal detail from its later correction after repeated mentions over time).
+
+\begin{figure}[!t]
+    \vspace{-1.25cm}
+  \centering
+  \includegraphics[width=\linewidth]{figures/RQ3_llm_backbone_bar.pdf}
+  \vspace{-.5cm}
+  \caption{Ablation of \llm Backbones.}
+  \label{fig:RQ3_llm_backbone}
+  \vspace{-.83cm}
+\end{figure}
+
+\noindent \textbf{O5-(Backbone Robustness): Backbone variation changes absolute answer quality more than it changes which memory pipeline remains effective, indicating that stable update behavior is determined primarily before final generation.}
+As shown in Figure~\ref{fig:RQ3_llm_backbone}, \textit{Answer F1} generally rises under stronger generators, yet the overall ordering changes only modestly:
+(1) MemOS remains the strongest memory-based configuration at 32.2, 41.2, 38.6, and 41.2;
+and (2) the only notable reversal is local, where A-MEM overtakes MemTree under GPT-5.4-mini and GPT-5.4.
+This stability implies that stronger backbones mostly improve answer realization after relevant evidence has already been localized, rather than compensating for weak temporal grounding.
+For example, for date-grounded latest-state queries in the current \textit{LoCoMo} temporal outputs, MemOS remains correct across all four backbones, whereas Embedding RAG remains incorrect.
+More concretely, methods with stronger external organization yield a more stable evidence set for different \llms, whereas methods that rely more heavily on \llm-side synthesis exhibit greater cross-backbone movement. 
+% consequently, scaling the answer model complements, but does not replace, explicit temporal memory design.
+
+\begin{findingbox}
+\textbf{(Temporal Update Fidelity).}
+RQ3 suggests that reliable post-update behavior is a pipeline-level design problem rather than a pure model-capacity problem.
+In particular, (1) \emph{revisability} should be built into the memory representation so later facts can be bound to the same entity or event rather than appended as undifferentiated text, as in Zep and Cognee;
+(2) \emph{query-time selectivity} should match the workload bottleneck, using filtered or hybrid routing when the task requires the currently valid state, as in MemOS and MemoryOS;
+and (3) \emph{\llm scaling} is most valuable only after grounding has succeeded, so stronger backbones should refine answer expression rather than serve as the primary mechanism for resolving stale or conflicting memories.
+\end{findingbox}
+
+% \noindent $\bullet$ \textit{Metrics.} (1) Update Adoption Rate (UAR); (2) Conflict Resolution Accuracy; (3) Forgetting Completeness; (4) Forgetting Precision (False Deletion Rate); (5) Failure Recovery Rate (FRR).
+
+
+
+\subsection{Long Horizon Memory Stability (RQ4)}
+\label{subsec:horizon}
+
+\noindent \textbf{Experimental Setting.}
+For \textit{``How stable are agent memory systems as the effective memory horizon increases, either through longer contexts or more distant supporting evidence?''}, we evaluate 12 representative memory systems across 3 benchmarks to assess robustness to increasing context length and temporal distance.
+Specifically, we use: (1) \textit{LongBench}~\cite{DBLP:conf/acl/BaiLZL0HDLZHDTL24}, which evaluates controlled long-context difficulty in question answering, reported with \textit{Accuracy} over \textit{Short}, \textit{Medium}, and \textit{Long} context-length buckets to measure context-length robustness;
+(2) \textit{LongMemEval}~\cite{wu2024longmemeval}, which evaluates multi-session memory as the amount of prior interaction grows, reported with \textit{ROUGE-L F1} over bins of historical session count to measure multi-session stability; and (3) \textit{LoCoMo}~\cite{maharana2024locomo}, which evaluates memory drift when supporting evidence lies back in the conversation, reported with \textit{Answer F1} over bins of evidence-distance gap between the final session and the earliest supporting-evidence.
+
+\noindent \textbf{O6-(Long-Horizon Evidence Preservation): Memory remains more stable at longer horizons when evidence is organized through explicit relational links or hierarchical consolidation, rather than left as flat text for direct matching.}
+As shown in Figure~\ref{fig:RQ4_horizon}, in \textit{LongBench}, \textit{SimpleMem} stays nearly unchanged from the Short to Medium buckets ($35.2$ to $34.9$ \textit{Accuracy}), whereas \textit{Long Context} drops from $42.6$ to $19.0$, indicating that larger prompts alone do not sustain answer quality once long inputs accumulate distractors.
+In \textit{LoCoMo}, the contrast is sharper: \textit{Embedding RAG} falls from $37.1$ to $7.4$ \textit{Answer F1} as the evidence gap widens, while graph- or consolidated-memory systems such as \textit{Cognee}, \textit{MemOS}, and \textit{MemoryOS} remain substantially higher across the same bins; \textit{LongMemEval} shows the same advantage for methods that preserve cross-session structure over longer histories.
+It indicates that the main difficulty at longer horizons is not memory volume, but whether the representation keeps distant facts connected to the abstractions needed for answering.
+More specifically, graph- or temporally organized memory preserves entity--event--time relations for distant facts (e.g., recovering a repeated personal event many sessions earlier), while hierarchical or summary-first organization preserves session-level structure (e.g., first locating the relevant session before resolving a specific local detail) so the \llm can narrow attention before final generation.
+Pure long-context prompting and flat dense memory provide neither form of support, and therefore degrade more sharply as the effective horizon grows.
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/RQ4_three_panel_stability_v2.pdf}
+  % \vspace{-.75cm}
+  \caption{(a) Context-length robustness on \textit{LongBench}; (b) Session-history growth on \textit{LongMemEval}; (c) Temporal evidence-distance drift on \textit{LoCoMo}.}
+  \label{fig:RQ4_horizon}
+  \vspace{-.75cm}
+\end{figure}
+
+\begin{findingbox}
+\textbf{(Horizon-Structured Memory).}
+RQ4 indicates that, as the effective memory horizon grows, the main challenge shifts from storing more history to choosing the right abstraction over it:
+\emph{(1) Multi-view filtering} helps when long inputs contain many distractors, as in \textit{SimpleMem};
+\emph{(2) Relation-aware indexing} helps when supporting facts are separated by many turns or sessions, as in \textit{Cognee} and \textit{Zep};
+and  \emph{(3) Coarse-to-fine summarization} helps when the system must first identify the relevant session before resolving a local detail, as in \textit{MemOS} and \textit{MemoryOS}.
+\end{findingbox}
+
+% \noindent $\bullet$ \textit{Metrics.} (1) Memory Recall Accuracy (MRA); (2) Cross-Session Consistency (CSC); (3) Forgetting Drop; (4) Interference Sensitivity; (5) Scalability Curve.
+
+\subsection{Memory Operation Cost (RQ5)}
+\label{subsec:cost}
+
+% \noindent $\blacktriangleright$ \textbf{What is the operational cost of each memory system?}
+% To determine whether performance gains justify their system overhead, we evaluate operational cost using the unified time-overhead traces saved by our evaluation runner. It separates benchmarks that explicitly define memory-cost measurements from post-hoc runtime logs collected during regular task evaluation.
+
+\noindent \textbf{Experimental Setting.}
+For \textit{``What is the operational cost of each memory system in terms of utility--latency trade-off and cross-workload latency footprint?''}, we evaluate 8 representative memory systems using the unified time-overhead traces recorded by our runner.
+We quantify two aspects:
+(1) \textit{Utility--latency trade-off}, measured by \textit{Avg.\ Operation Latency/Query} and \textit{Normalized Utility};
+and (2) \textit{Cross-workload latency footprint}, measured by \textit{Outlier-Filtered Avg.\ Total Latency/Query}.
+For (1), \textit{Avg.\ Operation Latency/Query} is computed as memory construction time plus query time and interpreted as amortized per-query cost for systems with cumulative or bursty writes, while \textit{Normalized Utility} is the mean of six min--max normalized answer-quality metrics from the current \textit{LoCoMo}~\cite{maharana2024locomo} and \textit{LongMemEval}~\cite{wu2024longmemeval} runs.
+For (2), we report \textit{Outlier-Filtered Avg.\ Total Latency/Query} on three benchmark.
+% (e.g., \textit{LoCoMo}~\cite{maharana2024locomo}, and \textit{LongMemEval}~\cite{wu2024longmemeval}).
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/RQ5_frontier_heatmap_combined.pdf}
+  % \vspace{-.75cm}
+  \caption{Operation Cost of Memory Systems.}
+  \label{fig:RQ5_cost}
+  \vspace{-.75cm}
+\end{figure}
+
+\noindent \textbf{O7-(Localized Maintenance): The most cost-efficient memory mechanisms are those that localize maintenance to a bounded subset of memory state, whereas mechanisms that repeatedly reorganize a large global state are the least efficient.}
+As shown in Figure~\ref{fig:RQ5_cost}, (1) Among memory-augmented systems, LightMem and MemTree occupy the strongest efficiency frontier, with LightMem reaching 48.3 \textit{Normalized Utility} at 3.67\,s \textit{Avg.\ Operation Latency/Query} and MemTree reaching 63.5 at 15.9\,s; both are clearly more efficient than MemoChat (28.0 at 15.4\,s), Mem0 (21.4 at 35.9\,s), and A-MEM (57.7 at 17.9\,s);
+(2) Higher-utility structured systems move markedly to the expensive side: MemoryOS reaches 82.0 \textit{Normalized Utility} only at 28.6\,s, while Cognee and Zep exceed 84 utility only after 116.5\,s and 155.1\,s;
+(3) The workload-specific latency view sharpens the same separation on \textit{LongBench}: LightMem remains at 17.3\,s and MemTree at 116.7\,s, whereas Mem0, MemoChat, MemoryOS, and A-MEM rise to 374.2, 460.2, 490.0, and 552.1\,s, respectively.
+It indicates that operational efficiency is governed less by whether a system uses structure than by how widely each write propagates through that structure.
+Specifically, (1) segmented compression and bounded hybrid retrieval keep LightMem close to the low-cost regime;
+(2) path-local tree aggregation allows MemTree to preserve substantially more utility without global refresh;
+and (3) graph-wide consolidation, multi-store synchronization, or repeated whole-memory rewriting yield stronger organization but impose the heaviest operational cost as memory grows.
+
+\begin{findingbox}
+\textbf{(Operational Scaling Rule).}
+RQ5 shows that efficiency is governed by maintenance scope rather than structure alone.
+(1) Localized update and search yield the strongest cost--utility balance, as in LightMem and MemTree;
+(2) Richer organization helps only when its upkeep avoids broad recomputation; otherwise overhead offsets its gains, as in Cognee and MemoryOS;
+(3) Under long-context workloads, whole-memory coordination becomes the dominant cost driver.
+\end{findingbox}

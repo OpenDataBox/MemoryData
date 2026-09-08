@@ -1,0 +1,384 @@
+\section{Experiments and Results}
+
+\subsection{Benchmarks and Setup}
+
+We evaluate our memory agent on two long-horizon agent benchmarks:
+Terminal-Bench 2.0 and $\tau^2$-Bench. Terminal-Bench 2.0 evaluates autonomous agents
+operating in realistic command-line environments, where agents must inspect
+files, run commands, edit code, debug failures, and satisfy hidden verifier tests
+\citep{merrill2026terminalbench}. In this setting, execution state decays through
+local debugging loops: agents may forget earlier requirements, repeat failed
+commands, overlook environment observations, or lose track of diagnosed errors.
+
+$\tau^2$-Bench evaluates conversational tool-use agents in dynamic task
+environments derived from real-world service domains \citep{yao2024taubench,
+barres2025tau2bench}. Unlike purely autonomous terminal tasks, these interactions
+require the agent to maintain policy-relevant state across a multi-turn
+conversation, coordinate with a user simulator, and use tools to update or verify
+the environment. This creates a different source of behavioral state decay:
+important facts may be stated by the user, observed through tools, or implied by
+domain policies, but later stop influencing the agent's decisions.
+
+Together, these benchmarks allow us to test whether memory  helps
+across both autonomous execution and interactive coordination. Terminal-Bench
+emphasizes environment grounding, debugging continuity, and procedural memory;
+$\tau^2$-Bench emphasizes policy adherence, user-state tracking, and
+conversation-level execution state.
+
+\paragraph{Terminal-Bench 2.0.}
+We run the Terminal-Bench 2.0 full set using the official Terminus-2-style
+terminal agent harness. The benchmark contains 89 tasks; we report results on
+the 85 paired tasks for which both baseline and memory runs produced valid
+evaluations, excluding four docker failures unrelated to agent behavior.
+For each task, the action agent interacts with a containerized terminal
+environment and receives a binary pass/fail score from the task verifier. We
+report pass@1 averaged across tasks. For Terminal-Bench, pass@1 is the fraction of tasks whose final verifier
+passes.
+
+\paragraph{$\tau^2$-Bench.}
+We evaluate three domains from the $\tau^2$-Bench framework: airline, retail, and
+telecom. We use the base task split, containing 50 airline tasks, 114 retail
+tasks, and 114 telecom tasks, for a total of 278 tasks per configuration. Each
+episode is a single sampled conversation between the action agent and a user
+simulator, with task success determined by the benchmark evaluator. We report
+pass@1 for each domain and a task-weighted average across domains.
+For $\tau^2$-Bench, a conversation is considered a pass if it satisfies the task evaluator.
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{6pt}
+\caption{
+Main results on Terminal-Bench and $\tau^2$-Bench. All scores are pass@1
+percentages; $\Delta$ is reported in percentage points (pp). The memory agent
+is Claude Opus 4.6.
+}
+\label{tab:main_results}
+\begin{tabular}{lllrrrr}
+\toprule
+Benchmark & Domain / Split & Action Model & $n$
+& Baseline & + Memory & $\Delta$ \\
+\midrule
+Terminal-Bench 2.0 & full set & Sonnet 4.5 & 85
+& 37.6\% & \textbf{45.9\%} & \textbf{+8.3 pp} \\
+Terminal-Bench 2.0 & full set & Opus 4.6 & 85
+& 43.5\% & \textbf{45.9\%} & \textbf{+2.4 pp} \\
+\midrule
+$\tau^2$-Bench & airline & Sonnet 4.5 & 50
+& 68.0\% & \textbf{78.0\%} & \textbf{+10.0 pp} \\
+$\tau^2$-Bench & retail & Sonnet 4.5 & 114
+& 49.1\% & \textbf{58.8\%} & \textbf{+9.6 pp} \\
+$\tau^2$-Bench & telecom & Sonnet 4.5 & 114
+& 55.3\% & \textbf{57.9\%} & \textbf{+2.6 pp} \\
+\cmidrule(lr){2-7}
+$\tau^2$-Bench & task-weighted avg. & Sonnet 4.5 & 278
+& 55.0\% & \textbf{61.8\%} & \textbf{+6.8 pp} \\
+\midrule
+$\tau^2$-Bench & airline & Opus 4.6 & 50
+& 76.0\% & 76.0\% & +0.0 pp \\
+$\tau^2$-Bench & retail & Opus 4.6 & 114
+& 64.9\% & \textbf{69.3\%} & \textbf{+4.4 pp} \\
+$\tau^2$-Bench & telecom & Opus 4.6 & 114
+& 63.2\% & \textbf{64.9\%} & \textbf{+1.8 pp} \\
+\cmidrule(lr){2-7}
+$\tau^2$-Bench & task-weighted avg. & Opus 4.6 & 278
+& 66.2\% & \textbf{68.7\%} & \textbf{+2.5 pp} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+\paragraph{Agents and memory configuration.}
+We evaluate two action-agent strengths: Claude Sonnet 4.5 and Claude Opus 4.6.
+Unless otherwise stated, the memory agent is Claude Opus 4.6. The action agent is
+kept unchanged across baseline and memory-enabled runs. In the memory condition,
+the memory agent runs at the first step and then at every subsequent step. It observes the task description, a recent trajectory
+window of $k$ ($k$=8) messages, and the current memory bank. It first updates the
+memory bank, then emits either a context injection or
+no intervention. If a reminder is emitted, it is injected into the next action-agent call as transient memory context.
+
+
+\subsection{Main Results}
+Table~\ref{tab:main_results} reports the main results. Memory intervention improves pass@1 on both benchmarks and across both action-agent strengths: on Terminal-Bench 2.0, Sonnet 4.5 gains +8.3 pp ($37.6\% \to 45.9\%$) and Opus 4.6 gains +2.4 pp ($43.5\% \to 45.9\%$); on $\tau^2$-Bench, Sonnet 4.5 gains +6.8 pp on the task-weighted average ($55.0\% \to 61.8\%$) and Opus 4.6 gains +2.5 pp ($66.2\% \to 68.7\%$). Gains are larger for the weaker action agent but do not disappear for the stronger one, indicating that the benefit is not merely compensating for limited capacity. Across $\tau^2$-Bench domains, airline and retail show the largest Sonnet lifts (+10.0 and +9.7 pp) while telecom is smaller (+2.6 pp), consistent with our framing of memory as a domain-sensitive intervention policy rather than a fixed summarization mechanism.
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{
+Ablations on $\tau^2$-Bench with Sonnet 4.5 as the action agent, Opus 4.6 as the memory agent for all experiments. Scores are
+pass@1 percentages. Macro averages domains equally, micro is task-weighted.
+}
+\label{tab:ablation_all}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllccccc}
+\toprule
+ & & & \multicolumn{3}{c}{$\tau^2$-Bench pass@1 (\%)} & \multicolumn{2}{c}{Average} \\
+\cmidrule(lr){4-6} \cmidrule(lr){7-8}
+Variant & Phase 1 (memory) & Phase 2 (intervention) & Airline & Retail & Telecom & Macro & Micro \\
+\midrule
+Sonnet 4.5 baseline
+& --- & ---
+& 68.0 & 49.1 & 55.3 & 57.5 & 55.0 \\
+\midrule
+\textbf{+ Full memory agent (ours)}
+& bank management
+& selective reminder / silence
+& \textbf{\imp{78.0}} & \imp{57.0} & \imp{57.9}
+& \textbf{\imp{64.3}} & \imp{61.2} \\
++ Full-bank context
+& bank management
+& expose full bank
+& \imp{74.0} & \imp{52.6} & \imp{57.9}
+& \imp{61.5} & \imp{58.6} \\
++ Always inject
+& bank management
+& forced reminder every step
+& \imp{72.0} & \imp{58.8} & \imp{59.6}
+& \imp{63.5} & \textbf{\imp{61.5}} \\
++ Injection-only (no bank)
+& skipped
+& selective guidance / silence
+& \reg{62.0} & \imp{54.4} & \textbf{\imp{66.7}}
+& \imp{61.0} & \imp{60.8} \\
++ Mem0 \citep{mem0ai2026mem0}
+& Mem0 ADD
+& vector+BM25 top-10
+& 68.0 & \textbf{\imp{59.6}} & \imp{58.8}
+& \imp{62.1} & \imp{60.8} \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+
+
+\subsection{Ablations and Comparisons}
+
+We ablate the memory agent on $\tau^2$-Bench to test which parts of the architecture are responsible for the gains. Our memory design has two agentic components. Phase~1 performs memory management: it maintains a persistent memory bank of user facts, tool observations, procedural evidence, and open subgoals. Phase~2 performs intervention: it decides whether any remembered state should be reactivated in the next action-agent call, and if so, generates a concise memory-grounded reminder. The ablations remove one capability at a time, allowing us to compare our design against passive context augmentation, always-on memory injection, advisor-style guidance.
+
+\paragraph{Ablation variants.}
+\textit{Full-bank context} keeps Phase~1 but removes Phase~2 intervention
+selection. The memory agent still performs agentic memory management, but the
+entire memory bank is exposed to the action agent at every step. This resembles
+passive context augmentation: the system maintains memory, but does not decide
+which memory item is currently relevant or whether it should intervene in the
+control loop. This tests whether the benefit comes merely from making historical
+state visible.
+
+\textit{Always inject} keeps both the memory bank and the generative Phase~2
+reminder, but removes the silence action. Unlike embedding-based
+retrieval-augmented prompting, which retrieves fixed records from a store
+\citep{lewis2020rag}, this variant still uses the memory model to synthesize a
+reminder from the maintained bank. However, it must inject at every step. This
+tests whether the no-op decision is only an efficiency optimization or an
+essential part of intervention calibration.
+
+\textit{Injection-only (no bank)} removes persistent memory while retaining the
+Phase~2 intervention model. This is analogous to advisor-style systems, where an
+auxiliary model observes the trajectory and provides natural-language guidance
+to an executor \citep{asawa2025advisor,anthropic2026advisor}. Unlike the full
+memory agent, this variant has no maintained memory bank, so its guidance cannot
+be grounded in persistent execution state.
+
+\textit{Mem0} compares against a general persistent memory layer
+\citep{mem0ai2026mem0}. In this variant, memories are written through Mem0's
+ADD interface and retrieved with its vector/BM25 search, with the top retrieved
+items returned to the action agent. This isolates the difference between
+production memory retrieval and our formulation of memory as a selective
+intervention policy.
+
+
+Table~\ref{tab:ablation_all} shows that memory-style variants generally improve
+over the Sonnet baseline, but the improvements are not equally robust across
+domains. The full two-phase memory agent achieves the highest macro-average,
+improving all three domains and giving the largest gain on airline. Since macro
+averages domains equally, this indicates that our architecture gives the most
+balanced improvement across heterogeneous task types.
+
+The ablations show that each removed capability weakens robustness in a
+different way. Full-bank context improves over the baseline but trails the full
+system by 2.8 macro points and 2.6 micro points, suggesting that maintaining a
+memory bank is useful but exposing all remembered state is not enough; the memory
+agent must select what is currently behaviorally relevant. Always inject is
+competitive and slightly leads on micro-average by 0.3 points, but this gap is
+within expected run variance and disappears on the domain-balanced macro-average,
+where selective silence is better, especially on airline. Injection-only guidance helps in some domains, especially
+telecom, but is less stable without persistent memory and even hurts airline
+relative to the baseline. Together, these results suggest that neither passive
+memory exposure, always-on reminders, nor generic auxiliary guidance is
+sufficient: the most balanced gains come from combining maintained execution-state
+memory with a selective intervention policy.
+
+Mem0 improves the average score, confirming that persistent
+memory retrieval is useful. However, it does not improve airline over the
+baseline and falls short of our full system on macro-average. This highlights
+the distinction between retrieving memories and deciding whether retrieved state
+should intervene. A general memory layer can return relevant records, but it
+does not explicitly model when a memory should enter the loop or how it
+should be phrased as a targeted reminder.
+
+Overall, the ablations support the two-phase design. Agentic memory management
+alone is helpful but insufficient; advisor-like intervention without memory is
+not reliably grounded; and always-on injection can be competitive but less
+balanced. The full memory agent performs best on macro-average because it
+combines maintained execution state with a selective intervention policy that can
+choose both what to say and when to remain silent.
+
+
+\subsection{Qualitative Analysis}
+
+We qualitatively inspect memory-enabled trajectories to understand when memory
+injection changes agent behavior. Across both benchmarks, the dominant pattern
+is not generic summarization. Memory helps when it reactivates a specific piece
+of execution state at the moment the action agent is about to ignore it. The
+type of state differs by benchmark: Terminal-Bench emphasizes environment
+observations, debugging continuity, and failure diagnoses, while $\tau^2$-Bench
+emphasizes policy clauses, user/tool state, and procedural sequencing.
+Table~\ref{tab:qual_mechanisms} summarizes the recurring mechanisms we observe;
+the rest of this section discusses each benchmark in turn.
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\caption{
+Representative mechanisms observed in qualitative analysis. Memory interventions
+help when they reactivate execution state that the action agent previously saw
+but no longer uses in its next decision.
+}
+\label{tab:qual_mechanisms}
+\begin{tabularx}{\textwidth}{l X X}
+\toprule
+Mechanism & Typical memory content & Representative examples \\
+\midrule
+Requirement / policy reactivation
+& Task or domain rule about an allowed action
+& $\tau^2$ airline compensation, retail modification rules \\
+Environment grounding
+& Runtime facts, paths, tool limitations, system quirks
+& Terminal-Bench Git server setup, ARS file-write failure \\
+Failure-loop avoidance
+& Previous attempts and why they failed
+& Adaptive rejection sampling, telecom diagnostic retries \\
+Diagnostic carryover
+& Root cause of a bug or negative signal
+& Regex edge cases, SQLite gcov configuration \\
+Progress / entity tracking
+& Which user, order, line, branch, or subgoal is active
+& $\tau^2$ telecom line lookup, retail authentication state \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\paragraph{Terminal-Bench: maintaining debugging continuity.}
+In Terminal-Bench, memory is most useful during iterative debugging, where the
+action agent accumulates observations but later loses track of which ones should
+constrain the next command. The relevant memory is not a single type of
+fact. In \texttt{regex-log}, memory reactivates both requirements and diagnoses:
+it points out that the current regex violates the task's boundary condition,
+misses single-digit IPv4 octets. In \texttt{adaptive-rejection-sampler}, memory
+tracks repeated failed file edits and later surfaces an environment-specific
+workaround. These cases suggest that memory improves Terminal-Bench performance
+by preserving continuity across debugging iterations: what was tried, what was
+observed, what failed, and what still constrains the solution.
+
+\paragraph{$\tau^2$-Bench: reactivating policy and interaction state.}
+In $\tau^2$-Bench, the useful execution state is often policy- or
+interaction-specific. Airline and retail tasks frequently require the agent to
+apply a rule many turns after the relevant fact was observed. For example, in
+one airline case, the user claimed Gold status, but tool output showed that the
+user was a Regular member. The baseline issued compensation based on the user's
+claim, while the memory-enabled agent reminded the action agent to rely on
+verified records. In another case, memory prevented an invalid modification of a
+basic-economy flight by reactivating the policy clause that such flights cannot
+be modified. Successful interventions often occur immediately before a
+state-changing tool call, reminding the agent of authentication requirements,
+eligibility conditions, one-shot tool limits, or policy clauses not enforced.
+
+Overall, this qualitative analysis aligns with the main results: memory
+interventions help more often than they hurt. Successful interventions are
+specific, grounded, and timely; they restore the causal influence of execution
+state over the next action. The remaining failures are primarily calibration
+errors rather than failures of memory storage. Occasionally, the memory agent
+surfaces a speculative inference with too much confidence, repeats information
+that the action agent already knows, or raises a plausible but unnecessary
+concern that causes extra verification. These cases motivate training the memory
+agent to better decide when to remain silent.
+
+\subsection{Training Open-Weight Memory Agents}
+\label{sec:training}
+
+We conduct an early exploration of whether the memory-intervention policy can be
+trained on an open-weight model. The prompted Opus memory agent improves
+long-horizon agents, but it adds a frontier-model call at each memory step and
+its intervention calibration is imperfect. We therefore train Qwen3.5-27B as a
+memory agent while keeping the Qwen3.5-122B-A10B action agent frozen.
+
+We train on SETA, a collection of executable terminal-agent tasks with verifier
+rewards \citep{seta}. SETA is used for supervised fine-tuning and reinforcement
+learning, and Terminal-Bench 2.0 is held out to test transfer. SFT distills
+prompted-memory trajectories, supervising both Phase~1 memory-bank operations
+and Phase~2 intervention decisions. GRPO then further optimizes intervention
+calibration. Because task-level verifier rewards are sparse over many memory
+calls, we focus updates on pivot turns that labeled offline rollouts identify as likely to affect downstream success.
+
+\begin{table}[t]
+\centering
+\small
+\caption{
+Training and transfer of the open-weight memory agent. The action agent is a
+frozen Qwen3.5-122B-A10B; the trainable memory agent is Qwen3.5-27B. SETA
+validation reports average verifier reward; Terminal-Bench reports pass@1 on
+the 85-task.
+}
+\label{tab:trained_memory}
+
+\begin{subtable}[t]{0.49\textwidth}
+\centering
+\setlength{\tabcolsep}{5pt}
+\caption{SETA validation.}
+\label{tab:seta_trained_memory}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccc}
+\toprule
+Setup & Avg. reward & Solved & $\Delta$ \\
+\midrule
+Action only, no memory
+& 0.709 & 56 & --- \\
++ Qwen3.5-27B base memory
+& 0.693 & 54 & -0.016 \\
++ SFT memory
+& 0.720 & 58 & +0.011 \\
++ GRPO memory
+& \textbf{0.734} & \textbf{58} & \textbf{+0.025} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{subtable}
+\hfill
+\begin{subtable}[t]{0.49\textwidth}
+\centering
+\setlength{\tabcolsep}{6pt}
+\caption{Transfer to Terminal-Bench 2.0.}
+\label{tab:trained_memory_terminalbench}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccc}
+\toprule
+Setup & $n$ & Pass@1 & $\Delta$ \\
+\midrule
+Qwen3.5-122B-A10B action only
+& 85 & 37.6\% & --- \\
++ trained Qwen3.5-27B memory
+& 85 & \textbf{41.1\%} & \textbf{+3.5 pp} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{subtable}
+\end{table}
+
+Table~\ref{tab:seta_trained_memory} shows that the memory policy is learnable
+but requires calibration. An untrained 27B memory agent hurts performance,
+reducing SETA reward from 0.709 to 0.693. SFT recovers this loss and improves
+reward to 0.720, while GRPO further raises it to 0.734. On held-out
+Terminal-Bench 2.0, the SETA-trained memory agent improves the frozen action
+agent from 37.6\% to 41.1\% pass@1. These results suggest that memory
+intervention can be distilled into an open-weight model and that RL improves the
+decision of when remembered state should enter the control loop.

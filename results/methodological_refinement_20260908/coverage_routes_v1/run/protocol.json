@@ -1,0 +1,582 @@
+{
+  "args": {
+    "out": "runs/coverage_routes_v1",
+    "model": "Qwen/Qwen3-8B",
+    "embed_model": "Qwen/Qwen3-Embedding-0.6B",
+    "embed_batch_size": 4,
+    "seed": 20260907,
+    "budget": 2048
+  },
+  "source_sha256": {
+    "run_route_refinement.py": "f203a39a9b4d788fb2df0249056f2c943fb733808947f0c3a758906d30eb8d3f",
+    "coverage_routes.py": "c17733c9272bccf8b80e0c37d87b8d0a0c9ffe9719a44d5dc2ff7cab5480c687",
+    "retrieval_contract.py": "69cf8b3c5e5931eaffa447743e186e4c8aa45fdd1237d0b5c6f52829cf57bac8",
+    "crossview_probes.py": "4205d2bd663569135d9514df7a7eabeebe4b9185be6a8108f8c2a8781a22ae5e",
+    "budgeted_evidence.py": "d1e5f99306a7654124b16cf9c3ecb14e98118892dc0ed24b92470386049fddb3",
+    "evidence_fidelity.py": "ba55f8508cc16b1cea420f80198a9c6c7d3359235645886d9180c1bf0838c735",
+    "evidence_utility.py": "b6a18927a332ff96a997b24a8d36a0ff29757baeb36b8d1efe9c5aab51c9f310",
+    "run_evidence_utility.py": "534749083cd534deb00944d893ef9ed43fcb624a14fd5d9f560669d99ad03edd",
+    "evaluate_indexed.py": "c979c626d98646247cb0c06a666a909b20014844de6b80df93ddcecbbca81123",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  },
+  "environment": {
+    "models": {
+      "Qwen/Qwen3-8B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "Qwen/Qwen3-Embedding-0.6B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-Embedding-0.6B/snapshots/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+      }
+    },
+    "packages": {
+      "torch": "2.8.0",
+      "vllm": "0.10.2",
+      "transformers": "4.56.2",
+      "sentence-transformers": "5.1.0",
+      "nltk": "3.9.1",
+      "numpy": "2.2.6"
+    },
+    "data_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4"
+  },
+  "previous_protocol_sha256": "19bcb8a9733adfb9c65ae8a7ec3dee1f2dae03349ff811b642b381875d8e759b",
+  "baseline_memory_sha256": "66d7b35af3c0535a9aad39359af55f79e6084bbc811262b8e91ac0f1f465570a",
+  "records": [
+    {
+      "id": "conv-26:23",
+      "conv_id": "conv-26",
+      "qa_index": 23,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:47",
+      "conv_id": "conv-26",
+      "qa_index": 47,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:80",
+      "conv_id": "conv-26",
+      "qa_index": 80,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:54",
+      "conv_id": "conv-26",
+      "qa_index": 54,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:64",
+      "conv_id": "conv-26",
+      "qa_index": 64,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:95",
+      "conv_id": "conv-26",
+      "qa_index": 95,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:117",
+      "conv_id": "conv-26",
+      "qa_index": 117,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:96",
+      "conv_id": "conv-26",
+      "qa_index": 96,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:110",
+      "conv_id": "conv-26",
+      "qa_index": 110,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:130",
+      "conv_id": "conv-26",
+      "qa_index": 130,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:3",
+      "conv_id": "conv-30",
+      "qa_index": 3,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:28",
+      "conv_id": "conv-30",
+      "qa_index": 28,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:12",
+      "conv_id": "conv-30",
+      "qa_index": 12,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:21",
+      "conv_id": "conv-30",
+      "qa_index": 21,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:63",
+      "conv_id": "conv-30",
+      "qa_index": 63,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:71",
+      "conv_id": "conv-30",
+      "qa_index": 71,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:62",
+      "conv_id": "conv-30",
+      "qa_index": 62,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:70",
+      "conv_id": "conv-30",
+      "qa_index": 70,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:74",
+      "conv_id": "conv-30",
+      "qa_index": 74,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:54",
+      "conv_id": "conv-30",
+      "qa_index": 54,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:3",
+      "conv_id": "conv-41",
+      "qa_index": 3,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:40",
+      "conv_id": "conv-41",
+      "qa_index": 40,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:46",
+      "conv_id": "conv-41",
+      "qa_index": 46,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:56",
+      "conv_id": "conv-41",
+      "qa_index": 56,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:125",
+      "conv_id": "conv-41",
+      "qa_index": 125,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:72",
+      "conv_id": "conv-41",
+      "qa_index": 72,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:85",
+      "conv_id": "conv-41",
+      "qa_index": 85,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:86",
+      "conv_id": "conv-41",
+      "qa_index": 86,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:65",
+      "conv_id": "conv-41",
+      "qa_index": 65,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:87",
+      "conv_id": "conv-41",
+      "qa_index": 87,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:18",
+      "conv_id": "conv-43",
+      "qa_index": 18,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:57",
+      "conv_id": "conv-43",
+      "qa_index": 57,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:33",
+      "conv_id": "conv-43",
+      "qa_index": 33,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:70",
+      "conv_id": "conv-43",
+      "qa_index": 70,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:117",
+      "conv_id": "conv-43",
+      "qa_index": 117,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:95",
+      "conv_id": "conv-43",
+      "qa_index": 95,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:76",
+      "conv_id": "conv-43",
+      "qa_index": 76,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:142",
+      "conv_id": "conv-43",
+      "qa_index": 142,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:125",
+      "conv_id": "conv-43",
+      "qa_index": 125,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:140",
+      "conv_id": "conv-43",
+      "qa_index": 140,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:35",
+      "conv_id": "conv-44",
+      "qa_index": 35,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:14",
+      "conv_id": "conv-44",
+      "qa_index": 14,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:30",
+      "conv_id": "conv-44",
+      "qa_index": 30,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:11",
+      "conv_id": "conv-44",
+      "qa_index": 11,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:33",
+      "conv_id": "conv-44",
+      "qa_index": 33,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:61",
+      "conv_id": "conv-44",
+      "qa_index": 61,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:119",
+      "conv_id": "conv-44",
+      "qa_index": 119,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:120",
+      "conv_id": "conv-44",
+      "qa_index": 120,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:90",
+      "conv_id": "conv-44",
+      "qa_index": 90,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:77",
+      "conv_id": "conv-44",
+      "qa_index": 77,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:86",
+      "conv_id": "conv-48",
+      "qa_index": 86,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:30",
+      "conv_id": "conv-48",
+      "qa_index": 30,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:29",
+      "conv_id": "conv-48",
+      "qa_index": 29,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:28",
+      "conv_id": "conv-48",
+      "qa_index": 28,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:92",
+      "conv_id": "conv-48",
+      "qa_index": 92,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:146",
+      "conv_id": "conv-48",
+      "qa_index": 146,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:101",
+      "conv_id": "conv-48",
+      "qa_index": 101,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:178",
+      "conv_id": "conv-48",
+      "qa_index": 178,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:158",
+      "conv_id": "conv-48",
+      "qa_index": 158,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:64",
+      "conv_id": "conv-48",
+      "qa_index": 64,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:48",
+      "conv_id": "conv-49",
+      "qa_index": 48,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:7",
+      "conv_id": "conv-49",
+      "qa_index": 7,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:13",
+      "conv_id": "conv-49",
+      "qa_index": 13,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:73",
+      "conv_id": "conv-49",
+      "qa_index": 73,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:57",
+      "conv_id": "conv-49",
+      "qa_index": 57,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:92",
+      "conv_id": "conv-49",
+      "qa_index": 92,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:118",
+      "conv_id": "conv-49",
+      "qa_index": 118,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:143",
+      "conv_id": "conv-49",
+      "qa_index": 143,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:107",
+      "conv_id": "conv-49",
+      "qa_index": 107,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:96",
+      "conv_id": "conv-49",
+      "qa_index": 96,
+      "category": 4,
+      "split": "dev"
+    }
+  ],
+  "excluded_holdout_conversations": [
+    "conv-42",
+    "conv-47",
+    "conv-50"
+  ],
+  "reader": "Answer the question using only the provided conversation memory. Give a concise exact answer: a name, date, number, or short phrase. For a list question include every supported item, separated by commas. Use the session dates to interpret relative times, but distinguish the event date from the date someone talked about it. If unsupported, answer unknown. No explanation or introductory text.",
+  "reference": {
+    "name": "s_parent_single_2000",
+    "expected_f1": 0.5927437370002835
+  },
+  "recipes": [
+    {
+      "name": "ab_supported_2000",
+      "family": "source_factual_routes",
+      "pool": "supported",
+      "extra_budget": 2000
+    },
+    {
+      "name": "ab_dependent_2000",
+      "family": "source_factual_routes",
+      "pool": "dependent",
+      "extra_budget": 2000
+    },
+    {
+      "name": "ab_supported_4000",
+      "family": "source_factual_routes",
+      "pool": "supported",
+      "extra_budget": 4000
+    },
+    {
+      "name": "ab_dependent_4000",
+      "family": "source_factual_routes",
+      "pool": "dependent",
+      "extra_budget": 4000
+    }
+  ],
+  "source_q0_digest": "de4c1e809f8259e31b7ade10fce400ad279e3231d3b536bf415d83b11be0130d",
+  "source_fit_view_digest": "aa50fdfcb175e9847bc9df16861e59f1e2c41e1a02b6ec6ce0758d90813bfa73",
+  "construction": "Use supported statements from the completed source-only compiler; require every cited source ID to belong to a whole baseline unit. New route search key is the statement; readable payload is that baseline unit unchanged. Keep the entire original memory as an identical prefix.",
+  "objective": "Query-free facility-location coverage of all eligible supported statement embeddings. Initial coverage is maximum cosine to existing memory search keys. Greedily choose positive marginal mean coverage per actual key+payload token, excluding repeated sources across added routes.",
+  "controls": "Supported versus deletion-sensitive candidate pools, each at 2000/4000 added tokens per conversation. Both use the same all-supported coverage targets. No benchmark question or source probe question enters route construction.",
+  "invariants": "Original memory texts, keys, unit order and reader are preserved. New factual routes are appended, so retrieval ranks and packing can change. Each added payload is an exact copy of an original unit; no new readable statement or date rule.",
+  "budget": "Actual new key and copied readable payload both count. Storage cap equals baseline plus declared added tokens. Dense index array bytes are recorded separately.",
+  "selection": "After every route memory is locked, assess matched 75 facts in Q0/A. Require positive net preserved answers in both; maximize worst gain, sum, smaller total storage, name; otherwise baseline. Lock before new dev evaluation.",
+  "limits": "Facility location and factual query expansion are established methods; no novelty claim. Semantic coverage is a proxy, not answer utility. Source support and deletion are same-model judgments. No audit100/B outcomes used."
+}

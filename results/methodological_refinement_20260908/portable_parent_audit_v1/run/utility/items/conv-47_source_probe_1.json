@@ -1,0 +1,581 @@
+{
+  "question": "What did James say about VR gaming?",
+  "answer": "VR gaming is awesome!",
+  "source_ids": [
+    "D1:36"
+  ],
+  "candidate_context_ids": [
+    "D1:33",
+    "D1:34",
+    "D1:35",
+    "D1:36",
+    "D1:37"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D1:36",
+      "start": 6,
+      "end": 27,
+      "verbatim": "VR gaming is awesome!"
+    }
+  ],
+  "session": 1,
+  "recorded_date": "3:47 pm on 17 March, 2022",
+  "conv_id": "conv-47",
+  "split": "probe_fit",
+  "id": "conv-47:source_probe:1",
+  "analysis": {
+    "full_advantage": 6.468941988737789,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D1:36"
+    ],
+    "best_pair_sources": [
+      "D1:36",
+      "D1:37"
+    ],
+    "minimum_sources": [
+      "D1:36",
+      "D1:37"
+    ],
+    "minimum_tokens": 57,
+    "single_policy_sources": [
+      "D1:33",
+      "D1:34",
+      "D1:35",
+      "D1:36",
+      "D1:37"
+    ],
+    "single_policy_tokens": 142,
+    "full_tokens": 142,
+    "best_pair_lift_over_best_single": 1.28488041581586,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D1:33",
+          "D1:34"
+        ],
+        "joint_lift": 2.835212159157118,
+        "interaction": 6.583579271700501,
+        "advantage": 0.7577937191209916
+      },
+      {
+        "source_ids": [
+          "D1:33",
+          "D1:35"
+        ],
+        "joint_lift": -0.9542858030661598,
+        "interaction": 2.7940813094772228,
+        "advantage": -4.335617344791535
+      },
+      {
+        "source_ids": [
+          "D1:33",
+          "D1:36"
+        ],
+        "joint_lift": -1.044390685482996,
+        "interaction": 2.703976427060386,
+        "advantage": 5.182308561154878
+      },
+      {
+        "source_ids": [
+          "D1:33",
+          "D1:37"
+        ],
+        "joint_lift": -2.201775504586931,
+        "interaction": 1.5465916079564508,
+        "advantage": -0.8988481592205968
+      },
+      {
+        "source_ids": [
+          "D1:34",
+          "D1:35"
+        ],
+        "joint_lift": -0.8293935060494722,
+        "interaction": 2.551938035675903,
+        "advantage": -2.9068119460855986
+      },
+      {
+        "source_ids": [
+          "D1:34",
+          "D1:36"
+        ],
+        "joint_lift": 0.6737914253201085,
+        "interaction": 2.751209865356234,
+        "advantage": 6.900490671957983
+      },
+      {
+        "source_ids": [
+          "D1:34",
+          "D1:37"
+        ],
+        "joint_lift": -3.60887964942376,
+        "interaction": -1.5314612093876336,
+        "advantage": -2.305952304057426
+      },
+      {
+        "source_ids": [
+          "D1:35",
+          "D1:36"
+        ],
+        "joint_lift": 0.35502847918724,
+        "interaction": 3.736360020912615,
+        "advantage": 6.581727725825115
+      },
+      {
+        "source_ids": [
+          "D1:35",
+          "D1:37"
+        ],
+        "joint_lift": -1.158359371007827,
+        "interaction": 2.222972170717547,
+        "advantage": 0.1445679743585071
+      },
+      {
+        "source_ids": [
+          "D1:36",
+          "D1:37"
+        ],
+        "joint_lift": 1.28488041581586,
+        "interaction": -0.018046929550473934,
+        "advantage": 7.511579662453735
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": true
+  },
+  "generations": {
+    "empty": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "full": {
+      "text": "James said VR gaming is awesome.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D1:33",
+        "D1:34",
+        "D1:35",
+        "D1:36",
+        "D1:37"
+      ],
+      "context_tokens": 142,
+      "source_answer_f1": 0.8
+    },
+    "answer_removed": {
+      "text": "It's crazy how real it feels!",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D1:33",
+        "D1:34",
+        "D1:35",
+        "D1:37"
+      ],
+      "context_tokens": 120,
+      "source_answer_f1": 0.0
+    },
+    "best_single": {
+      "text": "awesome!",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D1:36"
+      ],
+      "context_tokens": 44,
+      "source_answer_f1": 0.4
+    },
+    "best_pair": {
+      "text": "awesome!",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D1:36",
+        "D1:37"
+      ],
+      "context_tokens": 57,
+      "source_answer_f1": 0.4
+    },
+    "minimum_bundle": {
+      "text": "awesome!",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D1:36",
+        "D1:37"
+      ],
+      "context_tokens": 57,
+      "source_answer_f1": 0.4
+    },
+    "single_policy": {
+      "text": "James said VR gaming is awesome.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D1:33",
+        "D1:34",
+        "D1:35",
+        "D1:36",
+        "D1:37"
+      ],
+      "context_tokens": 142,
+      "source_answer_f1": 0.8
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -9.08255212957447,
+        "sum_logprob": -45.41276064787235,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -18.523401260375977,
+          -2.6940935640595853e-05,
+          -0.00041547726141288877,
+          -13.255264282226562,
+          -13.633652687072754
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D1:33",
+        "D1:34",
+        "D1:35",
+        "D1:36",
+        "D1:37"
+      ],
+      "context_tokens": 142,
+      "score": {
+        "mean_logprob": -2.6136101408366814,
+        "sum_logprob": -13.068050704183406,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -13.067695617675781,
+          0.0,
+          0.0,
+          -9.727005090098828e-05,
+          -0.00025781645672395825
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D1:33"
+      ],
+      "context_tokens": 46,
+      "score": {
+        "mean_logprob": -12.830919242117853,
+        "sum_logprob": -64.15459621058926,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -39.50523376464844,
+          -1.4185804502631072e-05,
+          -0.0012644876260310411,
+          -24.625,
+          -0.023083772510290146
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D1:34"
+      ],
+      "context_tokens": 49,
+      "score": {
+        "mean_logprob": -11.159970569610596,
+        "sum_logprob": -55.79985284805298,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -14.174530029296875,
+          0.0,
+          -9.7500581741333,
+          -26.75,
+          -5.125264644622803
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D1:35"
+      ],
+      "context_tokens": 56,
+      "score": {
+        "mean_logprob": -12.463883671299845,
+        "sum_logprob": -62.31941835649923,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -39.001930236816406,
+          -7.807903602952138e-05,
+          -0.05339245870709419,
+          -17.413251876831055,
+          -5.850765705108643
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D1:36"
+      ],
+      "context_tokens": 44,
+      "score": {
+        "mean_logprob": -2.8558528829365954,
+        "sum_logprob": -14.279264414682977,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -14.261106491088867,
+          0.0,
+          0.0,
+          -1.1920928244535389e-07,
+          -0.018157804384827614
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D1:37"
+      ],
+      "context_tokens": 35,
+      "score": {
+        "mean_logprob": -7.779624784208136,
+        "sum_logprob": -38.89812392104068,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -27.875709533691406,
+          -0.00028081765049137175,
+          -0.0027853762730956078,
+          -11.015219688415527,
+          -0.0041285050101578236
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D1:33",
+        "D1:34"
+      ],
+      "context_tokens": 73,
+      "score": {
+        "mean_logprob": -8.324758410453478,
+        "sum_logprob": -41.62379205226739,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -13.37870979309082,
+          0.0,
+          -1.7881377516459906e-06,
+          -23.875335693359375,
+          -4.369744777679443
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D1:33",
+        "D1:35"
+      ],
+      "context_tokens": 80,
+      "score": {
+        "mean_logprob": -13.418169474366005,
+        "sum_logprob": -67.09084737183002,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -42.201663970947266,
+          -3.564294092939235e-05,
+          -3.290122185717337e-05,
+          -22.250036239624023,
+          -2.6390786170959473
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D1:33",
+        "D1:36"
+      ],
+      "context_tokens": 68,
+      "score": {
+        "mean_logprob": -3.9002435684195915,
+        "sum_logprob": -19.501217842097958,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -19.5012149810791,
+          0.0,
+          0.0,
+          0.0,
+          -2.861018856492592e-06
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D1:33",
+        "D1:37"
+      ],
+      "context_tokens": 59,
+      "score": {
+        "mean_logprob": -9.981400288795067,
+        "sum_logprob": -49.90700144397533,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -26.501935958862305,
+          -4.529942543740617e-06,
+          -7.676783570786938e-05,
+          -23.3750057220459,
+          -0.029978465288877487
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D1:34",
+        "D1:35"
+      ],
+      "context_tokens": 83,
+      "score": {
+        "mean_logprob": -11.989364075660069,
+        "sum_logprob": -59.946820378300345,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -20.779401779174805,
+          -2.50339189733495e-06,
+          -6.251929759979248,
+          -25.375001907348633,
+          -7.540484428405762
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D1:34",
+        "D1:36"
+      ],
+      "context_tokens": 71,
+      "score": {
+        "mean_logprob": -2.182061457616487,
+        "sum_logprob": -10.910307288082436,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -10.910293579101562,
+          0.0,
+          0.0,
+          -4.768370445162873e-07,
+          -1.3232143828645349e-05
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D1:34",
+        "D1:37"
+      ],
+      "context_tokens": 62,
+      "score": {
+        "mean_logprob": -11.388504433631896,
+        "sum_logprob": -56.94252216815948,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -15.549604415893555,
+          -1.1920928244535389e-07,
+          -9.750059127807617,
+          -27.125,
+          -4.517858505249023
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D1:35",
+        "D1:36"
+      ],
+      "context_tokens": 78,
+      "score": {
+        "mean_logprob": -2.5008244037493554,
+        "sum_logprob": -12.504122018746777,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -12.504110336303711,
+          0.0,
+          0.0,
+          -1.1920928244535389e-07,
+          -1.156323378381785e-05
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D1:35",
+        "D1:37"
+      ],
+      "context_tokens": 69,
+      "score": {
+        "mean_logprob": -8.937984155215963,
+        "sum_logprob": -44.689920776079816,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -22.31326675415039,
+          -0.0015479261055588722,
+          -2.9801878554280847e-05,
+          -17.501951217651367,
+          -4.873125076293945
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D1:36",
+        "D1:37"
+      ],
+      "context_tokens": 57,
+      "score": {
+        "mean_logprob": -1.5709724671207355,
+        "sum_logprob": -7.854862335603677,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -7.850780487060547,
+          0.0,
+          0.0,
+          -1.1920928244535389e-07,
+          -0.004081729333847761
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [
+        "D1:33",
+        "D1:34",
+        "D1:35",
+        "D1:37"
+      ],
+      "context_tokens": 120,
+      "score": {
+        "mean_logprob": -8.438054108494544,
+        "sum_logprob": -42.19027054247272,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -14.083041191101074,
+          0.0,
+          -3.540453326422721e-05,
+          -22.500335693359375,
+          -5.606858253479004
+        ]
+      }
+    }
+  ]
+}

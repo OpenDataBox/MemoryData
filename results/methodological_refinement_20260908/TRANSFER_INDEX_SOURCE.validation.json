@@ -1,0 +1,249 @@
+{
+  "source_hashes_verified": true,
+  "optimizer_arrays_replayed": 28,
+  "maximum_vector_replay_error": 0,
+  "original_reference_rows_exact": 70,
+  "retrieval_contexts_and_predictions_verified": 1100,
+  "source_training_queries": 97,
+  "stored_texts_unchanged": true,
+  "unit_norm_and_radius_caps_verified": true,
+  "dense_bytes_per_conversation": {
+    "conv-26": 835584,
+    "conv-30": 733184,
+    "conv-41": 1302528,
+    "conv-43": 1359872,
+    "conv-44": 1327104,
+    "conv-48": 1347584,
+    "conv-49": 1003520
+  },
+  "all_selection_locks_verified": true,
+  "source_selected": "z_within_030",
+  "optimizer_traces": [
+    {
+      "name": "z_within_010",
+      "conv_id": "conv-26",
+      "objective": "support_query_cosine",
+      "initial": 0.7479152913184912,
+      "final": 0.7744787846743686,
+      "max_distance": 0.08386452132749207
+    },
+    {
+      "name": "z_within_010",
+      "conv_id": "conv-30",
+      "objective": "support_query_cosine",
+      "initial": 0.7293254134385172,
+      "final": 0.7554187646922556,
+      "max_distance": 0.08666359603672837
+    },
+    {
+      "name": "z_within_010",
+      "conv_id": "conv-41",
+      "objective": "support_query_cosine",
+      "initial": 0.7099308992091994,
+      "final": 0.7363163182824732,
+      "max_distance": 0.08752569025793752
+    },
+    {
+      "name": "z_within_010",
+      "conv_id": "conv-43",
+      "objective": "support_query_cosine",
+      "initial": 0.7101537789773075,
+      "final": 0.734785663716755,
+      "max_distance": 0.07684201227270578
+    },
+    {
+      "name": "z_within_010",
+      "conv_id": "conv-44",
+      "objective": "support_query_cosine",
+      "initial": 0.765208315681487,
+      "final": 0.7903093829585481,
+      "max_distance": 0.08742968738769362
+    },
+    {
+      "name": "z_within_010",
+      "conv_id": "conv-48",
+      "objective": "support_query_cosine",
+      "initial": 0.7366650059131424,
+      "final": 0.7588434182428749,
+      "max_distance": 0.08652698685549418
+    },
+    {
+      "name": "z_within_010",
+      "conv_id": "conv-49",
+      "objective": "support_query_cosine",
+      "initial": 0.6932196957498957,
+      "final": 0.7182961684279451,
+      "max_distance": 0.08426908351881204
+    },
+    {
+      "name": "z_transfer_010",
+      "conv_id": "conv-26",
+      "objective": "support_query_cosine",
+      "initial": 0.7229749382344294,
+      "final": 0.7383635197497401,
+      "max_distance": 0.06904037713418401
+    },
+    {
+      "name": "z_transfer_010",
+      "conv_id": "conv-30",
+      "objective": "support_query_cosine",
+      "initial": 0.7251117058068403,
+      "final": 0.7405153506576595,
+      "max_distance": 0.07250470623337174
+    },
+    {
+      "name": "z_transfer_010",
+      "conv_id": "conv-41",
+      "objective": "support_query_cosine",
+      "initial": 0.7286305944720136,
+      "final": 0.7437635485418245,
+      "max_distance": 0.06967926692234008
+    },
+    {
+      "name": "z_transfer_010",
+      "conv_id": "conv-43",
+      "objective": "support_query_cosine",
+      "initial": 0.7285865688388069,
+      "final": 0.7444912262961166,
+      "max_distance": 0.06899686060871739
+    },
+    {
+      "name": "z_transfer_010",
+      "conv_id": "conv-44",
+      "objective": "support_query_cosine",
+      "initial": 0.7199467382517934,
+      "final": 0.7356423915351821,
+      "max_distance": 0.06543953039161929
+    },
+    {
+      "name": "z_transfer_010",
+      "conv_id": "conv-48",
+      "objective": "support_query_cosine",
+      "initial": 0.7228376593234689,
+      "final": 0.7386019989866003,
+      "max_distance": 0.07145250267138549
+    },
+    {
+      "name": "z_transfer_010",
+      "conv_id": "conv-49",
+      "objective": "support_query_cosine",
+      "initial": 0.7309987566154427,
+      "final": 0.7465063257798947,
+      "max_distance": 0.06848030218416332
+    },
+    {
+      "name": "z_within_030",
+      "conv_id": "conv-26",
+      "objective": "support_query_cosine",
+      "initial": 0.7479152913184912,
+      "final": 0.8120113061495253,
+      "max_distance": 0.25162401295516634
+    },
+    {
+      "name": "z_within_030",
+      "conv_id": "conv-30",
+      "objective": "support_query_cosine",
+      "initial": 0.7293254134385172,
+      "final": 0.7908522293843031,
+      "max_distance": 0.2599933237652252
+    },
+    {
+      "name": "z_within_030",
+      "conv_id": "conv-41",
+      "objective": "support_query_cosine",
+      "initial": 0.7099308992091994,
+      "final": 0.7739355291901666,
+      "max_distance": 0.26257868927961264
+    },
+    {
+      "name": "z_within_030",
+      "conv_id": "conv-43",
+      "objective": "support_query_cosine",
+      "initial": 0.7101537789773075,
+      "final": 0.7700640320753319,
+      "max_distance": 0.2305724539336368
+    },
+    {
+      "name": "z_within_030",
+      "conv_id": "conv-44",
+      "objective": "support_query_cosine",
+      "initial": 0.765208315681487,
+      "final": 0.824043195283536,
+      "max_distance": 0.26229224274077834
+    },
+    {
+      "name": "z_within_030",
+      "conv_id": "conv-48",
+      "objective": "support_query_cosine",
+      "initial": 0.7366650059131424,
+      "final": 0.7872683044061324,
+      "max_distance": 0.2595879084386164
+    },
+    {
+      "name": "z_within_030",
+      "conv_id": "conv-49",
+      "objective": "support_query_cosine",
+      "initial": 0.6932196957498957,
+      "final": 0.7530561824906835,
+      "max_distance": 0.25281998137752354
+    },
+    {
+      "name": "z_transfer_030",
+      "conv_id": "conv-26",
+      "objective": "support_query_cosine",
+      "initial": 0.7229749382344294,
+      "final": 0.7580835290425141,
+      "max_distance": 0.20712663813857474
+    },
+    {
+      "name": "z_transfer_030",
+      "conv_id": "conv-30",
+      "objective": "support_query_cosine",
+      "initial": 0.7251117058068403,
+      "final": 0.7604806877961136,
+      "max_distance": 0.21752345210937596
+    },
+    {
+      "name": "z_transfer_030",
+      "conv_id": "conv-41",
+      "objective": "support_query_cosine",
+      "initial": 0.7286305944720136,
+      "final": 0.7631169354071997,
+      "max_distance": 0.20904397489012688
+    },
+    {
+      "name": "z_transfer_030",
+      "conv_id": "conv-43",
+      "objective": "support_query_cosine",
+      "initial": 0.7285865688388069,
+      "final": 0.7650802972348403,
+      "max_distance": 0.20700341917446788
+    },
+    {
+      "name": "z_transfer_030",
+      "conv_id": "conv-44",
+      "objective": "support_query_cosine",
+      "initial": 0.7199467382517934,
+      "final": 0.7557645244472814,
+      "max_distance": 0.19632079581949438
+    },
+    {
+      "name": "z_transfer_030",
+      "conv_id": "conv-48",
+      "objective": "support_query_cosine",
+      "initial": 0.7228376593234689,
+      "final": 0.7591496492163927,
+      "max_distance": 0.21436012004298954
+    },
+    {
+      "name": "z_transfer_030",
+      "conv_id": "conv-49",
+      "objective": "support_query_cosine",
+      "initial": 0.7309987566154427,
+      "final": 0.7664069043335601,
+      "max_distance": 0.20544473416903314
+    }
+  ],
+  "cross_conversation_training_exclusion_verified": true,
+  "pairwise_document_geometry_preservation_verified": true
+}

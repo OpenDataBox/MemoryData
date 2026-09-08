@@ -7,17 +7,9 @@ import string
 import re
 from collections import Counter
 try:
-    import nltk
-except ImportError:
-    nltk = None
-try:
     import tiktoken
 except ImportError:
     tiktoken = None
-try:
-    from rouge_score import rouge_scorer
-except ImportError:
-    rouge_scorer = None
 try:
     from editdistance import eval as edit_distance
 except ImportError:
@@ -82,8 +74,8 @@ def _get_encoding_with_fallback(model_name="gpt-4o-mini"):
 def _sent_tokenize_with_fallback(text):
     """Split text into sentences without requiring NLTK downloads."""
     try:
-        if nltk is None:
-            raise ImportError("nltk is not installed")
+        import nltk
+
         try:
             nltk.data.find('tokenizers/punkt')
         except LookupError:
@@ -743,11 +735,26 @@ def create_chunks_use_sent_tokenizer(text, max_tokens=10000):
 # METRICS CALCULATION
 # ============================================================================
 
-# Initialize ROUGE scorer
-if rouge_scorer is not None:
-    rouge_scorer_instance = rouge_scorer.RougeScorer(['rougeL', 'rougeLsum'], use_stemmer=True)
-else:
-    rouge_scorer_instance = _FallbackRougeScorer(['rougeL', 'rougeLsum'], use_stemmer=True)
+_rouge_scorer_instance = None
+
+
+def _get_rouge_scorer():
+    """Initialize the optional ROUGE dependency only when metrics need it."""
+    global _rouge_scorer_instance
+    if _rouge_scorer_instance is None:
+        try:
+            from rouge_score import rouge_scorer
+
+            _rouge_scorer_instance = rouge_scorer.RougeScorer(
+                ['rougeL', 'rougeLsum'],
+                use_stemmer=True,
+            )
+        except ImportError:
+            _rouge_scorer_instance = _FallbackRougeScorer(
+                ['rougeL', 'rougeLsum'],
+                use_stemmer=True,
+            )
+    return _rouge_scorer_instance
 
 
 def calculate_metrics(prediction, ground_truth_answers):
@@ -772,6 +779,7 @@ def calculate_metrics(prediction, ground_truth_answers):
     answer_list = _normalize_ground_truth_answers(ground_truth_answers)
 
     # Calculate ROUGE scores
+    rouge_scorer_instance = _get_rouge_scorer()
     rouge_scores = [rouge_scorer_instance.score(target=answer, prediction=prediction) for answer in answer_list]
     
     # Extract ROUGE metrics

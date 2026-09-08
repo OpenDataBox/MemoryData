@@ -1,0 +1,51 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# KV cache data
+kv_data/
+*.pt
+
+# Text cache data
+text_data/
+
+# Configuration (user-specific)
+config.yaml
+evaluation/locomo/config.yaml
+evaluation/hotpotqa/config.yaml
+
+
+# Evaluation outputs
+evaluation/locomo/logs/
+evaluation/locomo/results/
+evaluation/locomo/kv_data/
+evaluation/locomo/text_data/
+evaluation/hotpotqa/results/
+evaluation/hotpotqa/logs/
+evaluation/hotpotqa/kv_data/
+evaluation/hotpotqa/text_data/
+
+# Evaluation data
+*/eval_data/
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Test temporary data
+tests/test_data/
+
+# Misc
+nohup*.out
+
+
+# ruff cache
+.ruff_cache/

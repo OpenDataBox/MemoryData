@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-03",
+  "implementation_name": "RetentionMem",
+  "python": "3.12.13",
+  "test_command": "python -m pytest tests/retentionmem -q",
+  "tests_passed": 23,
+  "test_seconds": 7.89,
+  "compileall": "passed for methods/retentionmem, utils/agent.py, utils/initialization.py",
+  "git_diff_check": "passed; Git emitted only LF-to-CRLF conversion notices",
+  "verified": [
+    "immutable/idempotent source archive and atomic active-memory replacement",
+    "source anchors, temporal residuals, budget rejection and active-only retrieval",
+    "failed maintenance leaves active memory and pending region intact",
+    "source-family split leakage checks and no silent learned-policy fallback",
+    "actual NumPy MLP optimization, held-out calibration and safe checkpoint round-trip",
+    "mock HTTP collection, training, QA evaluation, cost accounting and no-call resume",
+    "LoCoMo category scoring, captions and adversarial distractor handling",
+    "LongMemEval assistant/date loading and official-rubric import",
+    "environment-cluster scoring and exact unseen-ID coverage guards",
+    "isolated AdaMEM export preserves original index bytes and source clone",
+    "MemoryData wrapper dispatch contract without importing its heavy GPU dependencies"
+  ],
+  "artifacts_prepared": {
+    "official_locomo_conversations": 10,
+    "official_locomo_categories_1_to_4_questions": 1540,
+    "official_locomo_all_questions": 1986,
+    "locomo_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+    "pilot_source_regions": 500,
+    "pilot_train_regions": 400,
+    "pilot_validation_regions": 100,
+    "default_matrix_jobs": 66,
+    "matrix_executed": false
+  },
+  "not_run": [
+    "real Qwen paired-reader label collection or research-policy training",
+    "full official QA benchmark and original-system baselines",
+    "ALFWorld unseen episodes and prerequisite violation measurement",
+    "full MemoryData runner with its existing heavy dependencies",
+    "LaTeX compilation or rendered manuscript layout verification"
+  ],
+  "environment_findings": {
+    "configured_llm_9909_reachable": false,
+    "configured_embedding_9009_reachable": false,
+    "configured_judge_9910_reachable": false,
+    "research_policy_checkpoint_present": false,
+    "alfworld_installed_in_test_venv": false,
+    "pdflatex_on_path": false
+  },
+  "scientific_performance_results": null
+}

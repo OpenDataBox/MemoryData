@@ -1,0 +1,27 @@
+\begin{table}[t!]
+\centering
+\caption{Ablation Study on WebArena. No Human Demo means no human demonstrations are inserted into the memory graph between online and offline evaluation. We collect 23/18/5 demos for Shopping/GitLab/Multi-site.}
+\label{tab:webarena_ablation}
+\resizebox{0.48\textwidth}{!}{
+\begin{tabular}{c|cc|ccc|cc}
+\toprule
+ &  &  & \multicolumn{3}{c|}{SR \% (on/off)} & \\
+\cmidrule(lr){4-6}
+Method & Emb & Agent 
+& Shopping
+& GitLab
+& Multi-site
+& $\text{\#Tok}_{\text{Avg.}}$
+& Info. Density \\
+\toprule
+\rowcolor{ShadowBlue}
+\plugmem         & NVE   & Q32+4o      & \textbf{52.6}\textbf{/58.4}     & \textbf{51.4}\textbf{/55.2}     & \textbf{20.0}\textbf{/21.6}     &301   & \textbf{1.4e-3}\\
+\specialrule{0.6pt}{0pt}{2pt}
+No Structuring  & NVE   & Q32+4o      & 50.0/51.7               & 41.7/42.0              & \textbf{20.0}/18.4     &\textbf{243}   & 7.2e-4 \\
+No Retrieval    & NVE   & Q32+4o      & 42.1/46.3              & 45.8/44.0              & \textbf{20.0}/15.8     &286   & 3.8e-4\\
+No Reasoning    & NVE   & Q32+4o      & \textbf{52.6}/53.7     & 41.7/43.4              & \textbf{20.0}/18.4     &374   & 5.6e-4\\
+No Human Demo       & NVE   & Q32+4o      & \textbf{52.6} /52.3                & \textbf{51.4} /51.0                 & \textbf{20.0} /18.4                &261   & 1.2e-3\\
+\bottomrule
+\end{tabular}
+}
+\end{table}

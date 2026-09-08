@@ -1,0 +1,114 @@
+# Terminal-Bench baseline (no memory) — action-only
+#   Action model:  Claude Sonnet 4.5 (via OpenRouter)
+# Same 89 tasks as memory_terminalbench.yaml; the memory block is disabled.
+
+model:
+  model_name: "openrouter/anthropic/claude-sonnet-4.5"
+  temperature: 0.7
+  max_turns: 50
+  parser_name: "xml"
+  enable_summarize: true
+  record_terminal_session: true
+
+memory:
+  enabled: false
+
+enroot:
+  sqsh_dir: "${SQSH_DIR}"
+  data_dir: "${DATA_DIR}"
+
+run:
+  adapter_type: "harbor"
+  harbor_sqsh_prefix: "alexgshaw+"
+  output_dir: "./outputs/baseline-terminalbench"
+  n_parallel: 12
+  task_names:
+    - adaptive-rejection-sampler
+    - bn-fit-modify
+    - break-filter-js-from-html
+    - build-cython-ext
+    - build-pmars
+    - build-pov-ray
+    - caffe-cifar-10
+    - cancel-async-tasks
+    - chess-best-move
+    - circuit-fibsqrt
+    - cobol-modernization
+    - code-from-image
+    - compile-compcert
+    - configure-git-webserver
+    - constraints-scheduling
+    - count-dataset-tokens
+    - crack-7z-hash
+    - custom-memory-heap-crash
+    - db-wal-recovery
+    - distribution-search
+    - dna-assembly
+    - dna-insert
+    - extract-elf
+    - extract-moves-from-video
+    - feal-differential-cryptanalysis
+    - feal-linear-cryptanalysis
+    - filter-js-from-html
+    - financial-document-processor
+    - fix-code-vulnerability
+    - fix-git
+    - fix-ocaml-gc
+    - gcode-to-text
+    - git-leak-recovery
+    - git-multibranch
+    - gpt2-codegolf
+    - headless-terminal
+    - hf-model-inference
+    - install-windows-3.11
+    - kv-store-grpc
+    - large-scale-text-editing
+    - largest-eigenval
+    - llm-inference-batching-scheduler
+    - log-summary-date-ranges
+    - mailman
+    - make-doom-for-mips
+    - make-mips-interpreter
+    - mcmc-sampling-stan
+    - merge-diff-arc-agi-task
+    - model-extraction-relu-logits
+    - modernize-scientific-stack
+    - mteb-leaderboard
+    - mteb-retrieve
+    - multi-source-data-merger
+    - nginx-request-logging
+    - openssl-selfsigned-cert
+    - overfull-hbox
+    - password-recovery
+    - path-tracing
+    - path-tracing-reverse
+    - polyglot-c-py
+    - polyglot-rust-c
+    - portfolio-optimization
+    - protein-assembly
+    - prove-plus-comm
+    - pypi-server
+    - pytorch-model-cli
+    - pytorch-model-recovery
+    - qemu-alpine-ssh
+    - qemu-startup
+    - query-optimize
+    - raman-fitting
+    - regex-chess
+    - regex-log
+    - reshard-c4-data
+    - rstan-to-pystan
+    - sam-cell-seg
+    - sanitize-git-repo
+    - schemelike-metacircular-eval
+    - sparql-university
+    - sqlite-db-truncate
+    - sqlite-with-gcov
+    - torch-pipeline-parallelism
+    - torch-tensor-parallelism
+    - train-fasttext
+    - tune-mjcf
+    - video-processing
+    - vulnerable-secret
+    - winning-avg-corewars
+    - write-compressor

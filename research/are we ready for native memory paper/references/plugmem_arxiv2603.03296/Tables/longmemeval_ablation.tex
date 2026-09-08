@@ -1,0 +1,20 @@
+\begin{table}[t!]
+\centering
+\caption{Ablation study on LongMemEval.}
+\label{tab:longmemeval_ablation}
+\resizebox{0.48\textwidth}{!}{
+\begin{tabular}{c|cc|c|cc}
+\toprule
+Method & Emb & LLM & Acc. & $\text{\#Tok}_{\text{Avg.}}$ & Info. Density\\
+\midrule
+\rowcolor{ShadowBlue}
+\plugmem & NVE & Q32 + Q72 & \textbf{75.1} & 362.58 & \textbf{1.6e-2} \\
+\specialrule{0.6pt}{0pt}{2pt}
+No Structuring & NVE & Q32 + Q72 & 62.8 & \textbf{311.12} & 1.4e-2\\
+No Retrieval & - & Q32 + Q72 & 57.2 & 591.2 & 6.8e-3\\
+No Reasoning & NVE & Q32  & 72.4 & 9478.59 & 5.8e-4 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+%\\

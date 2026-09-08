@@ -1,0 +1,33 @@
+\begin{lstlisting}[
+  caption={Prompt template to update semantic memory for task adaptation.},
+  label={lst:apdx_prompt_adpt_update},
+]
+
+============================================================
+Prompt Update_Memory
+============================================================
+
+Task Description: Given a list of history personal summaries for a specific user and a new and similar personal summary from the same user, update the personal history summaries following the instructions below:
+Input format: Both the history personal summaries and the new personal summary are provided in JSON format, with the top-level keys of "history_summaries" and "new_summary".
+Possible update actions:
+- Add: If the new personal summary is not relevant to any history personal summary, add it.
+Format: Add()
+- Merge: If the new personal summary is relevant to a history personal summary, merge them as an updated summary.
+Format: Merge(index, merged_summary)
+Note: index is the position of the relevant history summary in the list. merged_summary is the merged summary of the new summary and the relevant history summary. Two summaries are considered relevant if they discuss the same aspect of the user personal information or experiences.
+Do not include additional explanations or examples in the output-only return the required action functions.
+Example:
+INPUT:
+History Personal Summaries:
+- {{"history_summaries": ["SPEAKER_1 works out although he does not particularlyenjoy it."]}}
+New Personal Summary:
+- {{"new_summary": "SPEAKER_1 exercises every Monday and Thursday."}}
+OUTPUT ACTION:
+Merge(0, SPEAKER_1 exercises every Monday and Thursday, although he does not particularly enjoy it.)
+Task: Follow the example format above to update the personal history for the given case.
+INPUT:
+History Personal Summaries: {history_summaries}
+New Personal Summary: {new_summary}
+OUTPUT ACTION:
+
+\end{lstlisting}

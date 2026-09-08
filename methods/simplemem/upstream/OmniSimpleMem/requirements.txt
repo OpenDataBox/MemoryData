@@ -1,0 +1,28 @@
+# Core dependencies
+numpy>=1.21.0
+openai>=1.0.0
+pydantic>=2.0.0
+tiktoken>=0.5.0
+rank_bm25>=0.2.2
+sentence-transformers>=2.2.0
+
+# Benchmarks
+nltk>=3.8.0
+tqdm>=4.60.0
+
+# Vector search (recommended)
+faiss-cpu>=1.7.0
+
+# Visual processing (optional)
+Pillow>=9.0.0
+transformers>=4.30.0
+torch>=2.0.0
+
+# Audio processing (optional)
+soundfile>=0.12.0
+librosa>=0.10.0
+
+# API server (optional)
+fastapi>=0.100.0
+uvicorn>=0.20.0
+python-multipart>=0.0.5

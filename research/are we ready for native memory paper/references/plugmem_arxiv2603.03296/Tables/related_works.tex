@@ -1,0 +1,55 @@
+\begin{table}[ht]
+\centering
+\small
+\caption{Comparison of representative agentic memory systems.
+\textbf{M2K} indicates if a system transforms working memories into \textit{reusable, abstract knowledge} that's generalizable across tasks.
+\textbf{KaU} means if it adopts knowledge as the memory unit.
+\textbf{Mech.} characterizes the design of the memory modules, including
+\textbf{Str.} (structured memory representations),
+\textbf{Ret.} (refined retrieval strategies),
+and \textbf{Rea.} (post-retrieval reasoning or compression).
+\textbf{Mem.} denotes the memory type that the system supports,
+including \textbf{E}pisodic, \textbf{S}emantic, and \textbf{P}rocedural memory.
+\textbf{Agn.} indicates whether the memory design is task-agnostic.
+}
+
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{lccccccccc}
+\toprule
+\multirow{2}{*}{\textbf{Meth.}} &
+\multirow{2}{*}{\textbf{M2K}} &
+\multirow{2}{*}{\textbf{KaU}} &
+\multicolumn{3}{c}{\textbf{Mech.}} &
+\multicolumn{3}{c}{\textbf{Mem.}} &
+\multirow{2}{*}{\textbf{Agn.}} \\
+\cmidrule(lr){4-6}\cmidrule(lr){7-9}
+&
+&
+&
+\textbf{Str.} &
+\textbf{Ret.} &
+\textbf{Rea.} &
+\textbf{E} &
+\textbf{S} &
+\textbf{P} &
+\\
+\midrule
+Vanilla Retrieval       & \xmark & \xmark & \xmark & \xmark & \cmark & \cmark & \xmark & \xmark & \cmark \\
+Vanilla RAG       & \xmark & \xmark & \xmark & \xmark & \xmark & \cmark & \xmark & \xmark & \cmark \\
+GraphRAG          & \cmark & \xmark & \cmark & \cmark & \cmark & \xmark & \cmark & \xmark & \pmark \\
+A-Mem             & \cmark & \cmark & \cmark & \xmark & \xmark & \cmark & \cmark & \xmark & \cmark \\
+\midrule
+Zep               & \xmark & \xmark & \cmark & \cmark & \xmark & \cmark & \cmark & \xmark & \xmark \\
+MemoryOS          & \xmark & \xmark & \xmark & \cmark & \xmark & \cmark & \cmark & \xmark & \xmark \\
+HippoRAG2         & \cmark & \xmark & \cmark & \cmark & \cmark & \xmark & \cmark & \xmark & \xmark \\
+AWM               & \cmark & \cmark & \xmark & \xmark & \xmark & \xmark & \xmark & \cmark & \xmark \\
+ReasoningBank     & \cmark & \cmark & \xmark & \xmark & \xmark & \cmark & \xmark & \cmark & \xmark \\
+\specialrule{0.6pt}{0pt}{2pt}
+\rowcolor{ShadowBlue}
+\textbf{\plugmem} & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark \\
+\bottomrule
+\end{tabular}
+}
+\vspace{4pt}
+\label{tab:related_works}
+\end{table}

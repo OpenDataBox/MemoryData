@@ -1,0 +1,593 @@
+{
+  "failures": 65,
+  "unknown_answers": 49,
+  "long_answers": 4,
+  "failed_with_all_cited_sources": 13,
+  "items": [
+    {
+      "id": "conv-26:23",
+      "category": 1,
+      "question": "What books has Melanie read?",
+      "gold": "\"Nothing is Impossible\", \"Charlotte's Web\"",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.5
+    },
+    {
+      "id": "conv-26:47",
+      "category": 1,
+      "question": "Who supports Caroline when she has a negative experience?",
+      "gold": "Her mentors, family, and friends",
+      "prediction": "Melanie's family",
+      "official_f1": 0.2222222222222222,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-26:80",
+      "category": 2,
+      "question": "When did Melanie buy the figurines?",
+      "gold": "21 October 2023",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-26:54",
+      "category": 2,
+      "question": "When did Caroline draw a self-portrait?",
+      "gold": "The week before 23 August 2023",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-26:64",
+      "category": 3,
+      "question": "Would Melanie likely enjoy the song \"The Four Seasons\" by Vivaldi?",
+      "gold": "Yes; it's classical music",
+      "prediction": "Unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-26:95",
+      "category": 4,
+      "question": "What did Melanie and her family do while camping?",
+      "gold": "explored nature, roasted marshmallows, and went on a hike",
+      "prediction": "camping, bonding over stories, campfires, and nature, exploring the forest, hiking, roasting marshmallows, enjoying each other's company, viewing the Perseid meteor shower, making wishes, feeling connected to the universe, waking up to birds and fresh air, having a view from the top, peaceful mornings, fresh air, serenity, and exploring nature",
+      "official_f1": 0.20408163265306123,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-26:117",
+      "category": 4,
+      "question": "How often does Melanie go to the beach with her kids?",
+      "gold": "once or twice a year",
+      "prediction": "Unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-26:96",
+      "category": 4,
+      "question": "What kind of counseling and mental health services is Caroline interested in pursuing?",
+      "gold": "working with trans people, helping them accept themselves and supporting their mental health",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-26:110",
+      "category": 4,
+      "question": "What kind of pot did Mel and her kids make with clay?",
+      "gold": "a cup with a dog face on it",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-26:130",
+      "category": 4,
+      "question": "Which  classical musicians does Melanie enjoy listening to?",
+      "gold": "Bach and Mozart",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-30:3",
+      "category": 1,
+      "question": "What do Jon and Gina both have in common?",
+      "gold": "They lost their jobs and decided to start their own businesses.",
+      "prediction": "Dance, support, motivation, business ventures, passion for fashion, resilience, networking, online presence, personal growth, and travel.",
+      "official_f1": 0.16666666666666666,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-30:21",
+      "category": 2,
+      "question": "When did Jon start reading \"The Lean Startup\"?",
+      "gold": "May, 2023",
+      "prediction": "Unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-30:63",
+      "category": 4,
+      "question": "What kind of professional experience did Gina get accepted for on May 23, 2023?",
+      "gold": "fashion internship",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-30:71",
+      "category": 4,
+      "question": "How does Gina describe the studio that Jon has opened?",
+      "gold": "amazing",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-30:62",
+      "category": 4,
+      "question": "How does Gina stay confident in her business?",
+      "gold": "By reminding herself of her successes and progress, having a support system, and focusing on why she started",
+      "prediction": "Gina stays confident in her business by believing in herself, receiving support from Jon, and focusing on her passions for dance and fashion.",
+      "official_f1": 0.3333333333333333,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-30:74",
+      "category": 4,
+      "question": "What does Jon plan to do at the grand opening of his dance studio?",
+      "gold": "savor all the good vibes",
+      "prediction": "Host a grand opening event",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-30:54",
+      "category": 4,
+      "question": "How is Gina's store doing?",
+      "gold": "The store is doing great.",
+      "prediction": "Gina's store is expanding, aiming to be a top destination for fashion fans, and has launched an ad campaign. It collaborates with local artists for unique designs and is working on a new website to facilitate customer orders. The store features dance-inspired clothing items and a variety of fashion items.",
+      "official_f1": 0.08695652173913043,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-41:3",
+      "category": 1,
+      "question": "What type of volunteering have John and Maria both done?",
+      "gold": "Volunteering at a homeless shelter",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-41:40",
+      "category": 1,
+      "question": "What are the names of John's children?",
+      "gold": "Kyle, Sara",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-41:46",
+      "category": 2,
+      "question": "When did Maria go hiking with her church friends?",
+      "gold": "The weekend before 22 July 2023",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-41:56",
+      "category": 2,
+      "question": "When did John participate in a 5K charity run?",
+      "gold": "first weekend of August 2023",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-41:125",
+      "category": 4,
+      "question": "What does John appreciate about the veteran's hospital visit?",
+      "gold": "the resilience of the veterans and their inspiring stories",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-41:72",
+      "category": 4,
+      "question": "What kind of activities did John and his mates from the online group do as part of their service efforts?",
+      "gold": "gave out food and supplies at a homeless shelter, organized a toy drive for kids in need",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-41:85",
+      "category": 4,
+      "question": "What event did John volunteer at last weekend?",
+      "gold": "career fair at a local school",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-41:86",
+      "category": 4,
+      "question": "What did John do that put a strain on his wallet?",
+      "gold": "His car broke down",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-41:65",
+      "category": 4,
+      "question": "What is John's main focus in local politics?",
+      "gold": "Improving education and infrastructure",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-41:87",
+      "category": 4,
+      "question": "Where did John explore on a road trip last year?",
+      "gold": "Pacific Northwest",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-43:18",
+      "category": 1,
+      "question": "What authors has Tim read books from?",
+      "gold": "J.K. Rowling, R.R. Martin, Patrick Rothfuss, Paulo Coelho, and J. R. R. Tolkien.",
+      "prediction": "Unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-43:57",
+      "category": 1,
+      "question": "What instruments does Tim play?",
+      "gold": "piano, violin",
+      "prediction": "Unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-43:33",
+      "category": 2,
+      "question": "When does John plan on traveling with his team on a team trip?",
+      "gold": "October, 2023",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-43:70",
+      "category": 3,
+      "question": "Which Star Wars-related locations would Tim enjoy during his visit to Ireland?",
+      "gold": "Skellig Michael, Malin Head, Loop Head, Ceann Sibéal, and Brow Head because they are Star Wars filming locations.",
+      "prediction": "Unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.3333333333333333
+    },
+    {
+      "id": "conv-43:117",
+      "category": 4,
+      "question": "What motivates John's team to get better, according to John?",
+      "gold": "facing tough opponents",
+      "prediction": "Teammates' belief in him and his love for improving his skills",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-43:95",
+      "category": 4,
+      "question": "What new activity has Tim started learning in August 2023?",
+      "gold": "play the piano",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-43:76",
+      "category": 4,
+      "question": "What kind of picture did Tim share as part of their Harry Potter book collection?",
+      "gold": "MinaLima's creation from the Harry Potter films",
+      "prediction": "Unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-43:142",
+      "category": 4,
+      "question": "How did \"The Alchemist\" impact John's perspective on following dreams?",
+      "gold": "made him think again about following dreams and searching for personal legends",
+      "prediction": "Inspiring",
+      "official_f1": 0.0,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-43:125",
+      "category": 4,
+      "question": "What J.K. Rowling quote does Tim resonate with?",
+      "gold": "\"Turn on the light - happiness hides in the darkest of times.\"",
+      "prediction": "Unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-43:140",
+      "category": 4,
+      "question": "How did John overcome a mistake he made during a big game in basketball?",
+      "gold": "Worked hard to get better and focused on growth",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-44:35",
+      "category": 1,
+      "question": "What are the names of Andrew's dogs?",
+      "gold": "Toby, Scout, Buddy",
+      "prediction": "Pepper, Precious, Panda",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-44:14",
+      "category": 1,
+      "question": "What is something that Andrew really misses while working in the city?",
+      "gold": "being in nature",
+      "prediction": "peace and freedom of hiking",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-44:30",
+      "category": 2,
+      "question": "When is Andrew planning to go to the beach with his girlfriend?",
+      "gold": "November 2023",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-44:11",
+      "category": 2,
+      "question": "When did Andrew go rock climbing?",
+      "gold": "June 11, 2023",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-44:33",
+      "category": 3,
+      "question": "What can Andrew potentially do to improve his stress and accomodate his living situation with his dogs?",
+      "gold": "Change to a hybrid or remote job so he can move away from the city to the suburbs to have a larger living space and be closer to nature.",
+      "prediction": "Go birdwatching with Audrey.",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.3333333333333333
+    },
+    {
+      "id": "conv-44:61",
+      "category": 4,
+      "question": "Which specific type of bird mesmerizes Andrew?",
+      "gold": "Eagles",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-44:119",
+      "category": 4,
+      "question": "What did Audrey share to show ways to keep dogs active in the city?",
+      "gold": "photography of a basket full of stuffed animals",
+      "prediction": "hikes,parks,trails,meadows,fields,agility stuff,toys,pet salon,behaviorist,positive reinforcement training,class,adventures,exploring,new parks,trails,city dog activities,play area,ball,frisbee,walking,running,community dog group,weekly meetups,pet store toys,workshop on bonding with pets,volunteering,helping others,animal shelter donations,garlic,Mediterranean cuisine,",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-44:120",
+      "category": 4,
+      "question": "What type of activities does Audrey suggest for mental stimulation of the dogs?",
+      "gold": "puzzles, training, hide-and-seek",
+      "prediction": "hiking, exploring parks and trails, playing in meadows and fields, agility stuff and toys, positive reinforcement training, behaviorist sessions, grooming, pet salon visits, doggy play area, birdwatching",
+      "official_f1": 0.07407407407407407,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-44:90",
+      "category": 4,
+      "question": "What did Audrey organize with the neighbors' dogs?",
+      "gold": "a doggy playdate",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-48:86",
+      "category": 1,
+      "question": "What gifts has Deborah received?",
+      "gold": "an appreciate letter from her community, a flower bouqet from her friend, a motivational quote from a friend",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.2
+    },
+    {
+      "id": "conv-48:30",
+      "category": 2,
+      "question": "When did Jolene have a dinner and drinks with her friends?",
+      "gold": "21 February, 2023",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-48:29",
+      "category": 2,
+      "question": "When did Jolene have a mini-retreat to reflect on her career?",
+      "gold": "Wednesday before 9 February, 2023",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-48:28",
+      "category": 3,
+      "question": "In what country was Jolene during summer 2022?",
+      "gold": "Colombia",
+      "prediction": "France",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-48:92",
+      "category": 4,
+      "question": "What games does Jolene recommend for Deborah?",
+      "gold": "Zelda BOTW for Switch , Animal Crossing: New Horizons, Overcooked 2",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-48:146",
+      "category": 4,
+      "question": "What kind of yoga routine does Deborah recommend to Jolene?",
+      "gold": "A gentle flow routine focused on breathing and grounding",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-48:101",
+      "category": 4,
+      "question": "When did Jolene buy her pet snake?",
+      "gold": "A year ago",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-48:178",
+      "category": 4,
+      "question": "What positive change did Jolene experience during the retreat?",
+      "gold": "finding inner peace",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-48:158",
+      "category": 4,
+      "question": "What did Jolene participate in recently that provided her with a rewarding experience?",
+      "gold": "presenting at a virtual conference",
+      "prediction": "January 2023 engineering project",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-48:64",
+      "category": 4,
+      "question": "Does Deborah like cats?",
+      "gold": "Yes",
+      "prediction": "Unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.5
+    },
+    {
+      "id": "conv-49:48",
+      "category": 1,
+      "question": "What new diet and lifestyle change did Sam adopt over time?",
+      "gold": "Healthy eating, exercise routine, running, hiking",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.25
+    },
+    {
+      "id": "conv-49:13",
+      "category": 2,
+      "question": "When did Evan have his sudden heart palpitation incident that really shocked him up?",
+      "gold": "first week of June 2023",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-49:73",
+      "category": 2,
+      "question": "When is Evan planning a big family reunion?",
+      "gold": "Summer 2024",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-49:57",
+      "category": 3,
+      "question": "Which US state was Sam travelling in during October 2023?",
+      "gold": "California",
+      "prediction": "Unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-49:92",
+      "category": 4,
+      "question": "What frustrating issue did Sam face at the supermarket?",
+      "gold": "broken self-checkout machines",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-49:118",
+      "category": 4,
+      "question": "What electronics issue has been frustrating Sam lately?",
+      "gold": "malfunctioning navigation app on the new phone",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-49:143",
+      "category": 4,
+      "question": "What did Evan want to share with his work friends?",
+      "gold": "getting married",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    },
+    {
+      "id": "conv-49:107",
+      "category": 4,
+      "question": "What nature concept do watercolor painting classes emphasize according to Evan?",
+      "gold": "observing nature and painting what is seen",
+      "prediction": "expressing emotions and finding peace",
+      "official_f1": 0.0,
+      "cited_source_recall": 1.0
+    },
+    {
+      "id": "conv-49:96",
+      "category": 4,
+      "question": "What does the bonsai tree symbolize for Evan?",
+      "gold": "strength and resilience",
+      "prediction": "unknown",
+      "official_f1": 0.0,
+      "cited_source_recall": 0.0
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "recipe": {
+    "name": "r24_source_qa_cards",
+    "parent": "seed",
+    "operations": [
+      {
+        "op": "extract",
+        "window": 10,
+        "overlap": 2,
+        "limit": 24,
+        "max_tokens": 1400,
+        "prompt": "Build reusable conversation memory from this dialogue alone. Generate up to 24 short question-and-answer records for concrete personal facts, each on one line starting with exact supporting dialogue IDs [D1:2,D1:3]. Format: Q: a specific question naming the correct person and event? A: the shortest complete answer copied from the source wording. These are source-derived memory keys, not answers to any external task. Cover names, relationships and ownership, titles, interests, activities, locations, exact evaluations, reasons, quantities, event times, and plans. A list answer contains only items explicitly tied to that one event; never combine similar but distinct events. Resolve a brief answer using the adjacent question. Preserve the original relative time expression instead of guessing an absolute date. Retain the speaker's specific description of a shared image rather than replacing it with a generic automatic image caption. Do not write questions without supported answers; do not infer outside knowledge. No greetings, generic encouragement, or commentary."
+      }
+    ]
+  },
+  "parent": "seed",
+  "committed_at": 1788786320.1942086,
+  "recipe_sha256": "c69d2d1a4e65d366abac9a245c468e0ff30d1d4770b93100cc6e00c406faf6b5",
+  "source_sha256": {
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data directories (generated at runtime)
+omni_memory_data/
+omni_memory_eval_data/
+quickstart_data/
+multimodal_data/
+api_server_data/
+locomo_results_*/
+memory_data/
+
+# Test/cache
+.pytest_cache/
+
+# Logs
+*.log
+*_log.txt
+logs/
+
+# Environment
+.env
+.env.local
+
+# Credentials
+openai_key.yaml
+credentials.json

@@ -1,0 +1,25 @@
+{
+  "recipe": {
+    "name": "r34_anchored_fact_only",
+    "parent": "seed",
+    "operations": [
+      {
+        "op": "facts_only"
+      },
+      {
+        "op": "anchor_time",
+        "style": "month"
+      },
+      {
+        "op": "filter_social_facts"
+      }
+    ]
+  },
+  "parent": "seed",
+  "committed_at": 1788791780.9945076,
+  "recipe_sha256": "94c5c53a702c17b11d83110ebf75aa25669fccc47f69840e075d06c0f18a34cd",
+  "source_sha256": {
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

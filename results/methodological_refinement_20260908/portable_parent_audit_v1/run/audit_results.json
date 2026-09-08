@@ -1,0 +1,100 @@
+{
+  "summaries": {
+    "seed": {
+      "n": 100,
+      "official_f1": 0.5336867567711381,
+      "generic_token_f1": 0.5064215919428773,
+      "read_tokens": 2036.22,
+      "memory_tokens": 76665.39,
+      "cited_source_recall": 0.8608333333333333,
+      "by_category": {
+        "1": {
+          "n": 17,
+          "f1": 0.5631714908185497
+        },
+        "2": {
+          "n": 22,
+          "f1": 0.22865013774104684
+        },
+        "3": {
+          "n": 6,
+          "f1": 0.16666666666666666
+        },
+        "4": {
+          "n": 55,
+          "f1": 0.6866264964162807
+        }
+      },
+      "failures_below_half_f1": 43,
+      "failures_missing_cited_sources": 14
+    },
+    "r40_fused_four_turn": {
+      "n": 100,
+      "official_f1": 0.5439625031830915,
+      "generic_token_f1": 0.5283910741887415,
+      "read_tokens": 2023.51,
+      "memory_tokens": 63179.86,
+      "cited_source_recall": 0.8316666666666667,
+      "by_category": {
+        "1": {
+          "n": 17,
+          "f1": 0.4741596638655462
+        },
+        "2": {
+          "n": 22,
+          "f1": 0.29617604617604615
+        },
+        "3": {
+          "n": 6,
+          "f1": 0.16666666666666666
+        },
+        "4": {
+          "n": 55,
+          "f1": 0.7058120548494881
+        }
+      },
+      "failures_below_half_f1": 43,
+      "failures_missing_cited_sources": 15
+    },
+    "s_parent_single_2000": {
+      "n": 100,
+      "official_f1": 0.5484029503476765,
+      "generic_token_f1": 0.5384087299563973,
+      "read_tokens": 2022.95,
+      "memory_tokens": 65108.5,
+      "cited_source_recall": 0.8283333333333333,
+      "by_category": {
+        "1": {
+          "n": 17,
+          "f1": 0.4565281668222845
+        },
+        "2": {
+          "n": 22,
+          "f1": 0.3113275613275613
+        },
+        "3": {
+          "n": 6,
+          "f1": 0.16666666666666666
+        },
+        "4": {
+          "n": 55,
+          "f1": 0.7132747245378631
+        }
+      },
+      "failures_below_half_f1": 42,
+      "failures_missing_cited_sources": 16
+    }
+  },
+  "paired_delta_parent_vs_r40": {
+    "delta": 0.0044404471645850966,
+    "ci95_cluster_bootstrap": [
+      -0.010012550242435296,
+      0.02277820218996689
+    ],
+    "conversation_clusters": 3,
+    "note": "Small pilot; few clusters limit inference."
+  },
+  "frozen_method": "s_parent_single_2000",
+  "no_audit_based_selection": true,
+  "no_further_tuning_on_these_questions": true
+}

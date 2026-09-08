@@ -1,0 +1,48 @@
+\begin{table}[H]
+\centering
+\small
+\caption{Example 2 of retrieval trace showing bridge-entity discovery and evidence compression.}
+\label{tab:case_hotpotqa_2}
+
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{p{0.97\linewidth}}
+
+\toprule
+\textbf{HotpotQA Case Study 2: Bridge-Entity Multi-hop Retrieval}\\
+\midrule
+\textbf{Query.} \emph{``Bill Nelson flew as a Payload Specialist on a Space Shuttle launched for the first time in what year?''}\\
+\midrule
+\textbf{Hop 0 (init).} Tags for query:
+{[\textcolor{yes}{Bill Nelson}, \textcolor{partial}{Payload Specialist}, \textcolor{partial}{Space Shuttle}, \textcolor{no}{first launch}]}\\
+\(\triangleright\) \textbf{node 1375} (v=0.501):
+\emph{In January 1986, Clarence William Nelson II became the first sitting member of the United States House of Representatives to fly in space, serving as a Payload Specialist on the Space Shuttle Columbia.}
+(\textcolor{yes}{bridge entity identified: \textbf{Space Shuttle Columbia}})\\
+\(\triangleright\) node 1371:
+In 1983, Byron Kurt Lichtenberg and Ulf Merbold became the first Payload Specialists to fly on the shuttle.\\
+......\\
+\(\triangleright\) node 1383:
+Dirk Dries David Damiaan, Viscount Frimout, flew aboard NASA Space Shuttle mission STS-45 as a payload specialist, making him the first Belgian in space.\\
+\midrule
+\textbf{Query\_new} = \texttt{Integrated} (Query, top-k nodes)\\
+\midrule
+\textbf{Hop 1 (refine \& expand).} Tags for query:
+{[\textcolor{yes}{Space Shuttle Columbia}, \textcolor{yes}{first launch}]}\\
+\(\triangleright\) \textbf{node 1365}:
+\emph{Space Shuttle ``Columbia'' (Orbiter Vehicle Designation: OV-102) launched for the first time on mission STS-1 on April 12, 1981, marking the first flight of the Space Shuttle program.}
+(\textcolor{yes}{golden fact retrieved: \textbf{1981}})\\
+\(\triangleright\) node 1380:
+STS-61-C's seven-person crew included \ldots\ and Representative Bill Nelson (D-FL), the second sitting politician to fly in space.\\
+......\\
+\(\triangleright\) node 1384:
+A payload specialist (PS) is an individual selected and trained \ldots\ for a NASA Space Shuttle mission.\\
+\midrule
+\textbf{Reasoning (compressed).}\\
+\(\triangleright\) \emph{Bill Nelson (Clarence William Nelson II) served as a Payload Specialist on the Space Shuttle Columbia.}\\
+\(\triangleright\) \emph{Space Shuttle Columbia first launched on April 12, 1981 (STS-1).}\\
+\midrule
+\textbf{Answer.} \textbf{1981}.\\
+\bottomrule
+\end{tabular}
+
+\end{table}

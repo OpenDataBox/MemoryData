@@ -1,0 +1,507 @@
+\section{Information-Theoretic Evaluation of Memory Efficiency}
+We present a framework to quantify the utility of generated memory. We decompose memory efficiency into two dimensions: accuracy (Pointwise) and certainty (Distributional), and provide a unified interpretation of their connections.
+\label{app:memory_information_density}
+\subsubsection{Preliminaries and Notation}
+
+We define the operational environment and the agent's decision-making process.
+
+\begin{itemize}
+    \item \textbf{State Space} ($\mathcal{S}$): The set of all possible environmental states or contexts. Let $s \in \mathcal{S}$ denote the current state.
+    \item \textbf{Action Space} ($\mathcal{A}$): The set of all possible actions. Let $a \in \mathcal{A}$ denote an action taken by the agent.
+    \item \textbf{Optimal Action} ($a^*$): Let $a^* \in \mathcal{A}$ denote the ground-truth optimal action (or the actual action chosen by a demonstrator/oracle) given the current state $s$.
+    \item \textbf{Memory Space} ($\mathcal{M}$): The output space of the memory generation module. Let $m \in \mathcal{M}$ denote a generated memory sequence. Here, $m$ is not necessarily a subsequence of the raw corpus, but can be a constructed representation (e.g., abstraction, inference, or summary) optimized to augment the agent's decision-making in the current state $s$.
+    \item \textbf{Memory Generator} ($\mathcal{G}_\phi$): A parameterized function (e.g., a search engine, or an LLM) that maps the current state $s$ and a raw memory base $\mathcal{K}$ to a memory artifact. We define the process as $m = \mathcal{G}_\phi(s, \mathcal{K})$. This function encapsulates operations like retrieval and reasoning to explicate implicit logic.
+    \item \textbf{Memory Length} ($|m|$): Let $|m|$ denote the length of the memory sequence $m$ in number of tokens.
+\end{itemize}
+
+
+\subsection{Pointwise Metric: Accuracy and Density}
+
+\subsubsection{Quantifying Information Gain via Pointwise Mutual Information (PMI)}
+
+We model the agent's decision-making as a conditional probability distribution over actions and distinguish between the agent's policy with and without access to the memory module.
+\begin{itemize}
+    \item \textbf{Baseline Policy (Prior):} The probability of selecting the optimal action $a^*$ given only the current state $s$, without memory augmentation:
+    \[
+    P_{\text{base}}(a^* \mid s)
+    \]
+    \item \textbf{Memory-Augmented Policy (Posterior):} The probability of selecting the optimal action $a^*$ given the current state $s$ and the generated memory $m$:
+    \[
+    P_{\text{mem}}(a^* \mid s, m)
+    \]
+\end{itemize}
+
+To quantify the specific contribution of the generated memory $m$ toward selecting the correct action $a^*$, we employ \textbf{Pointwise Mutual Information (PMI)}.
+
+We define the \textbf{Decision Information Gain} as:
+\[
+\mathrm{PMI}(a^*; m \mid s)
+    = \log_{2} \frac{P_{\text{mem}}(a^* \mid s, m)}{P_{\text{base}}(a^* \mid s)} .
+\]
+
+\subparagraph{Interpretation.}
+\begin{itemize}
+    \item If $\mathrm{PMI} > 0$: The memory $m$ provided positive information, increasing the probability of selecting the correct action $a^*$.
+    \item If $\mathrm{PMI} = 0$: The memory $m$ was irrelevant to the decision.
+    \item If $\mathrm{PMI} < 0$: The memory $m$ was misleading, decreasing the probability of selecting $a^*$.
+\end{itemize}
+
+\subsubsection{Memory Information Density (Pointwise Gain per Token)}
+
+We normalize the total information gain by the cost of processing the memory (its token length). The \textbf{Memory Information Density} is defined as:
+\[
+\rho(a^*, m) = \frac{\mathrm{PMI}(a^*; m \mid s)}{|m|}.
+\]
+
+Substituting the PMI definition:
+\[
+\rho(a^*, m)
+    = \frac{1}{|m|} \cdot \log_{2} \left(
+        \frac{P_{\text{mem}}(a^* \mid s, m)}{P_{\text{base}}(a^* \mid s)}
+    \right).
+\]
+
+\subparagraph{Unit.} Bits per Token (bits/token).
+
+\subsubsection{Summary of the Metric}
+
+This framework evaluates the memory module not only on \emph{effectiveness} (did it help?) but also on \emph{conciseness} (did it help efficiently?).
+
+\begin{itemize}
+    \item \textbf{Objective:} Maximize $\rho(a^*, m)$.
+    \item \textbf{Optimization Goal:} Generate memory content that maximizes the likelihood of $a^*$ while minimizing the token count $|m|$.
+\end{itemize}
+
+\subsubsection{Aggregate Evaluation: Global Memory Efficiency}
+
+To evaluate the memory module's performance over a dataset 
+\[
+\mathcal{D} = \{(s_i, a^*_i, m_i)\}_{i=1}^{N},
+\]
+consisting of $N$ decision instances, we compute the \textbf{Global Memory Information Density}, denoted as $\rho_{\text{global}}$.
+
+Unlike the arithmetic mean of individual instance efficiencies (which can be numerically unstable for short memory sequences), $\rho_{\text{global}}$ represents the \emph{amortized information gain} per token consumed across the entire evaluation set. It answers the question: \textit{``For every token of memory generated by the system, how many bits of decision-relevant information are gained on average?''}
+
+We define $\rho_{\text{global}}$ as the ratio of the total cumulative Pointwise Mutual Information to the total cumulative memory length:
+\[
+\rho_{\text{global}} = 
+\frac{
+    \sum_{i=1}^{N} \mathrm{PMI}(a^*_i; m_i \mid s_i)
+}{
+    \sum_{i=1}^{N} |m_i|
+}.
+\]
+
+Expanding the PMI term, the calculable form is:
+\[
+\rho_{\text{global}}
+=
+\frac{
+    \sum_{i=1}^{N}
+        \log_{2}
+        \left(
+            \frac{
+                P_{\text{mem}}(a^*_i \mid s_i, m_i)
+            }{
+                P_{\text{base}}(a^*_i \mid s_i)
+            }
+        \right)
+}{
+    \sum_{i=1}^{N} |m_i|
+}.
+\]
+
+\subparagraph{Properties of this Metric}
+
+\begin{enumerate}
+    \item \textbf{Token-Level Weighting:}  
+    By summing the lengths in the denominator, this metric implicitly weighs the contribution of longer memory sequences more heavily, ensuring that expensive generations must justify their cost with proportionally higher information gain.
+
+    \item \textbf{Robustness:}  
+    It is robust to the ``small denominator problem,'' where an instance with a very short memory context (e.g., $|m_i| = 1$) might otherwise produce an artificially high efficiency score that skews the dataset average.
+
+    \item \textbf{System-Wide Interpretation:}  
+    A value of $\rho_{\text{global}} = 0.5$ indicates that, on aggregate, the system requires two tokens of memory context to gain one bit of information about the optimal action.
+\end{enumerate}
+
+
+
+\subsubsection{Control and Filtering: Defining the Evaluation Scope}
+
+To ensure the metric captures the \emph{marginal utility} of the memory module rather than the underlying difficulty of the tasks, we introduce a filtering mechanism. This isolates instances where the agent stands to benefit from external information.
+
+\paragraph{The Redundancy Filter (High Prior Confidence)}
+
+We exclude instances where the baseline policy is already confident in the optimal action, as memory generation in these cases is functionally redundant.
+
+We define the \textbf{Active Evaluation Subset}, denoted as $\mathcal{D}_{\text{active}} \subseteq \mathcal{D}$, as:
+\[
+\mathcal{D}_{\text{active}}
+=
+\left\{
+    (s_i, a^*_i, m_i) \in \mathcal{D}
+    \;\middle|\;
+    P_{\text{base}}(a^*_i \mid s_i) < \tau_{\text{conf}}
+\right\},
+\]
+where $\tau_{\text{conf}}$ is a pre-defined confidence threshold (e.g., $\tau_{\text{conf}} = 0.8$ or $0.9$).
+
+\subparagraph{Rationale.}
+If $P_{\text{base}} \ge \tau_{\text{conf}}$, the agent ``knows'' the answer.  
+Any generated memory $m$, even if relevant, yields negligible Information Gain ($\mathrm{PMI} \to 0$).  
+Including these lowers $\rho_{\text{global}}$ unfairly.
+
+\paragraph{The Empty Memory Generation Case}
+
+We must account for cases where the memory module decides not to generate any information or returns an empty sequence ($|m| = 0$).
+
+\begin{itemize}
+    \item \textbf{Handling:} If $|m_i| = 0$, the instance is excluded from the density calculation because the denominator is zero.
+    \item \textbf{Note:} While excluded from the \emph{density} metric (efficiency), these samples should still be tracked separately for \emph{recall rate} (effectiveness).
+\end{itemize}
+
+\paragraph{Refined Global Metric}
+
+Combining the ``Ratio of Sums'' approach with the ``Redundancy Filter,'' the final operational metric is calculated only over the active subset:
+\[
+\rho_{\text{final}}
+=
+\frac{
+    \sum_{i \in \mathcal{D}_{\text{active}}}
+        \mathrm{PMI}(a^*_i; m_i \mid s_i)
+}{
+    \sum_{i \in \mathcal{D}_{\text{active}}}
+        |m_i|
+}.
+\]
+
+This refined formulation ensures we measure the \emph{efficiency of necessary memories}, providing a cleaner signal of the module's contribution to complex reasoning.
+
+\subsection{Geometric Analysis: The Utility--Cost Landscape}
+
+To understand the mechanism behind efficiency gains, we analyze the memory module through a geometric lens.  
+We construct a Utility--Cost coordinate system where:
+
+\begin{itemize}
+    \item \textbf{X-Axis (Cost):} Memory length, $L = |m|$.
+    \item \textbf{Y-Axis (Utility):} Information gain, $I(L) = \mathrm{PMI}(a^*; m \mid s)$.
+\end{itemize}
+
+Standard intuition might suggest monotonic logarithmic growth of utility with respect to context length.  
+However, in real-world agentic scenarios involving noise, we propose that the curve follows a \textbf{unimodal (peaking) distribution}.
+
+\subsubsection{The Peaking Phenomenon and Noise Toxicity}
+
+We model the effective information gain $I(L)$ not merely as signal accumulation, but as a superposition of signal extraction and attention dilution:
+\[
+I(L) = S(L) - \eta(L),
+\]
+where $S(L)$ is the logarithmic signal-accumulation function (monotonically increasing), and $\eta(L)$ represents the \textbf{noise toxicity} or cognitive-load penalty.
+
+We identify three qualitative regions on this curve:
+
+\begin{enumerate}
+    \item \textbf{Under-fitting Region} ($dI/dL > 0,\, d^2 I / dL^2 > 0$):  
+    High marginal utility; critical semantic information is being generated.
+
+    \item \textbf{The Sweet Spot} ($dI/dL \approx 0$):  
+    The peak $I_{\max}$ where signal is maximized relative to noise.
+
+    \item \textbf{Toxicity Region} ($dI/dL < 0$):  
+    The \emph{negative marginal utility} zone.  
+    Extending memory length $L$ introduces more irrelevant tokens (HTML tags, tangents) than valid signal, diluting the agent's attention mechanism.  
+    As a result, the probability of the correct action $P(a^*)$ \emph{decreases} despite having ``more context.''
+\end{enumerate}
+
+\subsubsection{Geometric Interpretation of Efficiency $(\rho)$}
+
+In this coordinate system, the core metric---\textbf{Global Memory Density $\rho$}---has a precise geometric meaning:  
+\[
+\rho(L) = \frac{I(L)}{L},
+\]
+which is the slope of the \emph{secant line} from the origin $(0,0)$ to the operating point $(L, I(L))$.
+
+This reveals a trade-off between two optimality criteria:
+
+\begin{itemize}
+    \item \textbf{Point A: Maximum Performance Point.}  
+    The peak of the curve where $\frac{dI}{dL} = 0$.  
+    This is the performance ceiling independent of cost.
+
+    \item \textbf{Point B: Maximum Efficiency Point.}  
+    The point where the secant line from the origin becomes a tangent to the curve.  
+    Geometrically, this maximizes the slope $\rho = I(L)/L$.
+\end{itemize}
+
+\textbf{Insight: Efficiency--Performance Gap.}  
+Typically, Point B lies to the left of Point A.  
+Pursuing maximum performance (moving from B toward A) requires disproportionately more tokens and yields diminishing—or even negative—returns.
+
+\textbf{The ``Epiphany'' Threshold (Point C).}
+It is also theoretically instructive to identify the \textit{Inflection Point} (where $I''(L) = 0$), located to the left of Point B. 
+Economically, this represents the point of \textbf{Maximum Marginal Utility} ($\max dI/dL$). 
+In the context of memory generation, Point C corresponds to the acquisition of the ``Critical Semantic Mass''—the specific token or phrase that provides the initial breakthrough in context (e.g., retrieving the correct entity name). 
+However, stopping at Point C is generally suboptimal (under-fitting), as the agent has acquired the key signal but lacks the necessary context (accumulated between C and B) to robustly execute the decision.
+
+\subsubsection{Vector Decomposition of Gains}
+
+To quantify the improvement of our proposed memory module relative to other baselines, we perform a vector decomposition in the $L$--$I$ plane.
+
+Let the baseline vector be
+\[
+\mathbf{v}_{\text{baseline}} = (L_{\text{baseline}}, I_{\text{baseline}})
+\]
+and our improved method be
+\[
+\mathbf{v}_{\text{ours}} = (L_{\text{opt}}, I_{\text{opt}}).
+\]
+
+The transformation vector is:
+\[
+\Delta \mathbf{v}
+=
+\mathbf{v}_{\text{ours}} - \mathbf{v}_{\text{baseline}}
+=
+(\Delta L, \Delta I).
+\]
+
+We classify the improvement direction as:
+
+\begin{itemize}
+    \item \textbf{Horizontal Shift} ($\Delta L < 0,\, \Delta I \approx 0$):  
+    \emph{Pure Compression}—gains arise solely from cost reduction.
+
+    \item \textbf{Vertical Shift} ($\Delta L \approx 0,\, \Delta I > 0$):  
+    \emph{Pure Enhancement}—better reasoning with the same budget.
+
+    \item \textbf{North-West Shift} ($\Delta L < 0,\, \Delta I > 0$):  
+    \textbf{Hybrid Gain}.  
+    This indicates the baseline operates in the Toxicity Region.  
+    By refining the memory, we simultaneously reduce cost \emph{and} increase accuracy by removing noise that harmed decision-making.
+\end{itemize}
+
+\subsubsection{Pareto Dominance}
+
+We posit that the proposed module does not merely traverse the same trade-off curve as the naive baseline.  
+Instead, it induces a \textbf{Pareto frontier shift}.
+
+Let the naive baseline curve be $\mathcal{C}_{\text{base}}$ and our method's curve be $\mathcal{C}_{\text{ours}}$.  
+We claim that over the relevant domain:
+\[
+\forall L,\quad
+I_{\text{ours}}(L) \ge I_{\text{base}}(L).
+\]
+
+This implies our method raises the theoretical ceiling of the memory system, enabling the agent to handle more complex tasks (higher required $I$) that were previously infeasible due to the noise constraints of $\mathcal{C}_{\text{base}}$.
+
+\subparagraph{Remark: Baseline Invariance and Coordinate Shift.}
+It is worth noting that since the naive baseline confidence $\sum \log P_{\text{base}}(a^* \mid s)$ is constant for a fixed agent, the Utility axis $I(L)$ is functionally a vertical translation of the raw posterior log-likelihood $\sum \log P_{\text{mem}}$. 
+While this constant offset shifts the absolute position of the origin $(0,0)$—thereby scaling the absolute value of the density slope $\rho$—it preserves the \textit{topological features} of the landscape. 
+Consequently, the relative comparisons between methods (e.g., the existence of a ``toxicity drop'' or the location of the ``sweet spot'') remain invariant to the baseline performance.
+
+
+
+\subsection{Distributional Metric: Certainty and Calibration}
+
+While PMI quantifies the accuracy of the memory with respect to the ground truth $a^*$, it fails to capture the global impact of memory on the agent's uncertainty. A memory sequence might slightly increase $P(a^*)$ (positive PMI) while leaving the agent confused among many other suboptimal actions.
+
+To measure the memory's ability to \emph{prune the search space} and \emph{sharpen the decision boundary}, we extend the framework to evaluate the \textbf{Distributional Information Density}.
+
+\subsubsection{Quantifying Action Space Compression via Uncertainty Reduction}
+
+We employ Shannon Entropy to quantify the uncertainty (or ``cognitive load'') inherent in the agent's policy.
+
+\begin{itemize}
+    \item \textbf{Prior Uncertainty} ($\mathcal{H}_{\text{base}}$): The uncertainty of the agent given only the state $s$.
+    \[
+    \mathcal{H}_{\text{base}}(s) = - \sum_{a \in \mathcal{A}} P_{\text{base}}(a \mid s) \log_2 P_{\text{base}}(a \mid s)
+    \]
+    \item \textbf{Posterior Uncertainty} ($\mathcal{H}_{\text{mem}}$): The uncertainty after processing the memory $m$.
+    \[
+    \mathcal{H}_{\text{mem}}(s, m) = - \sum_{a \in \mathcal{A}} P_{\text{mem}}(a \mid s, m) \log_2 P_{\text{mem}}(a \mid s, m)
+    \]
+\end{itemize}
+
+The \textbf{Action Space Compression} (or Uncertainty Reduction), denoted as $\Delta \mathcal{H}$, represents the amount of information (in bits) the memory contributes toward resolving ambiguity:
+\[
+\Delta \mathcal{H}(m \mid s) = \mathcal{H}_{\text{base}}(s) - \mathcal{H}_{\text{mem}}(s, m).
+\]
+
+\subparagraph{Interpretation.}
+\begin{itemize}
+    \item $\Delta \mathcal{H} > 0$: \textbf{Sharpening.} The memory reduced the effective size of the search space (pruning invalid options).
+    \item $\Delta \mathcal{H} < 0$: \textbf{Confusion.} The memory introduced conflicting information, flattening the distribution and increasing uncertainty.
+\end{itemize}
+
+\subsubsection{Distributional Information Density (Distributional Gain per Token)}
+
+Analogous to the pointwise metric, we define the \textbf{Distributional Information Density}, $\rho_{\text{dist}}$, as the rate of uncertainty reduction per unit of processing cost:
+
+\[
+\rho_{\text{dist}}(m) = \frac{\Delta \mathcal{H}(m \mid s)}{|m|} 
+= \frac{\mathcal{H}_{\text{base}}(s) - \mathcal{H}_{\text{mem}}(s, m)}{|m|}.
+\]
+
+\subparagraph{Unit.} Bits of Uncertainty Removed per Token (bits/token).
+
+\paragraph{Safety Analysis: The Confidence-Validity Quadrants}
+
+To rigorously evaluate memory, we project each instance into a 2D plane defined by:
+
+\begin{itemize}
+    \item \textbf{X-Axis (Certainty):} Action Space Compression, $\Delta \mathcal{H}(m \mid s)$.
+    \item \textbf{Y-Axis (Accuracy):} Decision Information Gain, $\mathrm{PMI}(a^*; m \mid s)$.
+\end{itemize}
+
+This projection categorizes memory interaction into one of four regimes:
+
+\begin{enumerate}
+    \item \textbf{Quadrant I: Efficient Reasoning} ($\Delta \mathcal{H} > 0, \mathrm{PMI} > 0$) \\
+    \textit{``Sharper and Correct.''} \\
+    The memory confirmed the correct action and ruled out distractors. The agent moved from uncertainty to correct certainty. This is the ideal operational state.
+
+    \item \textbf{Quadrant II: Corrective Calibration} ($\Delta \mathcal{H} < 0, \mathrm{PMI} > 0$) \\
+    \textit{``Breaking False Confidence.''} \\
+    Here, the agent likely started with high confidence in a \emph{wrong} action (Low Prior Entropy). The memory introduced necessary doubt, flattening the distribution but raising the probability of the true optimal action $a^*$. \\
+    \textbf{Significance:} This represents a ``Rescue'' mechanism where the memory fixes the agent's internal misconceptions.
+
+    \item \textbf{Quadrant IV: The Hallucination Trap} ($\Delta \mathcal{H} > 0, \mathrm{PMI} < 0$) \\
+    \textit{``Confident but Wrong.''} \\
+    The memory reduced uncertainty but pointed away from the ground truth. The agent became ``dogmatically wrong.'' \\
+    \textbf{Risk:} This is ``Toxic Certainty,'' the most dangerous failure mode in retrieval-augmented generation (RAG).
+
+    \item \textbf{Quadrant III: Destructive Noise} ($\Delta \mathcal{H} < 0, \mathrm{PMI} < 0$) \\
+    \textit{``Confused and Misled.''} \\
+    The memory not only failed to point to the correct answer but also increased overall confusion (entropy), effectively acting as distraction.
+\end{enumerate}
+
+\subsubsection{Validity-Adjusted Distributional Information Density}
+
+To synthesize the quadrant analysis into a single scalar metric that rewards efficient reasoning while penalizing hallucinations, we propose the \textbf{Validity-Adjusted Distributional Information Density ($\rho_{\Phi}$)}. This metric integrates the \emph{magnitude} of the distributional shift with the \emph{directionality} of the accuracy gain.
+
+\paragraph{Metric Definition}
+
+We define $\rho_{\Phi}$ as the product of the validity sign and the normalized distributional work:
+
+\[
+\rho_{\Phi}(m) = \underbrace{\text{sgn}(\mathrm{PMI}(a^*; m \mid s))}_{\text{Direction Validity}} \cdot \frac{|\Delta \mathcal{H}(m \mid s)|}{|m|}
+\]
+
+where:
+\begin{itemize}
+    \item $\text{sgn}(\cdot)$ is the sign function ($+1$ for improvement, $-1$ for detriment).
+    \item $|\Delta \mathcal{H}(m \mid s)|$ is the absolute magnitude of the uncertainty change (bits).
+    \item $|m|$ is the memory length (tokens).
+\end{itemize}
+
+\paragraph{Properties and Interpretation}
+
+This formulation provides a unified evaluation across all four cognitive regimes:
+
+\begin{enumerate}
+    \item \textbf{Reward for Efficiency (Quadrant I):} \\
+    When the agent becomes more certain about the correct answer ($\Delta \mathcal{H} > 0, \mathrm{PMI} > 0$), the metric is \textbf{positive}. Higher density indicates faster convergence to the truth.
+    
+    \item \textbf{Reward for Rectification (Quadrant II):} \\
+    When the memory corrects a confident error ($\Delta \mathcal{H} < 0, \mathrm{PMI} > 0$), the metric remains \textbf{positive}. 
+    Although entropy increases (the agent becomes less dogmatic), the term $|\Delta \mathcal{H}|$ captures the significant ``cognitive work'' performed to break the false confidence, and $\text{sgn}(\mathrm{PMI})$ validates this shift as beneficial.
+    
+    \item \textbf{Penalty for Hallucination (Quadrant IV):} \\
+    When the agent becomes confident in a wrong answer ($\Delta \mathcal{H} > 0, \mathrm{PMI} < 0$), the metric becomes \textbf{negative}. 
+    The more ``convincing'' the hallucination (higher $\Delta \mathcal{H}$), the severe the penalty. This acts as a soft safety constraint.
+
+    \item \textbf{Penalty for Destructive Noise (Quadrant III):} \\
+    When the memory confuses the agent and lowers accuracy ($\Delta \mathcal{H} < 0, \mathrm{PMI} < 0$), the metric is \textbf{negative}.
+    Here, $|\Delta \mathcal{H}|$ represents the magnitude of the \emph{confusion} introduced. Since the memory failed to support the correct action, this ``negative work'' is penalized, reflecting the cost of processing distracting information.
+\end{enumerate}
+
+\subparagraph{Summary.}
+The metric $\rho_{\Phi}$ answers: \textit{``How many bits of valid distributional reshaping (entropy shift) does the memory module provide per token of cost?''}
+
+\subsection{Theoretical Unification: The Oracle-Divergence Principle}
+
+Thus far, we have analyzed memory efficiency through specific metrics: \emph{Accuracy} (PMI) and \emph{Certainty} (Entropy). In this section, we situate these metrics within a broader information-theoretic framework. We propose that the fundamental objective of the memory module is to minimize the information-geometric distance between the agent's policy and the ideal policy.
+
+We term this the \textbf{Oracle-Divergence Principle}.
+
+\subsubsection{The General Objective: Divergence Reduction}
+
+Let $\mathcal{Q}$ denote the \textbf{Oracle Distribution} (or the ``God View''), representing the ideal policy for the current state $s$. The goal of memory generation is to transform the agent's prior belief $P_{\text{base}}$ into a posterior $P_{\text{mem}}$ that is statistically closer to $\mathcal{Q}$.
+
+We quantify this improvement using the reduction in \textbf{Kullback-Leibler (KL) Divergence}. The generalized \textbf{Oracle Information Gain}, $\Delta_{\text{div}}$, is defined as:
+
+\[
+\Delta_{\text{div}}(m) = D_{\text{KL}}(\mathcal{Q} \parallel P_{\text{base}}) - D_{\text{KL}}(\mathcal{Q} \parallel P_{\text{mem}}).
+\]
+
+Since the Oracle distribution $\mathcal{Q}$ and the baseline prior $P_{\text{base}}$ are fixed for a given instance, maximizing this gain is equivalent to minimizing the divergence of the posterior:
+\[
+\arg\max_{m} \Delta_{\text{div}}(m) \equiv \arg\min_{m} D_{\text{KL}}(\mathcal{Q} \parallel P_{\text{mem}}).
+\]
+Ideally, if the memory is perfect, $P_{\text{mem}}$ converges to $\mathcal{Q}$, and the divergence becomes zero.
+
+\subsubsection{Practical Instantiation: PMI as a Special Case}
+
+While the Oracle $\mathcal{Q}$ can theoretically model soft labels or multimodal distributions, in the vast majority of discrete agentic tasks (e.g., tool selection, multi-step reasoning), the objective is canonically defined by a single unique ground truth. Under this standard deterministic setting, the Oracle distribution \textbf{collapses} from a general probability vector into a Dirac delta (One-hot) distribution:
+\[
+\mathcal{Q}(a) = 
+\begin{cases} 
+    1 & \text{if } a = a^* \\
+    0 & \text{otherwise}
+\end{cases}
+\]
+
+Under this specific \textbf{One-hot Assumption}, the KL-Divergence term simplifies significantly:
+\[
+D_{\text{KL}}(\mathcal{Q} \parallel P) 
+= \sum_{a \in \mathcal{A}} \mathcal{Q}(a) \log_2 \frac{\mathcal{Q}(a)}{P(a)}
+= 1 \cdot \log_2 \frac{1}{P(a^*)}
+= -\log_2 P(a^*).
+\]
+
+Substituting this back into the generalized gain equation yields:
+\[
+\begin{aligned}
+\Delta_{\text{div}}(m) 
+&= \left[ -\log_2 P_{\text{base}}(a^*) \right] - \left[ -\log_2 P_{\text{mem}}(a^* \mid m) \right] \\
+&= \log_2 P_{\text{mem}}(a^* \mid m) - \log_2 P_{\text{base}}(a^*) \\
+&= \mathrm{PMI}(a^*; m).
+\end{aligned}
+\]
+
+\subparagraph{Implication: Tractability and Sufficiency.}
+This derivation reveals that \textbf{Pointwise Mutual Information (PMI)} is not merely a heuristic, but the \textbf{algebraic collapse} of the generalized Divergence Reduction under the deterministic assumption. This establishes PMI as the optimal engineering metric because it is:
+\begin{itemize}
+    \item \textbf{Computationally Tractable:} It requires tracking only the probability of the ground truth $P(a^*)$, avoiding the computational cost of modeling the full distributional distance.
+    \item \textbf{Theoretically Sufficient:} In the one-hot regime, maximizing PMI is mathematically isomorphic to minimizing the KL-divergence.
+\end{itemize}
+Thus, PMI serves as a proxy that effectively bridges abstract information geometry with practical, low-cost evaluation.
+
+\subsubsection{The Entropic Corollary}
+
+This generalized perspective also explains the role of Entropy Reduction ($\Delta \mathcal{H}$). 
+
+Since the Oracle distribution $\mathcal{Q}$ (One-hot) has an entropy of zero ($H(\mathcal{Q}) = 0$), any policy $P_{\text{mem}}$ that successfully minimizes the divergence $D_{\text{KL}}(\mathcal{Q} \parallel P_{\text{mem}})$ must necessarily lower its own entropy.
+
+\[
+P_{\text{mem}} \to \mathcal{Q} \implies H(P_{\text{mem}}) \to 0.
+\]
+
+Therefore, \emph{Accuracy} (PMI) and \emph{Certainty} (Entropy) are not independent objectives. They are coupled features of the same optimization process:
+\begin{itemize}
+    \item \textbf{PMI} measures the \emph{alignment} of the probability mass with the peak of $\mathcal{Q}$.
+    \item \textbf{Entropy} measures the \emph{compactness} of the distribution, which is a prerequisite for resembling $\mathcal{Q}$.
+\end{itemize}
+
+\subsubsection{Summary.}
+In this unified view, our framework offers a dual-layered approximation of the theoretical trajectory $\Delta_{\text{div}}$:
+
+\begin{enumerate}
+    \item \textbf{The Accuracy Gain Efficiency Proxy ($\rho$):} 
+    By assuming the standard One-hot Oracle, the Pointwise Mutual Information $\rho$ serves as the \textbf{primary computational metric}. It provides an exact, low-cost measurement of the agent's transport toward the optimal action $a^*$, making it sufficient for large-scale performance benchmarking.
+
+    \item \textbf{The Validated Certainty Gain Proxy ($\rho_{\Phi}$):} 
+    The Distributional Density $\rho_{\Phi}$ acts as a \textbf{diagnostic complement}. It approximates the entropy-minimization requirement of the Oracle-Divergence, explicitly safeguarding against ``off-target'' confidence (where the agent minimizes entropy toward a wrong distribution $\mathcal{Q}' \neq \mathcal{Q}$).
+\end{enumerate}
+
+Thus, future memory research and prompting work can employ $\rho$ to measure \emph{how much} the additional tokens (e.g., the memory tokens) help decision-making, and $\rho_{\Phi}$ to diagnose \emph{how certainly} they do so.

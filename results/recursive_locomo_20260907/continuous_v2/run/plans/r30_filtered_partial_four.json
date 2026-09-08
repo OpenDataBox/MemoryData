@@ -1,0 +1,18 @@
+{
+  "recipe": {
+    "name": "r30_filtered_partial_four",
+    "parent": "r23_anchored_fact_raw_four",
+    "operations": [
+      {
+        "op": "filter_social_facts"
+      }
+    ]
+  },
+  "parent": "r23_anchored_fact_raw_four",
+  "committed_at": 1788791319.3062892,
+  "recipe_sha256": "f879ae5289750e589cfab48f11630e38f6aa856c5ec7d1a12f0c7f47d926ef0f",
+  "source_sha256": {
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

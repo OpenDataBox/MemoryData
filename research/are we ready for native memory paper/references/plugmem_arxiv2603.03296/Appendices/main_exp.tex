@@ -1,0 +1,232 @@
+\section{Additional Experiment Details}
+\label{app:add_exp_details}
+\subsection{LongMemEval}
+\paragraph{Setup.}
+
+To evaluate the agent's ability to answer questions based on historical user-agent conversations, we utilize LongMemEval~\cite{wu2024longmemeval}. Specifically, we employ the $LongMemEval_{S}$ subset, which features a conversation context of 115K tokens per test case, aligning with established standards in agent memory research \cite{li2025memosmemoryosai,rasmussen2025zeptemporalknowledgegraph}. For the \plugmem framework, we adopt Qwen2.5-32B-Instruct for the inference of structuring and retrieval modules, and Qwen2.5-72B-Instruct for the reasoning module. All baseline methods is driven by GPT-4o. NV-Embed-v2 is used for generating embeddings and Qwen2.5-72B-Instruct is used for all methods as the base agent that answer the question depending on memory generated. During the retrieval phase, we set k=10, extracting the top 10 most relevant memory nodes for downstream reasoning.
+
+\paragraph{Baselines.}
+
+
+We consider three categories of baselines: \textit{i) Vanilla}, including no historical conversation in its prompt that answer depending on the backbone model’s parametric knowledge, or simply answering “I don’t know”.\textit{ii) Task-agnostic}, which are not specifically designed for agent-user conversation QA benchmarks. Examples include a standard dense RAG pipeline that performs turn-level embedding-based retrieval; and agentic memory approaches such as A-Mem \citep{xu2025amemagenticmemoryllm}, which take notes from episodic memory and maintain/update them via a graph-based organization mechanism. \textit{iii) Task-specific}, tailored for historical conversation based QA, including knowledge graph based method  Zep \cite{rasmussen2025zeptemporalknowledgegraph}, and cognitive science oriented structural retrieval method LiCoMemory \cite{huang2026licomemorylightweightcognitiveagentic}. Specifically, for Zep, we adopt the result reported in their paper. For A-Mem and LiCoMemory, we randomly shuffle the test cases in the original \texttt{longmemeval\_s\_cleaned.json} file from LongMemEval and evaluate them on the same 100 prefix cases.
+
+
+\paragraph{Metrics.}
+
+
+We report Accuracy (Acc. in Table~\ref{tab:longmemeval_res_main}), which is evaluated based on LLM-as-a-Judge method of LongMemEval\cite{wu2024longmemeval}, using GPT-4o as evaluator. Additionally, we also report global density relying on information-theoretic
+measures introduced in Section~\ref{sec:4.1}. Specifically, we instantiate the likelihood terms in Eq. (\ref{eq:pmi}) using per-instance answer overlap: \(P_{\text{mem}}\) and \(P_{\text{base}}\) are set to 1.0 if the evaluator judges the answer as correct, and 0.0 otherwise. To avoid mathematical errors when computing \(\log(P_{\text{mem}} / P_{\text{base}})\) in cases where either \(P_{\text{mem}}\) or \(P_{\text{base}}\) equals 0.0, we apply additive smoothing and use
+$\log\!\left(\frac{P_{\text{mem}}+\epsilon}{P_{\text{base}}+\epsilon}\right)$
+when computing PMI, where $\epsilon$ is \textbf{1\%} of the success rate of agent without memory on LongMemEval.
+
+\paragraph{Main Results.} 
+
+The experiment results are summarized in Table~\ref{tab:longmemeval_res_main}. \plugmem outperforms all baselines on LongMemEval. Moreover, \plugmem attains the highest \emph{global information-gain density} among all baselines. As shown in Table~\ref{tab:apdx_longmemeval_subset}, \plugmem achieves competitive performance compared to several task-specific methods. Notably, \plugmem delivers the top performance on the multi-session subset. This subset is particularly challenging as it requires both accurate retrieval and precise memory extraction; the agent must retrieve multiple ``gold'' memories and distinguish between them to maintain an accurate count. This reveals that the architecture of \plugmem successfully bridges the gap between massive data retrieval and precise cognitive extraction, proving that integrating external memory modules can significantly enhance an agent's long-term consistency in dynamic, multi-turn environments.
+
+\begin{table}[ht]
+\centering
+\caption{Subset Performance on LongMemEval. (S-S-U: single-session-user, S-S-A: single-session-assistant, S-S-P: single-session-preference, K-U: knowledge-update, T-R: temporal reasoning, M-S: multi-session)}
+\label{tab:apdx_longmemeval_subset}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{l|cccccc|c}
+\toprule
+Method & S-S-U & S-S-A & S-S-P & K-U & T-R & M-S & \textbf{Avg.} \\
+\midrule
+Zep        & 92.9 & 80.4 & 56.7 & 83.3 & 62.4 & 57.9 & 71.2 \\
+LiCoMemory & 92.9 & 90.9 & 50.0 & 81.2 & 65.4 & 63.0 & 73.0 \\
+\plugmem   & \textbf{94.3} & \textbf{98.2} & \textbf{60.0} & 79.5 & \textbf{66.2} & \textbf{64.7} & \textbf{75.1} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\paragraph{Ablations.} 
+
+We further conduct ablation studies on the three components of \plugmem. For \texttt{no-structuring}, we replace structured indexing with a simple chunking of the original user–agent conversations at the turn level. For \texttt{no-retrieving}, we directly concatenate all semantic memories extracted by the structuring module and feed them into the reasoning module without retrieval.As shown in Table~\ref{tab:longmemeval_ablation}, removing all the module leads to consistent degradation in both task performance and global information-gain density, highlighting their importance for effective memory utilization. Specifically, removing the retrieval module results in the worst performance, indicating that effective memory utilization must be grounded in retrieval. Removing the structuring module degrades performance to a level comparable to vanilla retrieval. While removing the reasoning module only causes a slight drop in accuracy, it leads to a substantial increase in input memory tokens.
+
+
+\paragraph{Token Cost Analisys.}
+
+Table~\ref{tab:apdx_longmemeval_token_cost_stats} reports the token consumption per sample for different methods on LongMemEval. Since Zep is only partially open-sourced, we randomly evaluate several samples using Graphit, the open-source graph module on which Zep is built, to estimate its token usage.
+
+It is expected that \plugmem incurs a relatively higher token count, as it goes beyond semantic memory extraction and additionally standardizes episodic memory and extracts procedural memory. These steps are crucial for task-agnostic memory organization and enable better generalization across diverse tasks, which task-specific methods that only extract semantic memory (e.g., LiCoMemory) cannot easily achieve.
+
+Importantly, while the token consumption of \plugmem is within similar order of magnitude as competing approaches, the actual deployment cost differs substantially. \plugmem relies exclusively on open-source models for inference, which can be executed offline or at significantly lower per-token cost. In contrast, several competing methods depend on closed-source models such as GPT-4o for inference, whose per-token pricing is considerably higher. As a result, when accounting for model pricing rather than token count alone, \plugmem is expected to be substantially more cost-efficient in practice, despite comparable token usage.
+
+\begin{table}[]
+\centering
+\caption{Token Cost Statistics on LongMemEval. (\~k tokens per sample)}
+\label{tab:apdx_longmemeval_token_cost_stats}
+\resizebox{0.3\textwidth}{!}{
+\begin{tabular}{c|ccc|c}
+\toprule
+Method      & NVE & $Q32_{in/out}$ & $Q72_{in/out}$ & $4o_{in/out}$ \\
+\midrule
+\multicolumn{5}{c}{Task-Agnostic}    \\
+\midrule
+Vanilla RAG & 107 & - & - & - \\
+A-Mem & 332 & - & - & 786/177  \\
+\midrule
+\multicolumn{5}{c}{Task-Specific}    \\
+\midrule
+Zep (Graphit) & 194 & - & - & 2545/1189 \\
+LiCoMemory & 75 & - & - & 585/217 \\
+\midrule
+\multicolumn{5}{c}{Ours}             \\
+\midrule
+\plugmem & 197 & 1604/418 & 9/0.4 & -\\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+
+\subsection{HotpotQA}
+
+\paragraph{Setup} 
+HotpotQA \citep{yang2018hotpotqadatasetdiverseexplainable} is a multi-hop question answering benchmark that is widely used to evaluate multi-step retrieval and reasoning in RAG systems and agentic memory frameworks. Following the evaluation protocol of HippoRAG2 \citep{gutiérrez2025ragmemorynonparametriccontinual}, we use their preprocessed subset containing 1,000 examples. For all methods, we adopt Qwen2.5-32B-Instruct \citep{qwen2025qwen25technicalreport} as the backbone LLM and NV-Embed-v2 \citep{lee2025nvembedimprovedtechniquestraining} as the embedding model, with decoding parameters max-tokens = 2048, temperature = 0.0, top-p = 1.0 During retrieval, we set top-k = 10, returning the 10 most relevant memory nodes for downstream reasoning.
+
+\paragraph{Episodic memory standardization.} \plugmem standardizes agent trajectories into RL-inspired episodic tuples
+$\langle o_t, a_t, s_t, r_t, i_t\rangle$ (observation, action, state, reward, intent/subgoal).
+For HotpotQA, the corpus is indexed \textbf{passively} rather than generated by an acting agent.
+We therefore treat each unit of corpus text as a single-step ``trajectory'' (i.e., $T=1$):
+each episodic item contains one observation $o_1$ (the text unit being indexed), while action-related fields are not instantiated by execution.
+Concretely, we keep the unified tuple interface by setting $a_1$, $s_1$, $r_1$, and $i_1$to an empty (or \texttt{N/A}) placeholder. The semantic extraction and retrieval primarily operate on the observation content.
+
+
+\paragraph{HotpotQA multi-hop retrieval control.}
+At each hop $t$, the retriever gathers a pool of candidates via the two-channel update: \textit{i)} link-based expansion via abstract nodes, where the retriever infers a small set of abstract concepts from current query $Q_t$, matches them to high-level concept nodes in the memory graph, and expands to adjacent low-level proposition nodes via membership edges; \textit{ii)} embedding-based retrieval from query $Q_t$ directly. 
+
+
+We then invoke an LLM controller to assess whether the currently retrieved candidates are sufficient to answer the question. If the controller returns \texttt{enough=true}, we terminate early and pass the current fact set to the downstream QA model. Otherwise, the controller selects a small subset of the most promising candidates to drive the next hop; in our experiments we cap this subset at top-$2$ candidates. To form the next-hop query, we integrate the selected candidates with the previous query. This integration can be performed by an LLM-based re-writer; however, we find that a simple concatenation of the query and selected candidates performs comparably well in practice, and we therefore adopt concatenation as the default for efficiency.
+
+
+\paragraph{Baselines} 
+
+We consider three categories of baselines:
+\textit{i) Vanilla}, including no-context inference that relies solely on the backbone model’s parametric knowledge, and an oracle (gold-context) setting where the model is provided with the gold supporting context, serving as an approximate upper bound. \textit{ii) Task-agnostic}, which are not specifically designed for knowledge-intensive QA benchmarks. Examples include a standard dense RAG pipeline that treats the input as a one-dimensional text stream, segments it into chunks using a fixed chunk size and overlap window, and performs embedding-based retrieval; and agentic memory approaches such as A-Mem \citep{xu2025amemagenticmemoryllm}, which structure the text stream into notes and maintain/update them via a graph-based organization mechanism. \textit{iii) Task-specific}, tailored for knowledge-intensive QA and multi-hop retrieval, including hierarchical/tree-structured retrieval frameworks RAPTOR \citep{sarthi2024raptorrecursiveabstractiveprocessing} and graph-oriented designs GraphRAG \citep{edge2025localglobalgraphrag}, HippoRAG2 \citep{gutiérrez2025ragmemorynonparametriccontinual}, and PropRAG \citep{Wang_2025}.
+
+
+\paragraph{Metrics.} 
+We report token-level Exact Match and F1 score (EM and F1 in Table~\ref{tab:hotpotqa_res_main}) between the model-generated answer and the reference. Beyond standard end-task metrics such as EM and F1, we also adopt the information-theoretic measures introduced in Section~\ref{sec:4.1} and Appendix~\ref{app:memory_information_density} to quantify the \emph{information gain} by the memory module. For one sample from benchmark, Pointwise Mutual Information (PMI) is computed as follows:
+
+\begin{equation}
+\label{eq:pmi_copy_in_apdx}
+\mathrm{PMI}(a^{*}; m \mid s)=\log_{2}\frac{P_{\text{mem}}(a^{*}\mid s,m)}{P_{\text{base}}(a^{*}\mid s)} 
+\end{equation}
+
+Over a dataset, we report a global, amortized density via a ratio-of-sums:
+\begin{equation}
+\label{eq:density_global_copy_in_apdx}
+\rho_{\text{global}}=\frac{\sum_{i}\mathrm{PMI}(a^{*}_{i}; m_{i}\mid s_{i})}{\sum_{i}|m_{i}|} %.
+\end{equation}
+
+
+Concretely, we instantiate the likelihood terms in Eq.~(\ref{eq:pmi_copy_in_apdx}) using per-instance answer overlap: $P_{\text{mem}}$ is computed from the F1 score between the prediction and the reference answer; Similarly, for $P_{\text{base}}$, the prediction is answer from base agent without memory module. Following the ratio-of-sums aggregation, we report global density by normalizing the summed PMI across instances by the summed number of memory tokens. 
+
+
+
+It's worth noting that, $P_{\text{base}}$ or $P_{\text{mem}}$ can be zero for some instances, which would make Eq.~(\ref{eq:pmi}) ill-defined (division by zero and/or $\log 0$).
+To stabilize the computation, we apply additive smoothing and use
+$\log\!\left(\frac{P_{\text{mem}}+\epsilon}{P_{\text{base}}+\epsilon}\right)$
+when computing PMI.
+We find that choosing $\epsilon$ too small can lead to excessively large PMI values when $P_{\text{base}}=0$ but $P_{\text{mem}}>0$, which disproportionately affects the aggregate density.
+Therefore, in our implementation we set $\epsilon$ to \textbf{1\%} of the base agent's F1 score (no memory), and use the same $\epsilon$ for both the numerator and denominator.
+
+
+\paragraph{Ablations. } 
+We further conduct ablation studies over the three components of \plugmem. For \texttt{no-structuring}, we replace structured indexing with a chunk-based pipeline (fixed chunk size and overlap) for corpus preprocessing and evaluation; for \texttt{no-retrieving}, we populate the retrieval candidate set using randomly sampled structured memory items. As shown in Table~\ref{tab:hotpotqa_ablation}, removing any single component consistently degrades both task performance and the global information-gain density. In particular, removing retrieval causes the most substantial performance drop, while removing the reasoning module markedly increases the number of memory tokens injected into context, leading to lower information gain per token.
+
+
+\paragraph{Token Cost Analysis. }
+
+In addition, we analyze the token cost of \plugmem on a HotpotQA subset, logging token usage during both memory construction (indexing) and evaluation-time retrieval and reasoning, and compare it against competing baselines.
+
+As shown in Table~\ref{tab:apdx_hotpotqa_token_cost_stats}, the token usage of \plugmem is comparable to that of other strong baselines and remains within the same order of magnitude. Notably, \plugmem is not the most token-intensive method among the compared approaches, despite providing a richer memory representation. It it noteworthy that \plugmem performs a more fine-grained and structured memory construction process, enabling unified memory editing, retrieval, and reasoning in downstream stages. In particular, \plugmem jointly constructs three complementary memory types, i.e., episodic, semantic, and procedural, within a single pipeline, whereas most baselines extract only one or two types in isolation.
+
+While HotpotQA predominantly evaluates semantic knowledge, the one-time cost of joint $(E/S/P)$ memory construction enables reuse across tasks and time, allowing the agent to support heterogeneous memory operations without rerunning separate extraction pipelines. Consequently, this upfront investment naturally amortizes in multi-task, continual, or long-horizon settings, potentially leading to lower total token cost in realistic deployments.
+
+
+\begin{table}[]
+\centering
+\caption{Token Cost Statistics on HotpotQA. (\~k tokens)}
+\label{tab:apdx_hotpotqa_token_cost_stats}
+\resizebox{0.3\textwidth}{!}{
+\begin{tabular}{c|cc|c}
+\toprule
+Method      & Input & Output & Total \\
+\midrule
+\multicolumn{4}{c}{Task-Specific}    \\
+\midrule
+RAPTOR      & 331   & 40     & 371   \\
+HippoRAG2   & 1350  & 490    & 1840  \\
+PropRAG     & 1651  & 643    & 2294  \\
+\midrule
+\multicolumn{4}{c}{Task-Agnostic}    \\
+\midrule
+Vanilla RAG & 110   & 20     & 130   \\
+A-Mem       & 1778  & 261    & 2039  \\
+% mem0        & 147   & 177    & 324   \\
+\midrule
+\multicolumn{4}{c}{Ours}             \\
+\midrule
+\plugmem     & 1919  & 272    & 2191 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+
+\subsection{WebArena}
+\label{app:webarena_details}
+\textbf{Setup.} WebArena \cite{zhou2024webarenarealisticwebenvironment} is a realistic and reproducible web navigation benchmark consisting of 812 tasks spanning five site domains(e.g. shopping, GitLab, etc.), each task instantiated from a curated collection of 241 intent templates. In this paper, we focus on the Shopping, GitLab, and Multi-site subsets, which collectively cover (i) domain-specific, procedure-heavy interactions (Shopping, GitLab) and (ii) compositional, cross-site workflows (Multi-site). To directly test memory evolution and reuse, we adopt an online/offline split aligned with WebArena’s task construction: WebArena intents are written as templates with multiple instantiations, where tasks from the same template share high-level semantics but may require different concrete execution traces. Specifically, for each template (e.g., 5 instantiations), we place one instantiation into the online set and the remaining instantiations into the offline set. To further examine cross-template knowledge adaptation, we leave template with only one task id in the offline set. The exact data split is stored in our code repository.
+
+We first evaluate the agent on the online set, then augment the memory module with a small number of high quality human demonstrations, and finally evaluate on the offline set using the resulting augmented memory module to measure generalization from newly acquired procedural and semantic knowledge. The agent is allowed to insert and retrieve memories as it is being evaluated on the online set, but only retrieval is allowed on the offline set. For \plugmem, the base agent is set to be AgentOccam \cite{yang2025agentoccamsimplestrongbaseline} with GPT-4o, a strong baseline that operates within the action space defined by WebArena and without relying on specialized memory mechanisms. For all methods, we adopt GPT-4o and Qwen2.5-32B-Instruct \citep{qwen2025qwen25technicalreport} as the backbone LLMs and NV-Embed-v2 \citep{lee2025nvembedimprovedtechniquestraining} as the embedding model, with decoding parameters max-tokens = 2048, temperature = 0.0, top-p = 1.0. For all LLM calls within \plugmem, we use Qwen2.5-32B-Instruct first and only delegate quries to GPT-4o if the output perplexity from Qwen2.5 is higher than a set threshold. For \plugmem, we record the entire action trajectory up to the maximum number of steps allowed for the web agent (20 steps in all experiments). During retrieval, we set top-k = 2, returning the 2 most relevant memory nodes for downstream reasoning.
+
+\paragraph{\plugmem integration with AgentOccam.} \plugmem is integrated with base web navigation agent for our experiments. For a given objective, \plugmem first retrieve memory and feed the response from the reasoning module to AgentOccam. After AgentOccam has taken the action (e.g. click [1234]), \plugmem generates a short description of the action into natural language form (e.g. click at My account), this creates a new episodic memory along with the new observation after the action is taken. At the end of each task, the episodic memory sequence gets inserted into \plugmem using the process described in Methodology and Appendix~\ref{app:implementation}. We slightly modified the prompt for AgentOccam by adding an instruction to follow retrieved memory entries from \plugmem. Please see Listing~\ref{lst:webarena_ao_prompt} for the added instructions.
+
+\paragraph{\plugmem incorporates human demonstration.} \plugmem is able to incorporate human demonstration trajectories into memory graph for warm start. In our experiment, we record human demonstration for failed tasks on the online set, then we inject these recordings for offline evaluation. This is done through 'replaying' the demo trajectory and rebuilding episodic memory sequence for insertion. For the offline set evaluation, we disable memory graph inserts to test the quality of the memory graph. Normally, for a particular task domain, we record and insert human demos in the same task domain. For the Multi-site task domain, in addition to demo on Multi-site tasks, we additionally include trajectories from other task domains to further strengthen the memory graph. In this way, we test the cross-domain retrieval and reasoning capability of \plugmem. Over the course of development, we collected 23 Shopping demos, 18 GitLab demos, 10 Reddit demos, 10 Map demos, and 5 Multi-site demos. These human demonstrations are available in our code repository. 
+
+\textbf{Baselines.}  We consider three categories of baselines: 
+\textit{i) Vanilla}, base agents that does not rely on retrieval augmentation, serving as a measure of performance of the backbone LLM. We use AgentOccam \cite{yang2025agentoccamsimplestrongbaseline} as the base agent. \textit{ii) Task-agnostic}, which are baselines that adopts retrieval augmentations not specifically designed for web navigation agents. We include a vanilla dense retrieval pipeline that stores and retrieve past interaction trajectories. We also evaluate A-Mem \cite{xu2025amemagenticmemoryllm}, an agentic memory system that summarizes past interactions into notes and organizes them in a graph-like structure to allow retrieval of related trajectories. For vanilla retrieval, we set top-k=1. When evaluating A-Mem, we set top-k=3 to best utilize A-Mem's ability to retrieve relevant notes. For both methods, we store the first 10 steps per task at max. \textit{iii) Task-specific}, open-sourced agentic systems that utilizes specialized memory insertion and retrieval mechanisms. We include AWM \cite{wang2024agentworkflowmemory}, which summarizes past interactions into workflows. To examine and compare how high quality human demonstrations could be utilized cross all methods, we add human demonstration trajectories between online and offline evaluations for all task-agnostic and task-specific baselines.
+
+\textbf{Metrics.} WebArena evaluates task completion using functional correctness validator, i.e., programmatic checks that determine whether the execution achieves the intended goal. We use WebArena's evaluators and report the success rates on both the online and offline set. We compute PMI per task sample. We apply additive smoothing and use
+$\log\!\left(\frac{P_{\text{mem}}+\epsilon}{P_{\text{base}}+\epsilon}\right)$ when computing PMI. We set $\epsilon$ to be $1\%$ of AgentOccam's average success rate over WebArena.
+
+\textbf{Ablations.} We further conduct ablation studies over the three components of \plugmem. For \texttt{no-structuring}, replace the memory graph construction pipeline with vanilla retrieval process, while keeping the reasoning module; for \texttt{no-retrieving}, we populate the retrieval candidate set using randomly sampled structured memory items. Additionally, for \texttt{no-human demo}, we omit the intermediate step where we insert high quality human demonstrations between online and offline evaluations. According to Table~\ref{tab:webarena_ablation}, the removal of any components would degrade agent success rates or global information density. We find that removing the retrieval component has the biggest negative impact on all metrics measured.
+
+\textbf{Token Cost Analysis.}
+As shown in Table~\ref{tab:apdx_webarena_token_cost_stats}, \plugmem exhibits a higher average token usage than task-agnostic and task-specific baselines on WebArena. This difference reflects the additional computation required for memory-to-knowledge abstraction, rather than redundant processing.
+
+In WebArena, reusable knowledge is predominantly procedural, and each task involves multiple interaction steps that must be recorded, segmented, and abstracted. Accordingly, \plugmem allocates additional tokens to standardizing long episodic trajectories and organizing them into subgoal-aligned procedural memory units. Compared to methods that store only raw trajectories or single static workflows, this process naturally involves more computation.
+
+Notably, the additional tokens consumed by \plugmem are mostly generated using open-source models, whereas several baselines rely on a small number of calls to closed-source models. While such approaches may appear token-efficient, their per-token cost is substantially higher in practice. In contrast, \plugmem’s token usage remains within a practical range while enabling richer and reusable procedural representations.
+
+Moreover, these costs are primarily incurred during the online phase and can be amortized across multiple task instances that share similar user intents. Once constructed, the procedural memory graph can be reused without re-running the full abstraction pipeline, leading to decreasing effective cost as task horizon and diversity increase.
+
+
+\begin{table}[]
+\centering
+\caption{Token Cost Statistics on WebArena. (\~k tokens per sample)}
+\label{tab:apdx_webarena_token_cost_stats}
+\resizebox{0.3\textwidth}{!}{
+\begin{tabular}{c|c|c}
+\toprule
+Method      & $Q32_{in/out}$  & $4o_{in/out}$ \\
+\midrule
+\multicolumn{3}{c}{Task-Agnostic}    \\
+\midrule
+Vanilla RAG &  - & - \\
+A-Mem & - & 7431/1758  \\
+\midrule
+\multicolumn{3}{c}{Task-Specific}    \\
+\midrule
+AWM & -  & 4918/1202 \\
+\midrule
+\multicolumn{3}{c}{Ours}             \\
+\midrule
+\plugmem & 10587/1377 & 3128/371 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\input{Listings/prompt_templates/webarena_ao_prompt}

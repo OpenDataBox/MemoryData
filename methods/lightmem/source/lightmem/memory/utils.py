@@ -6,8 +6,6 @@ from typing import List, Dict, Literal, Optional, Any, Tuple, Union
 import tiktoken
 import uuid
 from dataclasses import dataclass, field
-from transformers.tokenization_utils_fast import PreTrainedTokenizerFast
-from transformers.tokenization_utils import PreTrainedTokenizer
 from typing import Optional, Union, Dict
 
 @dataclass
@@ -178,7 +176,9 @@ def resolve_tokenizer(tokenizer_or_name: Union[str, Any]) -> Union[tiktoken.Enco
     """
 
     # --- Case: already a tokenizer object (transformers local model) ---
-    if isinstance(tokenizer_or_name, (PreTrainedTokenizer, PreTrainedTokenizerFast)):
+    if not isinstance(tokenizer_or_name, str) and callable(
+        getattr(tokenizer_or_name, "encode", None)
+    ):
         return tokenizer_or_name
 
     # --- Case: OpenAI tiktoken model name ---
@@ -206,7 +206,8 @@ def convert_extraction_results_to_memory_entries(
     speaker_list: List = None,
     topic_id_map: Dict[int, int] = None,
     max_source_ids: List[int] = None, 
-    logger = None
+    logger = None,
+    source_ids_by_batch: Optional[List[List[int]]] = None,
 ) -> List[MemoryEntry]:
     """
     Convert extraction results to MemoryEntry objects.
@@ -218,17 +219,24 @@ def convert_extraction_results_to_memory_entries(
         speaker_list: List of speaker information
         topic_id_map: Optional mapping of sequence_number -> topic_id (preferred)
         logger: Optional logger for debug info
+        source_ids_by_batch: Opt-in strict global IDs per original extraction batch.
 
     Returns:
         List of MemoryEntry objects with assigned topic_id and timestamps
     """
     memory_entries = []
 
-    extracted_memory_entry = [
-        item["cleaned_result"]
-        for item in extracted_results
-        if item and item.get("cleaned_result")
-    ]
+    if source_ids_by_batch is not None:
+        if len(source_ids_by_batch) != len(extracted_results):
+            raise ValueError("LightMem source ID batch count does not match extraction results")
+        # Keep empty batch positions: their global source IDs still precede later facts.
+        extracted_memory_entry = [(item or {}).get("cleaned_result", []) for item in extracted_results]
+    else:
+        extracted_memory_entry = [
+            item["cleaned_result"]
+            for item in extracted_results
+            if item and item.get("cleaned_result")
+        ]
 
     for batch_idx, topic_memory in enumerate(extracted_memory_entry):
         if not topic_memory:
@@ -243,8 +251,10 @@ def convert_extraction_results_to_memory_entries(
             for fact_entry in fact_list:
                 original_sid = int(fact_entry.get("source_id", 0))
                 sid = original_sid
+                if source_ids_by_batch is not None and sid not in source_ids_by_batch[batch_idx]:
+                    raise ValueError(f"LightMem source_id={sid} does not belong to extraction batch {batch_idx}")
                 
-                if max_valid_sid is not None and sid > max_valid_sid:
+                if source_ids_by_batch is None and max_valid_sid is not None and sid > max_valid_sid:
                     sid = max_valid_sid  
                     logger.warning(
                         f"LLM returned invalid source_id={original_sid} "
@@ -256,6 +266,8 @@ def convert_extraction_results_to_memory_entries(
                 seq_candidate = sid * 2
                 
                 if seq_candidate not in topic_id_map:
+                    if source_ids_by_batch is not None:
+                        raise ValueError(f"LightMem source_id={sid} has no original topic metadata")
                     logger.error(
                         f"sequence {seq_candidate} (from corrected source_id={sid}) "
                         f"not found in topic_id_map. "
@@ -274,6 +286,7 @@ def convert_extraction_results_to_memory_entries(
                     topic_id=resolved_topic_id,
                     topic_summary="",
                     logger=logger,
+                    strict_source_metadata=source_ids_by_batch is not None,
                 )
 
                 if mem_obj:
@@ -289,7 +302,8 @@ def _create_memory_entry_from_fact(
     speaker_list: List = None,
     topic_id: int = None,  
     topic_summary: str = "",
-    logger = None
+    logger = None,
+    strict_source_metadata: bool = False,
 ) -> Optional[MemoryEntry]:
     """
     Helper function to create a MemoryEntry from a fact entry.
@@ -324,6 +338,8 @@ def _create_memory_entry_from_fact(
         speaker_name = speaker_info.get('speaker_name', 'Unknown')
         
     except (IndexError, TypeError, ValueError) as e:
+        if strict_source_metadata:
+            raise ValueError(f"LightMem source_id={source_id} has invalid original metadata") from e
         if logger:
             logger.warning(
                 f"Error getting timestamp for sequence {sequence_n}: {e}"

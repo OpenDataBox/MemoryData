@@ -1,0 +1,30 @@
+# Version control and caches
+.git
+__pycache__
+*.pyc
+*.pyo
+.venv
+venv
+.env
+
+# Secrets (use env vars in container)
+config.py
+
+# Runtime data (use volume mount)
+data/
+lancedb_data/
+
+# Docs and non-runtime
+*.md
+docs/
+SKILL/
+test_ref/
+tests/
+cross/tests/
+MCP/reference/
+MCP/test_ollama.py
+
+# IDE and misc
+.cursor
+*.plan.md
+.dockerignore

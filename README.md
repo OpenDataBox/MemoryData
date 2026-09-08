@@ -54,6 +54,8 @@
 
 ## ✨ Introduction
 
+> **한국어 학습 가이드:** [E-mem · LightMem · SimpleMem 쉽게 이해하기](./README_MEMORY_SYSTEMS_KO.md) — 공통 예시, 저장·검색 코드 흐름, 세 방법 비교, 공식 구현과 현재 MemoryData 어댑터의 차이를 정리했습니다.
+
 Memory-augmented agents, structured memory architectures, and retrieval-based baselines are usually evaluated in isolation — each paper ships its own loader, its own runtime adapter, and its own metric harness. Results are hard to compare, and reproducing a single number across two methods often means re-implementing both.
 
 **MemoryData closes that gap.** It is a research-oriented benchmark suite that unifies four benchmark families (MemoryAgentBench, LoCoMo, LongBench, MemBench), twenty-two method presets, and a shared runtime under a single `main.py` launcher, so that heterogeneous memory formulations can be compared under one consistent execution interface and one stable artifact layout.
@@ -185,12 +187,37 @@ python main.py \
   --dataset_config benchmark/memoryagentbench/Accurate_Retrieval/config/EventQA/Eventqa_full.yaml
 ```
 
+### Run the six memory baselines on LoCoMo and LongMemEval-S
+
+The convenience wrapper runs LangMem, Mem0, A-MEM, LightMem, SimpleMem, and E-Mem through the same benchmark launcher. It expects OpenAI-compatible chat and embedding servers to be running. The safe default processes one history and one question for every method/dataset pair:
+
+```bash
+export OPENAI_API_KEY=EMPTY
+export OPENAI_BASE_URL=http://127.0.0.1:9911/v1
+export EMBEDDING_BASE_URL=http://127.0.0.1:9010/v1
+
+bash scripts/run_six_baselines.sh
+```
+
+The defaults are `Qwen3.5-0.8B`, `Qwen3-Embedding-0.6B`, and 1,024-dimensional embeddings. Override `MODEL`, `EMBEDDING_MODEL`, or `EMBEDDING_DIM` when the server exposes different values. Use `--dry-run` to inspect all generated commands without making model calls.
+
+For larger models, use `CHAT_SIZE=9B bash scripts/run_large_baselines.sh` (also supports `4B` and `27B`). See [`scripts/LARGE_BASELINES.md`](scripts/LARGE_BASELINES.md) for vLLM server commands, multi-GPU serving, and 4B/8B embedding experiments.
+
+Run the complete LoCoMo and LongMemEval-S datasets only with the explicit full flag:
+
+```bash
+bash scripts/run_six_baselines.sh --full
+```
+
+LongMemEval-S histories are large, so even one question can require processing hundreds of memory chunks. A smoke run proves that the integration works; it is not a comparable full-dataset score. See [`scripts/SIX_BASELINES.md`](scripts/SIX_BASELINES.md) for dataset preparation, method selection, artifact layout, and LongMemEval judge instructions.
+
 
 ## 🗂 Repository Layout
 
 ```text
 project-root/
 ├── main.py                        # unified experiment entry point
+├── scripts/run_six_baselines.sh   # six baselines × LoCoMo/LongMemEval-S wrapper
 ├── config/                        # flattened presets: reference, sequential, topological, hybrid
 ├── benchmark/
 │   ├── memoryagentbench/          # MemoryAgentBench loaders and benchmark configs
@@ -265,6 +292,11 @@ The taxonomy below follows the grouping used in the main RQ1 effectiveness table
 
 
 ## 📦 Output Artifacts
+
+The [published experiment index](./results/README.md) includes the completed
+LoCoMo Mem0 baseline, per-question predictions, usage evidence, and recursive
+memory research snapshots through 2026-09-08. Each report states its evaluation
+scope; ongoing baselines are listed separately from completed results.
 
 | Artifact type | Default location | Description |
 | --- | --- | --- |

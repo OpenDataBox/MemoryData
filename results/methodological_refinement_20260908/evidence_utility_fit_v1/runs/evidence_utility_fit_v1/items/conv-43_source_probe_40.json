@@ -1,0 +1,338 @@
+{
+  "question": "What did Tim say about the importance of encouragement?",
+  "answer": "use our own stories to encourage others",
+  "source_ids": [
+    "D21:17"
+  ],
+  "candidate_context_ids": [
+    "D21:17",
+    "D21:18",
+    "D21:19"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D21:17",
+      "start": 155,
+      "end": 194,
+      "verbatim": "use our own stories to encourage others"
+    }
+  ],
+  "session": 21,
+  "recorded_date": "5:34 pm on 6 December, 2023",
+  "conv_id": "conv-43",
+  "split": "probe_fit",
+  "id": "conv-43:source_probe:40",
+  "analysis": {
+    "full_advantage": 7.667184736704437,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D21:17"
+    ],
+    "best_pair_sources": [
+      "D21:17",
+      "D21:18"
+    ],
+    "minimum_sources": [
+      "D21:17"
+    ],
+    "minimum_tokens": 68,
+    "single_policy_sources": [
+      "D21:17"
+    ],
+    "single_policy_tokens": 68,
+    "full_tokens": 140,
+    "best_pair_lift_over_best_single": -0.34812283515925424,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D21:17",
+          "D21:18"
+        ],
+        "joint_lift": -0.34812283515925424,
+        "interaction": 1.2480130785093184,
+        "advantage": 7.41579320666751
+      },
+      {
+        "source_ids": [
+          "D21:17",
+          "D21:19"
+        ],
+        "joint_lift": -0.6721517187574406,
+        "interaction": 2.1757794612671457,
+        "advantage": 7.091764323069324
+      },
+      {
+        "source_ids": [
+          "D21:18",
+          "D21:19"
+        ],
+        "joint_lift": 0.35622894763924684,
+        "interaction": 3.204160127663833,
+        "advantage": -1.2399069660293254
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": false
+  },
+  "generations": {
+    "empty": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "full": {
+      "text": "Using our own stories to encourage others",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D21:17",
+        "D21:18",
+        "D21:19"
+      ],
+      "context_tokens": 140,
+      "source_answer_f1": 0.8571428571428571
+    },
+    "answer_removed": {
+      "text": "Tim said \"Thanks! Appreciate the offer.\"",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D21:18",
+        "D21:19"
+      ],
+      "context_tokens": 93,
+      "source_answer_f1": 0.0
+    },
+    "best_single": {
+      "text": "Using our own stories to encourage others.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D21:17"
+      ],
+      "context_tokens": 68,
+      "source_answer_f1": 0.8571428571428571
+    },
+    "best_pair": {
+      "text": "Using our own stories to encourage others.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D21:17",
+        "D21:18"
+      ],
+      "context_tokens": 112,
+      "source_answer_f1": 0.8571428571428571
+    },
+    "minimum_bundle": {
+      "text": "Using our own stories to encourage others.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D21:17"
+      ],
+      "context_tokens": 68,
+      "source_answer_f1": 0.8571428571428571
+    },
+    "single_policy": {
+      "text": "Using our own stories to encourage others.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D21:17"
+      ],
+      "context_tokens": 68,
+      "source_answer_f1": 0.8571428571428571
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -11.088827721367124,
+        "sum_logprob": -77.62179404956987,
+        "answer_tokens": 7,
+        "token_logprobs": [
+          -35.067230224609375,
+          -24.37807273864746,
+          -3.616154670715332,
+          -14.5465087890625,
+          -0.005302294623106718,
+          -0.007854647003114223,
+          -0.0006706849089823663
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D21:17",
+        "D21:18",
+        "D21:19"
+      ],
+      "context_tokens": 140,
+      "score": {
+        "mean_logprob": -3.4216429846626872,
+        "sum_logprob": -23.951500892638812,
+        "answer_tokens": 7,
+        "token_logprobs": [
+          -23.951499938964844,
+          -8.344646857949556e-07,
+          0.0,
+          0.0,
+          0.0,
+          -1.1920928244535389e-07,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D21:17"
+      ],
+      "context_tokens": 68,
+      "score": {
+        "mean_logprob": -3.3249116795403606,
+        "sum_logprob": -23.274381756782525,
+        "answer_tokens": 7,
+        "token_logprobs": [
+          -23.274381637573242,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.1920928244535389e-07,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D21:18"
+      ],
+      "context_tokens": 65,
+      "score": {
+        "mean_logprob": -12.684963635035697,
+        "sum_logprob": -88.79474544524987,
+        "answer_tokens": 7,
+        "token_logprobs": [
+          -42.188411712646484,
+          0.0,
+          0.0,
+          -43.25,
+          -1.7881377516459906e-06,
+          -3.3563318252563477,
+          -1.1920928244535389e-07
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D21:19"
+      ],
+      "context_tokens": 49,
+      "score": {
+        "mean_logprob": -13.93675890139171,
+        "sum_logprob": -97.55731230974197,
+        "answer_tokens": 7,
+        "token_logprobs": [
+          -38.443145751953125,
+          -27.375524520874023,
+          -9.07386589050293,
+          -22.447298049926758,
+          -0.01127832755446434,
+          -0.20096032321453094,
+          -0.005239445716142654
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D21:17",
+        "D21:18"
+      ],
+      "context_tokens": 112,
+      "score": {
+        "mean_logprob": -3.673034514699615,
+        "sum_logprob": -25.711241602897303,
+        "answer_tokens": 7,
+        "token_logprobs": [
+          -25.711240768432617,
+          -8.344646857949556e-07,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D21:17",
+        "D21:19"
+      ],
+      "context_tokens": 96,
+      "score": {
+        "mean_logprob": -3.997063398297801,
+        "sum_logprob": -27.97944378808461,
+        "answer_tokens": 7,
+        "token_logprobs": [
+          -27.979413986206055,
+          -2.9801878554280847e-05,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D21:18",
+        "D21:19"
+      ],
+      "context_tokens": 93,
+      "score": {
+        "mean_logprob": -12.32873468739645,
+        "sum_logprob": -86.30114281177515,
+        "answer_tokens": 7,
+        "token_logprobs": [
+          -38.896644592285156,
+          0.0,
+          0.0,
+          -44.75,
+          -3.576278118089249e-07,
+          -2.6544978618621826,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [
+        "D21:18",
+        "D21:19"
+      ],
+      "context_tokens": 93,
+      "score": {
+        "mean_logprob": -12.436168278966623,
+        "sum_logprob": -87.05317795276636,
+        "answer_tokens": 7,
+        "token_logprobs": [
+          -39.76353454589844,
+          0.0,
+          0.0,
+          -44.75,
+          -3.576278118089249e-07,
+          -2.5396430492401123,
+          0.0
+        ]
+      }
+    }
+  ]
+}

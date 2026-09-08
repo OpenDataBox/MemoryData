@@ -1,6 +1,3 @@
-from benchmark.memoryagentbench.hf_datasets import get_dataset_class
-from benchmark.memoryagentbench.hf_datasets import load_dataset
-from benchmark.memoryagentbench.hf_datasets import load_from_disk
 from benchmark.locomo.loader import load_locomo_eval_data
 from benchmark.longbench.loader import load_longbench_eval_data
 from benchmark.membench.loader import load_membench_eval_data
@@ -61,6 +58,8 @@ def load_data_huggingface(dataset_name, sub_dataset_source, max_test_samples=Non
     local_dataset_path = _get_local_memoryagentbench_path()
     if local_dataset_path is not None:
         try:
+            from benchmark.memoryagentbench.hf_datasets import load_from_disk
+
             dataset_dict = load_from_disk(str(local_dataset_path))
             raw_data = dataset_dict[split_name]
             print(f"Loaded {len(raw_data)} samples from local disk split '{split_name}' at {local_dataset_path}")
@@ -101,6 +100,8 @@ def load_data_huggingface(dataset_name, sub_dataset_source, max_test_samples=Non
 def _load_and_filter_dataset(dataset_name, split_name, source_filter, max_samples, seed):
     """Load dataset from HuggingFace and apply filtering and sampling."""
     try:
+        from benchmark.memoryagentbench.hf_datasets import load_dataset
+
         # Load the specific split from HuggingFace
         raw_data = load_dataset(dataset_name, split=split_name, revision="main")
         print(f"Loaded {len(raw_data)} samples from {split_name}")
@@ -138,6 +139,8 @@ def _process_qa_list_fields(dataset):
         HuggingFace dataset with processed list fields
     """
     # Convert back to HuggingFace dataset format
+    from benchmark.memoryagentbench.hf_datasets import get_dataset_class
+
     return get_dataset_class().from_list([_process_single_sample_qa_lists(sample) for sample in dataset])
 
 
@@ -259,6 +262,9 @@ def load_eval_data(dataset_config):
         'Conflict_Resolution'
     }
 
+    if str(main_dataset_name).lower() == "longmemeval":
+        from benchmark.longmemeval.loader import load_longmemeval_eval_data
+        return load_longmemeval_eval_data(dataset_config)
     if str(main_dataset_name).lower() == "locomo":
         return load_locomo_eval_data(dataset_config)
     if str(main_dataset_name).lower() == "longbench":

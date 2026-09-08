@@ -1,0 +1,2492 @@
+{
+  "groups": [
+    [
+      {
+        "id": "conv-43:source_probe:0:1",
+        "gain": 1.0,
+        "cost": 322,
+        "unit": {
+          "text": "(Session date: 7:48 pm on 21 May, 2023) [D1:1] John: Hey Tim, nice to meet you! What's up? Anything new happening?\n[D1:2] Tim: Hey John! Great to meet you. Been discussing collaborations for a Harry Potter fan project I am working on - super excited! Anything interesting happening for you?\n[D1:3] John: That's great! I just signed with a new team - excited for the season!\n[D1:4] Tim: Woohoo! Congrats on the new team. Which team did you sign with?\n[D1:5] John: The Minnesota Wolves! I can't wait to play with them!\n[D1:6] Tim: Cool! What position are you playing for the team? Any exciting games coming up?\n[D1:7] John: I'm a shooting guard for the team and our season opener is next week - so excited! [image: a photo of a bunch of basketball jerseys laying on a bed]\n[D1:8] Tim: Cool! Have any goals in mind? [image: a photo of a basketball game in progress with the ball in the air]\n[D1:9] John: Yeah, my goal is to improve my shooting percentage. Been practicing hard and gonna make it happen. [image: a photo of two men standing next to a basketball machine]\n[D1:10] Tim: Sounds good! What challenges have you encountered during your pre-season training?",
+          "index_text": "Which team did John sign with?",
+          "sources": [
+            "D1:1",
+            "D1:2",
+            "D1:3",
+            "D1:4",
+            "D1:5",
+            "D1:6",
+            "D1:7",
+            "D1:8",
+            "D1:9",
+            "D1:10"
+          ],
+          "session": 1,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:0"
+        },
+        "kind": "full",
+        "mean_logprob": -5.844017088413231
+      },
+      {
+        "id": "conv-43:source_probe:0:6",
+        "gain": 0.8978183510299739,
+        "cost": 49,
+        "unit": {
+          "text": "(Session date: 7:48 pm on 21 May, 2023) [D1:5] John: The Minnesota Wolves! I can't wait to play with them!",
+          "index_text": "Which team did John sign with?",
+          "sources": [
+            "D1:5"
+          ],
+          "session": 1,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:0"
+        },
+        "kind": "single",
+        "mean_logprob": -6.4954314529895765
+      },
+      {
+        "id": "conv-43:source_probe:0:36",
+        "gain": 1.0,
+        "cost": 74,
+        "unit": {
+          "text": "(Session date: 7:48 pm on 21 May, 2023) [D1:4] Tim: Woohoo! Congrats on the new team. Which team did you sign with?\n[D1:5] John: The Minnesota Wolves! I can't wait to play with them!",
+          "index_text": "Which team did John sign with?",
+          "sources": [
+            "D1:4",
+            "D1:5"
+          ],
+          "session": 1,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:0"
+        },
+        "kind": "pair",
+        "mean_logprob": -4.9529921608045555
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:2:1",
+        "gain": 1.0,
+        "cost": 126,
+        "unit": {
+          "text": "(Session date: 5:08 pm on 15 June, 2023) [D2:17] Tim: Wow! You look so into it in that pic – it must be so awesome playing at that level! Keep rockin' it!\n[D2:18] John: Thanks! It's a blast. Giving it my all every time I'm on the court. Really appreciate your support!\n[D2:19] Tim: Yeah, keep going! Don't give up on your dreams. Talk to you later!",
+          "index_text": "What did John say about his effort on the court?",
+          "sources": [
+            "D2:17",
+            "D2:18",
+            "D2:19"
+          ],
+          "session": 2,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:2"
+        },
+        "kind": "full",
+        "mean_logprob": -0.0006570210680313886
+      },
+      {
+        "id": "conv-43:source_probe:2:3",
+        "gain": 1.0,
+        "cost": 65,
+        "unit": {
+          "text": "(Session date: 5:08 pm on 15 June, 2023) [D2:18] John: Thanks! It's a blast. Giving it my all every time I'm on the court. Really appreciate your support!",
+          "index_text": "What did John say about his effort on the court?",
+          "sources": [
+            "D2:18"
+          ],
+          "session": 2,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:2"
+        },
+        "kind": "single",
+        "mean_logprob": -0.00034361199108058247
+      },
+      {
+        "id": "conv-43:source_probe:2:5",
+        "gain": 1.0,
+        "cost": 100,
+        "unit": {
+          "text": "(Session date: 5:08 pm on 15 June, 2023) [D2:17] Tim: Wow! You look so into it in that pic – it must be so awesome playing at that level! Keep rockin' it!\n[D2:18] John: Thanks! It's a blast. Giving it my all every time I'm on the court. Really appreciate your support!",
+          "index_text": "What did John say about his effort on the court?",
+          "sources": [
+            "D2:17",
+            "D2:18"
+          ],
+          "session": 2,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:2"
+        },
+        "kind": "pair",
+        "mean_logprob": -0.00013981170062296852
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:29:1",
+        "gain": 1.0,
+        "cost": 495,
+        "unit": {
+          "text": "(Session date: 5:51 pm on 21 October, 2023) [D15:9] Tim: I've been reading her stuff for a long time. Her stories have been with me and still inspire me. There's something special about her writing that really speaks to me.\n[D15:10] John: Wow, some authors really have such an influence on us! They become part of our life and affect our interests. Do you have a favorite J.K. Rowling quote?\n[D15:11] Tim: Yeah! There's a quote by J.K. Rowling that I really like: \"Turn on the light - happiness hides in the darkest of times.\" That's how I keep hope alive during tough times.\n[D15:12] John: Nice quote! It reminds us to stay positive and find joy even in hard times. It's a guiding light when things get rough. I appreciate you sharing it! [image: a photo of a white board with a drawing of arrows and words]\n[D15:13] Tim: Nice job, John! What did you write on that whiteboard?\n[D15:14] John: On that whiteboard, I wrote down some motivational quotes and strategies to help me stay focused and push through tough workouts. It really helps me stay motivated and keep improving.\n[D15:15] Tim: That's awesome! Visual reminders and strategies can really help in staying motivated. It's cool that you have those quotes to keep you going during tough workouts. [image: a photo of a woman holding a plaque in front of a wall]\n[D15:16] John: This plaque I keep on my desk is a constant reminder to believe in myself. It helps me trust my abilities and face any obstacles. Having physical reminders like this really helps me stay motivated. [image: a photography of a desk with a laptop and a lightbox that says make it happen]\n[D15:17] Tim: That's awesome! What keeps you motivated during challenging times?\n[D15:18] John: My teammates believing in me and my love for improving my skills keep me going, even when things get tough. I don't want to let them down. [image: a photo of a group of women soccer players huddle together]",
+          "index_text": "What does Tim say is special about her writing?",
+          "sources": [
+            "D15:9",
+            "D15:10",
+            "D15:11",
+            "D15:12",
+            "D15:13",
+            "D15:14",
+            "D15:15",
+            "D15:16",
+            "D15:17",
+            "D15:18"
+          ],
+          "session": 15,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:29"
+        },
+        "kind": "full",
+        "mean_logprob": -0.0003258519798343684
+      },
+      {
+        "id": "conv-43:source_probe:29:2",
+        "gain": 1.0,
+        "cost": 75,
+        "unit": {
+          "text": "(Session date: 5:51 pm on 21 October, 2023) [D15:9] Tim: I've been reading her stuff for a long time. Her stories have been with me and still inspire me. There's something special about her writing that really speaks to me.",
+          "index_text": "What does Tim say is special about her writing?",
+          "sources": [
+            "D15:9"
+          ],
+          "session": 15,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:29"
+        },
+        "kind": "single",
+        "mean_logprob": -3.583995817209029e-05
+      },
+      {
+        "id": "conv-43:source_probe:29:20",
+        "gain": 1.0,
+        "cost": 131,
+        "unit": {
+          "text": "(Session date: 5:51 pm on 21 October, 2023) [D15:9] Tim: I've been reading her stuff for a long time. Her stories have been with me and still inspire me. There's something special about her writing that really speaks to me.\n[D15:18] John: My teammates believing in me and my love for improving my skills keep me going, even when things get tough. I don't want to let them down. [image: a photo of a group of women soccer players huddle together]",
+          "index_text": "What does Tim say is special about her writing?",
+          "sources": [
+            "D15:9",
+            "D15:18"
+          ],
+          "session": 15,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:29"
+        },
+        "kind": "pair",
+        "mean_logprob": -3.4993799473426177e-05
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:3:1",
+        "gain": 1.0,
+        "cost": 124,
+        "unit": {
+          "text": "(Session date: 5:08 pm on 15 June, 2023) [D2:17] Tim: Wow! You look so into it in that pic – it must be so awesome playing at that level! Keep rockin' it!\n[D2:18] John: Thanks! It's a blast. Giving it my all every time I'm on the court. Really appreciate your support!\n[D2:19] Tim: Yeah, keep going! Don't give up on your dreams. Talk to you later!",
+          "index_text": "What did John say about appreciating support?",
+          "sources": [
+            "D2:17",
+            "D2:18",
+            "D2:19"
+          ],
+          "session": 2,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:3"
+        },
+        "kind": "full",
+        "mean_logprob": -1.4659923553466796
+      },
+      {
+        "id": "conv-43:source_probe:3:3",
+        "gain": 1.0,
+        "cost": 63,
+        "unit": {
+          "text": "(Session date: 5:08 pm on 15 June, 2023) [D2:18] John: Thanks! It's a blast. Giving it my all every time I'm on the court. Really appreciate your support!",
+          "index_text": "What did John say about appreciating support?",
+          "sources": [
+            "D2:18"
+          ],
+          "session": 2,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:3"
+        },
+        "kind": "single",
+        "mean_logprob": -0.8727440832517459
+      },
+      {
+        "id": "conv-43:source_probe:3:7",
+        "gain": 1.0,
+        "cost": 89,
+        "unit": {
+          "text": "(Session date: 5:08 pm on 15 June, 2023) [D2:18] John: Thanks! It's a blast. Giving it my all every time I'm on the court. Really appreciate your support!\n[D2:19] Tim: Yeah, keep going! Don't give up on your dreams. Talk to you later!",
+          "index_text": "What did John say about appreciating support?",
+          "sources": [
+            "D2:18",
+            "D2:19"
+          ],
+          "session": 2,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:3"
+        },
+        "kind": "pair",
+        "mean_logprob": -0.977031135559082
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:34:1",
+        "gain": 1.0,
+        "cost": 183,
+        "unit": {
+          "text": "(Session date: 3:59 pm on 16 November, 2023) [D18:9] Tim: Thanks! Appreciate your support. I hope your injury heals soon.\n[D18:10] John: Sure thing, Tim! Got your back. I hope so too. The doctor said it's not too serious.\n[D18:11] Tim: That's good to hear, I'm glad.\n[D18:12] John: I hate not being on the court.\n[D18:13] Tim: I bet. It's like if I couldn't read due to an injury.\n[D18:14] John: I'm pushing on though. Talk soon!\n[D18:15] Tim: Take care! Keep pushing on. Talk soon.",
+          "index_text": "What did Tim say about staying in touch?",
+          "sources": [
+            "D18:9",
+            "D18:10",
+            "D18:11",
+            "D18:12",
+            "D18:13",
+            "D18:14",
+            "D18:15"
+          ],
+          "session": 18,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:34"
+        },
+        "kind": "full",
+        "mean_logprob": -4.5895371805215746e-06
+      },
+      {
+        "id": "conv-43:source_probe:34:8",
+        "gain": 0.9999959042713236,
+        "cost": 50,
+        "unit": {
+          "text": "(Session date: 3:59 pm on 16 November, 2023) [D18:15] Tim: Take care! Keep pushing on. Talk soon.",
+          "index_text": "What did Tim say about staying in touch?",
+          "sources": [
+            "D18:15"
+          ],
+          "session": 18,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:34"
+        },
+        "kind": "single",
+        "mean_logprob": -5.6502009101677686e-05
+      },
+      {
+        "id": "conv-43:source_probe:34:19",
+        "gain": 1.0,
+        "cost": 82,
+        "unit": {
+          "text": "(Session date: 3:59 pm on 16 November, 2023) [D18:10] John: Sure thing, Tim! Got your back. I hope so too. The doctor said it's not too serious.\n[D18:15] Tim: Take care! Keep pushing on. Talk soon.",
+          "index_text": "What did Tim say about staying in touch?",
+          "sources": [
+            "D18:10",
+            "D18:15"
+          ],
+          "session": 18,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:34"
+        },
+        "kind": "pair",
+        "mean_logprob": -5.960461066933931e-07
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:36:1",
+        "gain": 1.0,
+        "cost": 506,
+        "unit": {
+          "text": "(Session date: 10:22 am on 21 November, 2023) [D19:9] Tim: When things get tough, it's so important to remember why we love what we do. For me, it's writing and reading. That's what helps me stay motivated and push myself to get better. Has anything similar happened with basketball for you? Tell me about it!\n[D19:10] John: I faced some tough times while playing basketball. I messed up during a big game, and it was really hard to accept. Instead of getting stuck in that moment, I worked hard to get better. It taught me that resilience is key and owning up to mistakes is important. Gotta keep growing and striving to be a strong player and teammate. So grateful.\n[D19:11] Tim: Wow, that's awesome. Admitting mistakes and using them to get better is super important. You really show how much you care about improving. Keep it up!\n[D19:12] John: Thanks! I appreciate your support. It's all about growing and getting better, both on and off the court. Let's keep working hard!\n[D19:13] Tim: Yeah, John! Let's keep growing and improving. We got this! These are my companions on my growth journey. [image: a photo of a bunch of books on a wooden floor]\n[D19:14] John: Fantasy books always fuel my creativity, both in and outside of my hobbies. Are Harry Potter and GoT still your favorites?\n[D19:15] Tim: Yes, they are still my favorites - I love how they take me to other places. What other books do you like?\n[D19:16] John: I love non-fiction books about personal development and mindset. They help me know myself better. Do you enjoy reading other types of books as well?\n[D19:17] Tim: Yep, John! I love getting lost in fantasy stories, but also discovering new ways to better myself through books on growth, psychology, and improving myself. It's wild how much you can learn from them, right?\n[D19:18] John: Yeah, Tim! Books really can shift how we think and help us learn totally new things. Have you come across any that made a big impact on you recently?",
+          "index_text": "What did Tim say are his favorite books?",
+          "sources": [
+            "D19:9",
+            "D19:10",
+            "D19:11",
+            "D19:12",
+            "D19:13",
+            "D19:14",
+            "D19:15",
+            "D19:16",
+            "D19:17",
+            "D19:18"
+          ],
+          "session": 19,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:36"
+        },
+        "kind": "full",
+        "mean_logprob": -0.007608330249780693
+      },
+      {
+        "id": "conv-43:source_probe:36:7",
+        "gain": 0.43218566820894494,
+        "cost": 66,
+        "unit": {
+          "text": "(Session date: 10:22 am on 21 November, 2023) [D19:14] John: Fantasy books always fuel my creativity, both in and outside of my hobbies. Are Harry Potter and GoT still your favorites?",
+          "index_text": "What did Tim say are his favorite books?",
+          "sources": [
+            "D19:14"
+          ],
+          "session": 19,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:36"
+        },
+        "kind": "single",
+        "mean_logprob": -7.457694506645201
+      },
+      {
+        "id": "conv-43:source_probe:36:47",
+        "gain": 1.0,
+        "cost": 100,
+        "unit": {
+          "text": "(Session date: 10:22 am on 21 November, 2023) [D19:14] John: Fantasy books always fuel my creativity, both in and outside of my hobbies. Are Harry Potter and GoT still your favorites?\n[D19:15] Tim: Yes, they are still my favorites - I love how they take me to other places. What other books do you like?",
+          "index_text": "What did Tim say are his favorite books?",
+          "sources": [
+            "D19:14",
+            "D19:15"
+          ],
+          "session": 19,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:36"
+        },
+        "kind": "pair",
+        "mean_logprob": -1.2636146479394484e-06
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:38:1",
+        "gain": 1.0,
+        "cost": 140,
+        "unit": {
+          "text": "(Session date: 9:52 am on 1 December, 2023) [D20:41] Tim: Wow, this is amazing! Nature is really awesome - it makes us feel tiny but connected. [image: a photo of a mountain range with a sunset in the background]\n[D20:42] John: Nature does have a way of humbling us and showing us our place in the world. It's truly amazing and comforting.\n[D20:43] Tim: Yeah. It reminds us that we're not alone - we're part of something bigger. Bye!",
+          "index_text": "What did John say about the comfort of being in nature?",
+          "sources": [
+            "D20:41",
+            "D20:42",
+            "D20:43"
+          ],
+          "session": 20,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:38"
+        },
+        "kind": "full",
+        "mean_logprob": -0.09106300274528205
+      },
+      {
+        "id": "conv-43:source_probe:38:3",
+        "gain": 0.7699551762329525,
+        "cost": 67,
+        "unit": {
+          "text": "(Session date: 9:52 am on 1 December, 2023) [D20:42] John: Nature does have a way of humbling us and showing us our place in the world. It's truly amazing and comforting.",
+          "index_text": "What did John say about the comfort of being in nature?",
+          "sources": [
+            "D20:42"
+          ],
+          "session": 20,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:38"
+        },
+        "kind": "single",
+        "mean_logprob": -2.200320184230596
+      },
+      {
+        "id": "conv-43:source_probe:38:5",
+        "gain": 0.949809072254747,
+        "cost": 111,
+        "unit": {
+          "text": "(Session date: 9:52 am on 1 December, 2023) [D20:41] Tim: Wow, this is amazing! Nature is really awesome - it makes us feel tiny but connected. [image: a photo of a mountain range with a sunset in the background]\n[D20:42] John: Nature does have a way of humbling us and showing us our place in the world. It's truly amazing and comforting.",
+          "index_text": "What did John say about the comfort of being in nature?",
+          "sources": [
+            "D20:41",
+            "D20:42"
+          ],
+          "session": 20,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:38"
+        },
+        "kind": "pair",
+        "mean_logprob": -0.5512584249178284
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:40:1",
+        "gain": 1.0,
+        "cost": 150,
+        "unit": {
+          "text": "(Session date: 5:34 pm on 6 December, 2023) [D21:17] Tim: Thanks for the helpful advice. Creating a constructive atmosphere and setting an example by working hard can really inspire people. It’s also inspiring to use our own stories to encourage others. Much appreciated!\n[D21:18] John: No problem! It's great to use our own experiences to inspire others. Hard work can lead to success. Keep it up! Let me know if you need any assistance.\n[D21:19] Tim: Thanks! Appreciate the offer. Let me know if you can lend a hand. Bye!",
+          "index_text": "What did Tim say about the importance of encouragement?",
+          "sources": [
+            "D21:17",
+            "D21:18",
+            "D21:19"
+          ],
+          "session": 21,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:40"
+        },
+        "kind": "full",
+        "mean_logprob": -3.4216429846626872
+      },
+      {
+        "id": "conv-43:source_probe:40:2",
+        "gain": 1.0,
+        "cost": 78,
+        "unit": {
+          "text": "(Session date: 5:34 pm on 6 December, 2023) [D21:17] Tim: Thanks for the helpful advice. Creating a constructive atmosphere and setting an example by working hard can really inspire people. It’s also inspiring to use our own stories to encourage others. Much appreciated!",
+          "index_text": "What did Tim say about the importance of encouragement?",
+          "sources": [
+            "D21:17"
+          ],
+          "session": 21,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:40"
+        },
+        "kind": "single",
+        "mean_logprob": -3.3249116795403606
+      },
+      {
+        "id": "conv-43:source_probe:40:5",
+        "gain": 0.9672120160567591,
+        "cost": 122,
+        "unit": {
+          "text": "(Session date: 5:34 pm on 6 December, 2023) [D21:17] Tim: Thanks for the helpful advice. Creating a constructive atmosphere and setting an example by working hard can really inspire people. It’s also inspiring to use our own stories to encourage others. Much appreciated!\n[D21:18] John: No problem! It's great to use our own experiences to inspire others. Hard work can lead to success. Keep it up! Let me know if you need any assistance.",
+          "index_text": "What did Tim say about the importance of encouragement?",
+          "sources": [
+            "D21:17",
+            "D21:18"
+          ],
+          "session": 21,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:40"
+        },
+        "kind": "pair",
+        "mean_logprob": -3.673034514699615
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:42:1",
+        "gain": 1.0,
+        "cost": 620,
+        "unit": {
+          "text": "(Session date: 7:42 pm on 8 December, 2023) [D22:1] Tim: Hey John! Long time no see! I just got back from the coolest Harry Potter party. Met lots of awesome people who were into the same stuff as me, had so much fun!\n[D22:2] John: Hey Tim! Sounds awesome! So glad you had a blast at the Harry Potter party. Last August I told you about my fun time at a charity event with Harry Potter trivia. Love being with people who are as passionate about Harry Potter as us! Did you dress up as any character?\n[D22:3] Tim: It was awesome. I didn't dress as any character, but I wore my Gryffindor scarf. Everyone had cool costumes. I even got this as a treat. Any recent meet-ups with your basketball team? [image: a photo of a chocolate frog in a box on a table]\n[D22:4] John: That frog looks yummy! I haven't had one in ages. Been having some wild games lately, we played a top team and it was tough, but we fought hard and got the win! It's awesome having my team to push us all. [image: a photo of a group of people riding on top of a fire truck]\n[D22:5] Tim: Wow, looks fun! What was the best part for you? And congratulations on the win!\n[D22:6] John: Thanks! The best part for me was the camaraderie we built both on and off the court. Winning felt amazing and it was definitely worth all the hard work we put in. [image: a photography of a group of young men sitting on top of a basketball court]\n[D22:7] Tim: Wow, that's awesome! It's great to see how close you all have become. You must feel a great sense of unity. I'm reading this amazing series about the power of friendship and loyalty – really inspiring stuff. Anything special you do to keep that bond strong? [image: a photo of a stack of books sitting on top of a table]\n[D22:8] John: Sounds awesome! What kind of stuff do they do in the series? I'm sure the importance of friendship is emphasized. Same with us - we have team dinners, outings, and basketball games. It's those moments away from practice that really build and strengthen our unity. [image: a photography of a group of people sitting around a table eating]\n[D22:9] Tim: Awesome! Sounds like your team has something similar to the characters in the series. They rely on each other to push through challenges. By the way, what book are you currently reading? I'm always on the lookout for new reads!\n[D22:10] John: Thanks! I'm currently reading a book that I really enjoy. I highly recommend it!",
+          "index_text": "What event did John mention he had fun at in August?",
+          "sources": [
+            "D22:1",
+            "D22:2",
+            "D22:3",
+            "D22:4",
+            "D22:5",
+            "D22:6",
+            "D22:7",
+            "D22:8",
+            "D22:9",
+            "D22:10"
+          ],
+          "session": 22,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:42"
+        },
+        "kind": "full",
+        "mean_logprob": -0.24307428087502103
+      },
+      {
+        "id": "conv-43:source_probe:42:3",
+        "gain": 0.8903021730403511,
+        "cost": 99,
+        "unit": {
+          "text": "(Session date: 7:42 pm on 8 December, 2023) [D22:2] John: Hey Tim! Sounds awesome! So glad you had a blast at the Harry Potter party. Last August I told you about my fun time at a charity event with Harry Potter trivia. Love being with people who are as passionate about Harry Potter as us! Did you dress up as any character?",
+          "index_text": "What event did John mention he had fun at in August?",
+          "sources": [
+            "D22:2"
+          ],
+          "session": 22,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:42"
+        },
+        "kind": "single",
+        "mean_logprob": -1.6464522055207453
+      },
+      {
+        "id": "conv-43:source_probe:42:21",
+        "gain": 0.9614792440765496,
+        "cost": 167,
+        "unit": {
+          "text": "(Session date: 7:42 pm on 8 December, 2023) [D22:2] John: Hey Tim! Sounds awesome! So glad you had a blast at the Harry Potter party. Last August I told you about my fun time at a charity event with Harry Potter trivia. Love being with people who are as passionate about Harry Potter as us! Did you dress up as any character?\n[D22:3] Tim: It was awesome. I didn't dress as any character, but I wore my Gryffindor scarf. Everyone had cool costumes. I even got this as a treat. Any recent meet-ups with your basketball team? [image: a photo of a chocolate frog in a box on a table]",
+          "index_text": "What event did John mention he had fun at in August?",
+          "sources": [
+            "D22:2",
+            "D22:3"
+          ],
+          "session": 22,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:42"
+        },
+        "kind": "pair",
+        "mean_logprob": -0.7358750956397598
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:50:1",
+        "gain": 1.0,
+        "cost": 364,
+        "unit": {
+          "text": "(Session date: 3:35 pm on 26 December, 2023) [D26:9] John: Wow, that sounds awesome! How challenging was the trek through the Himalayas?\n[D26:10] Tim: The book mentioned that the trek was tough but worth it, with challenging terrain, altitude sickness, and bad weather. But they made it and saw amazing sights - it really motivated me.\n[D26:11] John: Wow! Sounds like a tough journey.\n[D26:12] Tim: It's true. Facing challenges can be tough, but it can make us stronger. I just visited a travel agency to see what the requirements would be for my next dream trip.\n[D26:13] John: For sure, challenges help us learn and grow. Sounds fun! Keep me updated!\n[D26:14] Tim: Thanks, I will. You have to keep pushing for your goals. [image: a photo of a newspaper article with a picture of a woman]\n[D26:15] John: By the way, who was that main actress in Harry Potter? I've heard about her a lot lately.\n[D26:16] Tim: Emma Watson, she's a big supporter of gender equality. I'm a huge fan.\n[D26:17] John: Wow, that's great! It's inspiring to see people who use their platform for important causes and make a difference.\n[D26:18] Tim: Her women's rights advocacy is also a huge inspiration to me! Seeing people use their platform for causes like gender equality is really inspiring. It's so cool to see people making a difference.",
+          "index_text": "What did John say about challenges?",
+          "sources": [
+            "D26:9",
+            "D26:10",
+            "D26:11",
+            "D26:12",
+            "D26:13",
+            "D26:14",
+            "D26:15",
+            "D26:16",
+            "D26:17",
+            "D26:18"
+          ],
+          "session": 26,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:50"
+        },
+        "kind": "full",
+        "mean_logprob": -3.277778996361513
+      },
+      {
+        "id": "conv-43:source_probe:50:6",
+        "gain": 1.0,
+        "cost": 55,
+        "unit": {
+          "text": "(Session date: 3:35 pm on 26 December, 2023) [D26:13] John: For sure, challenges help us learn and grow. Sounds fun! Keep me updated!",
+          "index_text": "What did John say about challenges?",
+          "sources": [
+            "D26:13"
+          ],
+          "session": 26,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:50"
+        },
+        "kind": "single",
+        "mean_logprob": -2.737258275349935
+      },
+      {
+        "id": "conv-43:source_probe:50:44",
+        "gain": 1.0,
+        "cost": 82,
+        "unit": {
+          "text": "(Session date: 3:35 pm on 26 December, 2023) [D26:13] John: For sure, challenges help us learn and grow. Sounds fun! Keep me updated!\n[D26:16] Tim: Emma Watson, she's a big supporter of gender equality. I'm a huge fan.",
+          "index_text": "What did John say about challenges?",
+          "sources": [
+            "D26:13",
+            "D26:16"
+          ],
+          "session": 26,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:50"
+        },
+        "kind": "pair",
+        "mean_logprob": -2.49055544535319
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:51:1",
+        "gain": 1.0,
+        "cost": 448,
+        "unit": {
+          "text": "(Session date: 3:35 pm on 26 December, 2023) [D26:1] John: Hey Tim! Great to hear from you. My week's been busy - I started doing seminars, helping people with their sports and marketing. It's been awesome! [image: a photo of a basketball court with a crowd of people watching]\n[D26:2] Tim: Hey John! Sounds awesome! Congrats on how far you've come. How did it go?\n[D26:3] John: Thanks! The seminars went really well. All the aspiring profs were so eager and motivated - it was great! I'm really happy I could share my knowledge and help out. [image: a photo of a man and woman on stage at a convention]\n[D26:4] Tim: Wow John! Impressive stuff! I'm starting some big new things too! [image: a photo of a book with a golden cover on a table]\n[D26:5] John: Thanks! What have you been up to?\n[D26:6] Tim: I've been reading cool stories from travelers from around the world. I'm using it to plan my next adventure. This is a book I found with tons of them! [image: a photo of a book with a picture of a boy and a girl]\n[D26:7] John: Wow, that's cool! Have you read any of the stories? I'm looking for some travel ideas too.\n[D26:8] Tim: I read a few of them. One of them is about two hikers who trekked through the Himalayas, sounds awesome! [image: a photo of two men on horseback in front of a mountain]\n[D26:9] John: Wow, that sounds awesome! How challenging was the trek through the Himalayas?\n[D26:10] Tim: The book mentioned that the trek was tough but worth it, with challenging terrain, altitude sickness, and bad weather. But they made it and saw amazing sights - it really motivated me.",
+          "index_text": "What was the image associated with Tim's eighth message?",
+          "sources": [
+            "D26:1",
+            "D26:2",
+            "D26:3",
+            "D26:4",
+            "D26:5",
+            "D26:6",
+            "D26:7",
+            "D26:8",
+            "D26:9",
+            "D26:10"
+          ],
+          "session": 26,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:51"
+        },
+        "kind": "full",
+        "mean_logprob": -0.015493532785954427
+      },
+      {
+        "id": "conv-43:source_probe:51:9",
+        "gain": 1.0,
+        "cost": 85,
+        "unit": {
+          "text": "(Session date: 3:35 pm on 26 December, 2023) [D26:8] Tim: I read a few of them. One of them is about two hikers who trekked through the Himalayas, sounds awesome! [image: a photo of two men on horseback in front of a mountain]",
+          "index_text": "What was the image associated with Tim's eighth message?",
+          "sources": [
+            "D26:8"
+          ],
+          "session": 26,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:51"
+        },
+        "kind": "single",
+        "mean_logprob": -4.483972588786855e-06
+      },
+      {
+        "id": "conv-43:source_probe:51:44",
+        "gain": 1.0,
+        "cost": 102,
+        "unit": {
+          "text": "(Session date: 3:35 pm on 26 December, 2023) [D26:5] John: Thanks! What have you been up to?\n[D26:8] Tim: I read a few of them. One of them is about two hikers who trekked through the Himalayas, sounds awesome! [image: a photo of two men on horseback in front of a mountain]",
+          "index_text": "What was the image associated with Tim's eighth message?",
+          "sources": [
+            "D26:5",
+            "D26:8"
+          ],
+          "session": 26,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:51"
+        },
+        "kind": "pair",
+        "mean_logprob": 0.0
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:52:1",
+        "gain": 1.0,
+        "cost": 410,
+        "unit": {
+          "text": "(Session date: 5:26 pm on 2 January, 2024) [D27:25] Tim: Nice one! Why is he your favorite?\n[D27:26] John: He's a great leader and puts others first - that's why he eventually becomes king.\n[D27:27] Tim: Wow, Aragorn's story is so inspiring - from a ranger to king of Gondor. It's amazing how he grows and achieves redemption throughout his journey. [image: a photo of a painting of a man with long hair]\n[D27:28] John: Yeah. His journey is really inspiring. I have a painting in my room to remind me to stay true and be a leader in everything I do. [image: a photo of a painting of a man smoking a cigarette]\n[D27:29] Tim: Wow, that's awesome! What is it about him that makes him so inspiring for you?\n[D27:30] John: Aragorn's brave, selfless, down-to-earth attitude is what inspired me. He never gives up and always stands up for justice.\n[D27:31] Tim: Yeah, he's really inspiring. What's awesome about fantasy books like LOTR is getting lost in another world and seeing all the tiny details. [image: a photo of a map of the world on a piece of paper]\n[D27:32] John: Yeah, that's what I'm thinking! Love this map, it really helps you get lost in another world. What's on it?\n[D27:33] Tim: It's a map of Middle-earth from LOTR - it's really cool to see all the different realms and regions.\n[D27:34] John: Wow, that looks awesome! Exploring different lands and regions in fantasy stories is always fun!",
+          "index_text": "What is the name of the person who is described as inspiring?",
+          "sources": [
+            "D27:25",
+            "D27:26",
+            "D27:27",
+            "D27:28",
+            "D27:29",
+            "D27:30",
+            "D27:31",
+            "D27:32",
+            "D27:33",
+            "D27:34"
+          ],
+          "session": 27,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:52"
+        },
+        "kind": "full",
+        "mean_logprob": -2.066287985750629e-06
+      },
+      {
+        "id": "conv-43:source_probe:52:4",
+        "gain": 0.5092961683124748,
+        "cost": 92,
+        "unit": {
+          "text": "(Session date: 5:26 pm on 2 January, 2024) [D27:27] Tim: Wow, Aragorn's story is so inspiring - from a ranger to king of Gondor. It's amazing how he grows and achieves redemption throughout his journey. [image: a photo of a painting of a man with long hair]",
+          "index_text": "What is the name of the person who is described as inspiring?",
+          "sources": [
+            "D27:27"
+          ],
+          "session": 27,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:52"
+        },
+        "kind": "single",
+        "mean_logprob": -3.0000413656232845
+      },
+      {
+        "id": "conv-43:source_probe:52:24",
+        "gain": 1.0,
+        "cost": 99,
+        "unit": {
+          "text": "(Session date: 5:26 pm on 2 January, 2024) [D27:26] John: He's a great leader and puts others first - that's why he eventually becomes king.\n[D27:30] John: Aragorn's brave, selfless, down-to-earth attitude is what inspired me. He never gives up and always stands up for justice.",
+          "index_text": "What is the name of the person who is described as inspiring?",
+          "sources": [
+            "D27:26",
+            "D27:30"
+          ],
+          "session": 27,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:52"
+        },
+        "kind": "pair",
+        "mean_logprob": -5.960459172153302e-07
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:53:1",
+        "gain": 1.0,
+        "cost": 414,
+        "unit": {
+          "text": "(Session date: 5:26 pm on 2 January, 2024) [D27:25] Tim: Nice one! Why is he your favorite?\n[D27:26] John: He's a great leader and puts others first - that's why he eventually becomes king.\n[D27:27] Tim: Wow, Aragorn's story is so inspiring - from a ranger to king of Gondor. It's amazing how he grows and achieves redemption throughout his journey. [image: a photo of a painting of a man with long hair]\n[D27:28] John: Yeah. His journey is really inspiring. I have a painting in my room to remind me to stay true and be a leader in everything I do. [image: a photo of a painting of a man smoking a cigarette]\n[D27:29] Tim: Wow, that's awesome! What is it about him that makes him so inspiring for you?\n[D27:30] John: Aragorn's brave, selfless, down-to-earth attitude is what inspired me. He never gives up and always stands up for justice.\n[D27:31] Tim: Yeah, he's really inspiring. What's awesome about fantasy books like LOTR is getting lost in another world and seeing all the tiny details. [image: a photo of a map of the world on a piece of paper]\n[D27:32] John: Yeah, that's what I'm thinking! Love this map, it really helps you get lost in another world. What's on it?\n[D27:33] Tim: It's a map of Middle-earth from LOTR - it's really cool to see all the different realms and regions.\n[D27:34] John: Wow, that looks awesome! Exploring different lands and regions in fantasy stories is always fun!",
+          "index_text": "What is the name of the person who is described as always standing up for justice?",
+          "sources": [
+            "D27:25",
+            "D27:26",
+            "D27:27",
+            "D27:28",
+            "D27:29",
+            "D27:30",
+            "D27:31",
+            "D27:32",
+            "D27:33",
+            "D27:34"
+          ],
+          "session": 27,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:53"
+        },
+        "kind": "full",
+        "mean_logprob": -4.92728857655796e-06
+      },
+      {
+        "id": "conv-43:source_probe:53:4",
+        "gain": 0.2832682043131108,
+        "cost": 96,
+        "unit": {
+          "text": "(Session date: 5:26 pm on 2 January, 2024) [D27:27] Tim: Wow, Aragorn's story is so inspiring - from a ranger to king of Gondor. It's amazing how he grows and achieves redemption throughout his journey. [image: a photo of a painting of a man with long hair]",
+          "index_text": "What is the name of the person who is described as always standing up for justice?",
+          "sources": [
+            "D27:27"
+          ],
+          "session": 27,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:53"
+        },
+        "kind": "single",
+        "mean_logprob": -3.2711604833602883
+      },
+      {
+        "id": "conv-43:source_probe:53:16",
+        "gain": 1.0,
+        "cost": 94,
+        "unit": {
+          "text": "(Session date: 5:26 pm on 2 January, 2024) [D27:25] Tim: Nice one! Why is he your favorite?\n[D27:30] John: Aragorn's brave, selfless, down-to-earth attitude is what inspired me. He never gives up and always stands up for justice.",
+          "index_text": "What is the name of the person who is described as always standing up for justice?",
+          "sources": [
+            "D27:25",
+            "D27:30"
+          ],
+          "session": 27,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:53"
+        },
+        "kind": "pair",
+        "mean_logprob": -2.622598988940202e-06
+      },
+      {
+        "id": "conv-43:source_probe:53:37",
+        "gain": 1.0,
+        "cost": 130,
+        "unit": {
+          "text": "(Session date: 5:26 pm on 2 January, 2024) [D27:28] John: Yeah. His journey is really inspiring. I have a painting in my room to remind me to stay true and be a leader in everything I do. [image: a photo of a painting of a man smoking a cigarette]\n[D27:30] John: Aragorn's brave, selfless, down-to-earth attitude is what inspired me. He never gives up and always stands up for justice.",
+          "index_text": "What is the name of the person who is described as always standing up for justice?",
+          "sources": [
+            "D27:28",
+            "D27:30"
+          ],
+          "session": 27,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:53"
+        },
+        "kind": "pair",
+        "mean_logprob": -3.1789132274676984e-07
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:56:1",
+        "gain": 1.0,
+        "cost": 281,
+        "unit": {
+          "text": "(Session date: 1:41 pm on 12 January, 2024) [D29:9] Tim: I'm proud of researching visa requirements for countries I want to visit. It feels like taking initiative is a step towards making my travel dreams a reality!\n[D29:10] John: Great going! Taking initiative is a must if you wanna achieve your goals. I'm excited to hear about all your future adventures!\n[D29:11] Tim: Thanks! I'll keep you in the loop about my travels. Is there anywhere you recommend visiting?\n[D29:12] John: Barcelona is a must-visit city! You'll love exploring the culture, admiring the architecture, and tasting the amazing food in each neighborhood. Plus, the nearby beaches are great for soaking up the sun. Definitely add it to your travel list!\n[D29:13] Tim: Barcelona sounds awesome! I've heard so many great things. Definitely adding it to my list. Thanks!\n[D29:14] John: No problem! Glad you liked the suggestion. Let me know if you have any other questions or need help with anything.\n[D29:15] Tim: Cheers! I owe you one. Let me know if you need anything. Bye!",
+          "index_text": "What does John say about Barcelona's food?",
+          "sources": [
+            "D29:9",
+            "D29:10",
+            "D29:11",
+            "D29:12",
+            "D29:13",
+            "D29:14",
+            "D29:15"
+          ],
+          "session": 29,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:56"
+        },
+        "kind": "full",
+        "mean_logprob": -1.4532482771178223
+      },
+      {
+        "id": "conv-43:source_probe:56:5",
+        "gain": 0.9829228688181855,
+        "cost": 90,
+        "unit": {
+          "text": "(Session date: 1:41 pm on 12 January, 2024) [D29:12] John: Barcelona is a must-visit city! You'll love exploring the culture, admiring the architecture, and tasting the amazing food in each neighborhood. Plus, the nearby beaches are great for soaking up the sun. Definitely add it to your travel list!",
+          "index_text": "What does John say about Barcelona's food?",
+          "sources": [
+            "D29:12"
+          ],
+          "session": 29,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:56"
+        },
+        "kind": "single",
+        "mean_logprob": -1.6108792335217004
+      },
+      {
+        "id": "conv-43:source_probe:56:11",
+        "gain": 0.9914494296720321,
+        "cost": 128,
+        "unit": {
+          "text": "(Session date: 1:41 pm on 12 January, 2024) [D29:9] Tim: I'm proud of researching visa requirements for countries I want to visit. It feels like taking initiative is a step towards making my travel dreams a reality!\n[D29:12] John: Barcelona is a must-visit city! You'll love exploring the culture, admiring the architecture, and tasting the amazing food in each neighborhood. Plus, the nearby beaches are great for soaking up the sun. Definitely add it to your travel list!",
+          "index_text": "What does John say about Barcelona's food?",
+          "sources": [
+            "D29:9",
+            "D29:12"
+          ],
+          "session": 29,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:56"
+        },
+        "kind": "pair",
+        "mean_logprob": -1.5321745653945982
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:8:1",
+        "gain": 1.0,
+        "cost": 112,
+        "unit": {
+          "text": "(Session date: 10:29 am on 9 August, 2023) [D5:17] Tim: No problem! Let me know what you think after you read it.\n[D5:18] John: Yep, I'll let you know once I'm done reading it. Thanks!\n[D5:19] Tim: I hope you like it. Chat soon!\n[D5:20] John: Me too. Talk to you soon!",
+          "index_text": "What did Tim say they hoped the other would do?",
+          "sources": [
+            "D5:17",
+            "D5:18",
+            "D5:19",
+            "D5:20"
+          ],
+          "session": 5,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:8"
+        },
+        "kind": "full",
+        "mean_logprob": -3.7173432111739997
+      },
+      {
+        "id": "conv-43:source_probe:8:4",
+        "gain": 1.0,
+        "cost": 50,
+        "unit": {
+          "text": "(Session date: 10:29 am on 9 August, 2023) [D5:19] Tim: I hope you like it. Chat soon!",
+          "index_text": "What did Tim say they hoped the other would do?",
+          "sources": [
+            "D5:19"
+          ],
+          "session": 5,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:8"
+        },
+        "kind": "single",
+        "mean_logprob": -3.158284592628365
+      },
+      {
+        "id": "conv-43:source_probe:8:9",
+        "gain": 1.0,
+        "cost": 74,
+        "unit": {
+          "text": "(Session date: 10:29 am on 9 August, 2023) [D5:18] John: Yep, I'll let you know once I'm done reading it. Thanks!\n[D5:19] Tim: I hope you like it. Chat soon!",
+          "index_text": "What did Tim say they hoped the other would do?",
+          "sources": [
+            "D5:18",
+            "D5:19"
+          ],
+          "session": 5,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:8"
+        },
+        "kind": "pair",
+        "mean_logprob": -0.9722491264343261
+      }
+    ],
+    [
+      {
+        "id": "conv-43:source_probe:9:1",
+        "gain": 1.0,
+        "cost": 395,
+        "unit": {
+          "text": "(Session date: 10:29 am on 9 August, 2023) [D5:9] Tim: That's great! Having a supportive team who are like family is awesome. Having people who motivate you and stick by you is priceless.\n[D5:10] John: Definitely! They encourage me when I'm down too. It's not just in my sport, but in other aspects of life too. We hang out a lot and it's great having that bond.\n[D5:11] Tim: Yeah, having another family is great. It definitely helps with my home life and hobbies.\n[D5:12] John: Having someone to support and motivate you is so important, whether it's in sports or any other aspect of life. I know you've found your peace in reading fantasy books - that's amazing! What book are you currently reading? Anything that has stood out to you?\n[D5:13] Tim: Thanks for asking! I'm reading a fantasy book that really captivates me. It takes me to another world where I'm on the edge of my seat and my imagination soars. It's amazing how books can transport us like that.\n[D5:14] John: Books can be so captivating, taking us on such incredible journeys! What's the name of it?\n[D5:15] Tim: It's a book by Patrick Rothfuss and it's awesome! The way the author builds the world and characters is amazing. You should read it!\n[D5:16] John: Sounds cool! I'll definitely check it out. Thanks for the recommendation!\n[D5:17] Tim: No problem! Let me know what you think after you read it.\n[D5:18] John: Yep, I'll let you know once I'm done reading it. Thanks!",
+          "index_text": "What aspect of the book does Tim find captivating?",
+          "sources": [
+            "D5:9",
+            "D5:10",
+            "D5:11",
+            "D5:12",
+            "D5:13",
+            "D5:14",
+            "D5:15",
+            "D5:16",
+            "D5:17",
+            "D5:18"
+          ],
+          "session": 5,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:9"
+        },
+        "kind": "full",
+        "mean_logprob": -1.084071922219462
+      },
+      {
+        "id": "conv-43:source_probe:9:8",
+        "gain": 0.9966484629979244,
+        "cost": 71,
+        "unit": {
+          "text": "(Session date: 10:29 am on 9 August, 2023) [D5:15] Tim: It's a book by Patrick Rothfuss and it's awesome! The way the author builds the world and characters is amazing. You should read it!",
+          "index_text": "What aspect of the book does Tim find captivating?",
+          "sources": [
+            "D5:15"
+          ],
+          "session": 5,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:9"
+        },
+        "kind": "single",
+        "mean_logprob": -1.1011836131413715
+      },
+      {
+        "id": "conv-43:source_probe:9:38",
+        "gain": 1.0,
+        "cost": 133,
+        "unit": {
+          "text": "(Session date: 10:29 am on 9 August, 2023) [D5:12] John: Having someone to support and motivate you is so important, whether it's in sports or any other aspect of life. I know you've found your peace in reading fantasy books - that's amazing! What book are you currently reading? Anything that has stood out to you?\n[D5:15] Tim: It's a book by Patrick Rothfuss and it's awesome! The way the author builds the world and characters is amazing. You should read it!",
+          "index_text": "What aspect of the book does Tim find captivating?",
+          "sources": [
+            "D5:12",
+            "D5:15"
+          ],
+          "session": 5,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-43:source_probe:9"
+        },
+        "kind": "pair",
+        "mean_logprob": -0.7931402389953696
+      }
+    ]
+  ],
+  "mapped": {
+    "conv-43:source_probe:0:1": {
+      "id": "conv-43:source_probe:0:1",
+      "gain": 1.0,
+      "cost": 567,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 21 May 2023) Tim mentioned discussing collaborations for a Harry Potter fan project.\n(Recorded on: 21 May 2023) John announced he signed with a new team.\n(Recorded on: 21 May 2023) Tim asked which team John signed with.\nOriginal dialogue:\n(Recorded on: 21 May 2023) [D1:1] John: Hey Tim, nice to meet you! What's up? Anything new happening?\n[D1:2] Tim: Hey John! Great to meet you. Been discussing collaborations for a Harry Potter fan project I am working on - super excited! Anything interesting happening for you?\n[D1:3] John: That's great! I just signed with a new team - excited for the season!\n[D1:4] Tim: Woohoo! Congrats on the new team. Which team did you sign with?\n\nFacts:\n(Recorded on: 21 May 2023) John stated he is a shooting guard and the season opener is next week.\n(Recorded on: 21 May 2023) Tim asked about John's goals.\nOriginal dialogue:\n(Recorded on: 21 May 2023) [D1:5] John: The Minnesota Wolves! I can't wait to play with them!\n[D1:6] Tim: Cool! What position are you playing for the team? Any exciting games coming up?\n[D1:7] John: I'm a shooting guard for the team and our season opener is next week - so excited! [image: a photo of a bunch of basketball jerseys laying on a bed]\n[D1:8] Tim: Cool! Have any goals in mind? [image: a photo of a basketball game in progress with the ball in the air]\n\nFacts:\n(Recorded on: 21 May 2023) John mentioned that things are going well with the new team and expressed enjoyment.\nOriginal dialogue:\n(Recorded on: 21 May 2023) [D1:9] John: Yeah, my goal is to improve my shooting percentage. Been practicing hard and gonna make it happen. [image: a photo of two men standing next to a basketball machine]\n[D1:10] Tim: Sounds good! What challenges have you encountered during your pre-season training?\n[D1:11] John: Fitting into the new team's style of play was a challenge during pre-season.\n[D1:12] Tim: That sounds rough. How are things going with the new team?",
+        "index_text": "Which team did John sign with?",
+        "sources": [
+          "D1:1",
+          "D1:10",
+          "D1:11",
+          "D1:12",
+          "D1:2",
+          "D1:3",
+          "D1:4",
+          "D1:5",
+          "D1:6",
+          "D1:7",
+          "D1:8",
+          "D1:9"
+        ],
+        "session": 1,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:0",
+        "parent_indices": [
+          0,
+          2,
+          4
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -5.844017088413231,
+      "required_sources": [
+        "D1:1",
+        "D1:2",
+        "D1:3",
+        "D1:4",
+        "D1:5",
+        "D1:6",
+        "D1:7",
+        "D1:8",
+        "D1:9",
+        "D1:10"
+      ]
+    },
+    "conv-43:source_probe:0:6": {
+      "id": "conv-43:source_probe:0:6",
+      "gain": 0.8978183510299739,
+      "cost": 171,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 21 May 2023) John revealed he signed with the Minnesota Wolves.\n(Recorded on: 21 May 2023) Tim asked about John's position and upcoming games.\nOriginal dialogue:\n(Recorded on: 21 May 2023) [D1:3] John: That's great! I just signed with a new team - excited for the season!\n[D1:4] Tim: Woohoo! Congrats on the new team. Which team did you sign with?\n[D1:5] John: The Minnesota Wolves! I can't wait to play with them!\n[D1:6] Tim: Cool! What position are you playing for the team? Any exciting games coming up?",
+        "index_text": "Which team did John sign with?",
+        "sources": [
+          "D1:3",
+          "D1:4",
+          "D1:5",
+          "D1:6"
+        ],
+        "session": 1,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:0",
+        "parent_indices": [
+          1
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -6.4954314529895765,
+      "required_sources": [
+        "D1:5"
+      ]
+    },
+    "conv-43:source_probe:0:36": {
+      "id": "conv-43:source_probe:0:36",
+      "gain": 1.0,
+      "cost": 171,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 21 May 2023) John revealed he signed with the Minnesota Wolves.\n(Recorded on: 21 May 2023) Tim asked about John's position and upcoming games.\nOriginal dialogue:\n(Recorded on: 21 May 2023) [D1:3] John: That's great! I just signed with a new team - excited for the season!\n[D1:4] Tim: Woohoo! Congrats on the new team. Which team did you sign with?\n[D1:5] John: The Minnesota Wolves! I can't wait to play with them!\n[D1:6] Tim: Cool! What position are you playing for the team? Any exciting games coming up?",
+        "index_text": "Which team did John sign with?",
+        "sources": [
+          "D1:3",
+          "D1:4",
+          "D1:5",
+          "D1:6"
+        ],
+        "session": 1,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:0",
+        "parent_indices": [
+          1
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -4.9529921608045555,
+      "required_sources": [
+        "D1:4",
+        "D1:5"
+      ]
+    },
+    "conv-43:source_probe:2:1": {
+      "id": "conv-43:source_probe:2:1",
+      "gain": 1.0,
+      "cost": 120,
+      "unit": {
+        "text": "(Recorded on: 15 June 2023) [D2:17] Tim: Wow! You look so into it in that pic – it must be so awesome playing at that level! Keep rockin' it!\n[D2:18] John: Thanks! It's a blast. Giving it my all every time I'm on the court. Really appreciate your support!\n[D2:19] Tim: Yeah, keep going! Don't give up on your dreams. Talk to you later!",
+        "index_text": "What did John say about his effort on the court?",
+        "sources": [
+          "D2:17",
+          "D2:18",
+          "D2:19"
+        ],
+        "session": 2,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:2",
+        "parent_indices": [
+          17
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -0.0006570210680313886,
+      "required_sources": [
+        "D2:17",
+        "D2:18",
+        "D2:19"
+      ]
+    },
+    "conv-43:source_probe:2:3": {
+      "id": "conv-43:source_probe:2:3",
+      "gain": 1.0,
+      "cost": 120,
+      "unit": {
+        "text": "(Recorded on: 15 June 2023) [D2:17] Tim: Wow! You look so into it in that pic – it must be so awesome playing at that level! Keep rockin' it!\n[D2:18] John: Thanks! It's a blast. Giving it my all every time I'm on the court. Really appreciate your support!\n[D2:19] Tim: Yeah, keep going! Don't give up on your dreams. Talk to you later!",
+        "index_text": "What did John say about his effort on the court?",
+        "sources": [
+          "D2:17",
+          "D2:18",
+          "D2:19"
+        ],
+        "session": 2,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:2",
+        "parent_indices": [
+          17
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -0.00034361199108058247,
+      "required_sources": [
+        "D2:18"
+      ]
+    },
+    "conv-43:source_probe:2:5": {
+      "id": "conv-43:source_probe:2:5",
+      "gain": 1.0,
+      "cost": 120,
+      "unit": {
+        "text": "(Recorded on: 15 June 2023) [D2:17] Tim: Wow! You look so into it in that pic – it must be so awesome playing at that level! Keep rockin' it!\n[D2:18] John: Thanks! It's a blast. Giving it my all every time I'm on the court. Really appreciate your support!\n[D2:19] Tim: Yeah, keep going! Don't give up on your dreams. Talk to you later!",
+        "index_text": "What did John say about his effort on the court?",
+        "sources": [
+          "D2:17",
+          "D2:18",
+          "D2:19"
+        ],
+        "session": 2,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:2",
+        "parent_indices": [
+          17
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -0.00013981170062296852,
+      "required_sources": [
+        "D2:17",
+        "D2:18"
+      ]
+    },
+    "conv-43:source_probe:29:1": {
+      "id": "conv-43:source_probe:29:1",
+      "gain": 1.0,
+      "cost": 725,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 21 October 2023) Tim stated he has been reading J.K. Rowling's works for a long time.\nOriginal dialogue:\n(Recorded on: 21 October 2023) [D15:7] Tim: J.K. Rowling is such an inspiring writer. Her books are so captivating with their detail and creative storytelling. She can definitely transport readers into another world and make them feel so much. I'm always taking notes on her style for my own writing. [image: a photo of a book with a page in it on a table]\n[D15:8] John: Cool! How long have you been reading her works?\n[D15:9] Tim: I've been reading her stuff for a long time. Her stories have been with me and still inspire me. There's something special about her writing that really speaks to me.\n[D15:10] John: Wow, some authors really have such an influence on us! They become part of our life and affect our interests. Do you have a favorite J.K. Rowling quote?\n\nFacts:\n(Recorded on: 21 October 2023) John wrote motivational quotes and strategies on a whiteboard to help with workouts.\nOriginal dialogue:\n(Recorded on: 21 October 2023) [D15:11] Tim: Yeah! There's a quote by J.K. Rowling that I really like: \"Turn on the light - happiness hides in the darkest of times.\" That's how I keep hope alive during tough times.\n[D15:12] John: Nice quote! It reminds us to stay positive and find joy even in hard times. It's a guiding light when things get rough. I appreciate you sharing it! [image: a photo of a white board with a drawing of arrows and words]\n[D15:13] Tim: Nice job, John! What did you write on that whiteboard?\n[D15:14] John: On that whiteboard, I wrote down some motivational quotes and strategies to help me stay focused and push through tough workouts. It really helps me stay motivated and keep improving.\n\nFacts:\n(Recorded on: 21 October 2023) John referenced an image of a group of women soccer players huddle together.\nOriginal dialogue:\n(Recorded on: 21 October 2023) [D15:15] Tim: That's awesome! Visual reminders and strategies can really help in staying motivated. It's cool that you have those quotes to keep you going during tough workouts. [image: a photo of a woman holding a plaque in front of a wall]\n[D15:16] John: This plaque I keep on my desk is a constant reminder to believe in myself. It helps me trust my abilities and face any obstacles. Having physical reminders like this really helps me stay motivated. [image: a photography of a desk with a laptop and a lightbox that says make it happen]\n[D15:17] Tim: That's awesome! What keeps you motivated during challenging times?\n[D15:18] John: My teammates believing in me and my love for improving my skills keep me going, even when things get tough. I don't want to let them down. [image: a photo of a group of women soccer players huddle together]",
+        "index_text": "What does Tim say is special about her writing?",
+        "sources": [
+          "D15:10",
+          "D15:11",
+          "D15:12",
+          "D15:13",
+          "D15:14",
+          "D15:15",
+          "D15:16",
+          "D15:17",
+          "D15:18",
+          "D15:7",
+          "D15:8",
+          "D15:9"
+        ],
+        "session": 15,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:29",
+        "parent_indices": [
+          154,
+          156,
+          158
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -0.0003258519798343684,
+      "required_sources": [
+        "D15:9",
+        "D15:10",
+        "D15:11",
+        "D15:12",
+        "D15:13",
+        "D15:14",
+        "D15:15",
+        "D15:16",
+        "D15:17",
+        "D15:18"
+      ]
+    },
+    "conv-43:source_probe:29:2": {
+      "id": "conv-43:source_probe:29:2",
+      "gain": 1.0,
+      "cost": 244,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 21 October 2023) Tim stated he has been reading J.K. Rowling's works for a long time.\nOriginal dialogue:\n(Recorded on: 21 October 2023) [D15:7] Tim: J.K. Rowling is such an inspiring writer. Her books are so captivating with their detail and creative storytelling. She can definitely transport readers into another world and make them feel so much. I'm always taking notes on her style for my own writing. [image: a photo of a book with a page in it on a table]\n[D15:8] John: Cool! How long have you been reading her works?\n[D15:9] Tim: I've been reading her stuff for a long time. Her stories have been with me and still inspire me. There's something special about her writing that really speaks to me.\n[D15:10] John: Wow, some authors really have such an influence on us! They become part of our life and affect our interests. Do you have a favorite J.K. Rowling quote?",
+        "index_text": "What does Tim say is special about her writing?",
+        "sources": [
+          "D15:10",
+          "D15:7",
+          "D15:8",
+          "D15:9"
+        ],
+        "session": 15,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:29",
+        "parent_indices": [
+          154
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -3.583995817209029e-05,
+      "required_sources": [
+        "D15:9"
+      ]
+    },
+    "conv-43:source_probe:29:20": {
+      "id": "conv-43:source_probe:29:20",
+      "gain": 1.0,
+      "cost": 386,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 21 October 2023) Tim stated he has been reading J.K. Rowling's works for a long time.\nOriginal dialogue:\n(Recorded on: 21 October 2023) [D15:7] Tim: J.K. Rowling is such an inspiring writer. Her books are so captivating with their detail and creative storytelling. She can definitely transport readers into another world and make them feel so much. I'm always taking notes on her style for my own writing. [image: a photo of a book with a page in it on a table]\n[D15:8] John: Cool! How long have you been reading her works?\n[D15:9] Tim: I've been reading her stuff for a long time. Her stories have been with me and still inspire me. There's something special about her writing that really speaks to me.\n[D15:10] John: Wow, some authors really have such an influence on us! They become part of our life and affect our interests. Do you have a favorite J.K. Rowling quote?\n\n(Recorded on: 21 October 2023) [D15:17] Tim: That's awesome! What keeps you motivated during challenging times?\n[D15:18] John: My teammates believing in me and my love for improving my skills keep me going, even when things get tough. I don't want to let them down. [image: a photo of a group of women soccer players huddle together]\n[D15:19] Tim: Nice one! What do you reckon makes them such a good support?\n[D15:20] John: They always support me, even when I make mistakes. Their encouragement keeps me going.",
+        "index_text": "What does Tim say is special about her writing?",
+        "sources": [
+          "D15:10",
+          "D15:17",
+          "D15:18",
+          "D15:19",
+          "D15:20",
+          "D15:7",
+          "D15:8",
+          "D15:9"
+        ],
+        "session": 15,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:29",
+        "parent_indices": [
+          154,
+          159
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -3.4993799473426177e-05,
+      "required_sources": [
+        "D15:9",
+        "D15:18"
+      ]
+    },
+    "conv-43:source_probe:3:1": {
+      "id": "conv-43:source_probe:3:1",
+      "gain": 1.0,
+      "cost": 118,
+      "unit": {
+        "text": "(Recorded on: 15 June 2023) [D2:17] Tim: Wow! You look so into it in that pic – it must be so awesome playing at that level! Keep rockin' it!\n[D2:18] John: Thanks! It's a blast. Giving it my all every time I'm on the court. Really appreciate your support!\n[D2:19] Tim: Yeah, keep going! Don't give up on your dreams. Talk to you later!",
+        "index_text": "What did John say about appreciating support?",
+        "sources": [
+          "D2:17",
+          "D2:18",
+          "D2:19"
+        ],
+        "session": 2,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:3",
+        "parent_indices": [
+          17
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -1.4659923553466796,
+      "required_sources": [
+        "D2:17",
+        "D2:18",
+        "D2:19"
+      ]
+    },
+    "conv-43:source_probe:3:3": {
+      "id": "conv-43:source_probe:3:3",
+      "gain": 1.0,
+      "cost": 118,
+      "unit": {
+        "text": "(Recorded on: 15 June 2023) [D2:17] Tim: Wow! You look so into it in that pic – it must be so awesome playing at that level! Keep rockin' it!\n[D2:18] John: Thanks! It's a blast. Giving it my all every time I'm on the court. Really appreciate your support!\n[D2:19] Tim: Yeah, keep going! Don't give up on your dreams. Talk to you later!",
+        "index_text": "What did John say about appreciating support?",
+        "sources": [
+          "D2:17",
+          "D2:18",
+          "D2:19"
+        ],
+        "session": 2,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:3",
+        "parent_indices": [
+          17
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -0.8727440832517459,
+      "required_sources": [
+        "D2:18"
+      ]
+    },
+    "conv-43:source_probe:3:7": {
+      "id": "conv-43:source_probe:3:7",
+      "gain": 1.0,
+      "cost": 118,
+      "unit": {
+        "text": "(Recorded on: 15 June 2023) [D2:17] Tim: Wow! You look so into it in that pic – it must be so awesome playing at that level! Keep rockin' it!\n[D2:18] John: Thanks! It's a blast. Giving it my all every time I'm on the court. Really appreciate your support!\n[D2:19] Tim: Yeah, keep going! Don't give up on your dreams. Talk to you later!",
+        "index_text": "What did John say about appreciating support?",
+        "sources": [
+          "D2:17",
+          "D2:18",
+          "D2:19"
+        ],
+        "session": 2,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:3",
+        "parent_indices": [
+          17
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -0.977031135559082,
+      "required_sources": [
+        "D2:18",
+        "D2:19"
+      ]
+    },
+    "conv-43:source_probe:34:1": {
+      "id": "conv-43:source_probe:34:1",
+      "gain": 1.0,
+      "cost": 193,
+      "unit": {
+        "text": "(Recorded on: 16 November 2023) [D18:9] Tim: Thanks! Appreciate your support. I hope your injury heals soon.\n[D18:10] John: Sure thing, Tim! Got your back. I hope so too. The doctor said it's not too serious.\n[D18:11] Tim: That's good to hear, I'm glad.\n[D18:12] John: I hate not being on the court.\n\n(Recorded on: 16 November 2023) [D18:13] Tim: I bet. It's like if I couldn't read due to an injury.\n[D18:14] John: I'm pushing on though. Talk soon!\n[D18:15] Tim: Take care! Keep pushing on. Talk soon.",
+        "index_text": "What did Tim say about staying in touch?",
+        "sources": [
+          "D18:10",
+          "D18:11",
+          "D18:12",
+          "D18:13",
+          "D18:14",
+          "D18:15",
+          "D18:9"
+        ],
+        "session": 18,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:34",
+        "parent_indices": [
+          190,
+          192
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -4.5895371805215746e-06,
+      "required_sources": [
+        "D18:9",
+        "D18:10",
+        "D18:11",
+        "D18:12",
+        "D18:13",
+        "D18:14",
+        "D18:15"
+      ]
+    },
+    "conv-43:source_probe:34:8": {
+      "id": "conv-43:source_probe:34:8",
+      "gain": 0.9999959042713236,
+      "cost": 87,
+      "unit": {
+        "text": "(Recorded on: 16 November 2023) [D18:13] Tim: I bet. It's like if I couldn't read due to an injury.\n[D18:14] John: I'm pushing on though. Talk soon!\n[D18:15] Tim: Take care! Keep pushing on. Talk soon.",
+        "index_text": "What did Tim say about staying in touch?",
+        "sources": [
+          "D18:13",
+          "D18:14",
+          "D18:15"
+        ],
+        "session": 18,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:34",
+        "parent_indices": [
+          192
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -5.6502009101677686e-05,
+      "required_sources": [
+        "D18:15"
+      ]
+    },
+    "conv-43:source_probe:34:19": {
+      "id": "conv-43:source_probe:34:19",
+      "gain": 1.0,
+      "cost": 193,
+      "unit": {
+        "text": "(Recorded on: 16 November 2023) [D18:9] Tim: Thanks! Appreciate your support. I hope your injury heals soon.\n[D18:10] John: Sure thing, Tim! Got your back. I hope so too. The doctor said it's not too serious.\n[D18:11] Tim: That's good to hear, I'm glad.\n[D18:12] John: I hate not being on the court.\n\n(Recorded on: 16 November 2023) [D18:13] Tim: I bet. It's like if I couldn't read due to an injury.\n[D18:14] John: I'm pushing on though. Talk soon!\n[D18:15] Tim: Take care! Keep pushing on. Talk soon.",
+        "index_text": "What did Tim say about staying in touch?",
+        "sources": [
+          "D18:10",
+          "D18:11",
+          "D18:12",
+          "D18:13",
+          "D18:14",
+          "D18:15",
+          "D18:9"
+        ],
+        "session": 18,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:34",
+        "parent_indices": [
+          190,
+          192
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -5.960461066933931e-07,
+      "required_sources": [
+        "D18:10",
+        "D18:15"
+      ]
+    },
+    "conv-43:source_probe:36:1": {
+      "id": "conv-43:source_probe:36:1",
+      "gain": 1.0,
+      "cost": 603,
+      "unit": {
+        "text": "(Recorded on: 21 November 2023) [D19:9] Tim: When things get tough, it's so important to remember why we love what we do. For me, it's writing and reading. That's what helps me stay motivated and push myself to get better. Has anything similar happened with basketball for you? Tell me about it!\n[D19:10] John: I faced some tough times while playing basketball. I messed up during a big game, and it was really hard to accept. Instead of getting stuck in that moment, I worked hard to get better. It taught me that resilience is key and owning up to mistakes is important. Gotta keep growing and striving to be a strong player and teammate. So grateful.\n[D19:11] Tim: Wow, that's awesome. Admitting mistakes and using them to get better is super important. You really show how much you care about improving. Keep it up!\n[D19:12] John: Thanks! I appreciate your support. It's all about growing and getting better, both on and off the court. Let's keep working hard!\n\n(Recorded on: 21 November 2023) [D19:13] Tim: Yeah, John! Let's keep growing and improving. We got this! These are my companions on my growth journey. [image: a photo of a bunch of books on a wooden floor]\n[D19:14] John: Fantasy books always fuel my creativity, both in and outside of my hobbies. Are Harry Potter and GoT still your favorites?\n[D19:15] Tim: Yes, they are still my favorites - I love how they take me to other places. What other books do you like?\n[D19:16] John: I love non-fiction books about personal development and mindset. They help me know myself better. Do you enjoy reading other types of books as well?\n\n(Recorded on: 21 November 2023) [D19:15] Tim: Yes, they are still my favorites - I love how they take me to other places. What other books do you like?\n[D19:16] John: I love non-fiction books about personal development and mindset. They help me know myself better. Do you enjoy reading other types of books as well?\n[D19:17] Tim: Yep, John! I love getting lost in fantasy stories, but also discovering new ways to better myself through books on growth, psychology, and improving myself. It's wild how much you can learn from them, right?\n[D19:18] John: Yeah, Tim! Books really can shift how we think and help us learn totally new things. Have you come across any that made a big impact on you recently?",
+        "index_text": "What did Tim say are his favorite books?",
+        "sources": [
+          "D19:10",
+          "D19:11",
+          "D19:12",
+          "D19:13",
+          "D19:14",
+          "D19:15",
+          "D19:16",
+          "D19:17",
+          "D19:18",
+          "D19:9"
+        ],
+        "session": 19,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:36",
+        "parent_indices": [
+          197,
+          199,
+          200
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -0.007608330249780693,
+      "required_sources": [
+        "D19:9",
+        "D19:10",
+        "D19:11",
+        "D19:12",
+        "D19:13",
+        "D19:14",
+        "D19:15",
+        "D19:16",
+        "D19:17",
+        "D19:18"
+      ]
+    },
+    "conv-43:source_probe:36:7": {
+      "id": "conv-43:source_probe:36:7",
+      "gain": 0.43218566820894494,
+      "cost": 179,
+      "unit": {
+        "text": "(Recorded on: 21 November 2023) [D19:13] Tim: Yeah, John! Let's keep growing and improving. We got this! These are my companions on my growth journey. [image: a photo of a bunch of books on a wooden floor]\n[D19:14] John: Fantasy books always fuel my creativity, both in and outside of my hobbies. Are Harry Potter and GoT still your favorites?\n[D19:15] Tim: Yes, they are still my favorites - I love how they take me to other places. What other books do you like?\n[D19:16] John: I love non-fiction books about personal development and mindset. They help me know myself better. Do you enjoy reading other types of books as well?",
+        "index_text": "What did Tim say are his favorite books?",
+        "sources": [
+          "D19:13",
+          "D19:14",
+          "D19:15",
+          "D19:16"
+        ],
+        "session": 19,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:36",
+        "parent_indices": [
+          199
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -7.457694506645201,
+      "required_sources": [
+        "D19:14"
+      ]
+    },
+    "conv-43:source_probe:36:47": {
+      "id": "conv-43:source_probe:36:47",
+      "gain": 1.0,
+      "cost": 179,
+      "unit": {
+        "text": "(Recorded on: 21 November 2023) [D19:13] Tim: Yeah, John! Let's keep growing and improving. We got this! These are my companions on my growth journey. [image: a photo of a bunch of books on a wooden floor]\n[D19:14] John: Fantasy books always fuel my creativity, both in and outside of my hobbies. Are Harry Potter and GoT still your favorites?\n[D19:15] Tim: Yes, they are still my favorites - I love how they take me to other places. What other books do you like?\n[D19:16] John: I love non-fiction books about personal development and mindset. They help me know myself better. Do you enjoy reading other types of books as well?",
+        "index_text": "What did Tim say are his favorite books?",
+        "sources": [
+          "D19:13",
+          "D19:14",
+          "D19:15",
+          "D19:16"
+        ],
+        "session": 19,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:36",
+        "parent_indices": [
+          199
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -1.2636146479394484e-06,
+      "required_sources": [
+        "D19:14",
+        "D19:15"
+      ]
+    },
+    "conv-43:source_probe:38:1": {
+      "id": "conv-43:source_probe:38:1",
+      "gain": 1.0,
+      "cost": 134,
+      "unit": {
+        "text": "(Recorded on: 1 December 2023) [D20:41] Tim: Wow, this is amazing! Nature is really awesome - it makes us feel tiny but connected. [image: a photo of a mountain range with a sunset in the background]\n[D20:42] John: Nature does have a way of humbling us and showing us our place in the world. It's truly amazing and comforting.\n[D20:43] Tim: Yeah. It reminds us that we're not alone - we're part of something bigger. Bye!",
+        "index_text": "What did John say about the comfort of being in nature?",
+        "sources": [
+          "D20:41",
+          "D20:42",
+          "D20:43"
+        ],
+        "session": 20,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:38",
+        "parent_indices": [
+          224
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -0.09106300274528205,
+      "required_sources": [
+        "D20:41",
+        "D20:42",
+        "D20:43"
+      ]
+    },
+    "conv-43:source_probe:38:3": {
+      "id": "conv-43:source_probe:38:3",
+      "gain": 0.7699551762329525,
+      "cost": 134,
+      "unit": {
+        "text": "(Recorded on: 1 December 2023) [D20:41] Tim: Wow, this is amazing! Nature is really awesome - it makes us feel tiny but connected. [image: a photo of a mountain range with a sunset in the background]\n[D20:42] John: Nature does have a way of humbling us and showing us our place in the world. It's truly amazing and comforting.\n[D20:43] Tim: Yeah. It reminds us that we're not alone - we're part of something bigger. Bye!",
+        "index_text": "What did John say about the comfort of being in nature?",
+        "sources": [
+          "D20:41",
+          "D20:42",
+          "D20:43"
+        ],
+        "session": 20,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:38",
+        "parent_indices": [
+          224
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -2.200320184230596,
+      "required_sources": [
+        "D20:42"
+      ]
+    },
+    "conv-43:source_probe:38:5": {
+      "id": "conv-43:source_probe:38:5",
+      "gain": 0.949809072254747,
+      "cost": 134,
+      "unit": {
+        "text": "(Recorded on: 1 December 2023) [D20:41] Tim: Wow, this is amazing! Nature is really awesome - it makes us feel tiny but connected. [image: a photo of a mountain range with a sunset in the background]\n[D20:42] John: Nature does have a way of humbling us and showing us our place in the world. It's truly amazing and comforting.\n[D20:43] Tim: Yeah. It reminds us that we're not alone - we're part of something bigger. Bye!",
+        "index_text": "What did John say about the comfort of being in nature?",
+        "sources": [
+          "D20:41",
+          "D20:42",
+          "D20:43"
+        ],
+        "session": 20,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:38",
+        "parent_indices": [
+          224
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -0.5512584249178284,
+      "required_sources": [
+        "D20:41",
+        "D20:42"
+      ]
+    },
+    "conv-43:source_probe:40:1": {
+      "id": "conv-43:source_probe:40:1",
+      "gain": 1.0,
+      "cost": 144,
+      "unit": {
+        "text": "(Recorded on: 6 December 2023) [D21:17] Tim: Thanks for the helpful advice. Creating a constructive atmosphere and setting an example by working hard can really inspire people. It’s also inspiring to use our own stories to encourage others. Much appreciated!\n[D21:18] John: No problem! It's great to use our own experiences to inspire others. Hard work can lead to success. Keep it up! Let me know if you need any assistance.\n[D21:19] Tim: Thanks! Appreciate the offer. Let me know if you can lend a hand. Bye!",
+        "index_text": "What did Tim say about the importance of encouragement?",
+        "sources": [
+          "D21:17",
+          "D21:18",
+          "D21:19"
+        ],
+        "session": 21,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:40",
+        "parent_indices": [
+          233
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -3.4216429846626872,
+      "required_sources": [
+        "D21:17",
+        "D21:18",
+        "D21:19"
+      ]
+    },
+    "conv-43:source_probe:40:2": {
+      "id": "conv-43:source_probe:40:2",
+      "gain": 1.0,
+      "cost": 144,
+      "unit": {
+        "text": "(Recorded on: 6 December 2023) [D21:17] Tim: Thanks for the helpful advice. Creating a constructive atmosphere and setting an example by working hard can really inspire people. It’s also inspiring to use our own stories to encourage others. Much appreciated!\n[D21:18] John: No problem! It's great to use our own experiences to inspire others. Hard work can lead to success. Keep it up! Let me know if you need any assistance.\n[D21:19] Tim: Thanks! Appreciate the offer. Let me know if you can lend a hand. Bye!",
+        "index_text": "What did Tim say about the importance of encouragement?",
+        "sources": [
+          "D21:17",
+          "D21:18",
+          "D21:19"
+        ],
+        "session": 21,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:40",
+        "parent_indices": [
+          233
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -3.3249116795403606,
+      "required_sources": [
+        "D21:17"
+      ]
+    },
+    "conv-43:source_probe:40:5": {
+      "id": "conv-43:source_probe:40:5",
+      "gain": 0.9672120160567591,
+      "cost": 144,
+      "unit": {
+        "text": "(Recorded on: 6 December 2023) [D21:17] Tim: Thanks for the helpful advice. Creating a constructive atmosphere and setting an example by working hard can really inspire people. It’s also inspiring to use our own stories to encourage others. Much appreciated!\n[D21:18] John: No problem! It's great to use our own experiences to inspire others. Hard work can lead to success. Keep it up! Let me know if you need any assistance.\n[D21:19] Tim: Thanks! Appreciate the offer. Let me know if you can lend a hand. Bye!",
+        "index_text": "What did Tim say about the importance of encouragement?",
+        "sources": [
+          "D21:17",
+          "D21:18",
+          "D21:19"
+        ],
+        "session": 21,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:40",
+        "parent_indices": [
+          233
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -3.673034514699615,
+      "required_sources": [
+        "D21:17",
+        "D21:18"
+      ]
+    },
+    "conv-43:source_probe:42:1": {
+      "id": "conv-43:source_probe:42:1",
+      "gain": 1.0,
+      "cost": 915,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 8 December 2023) Tim attended a Harry Potter party and met lots of awesome people who were into the same stuff as him.\n(Recorded on: 8 December 2023) John mentioned a charity event with Harry Potter trivia that he had fun at last August.\n(Recorded on: 8 December 2023) Tim did not dress as any character but wore his Gryffindor scarf to the Harry Potter party.\n(Recorded on: 8 December 2023) John mentioned he hasn't had a chocolate frog in ages.\nOriginal dialogue:\n(Recorded on: 8 December 2023) [D22:1] Tim: Hey John! Long time no see! I just got back from the coolest Harry Potter party. Met lots of awesome people who were into the same stuff as me, had so much fun!\n[D22:2] John: Hey Tim! Sounds awesome! So glad you had a blast at the Harry Potter party. Last August I told you about my fun time at a charity event with Harry Potter trivia. Love being with people who are as passionate about Harry Potter as us! Did you dress up as any character?\n[D22:3] Tim: It was awesome. I didn't dress as any character, but I wore my Gryffindor scarf. Everyone had cool costumes. I even got this as a treat. Any recent meet-ups with your basketball team? [image: a photo of a chocolate frog in a box on a table]\n[D22:4] John: That frog looks yummy! I haven't had one in ages. Been having some wild games lately, we played a top team and it was tough, but we fought hard and got the win! It's awesome having my team to push us all. [image: a photo of a group of people riding on top of a fire truck]\n\nFacts:\n(Recorded on: 8 December 2023) Tim is reading a series about the power of friendship and loyalty.\n(Recorded on: 8 December 2023) John's basketball team has team dinners, outings, and basketball games to keep their bond strong.\nOriginal dialogue:\n(Recorded on: 8 December 2023) [D22:5] Tim: Wow, looks fun! What was the best part for you? And congratulations on the win!\n[D22:6] John: Thanks! The best part for me was the camaraderie we built both on and off the court. Winning felt amazing and it was definitely worth all the hard work we put in. [image: a photography of a group of young men sitting on top of a basketball court]\n[D22:7] Tim: Wow, that's awesome! It's great to see how close you all have become. You must feel a great sense of unity. I'm reading this amazing series about the power of friendship and loyalty – really inspiring stuff. Anything special you do to keep that bond strong? [image: a photo of a stack of books sitting on top of a table]\n[D22:8] John: Sounds awesome! What kind of stuff do they do in the series? I'm sure the importance of friendship is emphasized. Same with us - we have team dinners, outings, and basketball games. It's those moments away from practice that really build and strengthen our unity. [image: a photography of a group of people sitting around a table eating]\n\n(Recorded on: 8 December 2023) [D22:9] Tim: Awesome! Sounds like your team has something similar to the characters in the series. They rely on each other to push through challenges. By the way, what book are you currently reading? I'm always on the lookout for new reads!\n[D22:10] John: Thanks! I'm currently reading a book that I really enjoy. I highly recommend it!\n[D22:11] Tim: Sounds cool! Let me know the title so I can add it to my list!\n[D22:12] John: I'm reading \"Dune\" by Frank Herbert. It's a great story about religion and human control over ecology. What about you? What's the last book that moved you?",
+        "index_text": "What event did John mention he had fun at in August?",
+        "sources": [
+          "D22:1",
+          "D22:10",
+          "D22:11",
+          "D22:12",
+          "D22:2",
+          "D22:3",
+          "D22:4",
+          "D22:5",
+          "D22:6",
+          "D22:7",
+          "D22:8",
+          "D22:9"
+        ],
+        "session": 22,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:42",
+        "parent_indices": [
+          234,
+          236,
+          238
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -0.24307428087502103,
+      "required_sources": [
+        "D22:1",
+        "D22:2",
+        "D22:3",
+        "D22:4",
+        "D22:5",
+        "D22:6",
+        "D22:7",
+        "D22:8",
+        "D22:9",
+        "D22:10"
+      ]
+    },
+    "conv-43:source_probe:42:3": {
+      "id": "conv-43:source_probe:42:3",
+      "gain": 0.8903021730403511,
+      "cost": 416,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 8 December 2023) Tim attended a Harry Potter party and met lots of awesome people who were into the same stuff as him.\n(Recorded on: 8 December 2023) John mentioned a charity event with Harry Potter trivia that he had fun at last August.\n(Recorded on: 8 December 2023) Tim did not dress as any character but wore his Gryffindor scarf to the Harry Potter party.\n(Recorded on: 8 December 2023) John mentioned he hasn't had a chocolate frog in ages.\nOriginal dialogue:\n(Recorded on: 8 December 2023) [D22:1] Tim: Hey John! Long time no see! I just got back from the coolest Harry Potter party. Met lots of awesome people who were into the same stuff as me, had so much fun!\n[D22:2] John: Hey Tim! Sounds awesome! So glad you had a blast at the Harry Potter party. Last August I told you about my fun time at a charity event with Harry Potter trivia. Love being with people who are as passionate about Harry Potter as us! Did you dress up as any character?\n[D22:3] Tim: It was awesome. I didn't dress as any character, but I wore my Gryffindor scarf. Everyone had cool costumes. I even got this as a treat. Any recent meet-ups with your basketball team? [image: a photo of a chocolate frog in a box on a table]\n[D22:4] John: That frog looks yummy! I haven't had one in ages. Been having some wild games lately, we played a top team and it was tough, but we fought hard and got the win! It's awesome having my team to push us all. [image: a photo of a group of people riding on top of a fire truck]",
+        "index_text": "What event did John mention he had fun at in August?",
+        "sources": [
+          "D22:1",
+          "D22:2",
+          "D22:3",
+          "D22:4"
+        ],
+        "session": 22,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:42",
+        "parent_indices": [
+          234
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -1.6464522055207453,
+      "required_sources": [
+        "D22:2"
+      ]
+    },
+    "conv-43:source_probe:42:21": {
+      "id": "conv-43:source_probe:42:21",
+      "gain": 0.9614792440765496,
+      "cost": 416,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 8 December 2023) Tim attended a Harry Potter party and met lots of awesome people who were into the same stuff as him.\n(Recorded on: 8 December 2023) John mentioned a charity event with Harry Potter trivia that he had fun at last August.\n(Recorded on: 8 December 2023) Tim did not dress as any character but wore his Gryffindor scarf to the Harry Potter party.\n(Recorded on: 8 December 2023) John mentioned he hasn't had a chocolate frog in ages.\nOriginal dialogue:\n(Recorded on: 8 December 2023) [D22:1] Tim: Hey John! Long time no see! I just got back from the coolest Harry Potter party. Met lots of awesome people who were into the same stuff as me, had so much fun!\n[D22:2] John: Hey Tim! Sounds awesome! So glad you had a blast at the Harry Potter party. Last August I told you about my fun time at a charity event with Harry Potter trivia. Love being with people who are as passionate about Harry Potter as us! Did you dress up as any character?\n[D22:3] Tim: It was awesome. I didn't dress as any character, but I wore my Gryffindor scarf. Everyone had cool costumes. I even got this as a treat. Any recent meet-ups with your basketball team? [image: a photo of a chocolate frog in a box on a table]\n[D22:4] John: That frog looks yummy! I haven't had one in ages. Been having some wild games lately, we played a top team and it was tough, but we fought hard and got the win! It's awesome having my team to push us all. [image: a photo of a group of people riding on top of a fire truck]",
+        "index_text": "What event did John mention he had fun at in August?",
+        "sources": [
+          "D22:1",
+          "D22:2",
+          "D22:3",
+          "D22:4"
+        ],
+        "session": 22,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:42",
+        "parent_indices": [
+          234
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -0.7358750956397598,
+      "required_sources": [
+        "D22:2",
+        "D22:3"
+      ]
+    },
+    "conv-43:source_probe:50:1": {
+      "id": "conv-43:source_probe:50:1",
+      "gain": 1.0,
+      "cost": 448,
+      "unit": {
+        "text": "(Recorded on: 26 December 2023) [D26:9] John: Wow, that sounds awesome! How challenging was the trek through the Himalayas?\n[D26:10] Tim: The book mentioned that the trek was tough but worth it, with challenging terrain, altitude sickness, and bad weather. But they made it and saw amazing sights - it really motivated me.\n[D26:11] John: Wow! Sounds like a tough journey.\n[D26:12] Tim: It's true. Facing challenges can be tough, but it can make us stronger. I just visited a travel agency to see what the requirements would be for my next dream trip.\n\n(Recorded on: 26 December 2023) [D26:13] John: For sure, challenges help us learn and grow. Sounds fun! Keep me updated!\n[D26:14] Tim: Thanks, I will. You have to keep pushing for your goals. [image: a photo of a newspaper article with a picture of a woman]\n[D26:15] John: By the way, who was that main actress in Harry Potter? I've heard about her a lot lately.\n[D26:16] Tim: Emma Watson, she's a big supporter of gender equality. I'm a huge fan.\n\n(Recorded on: 26 December 2023) [D26:15] John: By the way, who was that main actress in Harry Potter? I've heard about her a lot lately.\n[D26:16] Tim: Emma Watson, she's a big supporter of gender equality. I'm a huge fan.\n[D26:17] John: Wow, that's great! It's inspiring to see people who use their platform for important causes and make a difference.\n[D26:18] Tim: Her women's rights advocacy is also a huge inspiration to me! Seeing people use their platform for causes like gender equality is really inspiring. It's so cool to see people making a difference.",
+        "index_text": "What did John say about challenges?",
+        "sources": [
+          "D26:10",
+          "D26:11",
+          "D26:12",
+          "D26:13",
+          "D26:14",
+          "D26:15",
+          "D26:16",
+          "D26:17",
+          "D26:18",
+          "D26:9"
+        ],
+        "session": 26,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:50",
+        "parent_indices": [
+          270,
+          272,
+          273
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -3.277778996361513,
+      "required_sources": [
+        "D26:9",
+        "D26:10",
+        "D26:11",
+        "D26:12",
+        "D26:13",
+        "D26:14",
+        "D26:15",
+        "D26:16",
+        "D26:17",
+        "D26:18"
+      ]
+    },
+    "conv-43:source_probe:50:6": {
+      "id": "conv-43:source_probe:50:6",
+      "gain": 1.0,
+      "cost": 146,
+      "unit": {
+        "text": "(Recorded on: 26 December 2023) [D26:13] John: For sure, challenges help us learn and grow. Sounds fun! Keep me updated!\n[D26:14] Tim: Thanks, I will. You have to keep pushing for your goals. [image: a photo of a newspaper article with a picture of a woman]\n[D26:15] John: By the way, who was that main actress in Harry Potter? I've heard about her a lot lately.\n[D26:16] Tim: Emma Watson, she's a big supporter of gender equality. I'm a huge fan.",
+        "index_text": "What did John say about challenges?",
+        "sources": [
+          "D26:13",
+          "D26:14",
+          "D26:15",
+          "D26:16"
+        ],
+        "session": 26,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:50",
+        "parent_indices": [
+          272
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -2.737258275349935,
+      "required_sources": [
+        "D26:13"
+      ]
+    },
+    "conv-43:source_probe:50:44": {
+      "id": "conv-43:source_probe:50:44",
+      "gain": 1.0,
+      "cost": 146,
+      "unit": {
+        "text": "(Recorded on: 26 December 2023) [D26:13] John: For sure, challenges help us learn and grow. Sounds fun! Keep me updated!\n[D26:14] Tim: Thanks, I will. You have to keep pushing for your goals. [image: a photo of a newspaper article with a picture of a woman]\n[D26:15] John: By the way, who was that main actress in Harry Potter? I've heard about her a lot lately.\n[D26:16] Tim: Emma Watson, she's a big supporter of gender equality. I'm a huge fan.",
+        "index_text": "What did John say about challenges?",
+        "sources": [
+          "D26:13",
+          "D26:14",
+          "D26:15",
+          "D26:16"
+        ],
+        "session": 26,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:50",
+        "parent_indices": [
+          272
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -2.49055544535319,
+      "required_sources": [
+        "D26:13",
+        "D26:16"
+      ]
+    },
+    "conv-43:source_probe:51:1": {
+      "id": "conv-43:source_probe:51:1",
+      "gain": 1.0,
+      "cost": 701,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 26 December 2023) John started doing seminars, helping people with their sports and marketing on 26 December, 2023.\n(Recorded on: 26 December 2023) John's seminars went really well on 26 December, 2023.\n(Recorded on: 26 December 2023) Tim mentioned he is starting some big new things on 26 December, 2023.\nOriginal dialogue:\n(Recorded on: 26 December 2023) [D26:1] John: Hey Tim! Great to hear from you. My week's been busy - I started doing seminars, helping people with their sports and marketing. It's been awesome! [image: a photo of a basketball court with a crowd of people watching]\n[D26:2] Tim: Hey John! Sounds awesome! Congrats on how far you've come. How did it go?\n[D26:3] John: Thanks! The seminars went really well. All the aspiring profs were so eager and motivated - it was great! I'm really happy I could share my knowledge and help out. [image: a photo of a man and woman on stage at a convention]\n[D26:4] Tim: Wow John! Impressive stuff! I'm starting some big new things too! [image: a photo of a book with a golden cover on a table]\n\nFacts:\n(Recorded on: 26 December 2023) Tim mentioned he read a story about two hikers who trekked through the Himalayas on 26 December, 2023.\nOriginal dialogue:\n(Recorded on: 26 December 2023) [D26:5] John: Thanks! What have you been up to?\n[D26:6] Tim: I've been reading cool stories from travelers from around the world. I'm using it to plan my next adventure. This is a book I found with tons of them! [image: a photo of a book with a picture of a boy and a girl]\n[D26:7] John: Wow, that's cool! Have you read any of the stories? I'm looking for some travel ideas too.\n[D26:8] Tim: I read a few of them. One of them is about two hikers who trekked through the Himalayas, sounds awesome! [image: a photo of two men on horseback in front of a mountain]\n\n(Recorded on: 26 December 2023) [D26:9] John: Wow, that sounds awesome! How challenging was the trek through the Himalayas?\n[D26:10] Tim: The book mentioned that the trek was tough but worth it, with challenging terrain, altitude sickness, and bad weather. But they made it and saw amazing sights - it really motivated me.\n[D26:11] John: Wow! Sounds like a tough journey.\n[D26:12] Tim: It's true. Facing challenges can be tough, but it can make us stronger. I just visited a travel agency to see what the requirements would be for my next dream trip.",
+        "index_text": "What was the image associated with Tim's eighth message?",
+        "sources": [
+          "D26:1",
+          "D26:10",
+          "D26:11",
+          "D26:12",
+          "D26:2",
+          "D26:3",
+          "D26:4",
+          "D26:5",
+          "D26:6",
+          "D26:7",
+          "D26:8",
+          "D26:9"
+        ],
+        "session": 26,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:51",
+        "parent_indices": [
+          266,
+          268,
+          270
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -0.015493532785954427,
+      "required_sources": [
+        "D26:1",
+        "D26:2",
+        "D26:3",
+        "D26:4",
+        "D26:5",
+        "D26:6",
+        "D26:7",
+        "D26:8",
+        "D26:9",
+        "D26:10"
+      ]
+    },
+    "conv-43:source_probe:51:9": {
+      "id": "conv-43:source_probe:51:9",
+      "gain": 1.0,
+      "cost": 235,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 26 December 2023) The trek through the Himalayas was tough but worth it, with challenging terrain, altitude sickness, and bad weather on 26 December, 2023.\nOriginal dialogue:\n(Recorded on: 26 December 2023) [D26:7] John: Wow, that's cool! Have you read any of the stories? I'm looking for some travel ideas too.\n[D26:8] Tim: I read a few of them. One of them is about two hikers who trekked through the Himalayas, sounds awesome! [image: a photo of two men on horseback in front of a mountain]\n[D26:9] John: Wow, that sounds awesome! How challenging was the trek through the Himalayas?\n[D26:10] Tim: The book mentioned that the trek was tough but worth it, with challenging terrain, altitude sickness, and bad weather. But they made it and saw amazing sights - it really motivated me.",
+        "index_text": "What was the image associated with Tim's eighth message?",
+        "sources": [
+          "D26:10",
+          "D26:7",
+          "D26:8",
+          "D26:9"
+        ],
+        "session": 26,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:51",
+        "parent_indices": [
+          269
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -4.483972588786855e-06,
+      "required_sources": [
+        "D26:8"
+      ]
+    },
+    "conv-43:source_probe:51:44": {
+      "id": "conv-43:source_probe:51:44",
+      "gain": 1.0,
+      "cost": 238,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 26 December 2023) Tim mentioned he read a story about two hikers who trekked through the Himalayas on 26 December, 2023.\nOriginal dialogue:\n(Recorded on: 26 December 2023) [D26:5] John: Thanks! What have you been up to?\n[D26:6] Tim: I've been reading cool stories from travelers from around the world. I'm using it to plan my next adventure. This is a book I found with tons of them! [image: a photo of a book with a picture of a boy and a girl]\n[D26:7] John: Wow, that's cool! Have you read any of the stories? I'm looking for some travel ideas too.\n[D26:8] Tim: I read a few of them. One of them is about two hikers who trekked through the Himalayas, sounds awesome! [image: a photo of two men on horseback in front of a mountain]",
+        "index_text": "What was the image associated with Tim's eighth message?",
+        "sources": [
+          "D26:5",
+          "D26:6",
+          "D26:7",
+          "D26:8"
+        ],
+        "session": 26,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:51",
+        "parent_indices": [
+          268
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": 0.0,
+      "required_sources": [
+        "D26:5",
+        "D26:8"
+      ]
+    },
+    "conv-43:source_probe:52:1": {
+      "id": "conv-43:source_probe:52:1",
+      "gain": 1.0,
+      "cost": 520,
+      "unit": {
+        "text": "(Recorded on: 2 January 2024) [D27:25] Tim: Nice one! Why is he your favorite?\n[D27:26] John: He's a great leader and puts others first - that's why he eventually becomes king.\n[D27:27] Tim: Wow, Aragorn's story is so inspiring - from a ranger to king of Gondor. It's amazing how he grows and achieves redemption throughout his journey. [image: a photo of a painting of a man with long hair]\n[D27:28] John: Yeah. His journey is really inspiring. I have a painting in my room to remind me to stay true and be a leader in everything I do. [image: a photo of a painting of a man smoking a cigarette]\n\n(Recorded on: 2 January 2024) [D27:29] Tim: Wow, that's awesome! What is it about him that makes him so inspiring for you?\n[D27:30] John: Aragorn's brave, selfless, down-to-earth attitude is what inspired me. He never gives up and always stands up for justice.\n[D27:31] Tim: Yeah, he's really inspiring. What's awesome about fantasy books like LOTR is getting lost in another world and seeing all the tiny details. [image: a photo of a map of the world on a piece of paper]\n[D27:32] John: Yeah, that's what I'm thinking! Love this map, it really helps you get lost in another world. What's on it?\n\n(Recorded on: 2 January 2024) [D27:33] Tim: It's a map of Middle-earth from LOTR - it's really cool to see all the different realms and regions.\n[D27:34] John: Wow, that looks awesome! Exploring different lands and regions in fantasy stories is always fun!\n[D27:35] Tim: Thanks! It's really cool how fantasy stories allow me to explore other cultures and landscapes, all from the comfort of my home.\n[D27:36] John: Yeah! That's why I love traveling - it's a way to learn about different cultures and places. [image: a photo of a person walking down a path in front of the eiffel tower]",
+        "index_text": "What is the name of the person who is described as inspiring?",
+        "sources": [
+          "D27:25",
+          "D27:26",
+          "D27:27",
+          "D27:28",
+          "D27:29",
+          "D27:30",
+          "D27:31",
+          "D27:32",
+          "D27:33",
+          "D27:34",
+          "D27:35",
+          "D27:36"
+        ],
+        "session": 27,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:52",
+        "parent_indices": [
+          296,
+          298,
+          300
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -2.066287985750629e-06,
+      "required_sources": [
+        "D27:25",
+        "D27:26",
+        "D27:27",
+        "D27:28",
+        "D27:29",
+        "D27:30",
+        "D27:31",
+        "D27:32",
+        "D27:33",
+        "D27:34"
+      ]
+    },
+    "conv-43:source_probe:52:4": {
+      "id": "conv-43:source_probe:52:4",
+      "gain": 0.5092961683124748,
+      "cost": 185,
+      "unit": {
+        "text": "(Recorded on: 2 January 2024) [D27:25] Tim: Nice one! Why is he your favorite?\n[D27:26] John: He's a great leader and puts others first - that's why he eventually becomes king.\n[D27:27] Tim: Wow, Aragorn's story is so inspiring - from a ranger to king of Gondor. It's amazing how he grows and achieves redemption throughout his journey. [image: a photo of a painting of a man with long hair]\n[D27:28] John: Yeah. His journey is really inspiring. I have a painting in my room to remind me to stay true and be a leader in everything I do. [image: a photo of a painting of a man smoking a cigarette]",
+        "index_text": "What is the name of the person who is described as inspiring?",
+        "sources": [
+          "D27:25",
+          "D27:26",
+          "D27:27",
+          "D27:28"
+        ],
+        "session": 27,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:52",
+        "parent_indices": [
+          296
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -3.0000413656232845,
+      "required_sources": [
+        "D27:27"
+      ]
+    },
+    "conv-43:source_probe:52:24": {
+      "id": "conv-43:source_probe:52:24",
+      "gain": 1.0,
+      "cost": 353,
+      "unit": {
+        "text": "(Recorded on: 2 January 2024) [D27:23] Tim: Wow, me too! That's an awesome collection! Have you watched them heaps? Got any favorite characters from those movies? [image: a photo of a bookcase filled with dvds and games]\n[D27:24] John: Thanks! I've watched a bunch of them and they're inspiring. My favorite character is Aragorn, he grows so much throughout the story. [image: a photo of a bookmark with a picture of a woman kissing a man]\n[D27:25] Tim: Nice one! Why is he your favorite?\n[D27:26] John: He's a great leader and puts others first - that's why he eventually becomes king.\n\n(Recorded on: 2 January 2024) [D27:29] Tim: Wow, that's awesome! What is it about him that makes him so inspiring for you?\n[D27:30] John: Aragorn's brave, selfless, down-to-earth attitude is what inspired me. He never gives up and always stands up for justice.\n[D27:31] Tim: Yeah, he's really inspiring. What's awesome about fantasy books like LOTR is getting lost in another world and seeing all the tiny details. [image: a photo of a map of the world on a piece of paper]\n[D27:32] John: Yeah, that's what I'm thinking! Love this map, it really helps you get lost in another world. What's on it?",
+        "index_text": "What is the name of the person who is described as inspiring?",
+        "sources": [
+          "D27:23",
+          "D27:24",
+          "D27:25",
+          "D27:26",
+          "D27:29",
+          "D27:30",
+          "D27:31",
+          "D27:32"
+        ],
+        "session": 27,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:52",
+        "parent_indices": [
+          295,
+          298
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -5.960459172153302e-07,
+      "required_sources": [
+        "D27:26",
+        "D27:30"
+      ]
+    },
+    "conv-43:source_probe:53:1": {
+      "id": "conv-43:source_probe:53:1",
+      "gain": 1.0,
+      "cost": 524,
+      "unit": {
+        "text": "(Recorded on: 2 January 2024) [D27:25] Tim: Nice one! Why is he your favorite?\n[D27:26] John: He's a great leader and puts others first - that's why he eventually becomes king.\n[D27:27] Tim: Wow, Aragorn's story is so inspiring - from a ranger to king of Gondor. It's amazing how he grows and achieves redemption throughout his journey. [image: a photo of a painting of a man with long hair]\n[D27:28] John: Yeah. His journey is really inspiring. I have a painting in my room to remind me to stay true and be a leader in everything I do. [image: a photo of a painting of a man smoking a cigarette]\n\n(Recorded on: 2 January 2024) [D27:29] Tim: Wow, that's awesome! What is it about him that makes him so inspiring for you?\n[D27:30] John: Aragorn's brave, selfless, down-to-earth attitude is what inspired me. He never gives up and always stands up for justice.\n[D27:31] Tim: Yeah, he's really inspiring. What's awesome about fantasy books like LOTR is getting lost in another world and seeing all the tiny details. [image: a photo of a map of the world on a piece of paper]\n[D27:32] John: Yeah, that's what I'm thinking! Love this map, it really helps you get lost in another world. What's on it?\n\n(Recorded on: 2 January 2024) [D27:33] Tim: It's a map of Middle-earth from LOTR - it's really cool to see all the different realms and regions.\n[D27:34] John: Wow, that looks awesome! Exploring different lands and regions in fantasy stories is always fun!\n[D27:35] Tim: Thanks! It's really cool how fantasy stories allow me to explore other cultures and landscapes, all from the comfort of my home.\n[D27:36] John: Yeah! That's why I love traveling - it's a way to learn about different cultures and places. [image: a photo of a person walking down a path in front of the eiffel tower]",
+        "index_text": "What is the name of the person who is described as always standing up for justice?",
+        "sources": [
+          "D27:25",
+          "D27:26",
+          "D27:27",
+          "D27:28",
+          "D27:29",
+          "D27:30",
+          "D27:31",
+          "D27:32",
+          "D27:33",
+          "D27:34",
+          "D27:35",
+          "D27:36"
+        ],
+        "session": 27,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:53",
+        "parent_indices": [
+          296,
+          298,
+          300
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -4.92728857655796e-06,
+      "required_sources": [
+        "D27:25",
+        "D27:26",
+        "D27:27",
+        "D27:28",
+        "D27:29",
+        "D27:30",
+        "D27:31",
+        "D27:32",
+        "D27:33",
+        "D27:34"
+      ]
+    },
+    "conv-43:source_probe:53:4": {
+      "id": "conv-43:source_probe:53:4",
+      "gain": 0.2832682043131108,
+      "cost": 189,
+      "unit": {
+        "text": "(Recorded on: 2 January 2024) [D27:25] Tim: Nice one! Why is he your favorite?\n[D27:26] John: He's a great leader and puts others first - that's why he eventually becomes king.\n[D27:27] Tim: Wow, Aragorn's story is so inspiring - from a ranger to king of Gondor. It's amazing how he grows and achieves redemption throughout his journey. [image: a photo of a painting of a man with long hair]\n[D27:28] John: Yeah. His journey is really inspiring. I have a painting in my room to remind me to stay true and be a leader in everything I do. [image: a photo of a painting of a man smoking a cigarette]",
+        "index_text": "What is the name of the person who is described as always standing up for justice?",
+        "sources": [
+          "D27:25",
+          "D27:26",
+          "D27:27",
+          "D27:28"
+        ],
+        "session": 27,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:53",
+        "parent_indices": [
+          296
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -3.2711604833602883,
+      "required_sources": [
+        "D27:27"
+      ]
+    },
+    "conv-43:source_probe:53:16": {
+      "id": "conv-43:source_probe:53:16",
+      "gain": 1.0,
+      "cost": 357,
+      "unit": {
+        "text": "(Recorded on: 2 January 2024) [D27:23] Tim: Wow, me too! That's an awesome collection! Have you watched them heaps? Got any favorite characters from those movies? [image: a photo of a bookcase filled with dvds and games]\n[D27:24] John: Thanks! I've watched a bunch of them and they're inspiring. My favorite character is Aragorn, he grows so much throughout the story. [image: a photo of a bookmark with a picture of a woman kissing a man]\n[D27:25] Tim: Nice one! Why is he your favorite?\n[D27:26] John: He's a great leader and puts others first - that's why he eventually becomes king.\n\n(Recorded on: 2 January 2024) [D27:29] Tim: Wow, that's awesome! What is it about him that makes him so inspiring for you?\n[D27:30] John: Aragorn's brave, selfless, down-to-earth attitude is what inspired me. He never gives up and always stands up for justice.\n[D27:31] Tim: Yeah, he's really inspiring. What's awesome about fantasy books like LOTR is getting lost in another world and seeing all the tiny details. [image: a photo of a map of the world on a piece of paper]\n[D27:32] John: Yeah, that's what I'm thinking! Love this map, it really helps you get lost in another world. What's on it?",
+        "index_text": "What is the name of the person who is described as always standing up for justice?",
+        "sources": [
+          "D27:23",
+          "D27:24",
+          "D27:25",
+          "D27:26",
+          "D27:29",
+          "D27:30",
+          "D27:31",
+          "D27:32"
+        ],
+        "session": 27,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:53",
+        "parent_indices": [
+          295,
+          298
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -2.622598988940202e-06,
+      "required_sources": [
+        "D27:25",
+        "D27:30"
+      ]
+    },
+    "conv-43:source_probe:53:37": {
+      "id": "conv-43:source_probe:53:37",
+      "gain": 1.0,
+      "cost": 210,
+      "unit": {
+        "text": "(Recorded on: 2 January 2024) [D27:27] Tim: Wow, Aragorn's story is so inspiring - from a ranger to king of Gondor. It's amazing how he grows and achieves redemption throughout his journey. [image: a photo of a painting of a man with long hair]\n[D27:28] John: Yeah. His journey is really inspiring. I have a painting in my room to remind me to stay true and be a leader in everything I do. [image: a photo of a painting of a man smoking a cigarette]\n[D27:29] Tim: Wow, that's awesome! What is it about him that makes him so inspiring for you?\n[D27:30] John: Aragorn's brave, selfless, down-to-earth attitude is what inspired me. He never gives up and always stands up for justice.",
+        "index_text": "What is the name of the person who is described as always standing up for justice?",
+        "sources": [
+          "D27:27",
+          "D27:28",
+          "D27:29",
+          "D27:30"
+        ],
+        "session": 27,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:53",
+        "parent_indices": [
+          297
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -3.1789132274676984e-07,
+      "required_sources": [
+        "D27:28",
+        "D27:30"
+      ]
+    },
+    "conv-43:source_probe:56:1": {
+      "id": "conv-43:source_probe:56:1",
+      "gain": 1.0,
+      "cost": 391,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 12 January 2024) John: Barcelona is a must-visit city!\nOriginal dialogue:\n(Recorded on: 12 January 2024) [D29:9] Tim: I'm proud of researching visa requirements for countries I want to visit. It feels like taking initiative is a step towards making my travel dreams a reality!\n[D29:10] John: Great going! Taking initiative is a must if you wanna achieve your goals. I'm excited to hear about all your future adventures!\n[D29:11] Tim: Thanks! I'll keep you in the loop about my travels. Is there anywhere you recommend visiting?\n[D29:12] John: Barcelona is a must-visit city! You'll love exploring the culture, admiring the architecture, and tasting the amazing food in each neighborhood. Plus, the nearby beaches are great for soaking up the sun. Definitely add it to your travel list!\n\nFacts:\n(Recorded on: 12 January 2024) Tim: Barcelona sounds awesome! I've heard so many great things.\n(Recorded on: 12 January 2024) Tim: Cheers! I owe you one. Let me know if you need anything. Bye!\nOriginal dialogue:\n(Recorded on: 12 January 2024) [D29:13] Tim: Barcelona sounds awesome! I've heard so many great things. Definitely adding it to my list. Thanks!\n[D29:14] John: No problem! Glad you liked the suggestion. Let me know if you have any other questions or need help with anything.\n[D29:15] Tim: Cheers! I owe you one. Let me know if you need anything. Bye!",
+        "index_text": "What does John say about Barcelona's food?",
+        "sources": [
+          "D29:10",
+          "D29:11",
+          "D29:12",
+          "D29:13",
+          "D29:14",
+          "D29:15",
+          "D29:9"
+        ],
+        "session": 29,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:56",
+        "parent_indices": [
+          317,
+          319
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -1.4532482771178223,
+      "required_sources": [
+        "D29:9",
+        "D29:10",
+        "D29:11",
+        "D29:12",
+        "D29:13",
+        "D29:14",
+        "D29:15"
+      ]
+    },
+    "conv-43:source_probe:56:5": {
+      "id": "conv-43:source_probe:56:5",
+      "gain": 0.9829228688181855,
+      "cost": 176,
+      "unit": {
+        "text": "(Recorded on: 12 January 2024) [D29:11] Tim: Thanks! I'll keep you in the loop about my travels. Is there anywhere you recommend visiting?\n[D29:12] John: Barcelona is a must-visit city! You'll love exploring the culture, admiring the architecture, and tasting the amazing food in each neighborhood. Plus, the nearby beaches are great for soaking up the sun. Definitely add it to your travel list!\n[D29:13] Tim: Barcelona sounds awesome! I've heard so many great things. Definitely adding it to my list. Thanks!\n[D29:14] John: No problem! Glad you liked the suggestion. Let me know if you have any other questions or need help with anything.",
+        "index_text": "What does John say about Barcelona's food?",
+        "sources": [
+          "D29:11",
+          "D29:12",
+          "D29:13",
+          "D29:14"
+        ],
+        "session": 29,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:56",
+        "parent_indices": [
+          318
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -1.6108792335217004,
+      "required_sources": [
+        "D29:12"
+      ]
+    },
+    "conv-43:source_probe:56:11": {
+      "id": "conv-43:source_probe:56:11",
+      "gain": 0.9914494296720321,
+      "cost": 217,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 12 January 2024) John: Barcelona is a must-visit city!\nOriginal dialogue:\n(Recorded on: 12 January 2024) [D29:9] Tim: I'm proud of researching visa requirements for countries I want to visit. It feels like taking initiative is a step towards making my travel dreams a reality!\n[D29:10] John: Great going! Taking initiative is a must if you wanna achieve your goals. I'm excited to hear about all your future adventures!\n[D29:11] Tim: Thanks! I'll keep you in the loop about my travels. Is there anywhere you recommend visiting?\n[D29:12] John: Barcelona is a must-visit city! You'll love exploring the culture, admiring the architecture, and tasting the amazing food in each neighborhood. Plus, the nearby beaches are great for soaking up the sun. Definitely add it to your travel list!",
+        "index_text": "What does John say about Barcelona's food?",
+        "sources": [
+          "D29:10",
+          "D29:11",
+          "D29:12",
+          "D29:9"
+        ],
+        "session": 29,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:56",
+        "parent_indices": [
+          317
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -1.5321745653945982,
+      "required_sources": [
+        "D29:9",
+        "D29:12"
+      ]
+    },
+    "conv-43:source_probe:8:1": {
+      "id": "conv-43:source_probe:8:1",
+      "gain": 1.0,
+      "cost": 105,
+      "unit": {
+        "text": "(Recorded on: 9 August 2023) [D5:17] Tim: No problem! Let me know what you think after you read it.\n[D5:18] John: Yep, I'll let you know once I'm done reading it. Thanks!\n[D5:19] Tim: I hope you like it. Chat soon!\n[D5:20] John: Me too. Talk to you soon!",
+        "index_text": "What did Tim say they hoped the other would do?",
+        "sources": [
+          "D5:17",
+          "D5:18",
+          "D5:19",
+          "D5:20"
+        ],
+        "session": 5,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:8",
+        "parent_indices": [
+          50
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -3.7173432111739997,
+      "required_sources": [
+        "D5:17",
+        "D5:18",
+        "D5:19",
+        "D5:20"
+      ]
+    },
+    "conv-43:source_probe:8:4": {
+      "id": "conv-43:source_probe:8:4",
+      "gain": 1.0,
+      "cost": 105,
+      "unit": {
+        "text": "(Recorded on: 9 August 2023) [D5:17] Tim: No problem! Let me know what you think after you read it.\n[D5:18] John: Yep, I'll let you know once I'm done reading it. Thanks!\n[D5:19] Tim: I hope you like it. Chat soon!\n[D5:20] John: Me too. Talk to you soon!",
+        "index_text": "What did Tim say they hoped the other would do?",
+        "sources": [
+          "D5:17",
+          "D5:18",
+          "D5:19",
+          "D5:20"
+        ],
+        "session": 5,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:8",
+        "parent_indices": [
+          50
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -3.158284592628365,
+      "required_sources": [
+        "D5:19"
+      ]
+    },
+    "conv-43:source_probe:8:9": {
+      "id": "conv-43:source_probe:8:9",
+      "gain": 1.0,
+      "cost": 105,
+      "unit": {
+        "text": "(Recorded on: 9 August 2023) [D5:17] Tim: No problem! Let me know what you think after you read it.\n[D5:18] John: Yep, I'll let you know once I'm done reading it. Thanks!\n[D5:19] Tim: I hope you like it. Chat soon!\n[D5:20] John: Me too. Talk to you soon!",
+        "index_text": "What did Tim say they hoped the other would do?",
+        "sources": [
+          "D5:17",
+          "D5:18",
+          "D5:19",
+          "D5:20"
+        ],
+        "session": 5,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:8",
+        "parent_indices": [
+          50
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -0.9722491264343261,
+      "required_sources": [
+        "D5:18",
+        "D5:19"
+      ]
+    },
+    "conv-43:source_probe:9:1": {
+      "id": "conv-43:source_probe:9:1",
+      "gain": 1.0,
+      "cost": 451,
+      "unit": {
+        "text": "(Recorded on: 9 August 2023) [D5:9] Tim: That's great! Having a supportive team who are like family is awesome. Having people who motivate you and stick by you is priceless.\n[D5:10] John: Definitely! They encourage me when I'm down too. It's not just in my sport, but in other aspects of life too. We hang out a lot and it's great having that bond.\n[D5:11] Tim: Yeah, having another family is great. It definitely helps with my home life and hobbies.\n[D5:12] John: Having someone to support and motivate you is so important, whether it's in sports or any other aspect of life. I know you've found your peace in reading fantasy books - that's amazing! What book are you currently reading? Anything that has stood out to you?\n\n(Recorded on: 9 August 2023) [D5:13] Tim: Thanks for asking! I'm reading a fantasy book that really captivates me. It takes me to another world where I'm on the edge of my seat and my imagination soars. It's amazing how books can transport us like that.\n[D5:14] John: Books can be so captivating, taking us on such incredible journeys! What's the name of it?\n[D5:15] Tim: It's a book by Patrick Rothfuss and it's awesome! The way the author builds the world and characters is amazing. You should read it!\n[D5:16] John: Sounds cool! I'll definitely check it out. Thanks for the recommendation!\n\n(Recorded on: 9 August 2023) [D5:17] Tim: No problem! Let me know what you think after you read it.\n[D5:18] John: Yep, I'll let you know once I'm done reading it. Thanks!\n[D5:19] Tim: I hope you like it. Chat soon!\n[D5:20] John: Me too. Talk to you soon!",
+        "index_text": "What aspect of the book does Tim find captivating?",
+        "sources": [
+          "D5:10",
+          "D5:11",
+          "D5:12",
+          "D5:13",
+          "D5:14",
+          "D5:15",
+          "D5:16",
+          "D5:17",
+          "D5:18",
+          "D5:19",
+          "D5:20",
+          "D5:9"
+        ],
+        "session": 5,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:9",
+        "parent_indices": [
+          46,
+          48,
+          50
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -1.084071922219462,
+      "required_sources": [
+        "D5:9",
+        "D5:10",
+        "D5:11",
+        "D5:12",
+        "D5:13",
+        "D5:14",
+        "D5:15",
+        "D5:16",
+        "D5:17",
+        "D5:18"
+      ]
+    },
+    "conv-43:source_probe:9:8": {
+      "id": "conv-43:source_probe:9:8",
+      "gain": 0.9966484629979244,
+      "cost": 133,
+      "unit": {
+        "text": "(Recorded on: 9 August 2023) [D5:15] Tim: It's a book by Patrick Rothfuss and it's awesome! The way the author builds the world and characters is amazing. You should read it!\n[D5:16] John: Sounds cool! I'll definitely check it out. Thanks for the recommendation!\n[D5:17] Tim: No problem! Let me know what you think after you read it.\n[D5:18] John: Yep, I'll let you know once I'm done reading it. Thanks!",
+        "index_text": "What aspect of the book does Tim find captivating?",
+        "sources": [
+          "D5:15",
+          "D5:16",
+          "D5:17",
+          "D5:18"
+        ],
+        "session": 5,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:9",
+        "parent_indices": [
+          49
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -1.1011836131413715,
+      "required_sources": [
+        "D5:15"
+      ]
+    },
+    "conv-43:source_probe:9:38": {
+      "id": "conv-43:source_probe:9:38",
+      "gain": 1.0,
+      "cost": 318,
+      "unit": {
+        "text": "(Recorded on: 9 August 2023) [D5:9] Tim: That's great! Having a supportive team who are like family is awesome. Having people who motivate you and stick by you is priceless.\n[D5:10] John: Definitely! They encourage me when I'm down too. It's not just in my sport, but in other aspects of life too. We hang out a lot and it's great having that bond.\n[D5:11] Tim: Yeah, having another family is great. It definitely helps with my home life and hobbies.\n[D5:12] John: Having someone to support and motivate you is so important, whether it's in sports or any other aspect of life. I know you've found your peace in reading fantasy books - that's amazing! What book are you currently reading? Anything that has stood out to you?\n\n(Recorded on: 9 August 2023) [D5:15] Tim: It's a book by Patrick Rothfuss and it's awesome! The way the author builds the world and characters is amazing. You should read it!\n[D5:16] John: Sounds cool! I'll definitely check it out. Thanks for the recommendation!\n[D5:17] Tim: No problem! Let me know what you think after you read it.\n[D5:18] John: Yep, I'll let you know once I'm done reading it. Thanks!",
+        "index_text": "What aspect of the book does Tim find captivating?",
+        "sources": [
+          "D5:10",
+          "D5:11",
+          "D5:12",
+          "D5:15",
+          "D5:16",
+          "D5:17",
+          "D5:18",
+          "D5:9"
+        ],
+        "session": 5,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-43:source_probe:9",
+        "parent_indices": [
+          46,
+          49
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -0.7931402389953696,
+      "required_sources": [
+        "D5:12",
+        "D5:15"
+      ]
+    }
+  }
+}

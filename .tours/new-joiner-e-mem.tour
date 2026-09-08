@@ -1,0 +1,86 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "E-mem 온보딩: 저장에서 에피소드 복원까지",
+  "description": "E-mem의 Master-Assistant 구조를 따라 메모리 저장, 블록 전환, 하이브리드 라우팅, 지역 증거 추출, 최종 집계와 MemoryData 어댑터 연결을 학습하는 투어입니다.",
+  "ref": "codex/vastai-mem0-qwen35",
+  "steps": [
+    {
+      "file": "methods/e-mem/README.md",
+      "line": 15,
+      "title": "문제 정의: 검색이 아니라 에피소드 복원",
+      "description": "E-mem은 긴 대화를 작은 사실로 비맥락화하는 대신, 원문 에피소드 블록을 보존합니다. Master Agent가 전체 작업을 조율하고 Assistant Agent가 선택된 블록 안에서 질의별 증거를 다시 추출한다는 구분이 이후 모든 코드의 기준입니다."
+    },
+    {
+      "file": "methods/e-mem/src/conversation_manager/factory.py",
+      "line": 11,
+      "title": "조립 지점: 두 저장 모드의 공통 입구",
+      "description": "create_chat_manager가 동일한 외부 API 뒤에서 kv_cache와 text 구현을 선택합니다. 전자는 로컬 모델의 attention KV를 저장하고 후자는 원문 JSON과 API 모델을 사용하며, 라우터·블록 크기·overlap 설정은 두 경로가 공유합니다."
+    },
+    {
+      "file": "methods/e-mem/src/conversation_manager/base_chat_manager.py",
+      "line": 104,
+      "title": "Master Agent의 공개 chat 흐름",
+      "description": "auto_save=True이면 입력을 곧바로 저장하고, 일반 모드이면 Manager LLM에 add_memory와 query_memory 도구를 제공해 행동을 고르게 합니다. 검색 결과는 같은 클래스의 aggregator가 합치므로, Manager의 대화 응답과 메모리 블록의 지역 추론은 서로 다른 책임입니다."
+    },
+    {
+      "file": "methods/e-mem/src/memory/memory_agent/text_agent.py",
+      "line": 52,
+      "title": "쓰기 단위: TextMemoryAgent",
+      "description": "각 입력은 토큰 수와 함께 현재 TextBlock에 추가됩니다. 누적 토큰이 block_size에 닿으면 agent가 inactive가 되고 원문 전체로 summary를 생성합니다. summary는 라우팅용 표지판일 뿐, 실제 답변 근거는 계속 원문 블록에서 뽑는다는 점이 핵심입니다."
+    },
+    {
+      "file": "methods/e-mem/src/memory/core/text_loop_handler.py",
+      "line": 248,
+      "title": "블록 수명주기와 overlap",
+      "description": "TextMemoryHandler는 가득 찬 active agent를 inactive 풀과 Router에 등록한 뒤 새 agent를 만듭니다. 직전 블록 끝부분을 overlap_ratio만큼 재생해 경계에서 문맥이 끊기는 문제를 줄이며, 라우터에는 완료된 블록만 들어갑니다."
+    },
+    {
+      "file": "methods/e-mem/src/memory/kv_block_manager/text_block.py",
+      "line": 30,
+      "title": "Text 모드의 실제 영속화",
+      "description": "TextBlock은 chunk마다 원문·토큰 수·시각을 JSON에 즉시 저장합니다. 별도의 agents_metadata.json이 active/inactive 상태와 summary를 기록해 재시작 시 블록을 복원합니다. 저장 위치는 TEXT_DATA_DIR라는 프로세스 전역 환경 변수에 좌우됩니다."
+    },
+    {
+      "file": "methods/e-mem/src/memory/router/hybrid_router.py",
+      "line": 260,
+      "title": "세 가지 검색 인덱스 만들기",
+      "description": "inactive 블록이 추가되면 Router는 summary embedding, 겹치는 원문 chunk embedding, 블록 전체 BM25 인덱스를 함께 재구축합니다. 전역 주제·세부 의미·정확한 이름/키워드를 서로 다른 신호로 잡기 위한 준비 단계입니다."
+    },
+    {
+      "file": "methods/e-mem/src/memory/router/hybrid_router.py",
+      "line": 427,
+      "title": "Multi-Pathway Routing 점수 결합",
+      "description": "질의마다 세 점수를 0~1로 정규화하고 기본 가중치 0.3/0.4/0.3으로 합쳐 max_blocks개를 선택합니다. 모든 점수가 0이면 첫 블록을 최소 fallback으로 고르고, 계산 실패 시 설정에 따라 LLM Router 또는 앞쪽 블록들로 후퇴합니다."
+    },
+    {
+      "file": "methods/e-mem/src/memory/memory_agent/text_agent.py",
+      "line": 96,
+      "title": "Assistant의 지역 에피소드 복원",
+      "description": "선택된 TextMemoryAgent는 벡터 검색 결과 자체를 반환하지 않습니다. 자기 블록의 원문 전체를 API LLM에 넣고 질문과 관련된 원정보를 날짜와 함께 추출하게 하므로, 순서와 주변 맥락을 유지한 evidence가 만들어집니다."
+    },
+    {
+      "file": "methods/e-mem/src/memory/router/hybrid_router.py",
+      "line": 582,
+      "title": "선택된 Assistant들을 실행",
+      "description": "map_reduce_blocks는 선택된 블록들을 병렬 또는 KV shared-model batch 방식으로 질의하고 결과 목록을 모읍니다. 이름은 map-reduce지만 이 함수의 책임은 map과 수집까지이며, 최종 의미적 reduce는 BaseChatManager의 aggregator가 담당합니다."
+    },
+    {
+      "file": "methods/e-mem/src/memory/core/text_loop_handler.py",
+      "line": 297,
+      "title": "오래된 기억과 방금 전 기억 합치기",
+      "description": "완료된 inactive 블록은 Router 경로로, 아직 차지 않은 active 블록은 직접 질의하며 두 작업을 병렬 실행합니다. active 블록은 아직 summary/index가 없어도 검색에서 빠지지 않도록 별도 경로를 갖는 것이 중요한 예외 처리입니다."
+    },
+    {
+      "file": "methods/e-mem/src/memory/memory_agent/agent.py",
+      "line": 454,
+      "title": "KV 모드가 Text 모드와 다른 지점",
+      "description": "KV MemoryAgent는 원문 토큰을 한 번 forward해 past_key_values를 누적하고, 블록이 닫힐 때 CPU tensor로 디스크에 저장합니다. 질의 시 이 latent context 뒤에 질문 토큰만 이어 붙여 재인코딩 비용을 줄이지만, 캐시는 model_id와 구조가 같은 모델에서만 재사용할 수 있습니다."
+    },
+    {
+      "file": "methods/e_mem/e_mem_adapter.py",
+      "line": 13,
+      "title": "MemoryData 벤치마크에 연결되는 경계",
+      "description": "이 저장소의 EMemAdapter는 upstream을 text 모드로 고정하고 add_chunk/retrieve/save/load 네 동작으로 감쌉니다. 각 history의 TEXT_DATA_DIR를 state_dir 아래로 격리하고 잠금으로 전역 환경 변수 충돌을 막으며, retrieve에서는 지역 evidence를 한 번 더 aggregator로 합쳐 공통 벤치마크 응답 경로에 넘깁니다."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+\begin{table}[t!]
+\centering
+\caption{Results on LongMemEval.
+$\text{\#Tok}_{\text{Avg.}}$ is the average length of memory tokens.
+Experiments use NV-Embed-v2 (abbreviated as NVE) as the embedding model for retrieval, and Qwen2.5-32B (Q32) / Qwen2.5-72B (Q72) / gpt-4o (4o) as base LLMs for structuring and reasoning. 
+* denotes results taken from previous work. 
+$\dagger$ denotes methods evaluated on a subset of the full benchmark. Best is \textbf{bolded}.}
+\label{tab:longmemeval_res_main}
+
+\begin{threeparttable}
+\resizebox{0.48\textwidth}{!}{
+\begin{tabular}{c|cc|c|cc}
+\toprule
+Method & Emb & LLM & Acc. & $\text{\#Tok}_{\text{Avg.}}$ & Info. Density\\
+\rowcolor{groupgray}\multicolumn{6}{c}{Vanilla Baseline}          \\
+No Context & - & Q72 & 14.8 & - & -\\
+All Context & - & Q72 & 62.4 & 107K & 4.2e-5  \\
+\rowcolor{groupgray}\multicolumn{6}{c}{Task-Agnostic}          \\
+Vanilla Retrieval & NVE & Q72 & 63.6 & 3742.52 & 1.2e-3\\
+A-Mem$^{\dagger}$ & NVE & 4o + Q72 & 61.0 & 4225.85 & 1.0e-3 \\
+\rowcolor{groupgray}\multicolumn{6}{c}{Task-Specific}          \\
+Zep* & BGE-m3 & 4o & 71.2 & 1600 & - \\
+LiCoMemory$^{\dagger}$ & NVE & 4o + Q72 & 73.0 & 5914.85 & 9.3e-4 \\
+\rowcolor{ShadowBlue}\multicolumn{6}{c}{Ours}          \\
+\plugmem & NVE & Q32 + Q72 & \textbf{75.1} & \textbf{362.58} &  \textbf{1.6e-2}\\
+\bottomrule
+\end{tabular}
+}
+
+\begin{tablenotes}[flushleft]
+\scriptsize
+\item \parbox{0.5\textwidth}{\textit{Note.} More abbreviations: 
+Llama3.3-70B (L70).}
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

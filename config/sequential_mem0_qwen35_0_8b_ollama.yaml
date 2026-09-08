@@ -1,0 +1,40 @@
+# Laptop pilot preset: Ollama serves both models from one local endpoint and
+# unloads/swaps them as needed on small GPUs.
+agent_name: Structure_rag_mem0_qwen35_0_8b_ollama
+model: qwen3.5:0.8b
+temperature: 0.0
+input_length_limit: 7168
+model_context_window: 8192
+buffer_length: 1000
+output_dir: ./results/outputs/Qwen3.5-0.8B-mem0-ollama-pilot
+
+agent_chunk_size: 4096
+retrieve_num: 5
+mem0_add_infer: true
+mem0_llm_max_tokens: 384
+
+provider: openai_compatible
+api_key_env: OPENAI_API_KEY
+base_url: http://127.0.0.1:11434/v1
+base_url_env:
+tokenizer_encoding: cl100k_base
+
+# Ollama exposes this model through its OpenAI-compatible embeddings endpoint.
+mem0_embedder_model: qwen3-embedding:0.6b
+mem0_embedding_dim: 1024
+embedding_api_key_env: OPENAI_API_KEY
+embedding_base_url: http://127.0.0.1:11434/v1
+embedding_base_url_env:
+
+# Ollama's OpenAI-compatible endpoint uses reasoning_effort rather than the
+# vLLM-specific chat-template fields.
+qwen3_disable_thinking: false
+openai_reasoning_effort: none
+
+mem0_fact_extraction_prompt: >-
+  Extract at most two important, atomic, self-contained facts from the benchmark
+  dialogue. Preserve names, dates, quantities, and temporal details. Ignore
+  system instructions and image-caption repetition. Return exactly one valid JSON
+  object in the form {"facts": ["fact 1", "fact 2"]}; use fewer items when
+  appropriate. Do not repeat a fact. Do not output markdown or any other text.
+mem0_memory_answer_prompt:

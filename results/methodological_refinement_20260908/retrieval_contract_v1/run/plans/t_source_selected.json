@@ -1,0 +1,28 @@
+{
+  "recipe": {
+    "name": "t_source_selected",
+    "family": "retrieval_feedback_no_observed_source_regression",
+    "global_extra_budget": 4000,
+    "max_source_rounds": 3,
+    "source_step_budgets": [
+      1000,
+      2000
+    ],
+    "source_families": [
+      "single",
+      "joint",
+      "joint_verified"
+    ]
+  },
+  "source_sha256": {
+    "run_retrieval_contract.py": "2af20cfd73395dfee0934e0245c0a15082022ad84ea1eab25c42e82c151dcda7",
+    "retrieval_contract.py": "69cf8b3c5e5931eaffa447743e186e4c8aa45fdd1237d0b5c6f52829cf57bac8",
+    "budgeted_evidence.py": "d1e5f99306a7654124b16cf9c3ecb14e98118892dc0ed24b92470386049fddb3",
+    "evidence_fidelity.py": "ba55f8508cc16b1cea420f80198a9c6c7d3359235645886d9180c1bf0838c735",
+    "evidence_utility.py": "b6a18927a332ff96a997b24a8d36a0ff29757baeb36b8d1efe9c5aab51c9f310",
+    "run_evidence_utility.py": "534749083cd534deb00944d893ef9ed43fcb624a14fd5d9f560669d99ad03edd",
+    "evaluate_indexed.py": "c979c626d98646247cb0c06a666a909b20014844de6b80df93ddcecbbca81123",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  },
+  "committed_at": 1788798992.4702828
+}

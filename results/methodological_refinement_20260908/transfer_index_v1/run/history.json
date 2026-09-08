@@ -1,0 +1,162 @@
+{
+  "rounds": [
+    {
+      "name": "z_within_010",
+      "recipe": {
+        "name": "z_within_010",
+        "family": "source_supervised_memory_index",
+        "method": "rigid_cayley_alignment",
+        "radius": 0.1,
+        "scope": "within"
+      },
+      "dev": {
+        "n": 70,
+        "official_f1": 0.5512337530194673,
+        "generic_token_f1": 0.5442017714326087,
+        "read_tokens": 2018.1285714285714,
+        "memory_tokens": 59112.857142857145,
+        "cited_source_recall": 0.8257142857142856,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.45787037037037037
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.7051020408163265
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.014035087719298244
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.5935978014588
+          }
+        },
+        "failures_below_half_f1": 28,
+        "failures_missing_cited_sources": 11
+      },
+      "accepted": false
+    },
+    {
+      "name": "z_transfer_010",
+      "recipe": {
+        "name": "z_transfer_010",
+        "family": "source_supervised_memory_index",
+        "method": "rigid_cayley_alignment",
+        "radius": 0.1,
+        "scope": "transfer"
+      },
+      "dev": {
+        "n": 70,
+        "official_f1": 0.5663650336018756,
+        "generic_token_f1": 0.5559393741302003,
+        "read_tokens": 2018.2285714285715,
+        "memory_tokens": 59112.857142857145,
+        "cited_source_recall": 0.8257142857142856,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.4913800705467372
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.6693877551020408
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.009523809523809523
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.623844715039047
+          }
+        },
+        "failures_below_half_f1": 26,
+        "failures_missing_cited_sources": 11
+      },
+      "accepted": false
+    },
+    {
+      "name": "z_within_030",
+      "recipe": {
+        "name": "z_within_030",
+        "family": "source_supervised_memory_index",
+        "method": "rigid_cayley_alignment",
+        "radius": 0.3,
+        "scope": "within"
+      },
+      "dev": {
+        "n": 70,
+        "official_f1": 0.5674218207300914,
+        "generic_token_f1": 0.5570324577610907,
+        "read_tokens": 2016.2857142857142,
+        "memory_tokens": 59112.857142857145,
+        "cited_source_recall": 0.8257142857142856,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.4628306878306878
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.6693877551020408
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.016666666666666666
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.6336101869840061
+          }
+        },
+        "failures_below_half_f1": 26,
+        "failures_missing_cited_sources": 10
+      },
+      "accepted": false
+    },
+    {
+      "name": "z_transfer_030",
+      "recipe": {
+        "name": "z_transfer_030",
+        "family": "source_supervised_memory_index",
+        "method": "rigid_cayley_alignment",
+        "radius": 0.3,
+        "scope": "transfer"
+      },
+      "dev": {
+        "n": 70,
+        "official_f1": 0.5329468061087872,
+        "generic_token_f1": 0.5260645811122001,
+        "read_tokens": 2014.8857142857144,
+        "memory_tokens": 59112.857142857145,
+        "cited_source_recall": 0.8221428571428571,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.4244047619047619
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.6336734693877552
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.008695652173913044
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.5973977551912775
+          }
+        },
+        "failures_below_half_f1": 31,
+        "failures_missing_cited_sources": 12
+      },
+      "accepted": false
+    }
+  ],
+  "best_f1": 0.5927437370002835,
+  "winner": "s_parent_single_2000"
+}

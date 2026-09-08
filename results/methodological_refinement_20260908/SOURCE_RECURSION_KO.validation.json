@@ -1,0 +1,30 @@
+{
+  "source_queries_verified": 97,
+  "source_predictions_verified": 1649,
+  "counterfactual_trials_verified": 16,
+  "baseline_preserved": 80,
+  "selected_preserved": 94,
+  "decisions": [
+    {
+      "iteration": 0,
+      "name": "iter0_single_2000",
+      "repairs": 12,
+      "regressions": 0,
+      "preserved": 92
+    },
+    {
+      "iteration": 1,
+      "name": "iter1_joint_2000",
+      "repairs": 2,
+      "regressions": 0,
+      "preserved": 94
+    }
+  ],
+  "choice_maximization_verified": true,
+  "observed_nonregression_verified": true,
+  "all_trial_storage_caps_verified": true,
+  "final_memory_digest_verified": true,
+  "source_lock_precedes_new_dev_output": true,
+  "selected_dev_f1": 0.5912745079451328,
+  "reference_dev_f1": 0.5927437370002835
+}

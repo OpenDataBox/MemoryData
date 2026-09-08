@@ -1,0 +1,18 @@
+{
+  "recipe": {
+    "name": "r28_filtered_fact_anchor",
+    "parent": "r22_anchored_fact_raw_pair",
+    "operations": [
+      {
+        "op": "filter_social_facts"
+      }
+    ]
+  },
+  "parent": "r22_anchored_fact_raw_pair",
+  "committed_at": 1788791114.4549315,
+  "recipe_sha256": "35d4745d8e76294c3e7c1682749cd32fe6223330db251255c1973227e3a8a2df",
+  "source_sha256": {
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

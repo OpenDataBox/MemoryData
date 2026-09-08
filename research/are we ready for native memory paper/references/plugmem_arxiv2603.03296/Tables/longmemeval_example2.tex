@@ -1,0 +1,39 @@
+\begin{table}[H]
+\centering
+\small
+\caption{Example 1 of retrieval trace showing hierarchical retrieval for episodic memory.}
+\label{tab:case_longmemeval_2}
+
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{p{0.97\linewidth}}
+
+\toprule
+\textbf{LongMemEval Case Study: Hierarchical Retrieval}\\
+\midrule
+\textbf{Query.} \emph{"How many weddings have I attended in this year?"}\\
+\midrule
+\textbf{Semantic Memory Retrieved}\\
+\midrule
+\(\triangleright\) \textbf{Semantic Memory 669} : \emph{User's sister's wedding was amazing, and User had a great time planning it with her, including choosing the dress and deciding on the menu.}\\
+\(\triangleright\) \textbf{Semantic Memory 141} : \emph{User is planning a wedding and dreams of having a small, outdoor ceremony at a beach or in a park. User recently attended their college roommate's wedding in the city which had a rooftop garden ceremony overlooking the skyline.}\\
+\(\triangleright\) \textbf{Semantic Memory 146} : \emph{Social media platforms like Instagram and Pinterest can be used to follow wedding planners, venues, and photographers. Reading reviews on Yelp or Google provides insights into the venue's reputation.}\\
+...\\
+\midrule
+\textbf{Episodic Memory Retrieved}\\
+\midrule
+\(\triangleright\) \textbf{Episodic Memory Session 24} : \emph{Date: 2023/10/15 (Sun) 04:44 User: I'm planning my own wedding and I was wondering if you could give me some tips on how to choose the perfect venue. By the way, I just got back from a friend's wedding last weekend, and it was amazing - the bride, Jen, looked stunning in her bohemian-inspired dress, and her husband, Tom, was clearly smitten with her. It was at a rustic barn in the countryside, and it was so cozy and relaxed...}\\
+\(\triangleright\) \textbf{Episodic Memory Session 6} : \emph{Date: 2023/10/15 (Sun) 10:57 User: I'm planning my own wedding and I need some help with finding a venue. I've always dreamed of having a small, outdoor ceremony, maybe at a beach or in a park. Do you have any recommendations or resources for finding the perfect spot? By the way, I just got back from my college roommate's wedding in the city, and it was beautiful - they had a rooftop garden ceremony overlooking the skyline, and it was so romantic. My friend Emily finally got to tie the knot with her partner Sarah, and it was amazing to see them so happy after waiting for marriage equality... }\\
+...\\
+\midrule
+\textbf{Reasoning}\\
+\midrule
+\(\triangleright\) \emph{To determine how many weddings you have attended this year, let's review the information from the relevant memories provided:}\\
+\emph{1. \textbf{Cousin's Wedding at a Vineyard (August)}: You mentioned attending your cousin Rachel's wedding at a vineyard in August.}\\
+\emph{2. \textbf{College Roommate's Wedding in the City}: You mentioned attending your college roommate's wedding, which had a rooftop garden ceremony.}\\
+\emph{3. \textbf{Friend Jen's Wedding at a Rustic Barn}: You mentioned attending your friend Jen's wedding at a rustic barn in the countryside last weekend...}\\
+\midrule
+\textbf{Answer.} \textbf{"Therefore, you have attended 3 weddings this year."}.\\
+\bottomrule
+\end{tabularx}
+\end{table}

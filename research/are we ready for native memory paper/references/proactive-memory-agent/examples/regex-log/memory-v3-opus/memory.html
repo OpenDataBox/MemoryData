@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Visualization</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1a2e;
+            color: #eee;
+        }
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        .header p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+        .memory-stats {
+            background: #16213e;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+        }
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #f5576c;
+        }
+        .memory-section {
+            background: #16213e;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .section-header {
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 16px;
+            border-bottom: 2px solid;
+        }
+        .section-header.status {
+            background-color: #2d2d5e;
+            border-bottom-color: #9c27b0;
+            color: #ce93d8;
+        }
+        .section-header.knowledge {
+            background-color: #1e3a5f;
+            border-bottom-color: #2196f3;
+            color: #64b5f6;
+        }
+        .section-header.procedural {
+            background-color: #1e4d2b;
+            border-bottom-color: #4caf50;
+            color: #81c784;
+        }
+        .section-content {
+            padding: 20px;
+        }
+        .memory-entry {
+            background: #0f0f1a;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            border-left: 3px solid #444;
+        }
+        .memory-entry.env { border-left-color: #ff9800; }
+        .memory-entry.path { border-left-color: #2196f3; }
+        .memory-entry.fact { border-left-color: #9c27b0; }
+        .memory-entry.bug { border-left-color: #f44336; }
+        .memory-entry.perf { border-left-color: #4caf50; }
+        .entry-id {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .entry-content {
+            color: #ddd;
+        }
+        .entry-meta {
+            font-size: 11px;
+            color: #555;
+            margin-top: 8px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .tag-env { background: #ff9800; color: #000; }
+        .tag-path { background: #2196f3; color: #fff; }
+        .tag-fact { background: #9c27b0; color: #fff; }
+        .tag-bug { background: #f44336; color: #fff; }
+        .tag-perf { background: #4caf50; color: #fff; }
+        .status-box {
+            background: #0f0f1a;
+            border-radius: 6px;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            border-left: 3px solid #9c27b0;
+        }
+        .empty-state {
+            color: #666;
+            font-style: italic;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🧠 Memory Visualization</h1>
+        <p><strong>Total Entries:</strong> 5</p>
+    </div>
+    <div class="memory-stats">
+        <div class="stat-item">
+            <span class="stat-label">Status Length</span>
+            <span class="stat-value">275 chars</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Knowledge Entries</span>
+            <span class="stat-value">2</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Procedural Entries</span>
+            <span class="stat-value">3</span>
+        </div>
+    </div>
+
+    <div class="memory-section">
+        <div class="section-header status">
+            📊 Working Status
+        </div>
+        <div class="section-content">
+            <div class="status-box">Task COMPLETE. Regex saved to /app/regex.txt. Passes all comprehensive tests: 7 correct matches, correctly rejects invalid dates (Feb 30, Apr 31), boundary violations, leading-zero IPs, lines without IPv4, and fake date patterns like 1234-12-1234. Agent marked task complete.</div>
+        </div>
+    </div>
+
+    <div class="memory-section">
+        <div class="section-header knowledge">
+            📚 Knowledge Memory
+        </div>
+        <div class="section-content">
+            <div class="memory-entry ">
+                <div class="entry-id">ID: bZK2jdwU</div>
+                <div class="entry-content">Task: Write a regex to match dates (YYYY-MM-DD) in lines containing IPv4 addresses in a log file. Save to /app/regex.txt.
+
+Key requirements:
+1. Match dates in YYYY-MM-DD format only in lines that also contain an IPv4 address
+2. If multiple dates in a line, match only the LAST date
+3. February can have up to 29 days (no leap year distinction needed)
+4. IPv4 addresses: normal decimal notation, no leading zeros in octets
+5. Valid dates and IPv4 addresses must NOT be immediately preceded or followed by alphanumeric characters (word boundary-like constraint)
+6. Watch for false matches like &quot;1134-12-1234&quot; that look similar but aren&#x27;t valid
+
+Regex usage: Python re.findall(pattern, log_text, re.MULTILINE)
+Output file: /app/regex.txt</div>
+                <div class="entry-meta">Created: 2026-03-24T07:15:17 | Accessed: 0 times</div>
+            </div>
+            <div class="memory-entry ">
+                <div class="entry-id">ID: RdyyNneG</div>
+                <div class="entry-content">Date validation rules for regex:
+- YYYY: 4-digit year (likely 0000-9999 or reasonable range)
+- MM: 01-12
+- DD: depends on month:
+  - Months 01,03,05,07,08,10,12: 01-31
+  - Months 04,06,09,11: 01-30
+  - Month 02: 01-29
+- Must not be preceded/followed by alphanumeric chars
+
+IPv4 validation rules:
+- Each octet: 0-255, no leading zeros (0 is ok, but 01, 001 etc are not)
+- Separated by dots
+- Must not be preceded/followed by alphanumeric chars
+
+The regex needs to use lookahead/lookbehind to check for IPv4 presence on the line, and capture only the last date.</div>
+                <div class="entry-meta">Created: 2026-03-24T07:15:17 | Accessed: 0 times</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="memory-section">
+        <div class="section-header procedural">
+            🔧 Procedural Memory
+        </div>
+        <div class="section-content">
+            <div class="memory-entry ">
+                <div class="entry-id">ID: Y9orzhMB</div>
+                <div class="entry-content">Regex task: IPv4 octet pattern bug - using `[1-9]\d|0` misses single digits 1-9. Fix: use `[1-9]\d|[0-9]` which covers 0-9 single digits, 10-99, and the higher ranges (100-199, 200-249, 250-255) are handled by other alternatives.</div>
+                <div class="entry-meta">Created: 2026-03-24T07:27:27 | Accessed: 0 times</div>
+            </div>
+            <div class="memory-entry ">
+                <div class="entry-id">ID: 7Bwi4MCe</div>
+                <div class="entry-content">Regex task: `.*(?&lt;![a-zA-Z0-9])` doesn&#x27;t work as expected - greedy `.*` consumes everything then backtracks, but the lookbehind checks the char at the backtrack position which causes failures. Solution: use `\b` word boundaries instead, which work correctly with `.*` greedy matching. Alternative: use `.*[^a-zA-Z0-9]` to explicitly consume the boundary char, but `\b` is simpler and works.</div>
+                <div class="entry-meta">Created: 2026-03-24T07:27:27 | Accessed: 0 times</div>
+            </div>
+            <div class="memory-entry ">
+                <div class="entry-id">ID: nr9QvRfA</div>
+                <div class="entry-content">Regex task: Final working pattern structure for &quot;match last date on lines with IPv4&quot;:
+^(?=.*\b IPv4_PATTERN \b).*\b(DATE_CAPTURE)\b(?!.*\b DATE_PATTERN \b)
+- Lookahead at ^ checks line has valid IPv4
+- Greedy .* before date capture ensures we get the last one
+- Negative lookahead after date ensures no valid date follows
+- \b boundaries prevent partial matches
+- Single capturing group ensures re.findall returns strings not tuples</div>
+                <div class="entry-meta">Created: 2026-03-24T07:27:27 | Accessed: 0 times</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

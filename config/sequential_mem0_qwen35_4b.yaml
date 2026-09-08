@@ -1,0 +1,38 @@
+# Mem0 preset for a local Qwen3.5-4B OpenAI-compatible endpoint.
+# The Vast.ai launcher in scripts/vastai/overrides the endpoint and served-model
+# values at runtime when the corresponding environment variables are set.
+agent_name: Structure_rag_mem0_qwen35_4b
+model: Qwen3.5-4B
+temperature: 0.7
+input_length_limit: 30000
+model_context_window: 32768
+buffer_length: 2000
+output_dir: ./results/outputs/Qwen3.5-4B-mem0
+
+# Mem0 runtime and retrieval settings.
+agent_chunk_size: 4096
+retrieve_num: 100
+mem0_add_infer: true
+
+# Local chat-completion endpoint.
+provider: openai_compatible
+api_key_env: OPENAI_API_KEY
+base_url: http://127.0.0.1:9909/v1
+base_url_env:
+azure_endpoint:
+azure_api_version:
+tokenizer_encoding: cl100k_base
+
+# Keep Qwen thinking disabled for Mem0 fact extraction and benchmark answers.
+qwen3_disable_thinking: true
+
+# Local embedding endpoint. Mem0's Qdrant collection uses the 4B model's
+# 2560-dimensional vectors.
+mem0_embedder_model: Qwen3-Embedding-4B
+embedding_api_key_env: OPENAI_API_KEY
+embedding_base_url: http://127.0.0.1:9009/v1
+embedding_base_url_env:
+
+# Optional prompt overrides. Empty values select benchmark-specific prompts.
+mem0_fact_extraction_prompt:
+mem0_memory_answer_prompt:

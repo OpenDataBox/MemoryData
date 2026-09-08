@@ -1,0 +1,584 @@
+{
+  "args": {
+    "out": "runs/crossview_refinement_v1",
+    "model": "Qwen/Qwen3-8B",
+    "embed_model": "Qwen/Qwen3-Embedding-0.6B",
+    "embed_batch_size": 4,
+    "seed": 20260907,
+    "budget": 2048
+  },
+  "source_sha256": {
+    "run_crossview_refinement.py": "1c6ea62147d41595e6f1c2256620eb4f9ec6525ad6b2669053165889900cfef6",
+    "crossview_probes.py": "4205d2bd663569135d9514df7a7eabeebe4b9185be6a8108f8c2a8781a22ae5e",
+    "retrieval_contract.py": "69cf8b3c5e5931eaffa447743e186e4c8aa45fdd1237d0b5c6f52829cf57bac8",
+    "budgeted_evidence.py": "d1e5f99306a7654124b16cf9c3ecb14e98118892dc0ed24b92470386049fddb3",
+    "evidence_fidelity.py": "ba55f8508cc16b1cea420f80198a9c6c7d3359235645886d9180c1bf0838c735",
+    "evidence_utility.py": "b6a18927a332ff96a997b24a8d36a0ff29757baeb36b8d1efe9c5aab51c9f310",
+    "run_evidence_utility.py": "534749083cd534deb00944d893ef9ed43fcb624a14fd5d9f560669d99ad03edd",
+    "evaluate_indexed.py": "c979c626d98646247cb0c06a666a909b20014844de6b80df93ddcecbbca81123",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  },
+  "environment": {
+    "models": {
+      "Qwen/Qwen3-8B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "Qwen/Qwen3-Embedding-0.6B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-Embedding-0.6B/snapshots/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+      }
+    },
+    "packages": {
+      "torch": "2.8.0",
+      "vllm": "0.10.2",
+      "transformers": "4.56.2",
+      "sentence-transformers": "5.1.0",
+      "nltk": "3.9.1",
+      "numpy": "2.2.6"
+    },
+    "data_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4"
+  },
+  "parent_protocol_sha256": "8be6168fe1ad6fdba4bbc722efa6955ebdfc087a65200a700f2fa6d01e1a50ce",
+  "parent_memory_sha256": "66d7b35af3c0535a9aad39359af55f79e6084bbc811262b8e91ac0f1f465570a",
+  "original_source_probe_digest": "30f775080714c3ef13e345643da8aab0f78a0ad103e68f62baa8150a4962c43b",
+  "records": [
+    {
+      "id": "conv-26:23",
+      "conv_id": "conv-26",
+      "qa_index": 23,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:47",
+      "conv_id": "conv-26",
+      "qa_index": 47,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:80",
+      "conv_id": "conv-26",
+      "qa_index": 80,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:54",
+      "conv_id": "conv-26",
+      "qa_index": 54,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:64",
+      "conv_id": "conv-26",
+      "qa_index": 64,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:95",
+      "conv_id": "conv-26",
+      "qa_index": 95,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:117",
+      "conv_id": "conv-26",
+      "qa_index": 117,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:96",
+      "conv_id": "conv-26",
+      "qa_index": 96,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:110",
+      "conv_id": "conv-26",
+      "qa_index": 110,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:130",
+      "conv_id": "conv-26",
+      "qa_index": 130,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:3",
+      "conv_id": "conv-30",
+      "qa_index": 3,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:28",
+      "conv_id": "conv-30",
+      "qa_index": 28,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:12",
+      "conv_id": "conv-30",
+      "qa_index": 12,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:21",
+      "conv_id": "conv-30",
+      "qa_index": 21,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:63",
+      "conv_id": "conv-30",
+      "qa_index": 63,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:71",
+      "conv_id": "conv-30",
+      "qa_index": 71,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:62",
+      "conv_id": "conv-30",
+      "qa_index": 62,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:70",
+      "conv_id": "conv-30",
+      "qa_index": 70,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:74",
+      "conv_id": "conv-30",
+      "qa_index": 74,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:54",
+      "conv_id": "conv-30",
+      "qa_index": 54,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:3",
+      "conv_id": "conv-41",
+      "qa_index": 3,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:40",
+      "conv_id": "conv-41",
+      "qa_index": 40,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:46",
+      "conv_id": "conv-41",
+      "qa_index": 46,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:56",
+      "conv_id": "conv-41",
+      "qa_index": 56,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:125",
+      "conv_id": "conv-41",
+      "qa_index": 125,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:72",
+      "conv_id": "conv-41",
+      "qa_index": 72,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:85",
+      "conv_id": "conv-41",
+      "qa_index": 85,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:86",
+      "conv_id": "conv-41",
+      "qa_index": 86,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:65",
+      "conv_id": "conv-41",
+      "qa_index": 65,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:87",
+      "conv_id": "conv-41",
+      "qa_index": 87,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:18",
+      "conv_id": "conv-43",
+      "qa_index": 18,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:57",
+      "conv_id": "conv-43",
+      "qa_index": 57,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:33",
+      "conv_id": "conv-43",
+      "qa_index": 33,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:70",
+      "conv_id": "conv-43",
+      "qa_index": 70,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:117",
+      "conv_id": "conv-43",
+      "qa_index": 117,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:95",
+      "conv_id": "conv-43",
+      "qa_index": 95,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:76",
+      "conv_id": "conv-43",
+      "qa_index": 76,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:142",
+      "conv_id": "conv-43",
+      "qa_index": 142,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:125",
+      "conv_id": "conv-43",
+      "qa_index": 125,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:140",
+      "conv_id": "conv-43",
+      "qa_index": 140,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:35",
+      "conv_id": "conv-44",
+      "qa_index": 35,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:14",
+      "conv_id": "conv-44",
+      "qa_index": 14,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:30",
+      "conv_id": "conv-44",
+      "qa_index": 30,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:11",
+      "conv_id": "conv-44",
+      "qa_index": 11,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:33",
+      "conv_id": "conv-44",
+      "qa_index": 33,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:61",
+      "conv_id": "conv-44",
+      "qa_index": 61,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:119",
+      "conv_id": "conv-44",
+      "qa_index": 119,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:120",
+      "conv_id": "conv-44",
+      "qa_index": 120,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:90",
+      "conv_id": "conv-44",
+      "qa_index": 90,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:77",
+      "conv_id": "conv-44",
+      "qa_index": 77,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:86",
+      "conv_id": "conv-48",
+      "qa_index": 86,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:30",
+      "conv_id": "conv-48",
+      "qa_index": 30,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:29",
+      "conv_id": "conv-48",
+      "qa_index": 29,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:28",
+      "conv_id": "conv-48",
+      "qa_index": 28,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:92",
+      "conv_id": "conv-48",
+      "qa_index": 92,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:146",
+      "conv_id": "conv-48",
+      "qa_index": 146,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:101",
+      "conv_id": "conv-48",
+      "qa_index": 101,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:178",
+      "conv_id": "conv-48",
+      "qa_index": 178,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:158",
+      "conv_id": "conv-48",
+      "qa_index": 158,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:64",
+      "conv_id": "conv-48",
+      "qa_index": 64,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:48",
+      "conv_id": "conv-49",
+      "qa_index": 48,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:7",
+      "conv_id": "conv-49",
+      "qa_index": 7,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:13",
+      "conv_id": "conv-49",
+      "qa_index": 13,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:73",
+      "conv_id": "conv-49",
+      "qa_index": 73,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:57",
+      "conv_id": "conv-49",
+      "qa_index": 57,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:92",
+      "conv_id": "conv-49",
+      "qa_index": 92,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:118",
+      "conv_id": "conv-49",
+      "qa_index": 118,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:143",
+      "conv_id": "conv-49",
+      "qa_index": 143,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:107",
+      "conv_id": "conv-49",
+      "qa_index": 107,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:96",
+      "conv_id": "conv-49",
+      "qa_index": 96,
+      "category": 4,
+      "split": "dev"
+    }
+  ],
+  "excluded_holdout_conversations": [
+    "conv-42",
+    "conv-47",
+    "conv-50"
+  ],
+  "reader": "Answer the question using only the provided conversation memory. Give a concise exact answer: a name, date, number, or short phrase. For a list question include every supported item, separated by commas. Use the session dates to interpret relative times, but distinguish the event date from the date someone talked about it. If unsupported, answer unknown. No explanation or introductory text.",
+  "recipes": [
+    {
+      "name": "v_crossview_selected",
+      "family": "disjoint_query_view_source_feedback",
+      "global_extra_budget": 4000,
+      "max_source_rounds": 3,
+      "source_step_budgets": [
+        1000,
+        2000
+      ],
+      "source_families": [
+        "single",
+        "joint",
+        "joint_verified"
+      ]
+    }
+  ],
+  "reference": {
+    "name": "s_parent_single_2000",
+    "expected_f1": 0.5927437370002835
+  },
+  "view_schema": {
+    "type": "object",
+    "properties": {
+      "question_1": {
+        "type": "string"
+      },
+      "question_2": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "question_1",
+      "question_2"
+    ],
+    "additionalProperties": false
+  },
+  "view_writer": "Produce two independently worded natural questions requesting the SAME information as the original source question. Preserve its person, event, time scope, requested granularity, and required facts. Use substantially different sentence structures from the original and each other. Make each question understandable within the whole conversation using source-supported event context when necessary. Do not give away the answer, add answer hints, invent facts, or mention source IDs. Return only a JSON object with string fields question_1 and question_2.",
+  "view_question_check": "Judge two questions in the context of the original dialogue. Output exactly EQUIVALENT if they request the same information at the same granularity about the same person/event/time scope, and the new question does not newly reveal or imply the reference answer. Faithful rewording and source-supported clarification of the event are allowed. Output DIFFERENT if the requested fact changes, becomes leading, or needs a different answer. Output UNKNOWN if uncertain. No other text.",
+  "selection": "Same source-only no-observed-regression recursion as prior run, but fit questions use independent wording absent from every stored question cue. Audit query views evaluated only after source selection lock.",
+  "limits": "Paraphrase audit tests other wording of the same source facts, judged by the same model; not unseen conversations. New benchmark question audit100 remains unopened. Full memory retained, +4000 token cap per conversation."
+}

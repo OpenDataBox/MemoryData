@@ -1,0 +1,74 @@
+\begin{table}[H]
+\centering
+\small
+\caption{Example 1 of \plugmem assisting WebArena agent.}
+\label{tab:case_webarena_1}
+
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{p{0.97\linewidth}}
+
+\toprule
+\textbf{WebArena Case Study: Adaptive Retrieval and Refined Guidance}\\
+\midrule
+\textbf{Query.} \emph{``\;Buy the highest rated product from the meat substitute category within a budget between 100 and 200.\;''}\\
+\midrule
+\textbf{\plugmem Reasoning.}\\
+\(\triangleright\) \textbf{Reasoning:}\\The user's goal is to buy the highest-rated product from the "meat substitute" category within a budget of 100 to 200. The current observation does not provide direct access to the "meat substitute" category or relevant products. Additionally, the visible products on the page do not appear to belong to the "meat substitute" category. To efficiently locate the desired product, the agent should use the dropdown menu to navigate to the "meat substitute" category and then apply a price filter to narrow down the options to the specified budget range. If the platform supports advanced search, it can also be used to filter by category and price range.\\
+\(\triangleright\) \textbf{Final Information}:\\1. Use the dropdown menu to navigate to the "Grocery \& Gourmet Food" category, then locate the "meat substitute" subcategory.\\ 2. Once in the "meat substitute" category, apply a price filter to display products within the 100 to 200 range.\\3. Sort the results by rating to identify the highest-rated product within the budget.\\4. If the platform supports advanced search, use it to filter by category ("meat substitute") and price range (100 to 200) to streamline the process.\\5. Once the highest-rated product is identified, proceed to add it to the cart.\\
+\midrule
+\textbf{AgentOccam Action 1:}
+\textbf{hover [1490]}. (agent operates the dropdown menu)\\
+\midrule
+...\\
+\midrule
+\textbf{\plugmem Reasoning.}\\
+\(\triangleright\) \textbf{Reasoning}\\The user's goal is to buy the highest-rated product from the "Meat Substitutes" category within a budget of 100 to 200. The current page lists various products in this category, but the budget constraint narrows the options to only those priced between 100 and 200. To efficiently identify the highest-rated product within this range, the agent should apply the price filter for 100-199.99 and then sort the results by rating. This ensures that only relevant products are considered, and the highest-rated one is selected.\\
+\(\triangleright\) \textbf{Final Information}\\1. Apply the price filter for the range 100.00 - 199.99 by clicking the corresponding link under the "Price" section.\\2. Once the filtered results are displayed, sort the products by "Rating" to identify the highest-rated product.\\3. Select the highest-rated product from the filtered list and click "Add to Cart."\\4. Confirm that the product meets the budget and rating criteria before proceeding.\\
+\midrule
+\textbf{AgentOccam Action 3:}
+\textbf{click [6093]}. (agent selects the price range)\\
+\midrule
+\textbf{\plugmem Reasoning.}\\
+\(\triangleright\) \textbf{Reasoning}\\The user's goal is to buy the highest-rated product from the "Meat Substitutes" category within a budget of 100 to 200. The current page already displays products filtered by the specified price range. The next step is to identify the product with the highest rating among the listed options and add it to the cart. The observation provides details about the products, including their names, prices, and ratings, which are essential for making the selection.\\
+\(\triangleright\) \textbf{Final Information}\\
+1. Review the listed products on the current page and identify the one with the highest rating. Based on the observation:\\
+- "Beyond Meat Beef Beefy Crumble, 5 Pound -- 2 per case" has a rating of 50 and costs 108.27.\\
+- Other products do not have visible ratings in the observation.\\
+2. Since "Beyond Meat Beef Beefy Crumble" has the highest rating and falls within the budget, proceed to click the "Add to Cart" button for this product.\\
+3. Confirm that the product has been successfully added to the cart before proceeding further.\\
+\midrule
+\textbf{AgentOccam Action 4:}
+\textbf{click [10183]}. (agent inspects the item information)\\
+\midrule
+...\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% \begin{table}[h!]
+% \centering
+% \renewcommand{\arraystretch}{1.2}
+% \begin{tabularx}{\textwidth}{@{}c l X X@{}}
+% \toprule
+% \textbf{Step} & \textbf{State} & \textbf{Retrieved Memory (Procedural Summary)} & \textbf{Action \& Outcome} \\
+% \midrule
+% 0 &
+% Home page (product showcases) &
+% The target item is not visible; use the global search bar, enter the exact product name, and submit. &
+% Typed full product name into the search input (UI id: 1913) and submitted. \\
+% \addlinespace
+% 1 &
+% Search results page &
+% The exact product appears in results; locate its row and click \emph{Add to Wish List} for that item. &
+% Clicked \emph{Add to Wish List} on the exact-match row (UI id: 4466). Redirected to wish list. \\
+% \addlinespace
+% 2 &
+% Wish list page &
+% Verify that the target item is present; task complete. &
+% Page displayed a confirmation alert that the product was added; the wish list contained the target item. Agent stopped successfully. \\
+% \bottomrule
+% \end{tabularx}
+% \caption{Trajectory highlighting where retrieved memory directly informed the next action.}
+% \label{tab:webarena_case_study}
+% \end{table}

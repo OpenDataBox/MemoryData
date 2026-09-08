@@ -19,6 +19,7 @@ import logging
 import numpy as np
 from utils.eval_other_utils import metrics_summarization
 from utils.locomo_utils import get_locomo_category_label
+from utils.request_metering import meter_operation
 
 # Configure logging
 logging.basicConfig(
@@ -64,6 +65,8 @@ def parse_command_line_arguments():
                        help='When resuming, retry previously failed queries instead of skipping them')
     parser.add_argument('--backfill_longmemeval_recall_debug', action='store_true', default=False,
                        help='Reuse saved state to rerun queries and backfill LongMemEval recall debug files without touching the main results JSON')
+    parser.add_argument("--fail-on-query-error", action="store_true",
+                        help="Exit nonzero if any recorded query failed")
     return parser.parse_args()
 
 
@@ -522,6 +525,17 @@ def unpack_query_data(query_data):
     raise ValueError(f"Unexpected query tuple length: {len(query_data)}")
 
 
+def _resolve_context_sample_id(context_index, query_answer_pairs):
+    """Return the first dataset-native sample ID, falling back to context index."""
+    for query_data in query_answer_pairs:
+        if len(query_data) != 4:
+            continue
+        eval_metadata = query_data[3]
+        if isinstance(eval_metadata, dict) and eval_metadata.get("sample_id") is not None:
+            return eval_metadata["sample_id"]
+    return context_index
+
+
 def build_failed_query_record(query, answer, query_index, context_index, exc, qa_pair_id=None, eval_metadata=None):
     """Create a result entry for a query that failed mid-run."""
     result_record = {
@@ -619,23 +633,30 @@ def process_context(context_index, context_chunks, query_answer_pairs, agent_con
     
     # Initialize agent for the current context
     agent_save_folder = generate_agent_save_folder(agent_config, dataset_config, context_index)
-    agent, context_native_timing = initialize_and_memorize_agent(
-        agent_config,
-        dataset_config,
-        agent_save_folder,
-        context_chunks,
-        context_index,
-        total_contexts,
-        force_rebuild=force_rerun,
-    )
+    sample_id = _resolve_context_sample_id(context_index, query_answer_pairs)
+    with meter_operation("initialize", sample_id=sample_id):
+        agent, context_native_timing = initialize_and_memorize_agent(
+            agent_config,
+            dataset_config,
+            agent_save_folder,
+            context_chunks,
+            context_index,
+            total_contexts,
+            force_rebuild=force_rerun,
+        )
     
-    # Process all queries for this context
-    metrics, results, query_index = process_queries_for_context(
-        agent, query_answer_pairs, dataset_config, metrics, results,
-        query_index, context_index, skipped_query_ids, max_queries,
-        agent_config, output_path, time_cost_list, start_time,
-        context_native_timing=context_native_timing,
-    )
+    # Process all queries for this context, then release local storage locks.
+    try:
+        metrics, results, query_index = process_queries_for_context(
+            agent, query_answer_pairs, dataset_config, metrics, results,
+            query_index, context_index, skipped_query_ids, max_queries,
+            agent_config, output_path, time_cost_list, start_time,
+            context_native_timing=context_native_timing,
+        )
+    finally:
+        close_agent = getattr(agent, "close", None)
+        if callable(close_agent):
+            close_agent()
     
     return metrics, results, query_index, False
 
@@ -867,6 +888,8 @@ def main():
     
     # Log completion
     logger.info(f"Total time taken: {time.time() - start_time}")
+    if args.fail_on_query_error and any(row.get("status") == "failed" for row in results):
+        raise SystemExit("One or more queries failed; see the saved results and logs.")
 
 
 def _maybe_generate_post_run_reports(output_path, dataset_config):

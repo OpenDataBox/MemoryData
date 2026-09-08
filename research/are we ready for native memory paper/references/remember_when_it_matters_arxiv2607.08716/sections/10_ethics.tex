@@ -1,0 +1,16 @@
+\section*{Ethical Considerations}
+We utilize GPT-based models \citep{openai2023gpt4} solely for language polishing
+and proofreading.
+%
+This work studies a memory intervention architecture for long-horizon language
+agents using public benchmark environments (Terminal-Bench 2.0, $\tau^2$-Bench,
+and SETA) and does not introduce new datasets containing personal or sensitive
+information.
+%
+Our open-weight memory agent use training data written from a frontier-model memory teacher,
+so biases or unsafe preferences in the teacher may be propagated to the student;
+because the memory agent injects natural-language reminders into the action
+loop, such biases can also be amplified at inference time.
+%
+Practical deployment should therefore include appropriate action validation,
+safety constraints, logging, and human oversight.

@@ -1,0 +1,28 @@
+\section{Introduction}
+\label{section:intro}
+
+LLM agents are increasingly evaluated on long-horizon tasks that require many rounds of tool use and environment interaction~\citep{yao2023react,shinn2023reflexion,wang2024voyager}. These tasks span autonomous command-line execution~\citep{merrill2026terminalbench}, multi-step machine-learning engineering~\citep{chan2024mlebench}, and interactive tool use under domain-specific rules~\citep{yao2024taubench,barres2025tau2bench}. Because such tasks unfold over many observations, actions, and partial decisions, success depends not only on solving each local problem, but also on preserving information that should constrain future behavior. Yet agents often fail in ways that reveal a breakdown in this state maintenance: they may identify a requirement early in a task and later violate it while fixing an unrelated bug; observe that a command, parameter setting, or implementation path fails and later retry a near-identical variant; or diagnose an error pattern and later treat the same pattern as new. These failures suggest that simply making longer histories available is insufficient. Long-horizon agents need mechanisms for keeping decision-relevant execution state active over time.
+
+We call this failure mode \textbf{behavioral state decay}: during long-horizon execution, information that should shape future actions like task requirements, environment facts, previous attempts, failure diagnoses, intermediate discoveries, and open subgoals stops influencing the agent's next decision. The information may still be present in the transcript, or may even remain within the model's context window, but it no longer exerts reliable control over behavior \citep{liu2024lost}. This distinction is important because many memory approaches focus on whether information can be stored or retrieved, while long-horizon task execution also requires deciding when remembered information should affect the agent's next action.
+
+A natural response is to equip agents with memory. Existing memory systems typically emphasize storing, updating, and retrieving relevant records \citep{packer2023memgpt,zhong2024memorybank,park2023generative,mem0ai2026mem0}, which is crucial for personalization, persistent user state, and cross-session recall. However, active task execution introduces a different problem: memory must decide \emph{when} to intervene. Surfacing too little memory lets the agent repeat mistakes or ignore prior discoveries; surfacing too much adds latency, consumes tokens, and can distract the agent from local progress. Effective memory for long-horizon agents is not only a write and retrieval problem, but also an intervention problem.
+
+
+This is a stronger control question than summarization. A summarizer asks what to retain; our memory asks whether any retained execution state should become active in the action agent's next decision. Long-horizon tasks vary in their failure modes---in some, the useful memory is a hard requirement from the initial instruction; in others, an environment fact, a failed command, a bug diagnosis, or an unfinished subgoal---so a fixed summarization policy cannot know whether a memory should interrupt the next action.
+
+We study memory as intervention. We introduce a memory agent that runs alongside an unmodified action agent. At fixed intervals, it updates a structured memory bank from the recent trajectory and then decides whether to inject a concise reminder---a forgotten requirement, a stable environment fact, a failed attempt, or a diagnosis---into the next action-agent call, or to remain silent. Unlike passive memory systems, it does not just retrieve records on demand; it decides whether memory should enter the control loop \citep{zhang2025memact}. Unlike general advisor models \citep{asawa2025advisor,anthropic2026advisor}, it is constrained to memory-grounded reminders rather than broad strategic guidance.
+
+We evaluate this architecture on Terminal-Bench 2.0 \citep{merrill2026terminalbench} and $\tau^2$-Bench \citep{yao2024taubench,barres2025tau2bench}, covering both autonomous command-line execution and interactive tool-use. With Claude Opus 4.6 as the memory agent, memory intervention improves Claude Sonnet 4.5 on Terminal-Bench (37.6\%~$\to$~45.9\%) and on $\tau^2$-Bench (55.0\%~$\to$~61.8\%), and the gain does not vanish for a stronger action agent: Opus 4.6 still gains +2.4~pp and +2.5~pp respectively. Ablations show that our proactive intervention beats passive memory exposure and general memory retrieval. As an early step toward an open-weight memory policy, we further fine-tune Qwen3.5-27B as the memory agent with SFT and GRPO and observe that gains transfer to held-out Terminal-Bench.
+
+Our contributions are: (i) we identify \emph{behavioral state decay} as a central failure mode of long-horizon language agents; (ii) we propose a two-phase memory intervention architecture that decouples memory maintenance from action selection. We show empirically that memory intervention improves long-horizon task performance and that ablations favor maintained memory plus selective intervention; (iii) as preliminary evidence, we show that the intervention policy can be partially learned by an open-weight model.
+
+
+
+
+
+
+
+
+
+
+

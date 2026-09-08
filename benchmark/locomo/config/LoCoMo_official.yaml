@@ -1,0 +1,15 @@
+dataset: LoCoMo
+sub_dataset: locomo_qa
+test_files: datasets/LoCoMo/locomo10.json
+chunk_size: 4096
+context_max_length: 10000000
+generation_max_length: 256
+max_test_samples: 10
+seed: 42
+debug: false
+demo_files: ''
+use_chat_template: true
+shots: 0
+tag: official_4cat
+locomo_categories: [1, 2, 3, 4]
+

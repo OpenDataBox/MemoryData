@@ -1,0 +1,24 @@
+{
+  "recipe": {
+    "name": "r26_qa_cards_with_context",
+    "parent": "r24_source_qa_cards",
+    "operations": [
+      {
+        "op": "dialogue_blocks",
+        "size": 3,
+        "overlap": 1
+      },
+      {
+        "op": "anchor_time",
+        "style": "month"
+      }
+    ]
+  },
+  "parent": "r24_source_qa_cards",
+  "committed_at": 1788787141.1945453,
+  "recipe_sha256": "98a6d28fce354d837fd4f99ee796441fc7405960a19070c45d47adc9471eb7a2",
+  "source_sha256": {
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

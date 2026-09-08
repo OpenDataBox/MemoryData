@@ -1,0 +1,117 @@
+{
+  "rounds": [
+    {
+      "name": "y_radius_003",
+      "recipe": {
+        "name": "y_radius_003",
+        "family": "source_supervised_memory_index",
+        "radius": 0.03
+      },
+      "dev": {
+        "n": 70,
+        "official_f1": 0.5677097233948414,
+        "generic_token_f1": 0.5596176366,
+        "read_tokens": 2016.3142857142857,
+        "memory_tokens": 59112.857142857145,
+        "cited_source_recall": 0.8221428571428571,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.48641975308641977
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.6336734693877552
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.009523809523809523
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.6406050251680574
+          }
+        },
+        "failures_below_half_f1": 26,
+        "failures_missing_cited_sources": 11
+      },
+      "accepted": false
+    },
+    {
+      "name": "y_radius_010",
+      "recipe": {
+        "name": "y_radius_010",
+        "family": "source_supervised_memory_index",
+        "radius": 0.1
+      },
+      "dev": {
+        "n": 70,
+        "official_f1": 0.5734955232155761,
+        "generic_token_f1": 0.5664359654743034,
+        "read_tokens": 2018.6714285714286,
+        "memory_tokens": 59112.857142857145,
+        "cited_source_recall": 0.8397619047619047,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.4677689594356261
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.6336734693877552
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.00975609756097561
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.6566987192981888
+          }
+        },
+        "failures_below_half_f1": 25,
+        "failures_missing_cited_sources": 10
+      },
+      "accepted": false
+    },
+    {
+      "name": "y_radius_030",
+      "recipe": {
+        "name": "y_radius_030",
+        "family": "source_supervised_memory_index",
+        "radius": 0.3
+      },
+      "dev": {
+        "n": 70,
+        "official_f1": 0.5667315259437108,
+        "generic_token_f1": 0.5575185978252268,
+        "read_tokens": 2018.2571428571428,
+        "memory_tokens": 59112.857142857145,
+        "cited_source_recall": 0.854047619047619,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.4597222222222222
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.6812925170068027
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.0
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.6311908951614834
+          }
+        },
+        "failures_below_half_f1": 25,
+        "failures_missing_cited_sources": 9
+      },
+      "accepted": false
+    }
+  ],
+  "best_f1": 0.5927437370002835,
+  "winner": "s_parent_single_2000"
+}

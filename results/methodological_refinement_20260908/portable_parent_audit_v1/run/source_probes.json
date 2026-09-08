@@ -1,0 +1,5655 @@
+{
+  "seed": 20260908,
+  "construction": "source Q&A cards with literal answer spans; benchmark QA never supplied",
+  "counts": {
+    "conv-42": {
+      "literal_candidates": 1308,
+      "selected": 58
+    },
+    "conv-47": {
+      "literal_candidates": 1383,
+      "selected": 62
+    },
+    "conv-50": {
+      "literal_candidates": 1238,
+      "selected": 58
+    }
+  },
+  "audit_sessions": {
+    "conv-42": [
+      2,
+      3,
+      18,
+      19,
+      22,
+      25,
+      29
+    ],
+    "conv-47": [
+      4,
+      5,
+      17,
+      19,
+      24,
+      25,
+      31
+    ],
+    "conv-50": [
+      1,
+      3,
+      4,
+      11,
+      13,
+      25,
+      27
+    ]
+  },
+  "records": [
+    {
+      "question": "What does Nate say about the movie Joanna recommends?",
+      "answer": "Oh cool! I might check that one out some time soon!",
+      "source_ids": [
+        "D1:17"
+      ],
+      "candidate_context_ids": [
+        "D1:9",
+        "D1:10",
+        "D1:11",
+        "D1:12",
+        "D1:13",
+        "D1:14",
+        "D1:15",
+        "D1:16",
+        "D1:17",
+        "D1:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D1:17",
+          "start": 0,
+          "end": 51,
+          "verbatim": "Oh cool! I might check that one out some time soon!"
+        }
+      ],
+      "session": 1,
+      "recorded_date": "7:31 pm on 21 January, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:0"
+    },
+    {
+      "question": "What did Joanna show in the image?",
+      "answer": "a photo of a dvd on a table with a blurry background",
+      "source_ids": [
+        "D1:18"
+      ],
+      "candidate_context_ids": [
+        "D1:9",
+        "D1:10",
+        "D1:11",
+        "D1:12",
+        "D1:13",
+        "D1:14",
+        "D1:15",
+        "D1:16",
+        "D1:17",
+        "D1:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D1:18",
+          "start": 116,
+          "end": 168,
+          "verbatim": "a photo of a dvd on a table with a blurry background"
+        }
+      ],
+      "session": 1,
+      "recorded_date": "7:31 pm on 21 January, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:1"
+    },
+    {
+      "question": "What did Joanna say about Nate's recent activities?",
+      "answer": "Oh? That sounds sweet!",
+      "source_ids": [
+        "D2:17"
+      ],
+      "candidate_context_ids": [
+        "D2:9",
+        "D2:10",
+        "D2:11",
+        "D2:12",
+        "D2:13",
+        "D2:14",
+        "D2:15",
+        "D2:16",
+        "D2:17",
+        "D2:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D2:17",
+          "start": 0,
+          "end": 22,
+          "verbatim": "Oh? That sounds sweet!"
+        }
+      ],
+      "session": 2,
+      "recorded_date": "2:01 pm on 23 January, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:2"
+    },
+    {
+      "question": "What does Joanna say about her ability to handle anxiety?",
+      "answer": "I find other ways to be happy",
+      "source_ids": [
+        "D2:23"
+      ],
+      "candidate_context_ids": [
+        "D2:17",
+        "D2:18",
+        "D2:19",
+        "D2:20",
+        "D2:21",
+        "D2:22",
+        "D2:23",
+        "D2:24",
+        "D2:25",
+        "D2:26"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D2:23",
+          "start": 83,
+          "end": 112,
+          "verbatim": "I find other ways to be happy"
+        }
+      ],
+      "session": 2,
+      "recorded_date": "2:01 pm on 23 January, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:3"
+    },
+    {
+      "question": "What did Joanna say about the image of a piece of cake with berries on a plate?",
+      "answer": "I'm tempted to try dairy-free flavors now!",
+      "source_ids": [
+        "D3:11"
+      ],
+      "candidate_context_ids": [
+        "D3:9",
+        "D3:10",
+        "D3:11",
+        "D3:12",
+        "D3:13",
+        "D3:14",
+        "D3:15",
+        "D3:16",
+        "D3:17",
+        "D3:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D3:11",
+          "start": 65,
+          "end": 107,
+          "verbatim": "I'm tempted to try dairy-free flavors now!"
+        }
+      ],
+      "session": 3,
+      "recorded_date": "9:27 am on 7 February, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:4"
+    },
+    {
+      "question": "What did Joanna say about the movie's themes?",
+      "answer": "sisterhood, love, and reaching for your dreams",
+      "source_ids": [
+        "D3:17"
+      ],
+      "candidate_context_ids": [
+        "D3:17",
+        "D3:18",
+        "D3:19",
+        "D3:20",
+        "D3:21",
+        "D3:22",
+        "D3:23",
+        "D3:24",
+        "D3:25"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D3:17",
+          "start": 75,
+          "end": 121,
+          "verbatim": "sisterhood, love, and reaching for your dreams"
+        }
+      ],
+      "session": 3,
+      "recorded_date": "9:27 am on 7 February, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:5"
+    },
+    {
+      "question": "What did Joanna say about the connection between her new screenplay and her own life?",
+      "answer": "It's my own story",
+      "source_ids": [
+        "D4:14"
+      ],
+      "candidate_context_ids": [
+        "D4:9",
+        "D4:10",
+        "D4:11",
+        "D4:12",
+        "D4:13",
+        "D4:14",
+        "D4:15",
+        "D4:16",
+        "D4:17",
+        "D4:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D4:14",
+          "start": 14,
+          "end": 31,
+          "verbatim": "It's my own story"
+        }
+      ],
+      "session": 4,
+      "recorded_date": "1:07 pm on 25 February, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:6"
+    },
+    {
+      "question": "What is Nate's reaction to Joanna's first project?",
+      "answer": "I'm also pumped to see how your first one will do!",
+      "source_ids": [
+        "D4:17"
+      ],
+      "candidate_context_ids": [
+        "D4:17",
+        "D4:18",
+        "D4:19"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D4:17",
+          "start": 72,
+          "end": 122,
+          "verbatim": "I'm also pumped to see how your first one will do!"
+        }
+      ],
+      "session": 4,
+      "recorded_date": "1:07 pm on 25 February, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:7"
+    },
+    {
+      "question": "What did Nate tell Joanna to do?",
+      "answer": "Just make sure you don't quit",
+      "source_ids": [
+        "D5:18"
+      ],
+      "candidate_context_ids": [
+        "D5:17",
+        "D5:18",
+        "D5:19",
+        "D5:20",
+        "D5:21"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D5:18",
+          "start": 0,
+          "end": 29,
+          "verbatim": "Just make sure you don't quit"
+        }
+      ],
+      "session": 5,
+      "recorded_date": "6:59 pm on 18 March, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:8"
+    },
+    {
+      "question": "What did Nate say about Joanna having this?",
+      "answer": "You got this",
+      "source_ids": [
+        "D5:18"
+      ],
+      "candidate_context_ids": [
+        "D5:9",
+        "D5:10",
+        "D5:11",
+        "D5:12",
+        "D5:13",
+        "D5:14",
+        "D5:15",
+        "D5:16",
+        "D5:17",
+        "D5:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D5:18",
+          "start": 68,
+          "end": 80,
+          "verbatim": "You got this"
+        }
+      ],
+      "session": 5,
+      "recorded_date": "6:59 pm on 18 March, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:9"
+    },
+    {
+      "question": "What did Joanna say about the difficulty of writing?",
+      "answer": "it's tough but worth it",
+      "source_ids": [
+        "D6:10"
+      ],
+      "candidate_context_ids": [
+        "D6:1",
+        "D6:2",
+        "D6:3",
+        "D6:4",
+        "D6:5",
+        "D6:6",
+        "D6:7",
+        "D6:8",
+        "D6:9",
+        "D6:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D6:10",
+          "start": 287,
+          "end": 310,
+          "verbatim": "it's tough but worth it"
+        }
+      ],
+      "session": 6,
+      "recorded_date": "1:43 pm on 24 March, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:10"
+    },
+    {
+      "question": "How did Nate describe the video game tournament?",
+      "answer": "INTENSE!",
+      "source_ids": [
+        "D6:7"
+      ],
+      "candidate_context_ids": [
+        "D6:1",
+        "D6:2",
+        "D6:3",
+        "D6:4",
+        "D6:5",
+        "D6:6",
+        "D6:7",
+        "D6:8",
+        "D6:9",
+        "D6:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D6:7",
+          "start": 88,
+          "end": 96,
+          "verbatim": "INTENSE!"
+        }
+      ],
+      "session": 6,
+      "recorded_date": "1:43 pm on 24 March, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:11"
+    },
+    {
+      "question": "What did Nate ask Joanna to do?",
+      "answer": "Keep me posted on how it goes, alright?",
+      "source_ids": [
+        "D7:9"
+      ],
+      "candidate_context_ids": [
+        "D7:9",
+        "D7:10",
+        "D7:11",
+        "D7:12",
+        "D7:13"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D7:9",
+          "start": 53,
+          "end": 92,
+          "verbatim": "Keep me posted on how it goes, alright?"
+        }
+      ],
+      "session": 7,
+      "recorded_date": "7:37 pm on 15 April, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:12"
+    },
+    {
+      "question": "What did Nate say about his choice of hair color?",
+      "answer": "I picked this color because it's bright and bold - like me!",
+      "source_ids": [
+        "D7:5"
+      ],
+      "candidate_context_ids": [
+        "D7:1",
+        "D7:2",
+        "D7:3",
+        "D7:4",
+        "D7:5",
+        "D7:6",
+        "D7:7",
+        "D7:8",
+        "D7:9",
+        "D7:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D7:5",
+          "start": 11,
+          "end": 70,
+          "verbatim": "I picked this color because it's bright and bold - like me!"
+        }
+      ],
+      "session": 7,
+      "recorded_date": "7:37 pm on 15 April, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:13"
+    },
+    {
+      "question": "What did Joanna promise to do after trying the recipe?",
+      "answer": "let you know how it turns out",
+      "source_ids": [
+        "D8:22"
+      ],
+      "candidate_context_ids": [
+        "D8:17",
+        "D8:18",
+        "D8:19",
+        "D8:20",
+        "D8:21",
+        "D8:22"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D8:22",
+          "start": 30,
+          "end": 59,
+          "verbatim": "let you know how it turns out"
+        }
+      ],
+      "session": 8,
+      "recorded_date": "6:44 pm on 17 April, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:14"
+    },
+    {
+      "question": "What does Joanna say about small things in life?",
+      "answer": "Even the small things make life enjoyable and worth it",
+      "source_ids": [
+        "D8:12"
+      ],
+      "candidate_context_ids": [
+        "D8:9",
+        "D8:10",
+        "D8:11",
+        "D8:12",
+        "D8:13",
+        "D8:14",
+        "D8:15",
+        "D8:16",
+        "D8:17",
+        "D8:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D8:12",
+          "start": 12,
+          "end": 66,
+          "verbatim": "Even the small things make life enjoyable and worth it"
+        }
+      ],
+      "session": 8,
+      "recorded_date": "6:44 pm on 17 April, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:15"
+    },
+    {
+      "question": "What does Nate say about the series?",
+      "answer": "It has adventures, magic, and great characters - it's a must-read!",
+      "source_ids": [
+        "D9:14"
+      ],
+      "candidate_context_ids": [
+        "D9:9",
+        "D9:10",
+        "D9:11",
+        "D9:12",
+        "D9:13",
+        "D9:14",
+        "D9:15",
+        "D9:16",
+        "D9:17",
+        "D9:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D9:14",
+          "start": 20,
+          "end": 86,
+          "verbatim": "It has adventures, magic, and great characters - it's a must-read!"
+        }
+      ],
+      "session": 9,
+      "recorded_date": "7:44 pm on 21 April, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:16"
+    },
+    {
+      "question": "What is the name of the person who is passionate about video games?",
+      "answer": "Nate",
+      "source_ids": [
+        "D9:1",
+        "D9:3",
+        "D9:9"
+      ],
+      "candidate_context_ids": [
+        "D9:1",
+        "D9:2",
+        "D9:3",
+        "D9:4",
+        "D9:5",
+        "D9:6",
+        "D9:7",
+        "D9:8",
+        "D9:9",
+        "D9:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D9:1",
+          "start": 4,
+          "end": 8,
+          "verbatim": "Nate"
+        },
+        {
+          "source_id": "D9:3",
+          "start": 8,
+          "end": 12,
+          "verbatim": "Nate"
+        },
+        {
+          "source_id": "D9:9",
+          "start": 7,
+          "end": 11,
+          "verbatim": "Nate"
+        }
+      ],
+      "session": 9,
+      "recorded_date": "7:44 pm on 21 April, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:17"
+    },
+    {
+      "question": "What is the name of the person who mentioned they are using a specific image description?",
+      "answer": "Joanna",
+      "source_ids": [
+        "D10:12",
+        "D10:14"
+      ],
+      "candidate_context_ids": [
+        "D10:9",
+        "D10:10",
+        "D10:11",
+        "D10:12",
+        "D10:13",
+        "D10:14",
+        "D10:15",
+        "D10:16"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D10:12",
+          "start": 5,
+          "end": 11,
+          "verbatim": "Joanna"
+        },
+        {
+          "source_id": "D10:14",
+          "start": 14,
+          "end": 20,
+          "verbatim": "Joanna"
+        }
+      ],
+      "session": 10,
+      "recorded_date": "11:54 am on 2 May, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:18"
+    },
+    {
+      "question": "What did Nate say about his gaming room?",
+      "answer": "Your gaming room looks great - have you been gaming a lot recently?",
+      "source_ids": [
+        "D10:3"
+      ],
+      "candidate_context_ids": [
+        "D10:1",
+        "D10:2",
+        "D10:3",
+        "D10:4",
+        "D10:5",
+        "D10:6",
+        "D10:7",
+        "D10:8",
+        "D10:9",
+        "D10:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D10:3",
+          "start": 38,
+          "end": 105,
+          "verbatim": "Your gaming room looks great - have you been gaming a lot recently?"
+        }
+      ],
+      "session": 10,
+      "recorded_date": "11:54 am on 2 May, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:19"
+    },
+    {
+      "question": "What did Nate say about Joanna finding a calming place?",
+      "answer": "That's great. Glad you found a spot that calms you down",
+      "source_ids": [
+        "D11:10"
+      ],
+      "candidate_context_ids": [
+        "D11:1",
+        "D11:2",
+        "D11:3",
+        "D11:4",
+        "D11:5",
+        "D11:6",
+        "D11:7",
+        "D11:8",
+        "D11:9",
+        "D11:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D11:10",
+          "start": 0,
+          "end": 55,
+          "verbatim": "That's great. Glad you found a spot that calms you down"
+        }
+      ],
+      "session": 11,
+      "recorded_date": "3:35 pm on 12 May, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:20"
+    },
+    {
+      "question": "Who expressed enthusiasm about joining Joanna on the trails?",
+      "answer": "Nate",
+      "source_ids": [
+        "D11:19"
+      ],
+      "candidate_context_ids": [
+        "D11:17",
+        "D11:18",
+        "D11:19",
+        "D11:20"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D11:19",
+          "start": 11,
+          "end": 15,
+          "verbatim": "Nate"
+        }
+      ],
+      "session": 11,
+      "recorded_date": "3:35 pm on 12 May, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:21"
+    },
+    {
+      "question": "What is the name of the person who sent the photo of Max?",
+      "answer": "Nate",
+      "source_ids": [
+        "D12:2"
+      ],
+      "candidate_context_ids": [
+        "D12:1",
+        "D12:2",
+        "D12:3",
+        "D12:4",
+        "D12:5",
+        "D12:6",
+        "D12:7",
+        "D12:8",
+        "D12:9",
+        "D12:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D12:2",
+          "start": 4,
+          "end": 8,
+          "verbatim": "Nate"
+        }
+      ],
+      "session": 12,
+      "recorded_date": "7:49 pm on 20 May, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:22"
+    },
+    {
+      "question": "What is the name of the person who mentioned writing and creative projects?",
+      "answer": "Joanna",
+      "source_ids": [
+        "D12:13",
+        "D12:17"
+      ],
+      "candidate_context_ids": [
+        "D12:9",
+        "D12:10",
+        "D12:11",
+        "D12:12",
+        "D12:13",
+        "D12:14",
+        "D12:15",
+        "D12:16",
+        "D12:17",
+        "D12:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D12:13",
+          "start": 22,
+          "end": 28,
+          "verbatim": "Joanna"
+        },
+        {
+          "source_id": "D12:17",
+          "start": 11,
+          "end": 17,
+          "verbatim": "Joanna"
+        }
+      ],
+      "session": 12,
+      "recorded_date": "7:49 pm on 20 May, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:23"
+    },
+    {
+      "question": "Who did Nate run into during his walk?",
+      "answer": "this super nice couple who had a dog",
+      "source_ids": [
+        "D13:1"
+      ],
+      "candidate_context_ids": [
+        "D13:1",
+        "D13:2",
+        "D13:3",
+        "D13:4",
+        "D13:5",
+        "D13:6",
+        "D13:7",
+        "D13:8",
+        "D13:9",
+        "D13:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D13:1",
+          "start": 127,
+          "end": 163,
+          "verbatim": "this super nice couple who had a dog"
+        }
+      ],
+      "session": 13,
+      "recorded_date": "3:00 pm on 25 May, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:24"
+    },
+    {
+      "question": "What does Joanna say the stuffed animal is a reminder of?",
+      "answer": "It's a nice reminder!",
+      "source_ids": [
+        "D13:14"
+      ],
+      "candidate_context_ids": [
+        "D13:9",
+        "D13:10",
+        "D13:11",
+        "D13:12",
+        "D13:13",
+        "D13:14",
+        "D13:15",
+        "D13:16",
+        "D13:17",
+        "D13:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D13:14",
+          "start": 77,
+          "end": 98,
+          "verbatim": "It's a nice reminder!"
+        }
+      ],
+      "session": 13,
+      "recorded_date": "3:00 pm on 25 May, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:25"
+    },
+    {
+      "question": "What did Nate do recently?",
+      "answer": "won another regional video game tournament",
+      "source_ids": [
+        "D14:8"
+      ],
+      "candidate_context_ids": [
+        "D14:1",
+        "D14:2",
+        "D14:3",
+        "D14:4",
+        "D14:5",
+        "D14:6",
+        "D14:7",
+        "D14:8",
+        "D14:9",
+        "D14:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D14:8",
+          "start": 31,
+          "end": 73,
+          "verbatim": "won another regional video game tournament"
+        }
+      ],
+      "session": 14,
+      "recorded_date": "5:44 pm on 3 June, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:26"
+    },
+    {
+      "question": "What does Joanna say about Nate's event?",
+      "answer": "Sounds like fun, Nate!",
+      "source_ids": [
+        "D14:23"
+      ],
+      "candidate_context_ids": [
+        "D14:17",
+        "D14:18",
+        "D14:19",
+        "D14:20",
+        "D14:21",
+        "D14:22",
+        "D14:23",
+        "D14:24",
+        "D14:25",
+        "D14:26"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D14:23",
+          "start": 0,
+          "end": 22,
+          "verbatim": "Sounds like fun, Nate!"
+        }
+      ],
+      "session": 14,
+      "recorded_date": "5:44 pm on 3 June, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:27"
+    },
+    {
+      "question": "What did Joanna show Nate?",
+      "answer": "a pic of my cork board",
+      "source_ids": [
+        "D15:9"
+      ],
+      "candidate_context_ids": [
+        "D15:1",
+        "D15:2",
+        "D15:3",
+        "D15:4",
+        "D15:5",
+        "D15:6",
+        "D15:7",
+        "D15:8",
+        "D15:9",
+        "D15:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D15:9",
+          "start": 12,
+          "end": 34,
+          "verbatim": "a pic of my cork board"
+        }
+      ],
+      "session": 15,
+      "recorded_date": "2:12 pm on 5 June, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:28"
+    },
+    {
+      "question": "Why did Nate get the Iron Man figure?",
+      "answer": "it reminded me of something I love",
+      "source_ids": [
+        "D15:6"
+      ],
+      "candidate_context_ids": [
+        "D15:1",
+        "D15:2",
+        "D15:3",
+        "D15:4",
+        "D15:5",
+        "D15:6",
+        "D15:7",
+        "D15:8",
+        "D15:9",
+        "D15:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D15:6",
+          "start": 32,
+          "end": 66,
+          "verbatim": "it reminded me of something I love"
+        }
+      ],
+      "session": 15,
+      "recorded_date": "2:12 pm on 5 June, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:29"
+    },
+    {
+      "question": "What did Nate say he could give to Joanna?",
+      "answer": "the recipe",
+      "source_ids": [
+        "D16:9"
+      ],
+      "candidate_context_ids": [
+        "D16:9",
+        "D16:10",
+        "D16:11",
+        "D16:12",
+        "D16:13",
+        "D16:14",
+        "D16:15",
+        "D16:16"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D16:9",
+          "start": 25,
+          "end": 35,
+          "verbatim": "the recipe"
+        }
+      ],
+      "session": 16,
+      "recorded_date": "10:55 am on 24 June, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:30"
+    },
+    {
+      "question": "What did Nate say he would do if Joanna made the recipe?",
+      "answer": "Let me know how it went",
+      "source_ids": [
+        "D16:12"
+      ],
+      "candidate_context_ids": [
+        "D16:9",
+        "D16:10",
+        "D16:11",
+        "D16:12",
+        "D16:13",
+        "D16:14",
+        "D16:15",
+        "D16:16"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D16:12",
+          "start": 52,
+          "end": 75,
+          "verbatim": "Let me know how it went"
+        }
+      ],
+      "session": 16,
+      "recorded_date": "10:55 am on 24 June, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:31"
+    },
+    {
+      "question": "What did Nate say about Joanna's talent?",
+      "answer": "you're incredible!",
+      "source_ids": [
+        "D17:21"
+      ],
+      "candidate_context_ids": [
+        "D17:17",
+        "D17:18",
+        "D17:19",
+        "D17:20",
+        "D17:21"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D17:21",
+          "start": 116,
+          "end": 134,
+          "verbatim": "you're incredible!"
+        }
+      ],
+      "session": 17,
+      "recorded_date": "2:34 pm on 10 July, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:32"
+    },
+    {
+      "question": "What did Nate say about Joanna's new script?",
+      "answer": "Can't wait to hear about your next one",
+      "source_ids": [
+        "D17:9"
+      ],
+      "candidate_context_ids": [
+        "D17:1",
+        "D17:2",
+        "D17:3",
+        "D17:4",
+        "D17:5",
+        "D17:6",
+        "D17:7",
+        "D17:8",
+        "D17:9",
+        "D17:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D17:9",
+          "start": 48,
+          "end": 86,
+          "verbatim": "Can't wait to hear about your next one"
+        }
+      ],
+      "session": 17,
+      "recorded_date": "2:34 pm on 10 July, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:33"
+    },
+    {
+      "question": "What did Joanna say about her journal?",
+      "answer": "my journal's pretty much my rock",
+      "source_ids": [
+        "D18:1"
+      ],
+      "candidate_context_ids": [
+        "D18:1",
+        "D18:2",
+        "D18:3",
+        "D18:4",
+        "D18:5",
+        "D18:6",
+        "D18:7",
+        "D18:8",
+        "D18:9",
+        "D18:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D18:1",
+          "start": 162,
+          "end": 194,
+          "verbatim": "my journal's pretty much my rock"
+        }
+      ],
+      "session": 18,
+      "recorded_date": "6:12 pm on 14 August, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:34"
+    },
+    {
+      "question": "What did Nate say about starting to teach people how to make something?",
+      "answer": "I started teaching people how to make this",
+      "source_ids": [
+        "D18:8"
+      ],
+      "candidate_context_ids": [
+        "D18:1",
+        "D18:2",
+        "D18:3",
+        "D18:4",
+        "D18:5",
+        "D18:6",
+        "D18:7",
+        "D18:8",
+        "D18:9",
+        "D18:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D18:8",
+          "start": 60,
+          "end": 102,
+          "verbatim": "I started teaching people how to make this"
+        }
+      ],
+      "session": 18,
+      "recorded_date": "6:12 pm on 14 August, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:35"
+    },
+    {
+      "question": "What does Nate recommend to Joanna?",
+      "answer": "I'd really recommend this series",
+      "source_ids": [
+        "D19:17"
+      ],
+      "candidate_context_ids": [
+        "D19:9",
+        "D19:10",
+        "D19:11",
+        "D19:12",
+        "D19:13",
+        "D19:14",
+        "D19:15",
+        "D19:16",
+        "D19:17",
+        "D19:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D19:17",
+          "start": 83,
+          "end": 115,
+          "verbatim": "I'd really recommend this series"
+        }
+      ],
+      "session": 19,
+      "recorded_date": "10:57 am on 22 August, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:36"
+    },
+    {
+      "question": "What did Nate win?",
+      "answer": "an international tournament",
+      "source_ids": [
+        "D19:1"
+      ],
+      "candidate_context_ids": [
+        "D19:1",
+        "D19:2",
+        "D19:3",
+        "D19:4",
+        "D19:5",
+        "D19:6",
+        "D19:7",
+        "D19:8",
+        "D19:9",
+        "D19:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D19:1",
+          "start": 19,
+          "end": 46,
+          "verbatim": "an international tournament"
+        }
+      ],
+      "session": 19,
+      "recorded_date": "10:57 am on 22 August, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:37"
+    },
+    {
+      "question": "Who was the sender of the second message?",
+      "answer": "Joanna",
+      "source_ids": [
+        "D20:19"
+      ],
+      "candidate_context_ids": [
+        "D20:17",
+        "D20:18",
+        "D20:19"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D20:19",
+          "start": 4,
+          "end": 10,
+          "verbatim": "Joanna"
+        }
+      ],
+      "session": 20,
+      "recorded_date": "6:03 pm on 5 September, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:38"
+    },
+    {
+      "question": "What is the image associated with the cookie?",
+      "answer": "a photo of a cookie with chocolate drizzle and almonds",
+      "source_ids": [
+        "D20:16"
+      ],
+      "candidate_context_ids": [
+        "D20:9",
+        "D20:10",
+        "D20:11",
+        "D20:12",
+        "D20:13",
+        "D20:14",
+        "D20:15",
+        "D20:16",
+        "D20:17",
+        "D20:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D20:16",
+          "start": 67,
+          "end": 121,
+          "verbatim": "a photo of a cookie with chocolate drizzle and almonds"
+        }
+      ],
+      "session": 20,
+      "recorded_date": "6:03 pm on 5 September, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:39"
+    },
+    {
+      "question": "What ingredient did Joanna include in the dessert?",
+      "answer": "blueberries",
+      "source_ids": [
+        "D21:17"
+      ],
+      "candidate_context_ids": [
+        "D21:17",
+        "D21:18",
+        "D21:19",
+        "D21:20"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D21:17",
+          "start": 75,
+          "end": 86,
+          "verbatim": "blueberries"
+        }
+      ],
+      "session": 21,
+      "recorded_date": "1:43 pm on 14 September, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:40"
+    },
+    {
+      "question": "What is the name of the dessert Joanna made with almond flour, coconut oil, chocolate, and raspberries?",
+      "answer": "dairy-free chocolate cake with raspberries",
+      "source_ids": [
+        "D21:13"
+      ],
+      "candidate_context_ids": [
+        "D21:9",
+        "D21:10",
+        "D21:11",
+        "D21:12",
+        "D21:13",
+        "D21:14",
+        "D21:15",
+        "D21:16",
+        "D21:17",
+        "D21:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D21:13",
+          "start": 29,
+          "end": 71,
+          "verbatim": "dairy-free chocolate cake with raspberries"
+        }
+      ],
+      "session": 21,
+      "recorded_date": "1:43 pm on 14 September, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:41"
+    },
+    {
+      "question": "What did Nate say about Joanna's dedication?",
+      "answer": "You've worked so hard and accomplished a lot – I'm proud",
+      "source_ids": [
+        "D22:12"
+      ],
+      "candidate_context_ids": [
+        "D22:9",
+        "D22:10",
+        "D22:11",
+        "D22:12",
+        "D22:13",
+        "D22:14",
+        "D22:15",
+        "D22:16",
+        "D22:17",
+        "D22:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D22:12",
+          "start": 33,
+          "end": 89,
+          "verbatim": "You've worked so hard and accomplished a lot – I'm proud"
+        }
+      ],
+      "session": 22,
+      "recorded_date": "11:15 am on 6 October, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:42"
+    },
+    {
+      "question": "What did Nate say about having extra cash?",
+      "answer": "I don't have to stress about it",
+      "source_ids": [
+        "D22:6"
+      ],
+      "candidate_context_ids": [
+        "D22:1",
+        "D22:2",
+        "D22:3",
+        "D22:4",
+        "D22:5",
+        "D22:6",
+        "D22:7",
+        "D22:8",
+        "D22:9",
+        "D22:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D22:6",
+          "start": 14,
+          "end": 45,
+          "verbatim": "I don't have to stress about it"
+        }
+      ],
+      "session": 22,
+      "recorded_date": "11:15 am on 6 October, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:43"
+    },
+    {
+      "question": "What did Nate say helps him unwind?",
+      "answer": "Playing video games or watching movies helps me unwind",
+      "source_ids": [
+        "D23:15"
+      ],
+      "candidate_context_ids": [
+        "D23:9",
+        "D23:10",
+        "D23:11",
+        "D23:12",
+        "D23:13",
+        "D23:14",
+        "D23:15",
+        "D23:16",
+        "D23:17",
+        "D23:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D23:15",
+          "start": 30,
+          "end": 84,
+          "verbatim": "Playing video games or watching movies helps me unwind"
+        }
+      ],
+      "session": 23,
+      "recorded_date": "10:58 am on 9 October, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:44"
+    },
+    {
+      "question": "What movie did Joanna watch the other day that was awesome?",
+      "answer": "a classic movie",
+      "source_ids": [
+        "D23:18"
+      ],
+      "candidate_context_ids": [
+        "D23:17",
+        "D23:18",
+        "D23:19",
+        "D23:20",
+        "D23:21",
+        "D23:22",
+        "D23:23",
+        "D23:24",
+        "D23:25",
+        "D23:26"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D23:18",
+          "start": 10,
+          "end": 25,
+          "verbatim": "a classic movie"
+        }
+      ],
+      "session": 23,
+      "recorded_date": "10:58 am on 9 October, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:45"
+    },
+    {
+      "question": "What did Joanna name her stuffed animal dog?",
+      "answer": "Tilly",
+      "source_ids": [
+        "D24:4",
+        "D24:5",
+        "D24:8"
+      ],
+      "candidate_context_ids": [
+        "D24:1",
+        "D24:2",
+        "D24:3",
+        "D24:4",
+        "D24:5",
+        "D24:6",
+        "D24:7",
+        "D24:8",
+        "D24:9",
+        "D24:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D24:4",
+          "start": 103,
+          "end": 108,
+          "verbatim": "Tilly"
+        },
+        {
+          "source_id": "D24:5",
+          "start": 40,
+          "end": 45,
+          "verbatim": "Tilly"
+        },
+        {
+          "source_id": "D24:8",
+          "start": 0,
+          "end": 5,
+          "verbatim": "Tilly"
+        }
+      ],
+      "session": 24,
+      "recorded_date": "2:01 pm on 21 October, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:46"
+    },
+    {
+      "question": "Who gave Joanna the stuffed animal dog?",
+      "answer": "Nate",
+      "source_ids": [
+        "D24:2"
+      ],
+      "candidate_context_ids": [
+        "D24:1",
+        "D24:2",
+        "D24:3",
+        "D24:4",
+        "D24:5",
+        "D24:6",
+        "D24:7",
+        "D24:8",
+        "D24:9",
+        "D24:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D24:2",
+          "start": 4,
+          "end": 8,
+          "verbatim": "Nate"
+        }
+      ],
+      "session": 24,
+      "recorded_date": "2:01 pm on 21 October, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:47"
+    },
+    {
+      "question": "What does Nate say about the turtles' companionship?",
+      "answer": "they make great companions",
+      "source_ids": [
+        "D25:25"
+      ],
+      "candidate_context_ids": [
+        "D25:17",
+        "D25:18",
+        "D25:19",
+        "D25:20",
+        "D25:21",
+        "D25:22",
+        "D25:23",
+        "D25:24",
+        "D25:25",
+        "D25:26"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D25:25",
+          "start": 134,
+          "end": 160,
+          "verbatim": "they make great companions"
+        }
+      ],
+      "session": 25,
+      "recorded_date": "8:16 pm on 25 October, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:48"
+    },
+    {
+      "question": "What does Nate say about the turtles' effect on him?",
+      "answer": "Having them around brings me joy",
+      "source_ids": [
+        "D25:25"
+      ],
+      "candidate_context_ids": [
+        "D25:17",
+        "D25:18",
+        "D25:19",
+        "D25:20",
+        "D25:21",
+        "D25:22",
+        "D25:23",
+        "D25:24",
+        "D25:25",
+        "D25:26"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D25:25",
+          "start": 97,
+          "end": 129,
+          "verbatim": "Having them around brings me joy"
+        }
+      ],
+      "session": 25,
+      "recorded_date": "8:16 pm on 25 October, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:49"
+    },
+    {
+      "question": "What did Nate say about the food he made?",
+      "answer": "It's super yummy, just made it yesterday!",
+      "source_ids": [
+        "D26:16"
+      ],
+      "candidate_context_ids": [
+        "D26:9",
+        "D26:10",
+        "D26:11",
+        "D26:12",
+        "D26:13",
+        "D26:14",
+        "D26:15",
+        "D26:16",
+        "D26:17",
+        "D26:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D26:16",
+          "start": 57,
+          "end": 98,
+          "verbatim": "It's super yummy, just made it yesterday!"
+        }
+      ],
+      "session": 26,
+      "recorded_date": "3:56 pm on 4 November, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:50"
+    },
+    {
+      "question": "What did Joanna say about the validation from the producers?",
+      "answer": "It was so validating to be taken seriously",
+      "source_ids": [
+        "D26:3"
+      ],
+      "candidate_context_ids": [
+        "D26:1",
+        "D26:2",
+        "D26:3",
+        "D26:4",
+        "D26:5",
+        "D26:6",
+        "D26:7",
+        "D26:8",
+        "D26:9",
+        "D26:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D26:3",
+          "start": 183,
+          "end": 225,
+          "verbatim": "It was so validating to be taken seriously"
+        }
+      ],
+      "session": 26,
+      "recorded_date": "3:56 pm on 4 November, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:51"
+    },
+    {
+      "question": "What image did Joanna show related to her movie script?",
+      "answer": "a photo of a handwritten letter from a young man",
+      "source_ids": [
+        "D27:28"
+      ],
+      "candidate_context_ids": [
+        "D27:25",
+        "D27:26",
+        "D27:27",
+        "D27:28",
+        "D27:29",
+        "D27:30",
+        "D27:31",
+        "D27:32",
+        "D27:33",
+        "D27:34"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D27:28",
+          "start": 126,
+          "end": 174,
+          "verbatim": "a photo of a handwritten letter from a young man"
+        }
+      ],
+      "session": 27,
+      "recorded_date": "8:10 pm on 7 November, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:52"
+    },
+    {
+      "question": "What does Nate say brings him joy?",
+      "answer": "These little guys sure bring joy to my life!",
+      "source_ids": [
+        "D27:9"
+      ],
+      "candidate_context_ids": [
+        "D27:9",
+        "D27:10",
+        "D27:11",
+        "D27:12",
+        "D27:13",
+        "D27:14",
+        "D27:15",
+        "D27:16",
+        "D27:17",
+        "D27:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D27:9",
+          "start": 16,
+          "end": 60,
+          "verbatim": "These little guys sure bring joy to my life!"
+        }
+      ],
+      "session": 27,
+      "recorded_date": "8:10 pm on 7 November, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:53"
+    },
+    {
+      "question": "What was the image shown with Nate's message about Joanna's script opportunity?",
+      "answer": "a photo of a trophy and a game controller on a table",
+      "source_ids": [
+        "D28:9"
+      ],
+      "candidate_context_ids": [
+        "D28:9",
+        "D28:10",
+        "D28:11",
+        "D28:12",
+        "D28:13",
+        "D28:14",
+        "D28:15",
+        "D28:16",
+        "D28:17",
+        "D28:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D28:9",
+          "start": 86,
+          "end": 138,
+          "verbatim": "a photo of a trophy and a game controller on a table"
+        }
+      ],
+      "session": 28,
+      "recorded_date": "5:54 pm on 9 November, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:54"
+    },
+    {
+      "question": "What did Joanna say about Nate's videos flopping?",
+      "answer": "That way your videos don't flop when you post them",
+      "source_ids": [
+        "D28:18"
+      ],
+      "candidate_context_ids": [
+        "D28:9",
+        "D28:10",
+        "D28:11",
+        "D28:12",
+        "D28:13",
+        "D28:14",
+        "D28:15",
+        "D28:16",
+        "D28:17",
+        "D28:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D28:18",
+          "start": 96,
+          "end": 146,
+          "verbatim": "That way your videos don't flop when you post them"
+        }
+      ],
+      "session": 28,
+      "recorded_date": "5:54 pm on 9 November, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_fit",
+      "id": "conv-42:source_probe:55"
+    },
+    {
+      "question": "What did Nate say turtles remind him to do?",
+      "answer": "slow down and appreciate the small things in life",
+      "source_ids": [
+        "D29:10"
+      ],
+      "candidate_context_ids": [
+        "D29:9",
+        "D29:10",
+        "D29:11",
+        "D29:12",
+        "D29:13",
+        "D29:14",
+        "D29:15"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D29:10",
+          "start": 61,
+          "end": 110,
+          "verbatim": "slow down and appreciate the small things in life"
+        }
+      ],
+      "session": 29,
+      "recorded_date": "12:06 am on 11 November, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:56"
+    },
+    {
+      "question": "What did Joanna say about the ice cream's colors and mix-ins?",
+      "answer": "give it a nice kick",
+      "source_ids": [
+        "D29:11"
+      ],
+      "candidate_context_ids": [
+        "D29:9",
+        "D29:10",
+        "D29:11",
+        "D29:12",
+        "D29:13",
+        "D29:14",
+        "D29:15"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D29:11",
+          "start": 58,
+          "end": 77,
+          "verbatim": "give it a nice kick"
+        }
+      ],
+      "session": 29,
+      "recorded_date": "12:06 am on 11 November, 2022",
+      "conv_id": "conv-42",
+      "split": "probe_audit",
+      "id": "conv-42:source_probe:57"
+    },
+    {
+      "question": "Who had tried VR gaming before?",
+      "answer": "James",
+      "source_ids": [
+        "D1:37"
+      ],
+      "candidate_context_ids": [
+        "D1:33",
+        "D1:34",
+        "D1:35",
+        "D1:36",
+        "D1:37"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D1:37",
+          "start": 8,
+          "end": 13,
+          "verbatim": "James"
+        }
+      ],
+      "session": 1,
+      "recorded_date": "3:47 pm on 17 March, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:0"
+    },
+    {
+      "question": "What did James say about VR gaming?",
+      "answer": "VR gaming is awesome!",
+      "source_ids": [
+        "D1:36"
+      ],
+      "candidate_context_ids": [
+        "D1:33",
+        "D1:34",
+        "D1:35",
+        "D1:36",
+        "D1:37"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D1:36",
+          "start": 6,
+          "end": 27,
+          "verbatim": "VR gaming is awesome!"
+        }
+      ],
+      "session": 1,
+      "recorded_date": "3:47 pm on 17 March, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:1"
+    },
+    {
+      "question": "What did John say about being a pet parent?",
+      "answer": "you'd make a great pet parent",
+      "source_ids": [
+        "D2:19"
+      ],
+      "candidate_context_ids": [
+        "D2:17",
+        "D2:18",
+        "D2:19",
+        "D2:20",
+        "D2:21"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D2:19",
+          "start": 143,
+          "end": 172,
+          "verbatim": "you'd make a great pet parent"
+        }
+      ],
+      "session": 2,
+      "recorded_date": "9:26 pm on 20 March, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:2"
+    },
+    {
+      "question": "What did James say about the dog being?",
+      "answer": "They're like my family",
+      "source_ids": [
+        "D2:17"
+      ],
+      "candidate_context_ids": [
+        "D2:17",
+        "D2:18",
+        "D2:19",
+        "D2:20",
+        "D2:21"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D2:17",
+          "start": 159,
+          "end": 181,
+          "verbatim": "They're like my family"
+        }
+      ],
+      "session": 2,
+      "recorded_date": "9:26 pm on 20 March, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:3"
+    },
+    {
+      "question": "What is the location of John's drum set?",
+      "answer": "sitting on top of a table",
+      "source_ids": [
+        "D3:3"
+      ],
+      "candidate_context_ids": [
+        "D3:1",
+        "D3:2",
+        "D3:3",
+        "D3:4",
+        "D3:5",
+        "D3:6",
+        "D3:7",
+        "D3:8",
+        "D3:9",
+        "D3:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D3:3",
+          "start": 87,
+          "end": 112,
+          "verbatim": "sitting on top of a table"
+        }
+      ],
+      "session": 3,
+      "recorded_date": "12:40 am on 27 March, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:4"
+    },
+    {
+      "question": "What did John say about his hobbies?",
+      "answer": "my hobbies and other stuff",
+      "source_ids": [
+        "D3:15"
+      ],
+      "candidate_context_ids": [
+        "D3:9",
+        "D3:10",
+        "D3:11",
+        "D3:12",
+        "D3:13",
+        "D3:14",
+        "D3:15",
+        "D3:16",
+        "D3:17",
+        "D3:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D3:15",
+          "start": 85,
+          "end": 111,
+          "verbatim": "my hobbies and other stuff"
+        }
+      ],
+      "session": 3,
+      "recorded_date": "12:40 am on 27 March, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:5"
+    },
+    {
+      "question": "What did John say about James trying out new genres?",
+      "answer": "Can't wait to try out some new genres",
+      "source_ids": [
+        "D4:22"
+      ],
+      "candidate_context_ids": [
+        "D4:17",
+        "D4:18",
+        "D4:19",
+        "D4:20",
+        "D4:21",
+        "D4:22",
+        "D4:23",
+        "D4:24",
+        "D4:25"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D4:22",
+          "start": 18,
+          "end": 55,
+          "verbatim": "Can't wait to try out some new genres"
+        }
+      ],
+      "session": 4,
+      "recorded_date": "2:13 pm on 4 April, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:6"
+    },
+    {
+      "question": "What did James say about trying out new games?",
+      "answer": "I'm always excited to try new games",
+      "source_ids": [
+        "D4:20"
+      ],
+      "candidate_context_ids": [
+        "D4:17",
+        "D4:18",
+        "D4:19",
+        "D4:20",
+        "D4:21",
+        "D4:22",
+        "D4:23",
+        "D4:24",
+        "D4:25"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D4:20",
+          "start": 6,
+          "end": 41,
+          "verbatim": "I'm always excited to try new games"
+        }
+      ],
+      "session": 4,
+      "recorded_date": "2:13 pm on 4 April, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:7"
+    },
+    {
+      "question": "What is the name of the person who mentioned the game has tough gameplay?",
+      "answer": "John",
+      "source_ids": [
+        "D5:1",
+        "D5:3"
+      ],
+      "candidate_context_ids": [
+        "D5:1",
+        "D5:2",
+        "D5:3",
+        "D5:4",
+        "D5:5",
+        "D5:6",
+        "D5:7",
+        "D5:8",
+        "D5:9",
+        "D5:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D5:1",
+          "start": 4,
+          "end": 8,
+          "verbatim": "John"
+        },
+        {
+          "source_id": "D5:3",
+          "start": 8,
+          "end": 12,
+          "verbatim": "John"
+        }
+      ],
+      "session": 5,
+      "recorded_date": "9:52 am on 12 April, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:8"
+    },
+    {
+      "question": "What is the name of the person who adopted the dog?",
+      "answer": "James",
+      "source_ids": [
+        "D5:2"
+      ],
+      "candidate_context_ids": [
+        "D5:1",
+        "D5:2",
+        "D5:3",
+        "D5:4",
+        "D5:5",
+        "D5:6",
+        "D5:7",
+        "D5:8",
+        "D5:9",
+        "D5:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D5:2",
+          "start": 4,
+          "end": 9,
+          "verbatim": "James"
+        }
+      ],
+      "session": 5,
+      "recorded_date": "9:52 am on 12 April, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:9"
+    },
+    {
+      "question": "What did John mention finding in the surrounding area?",
+      "answer": "This is the canyon I found in the surrounding area",
+      "source_ids": [
+        "D6:7"
+      ],
+      "candidate_context_ids": [
+        "D6:1",
+        "D6:2",
+        "D6:3",
+        "D6:4",
+        "D6:5",
+        "D6:6",
+        "D6:7",
+        "D6:8",
+        "D6:9",
+        "D6:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D6:7",
+          "start": 178,
+          "end": 228,
+          "verbatim": "This is the canyon I found in the surrounding area"
+        }
+      ],
+      "session": 6,
+      "recorded_date": "9:32 pm on 20 April, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:10"
+    },
+    {
+      "question": "What did John say about the canyon being in the surrounding area?",
+      "answer": "This is the canyon I found in the surrounding area",
+      "source_ids": [
+        "D6:7"
+      ],
+      "candidate_context_ids": [
+        "D6:1",
+        "D6:2",
+        "D6:3",
+        "D6:4",
+        "D6:5",
+        "D6:6",
+        "D6:7",
+        "D6:8",
+        "D6:9",
+        "D6:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D6:7",
+          "start": 178,
+          "end": 228,
+          "verbatim": "This is the canyon I found in the surrounding area"
+        }
+      ],
+      "session": 6,
+      "recorded_date": "9:32 pm on 20 April, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:11"
+    },
+    {
+      "question": "What is the nature of the shared image?",
+      "answer": "a photo of a notebook with a quote written on it",
+      "source_ids": [
+        "D7:21"
+      ],
+      "candidate_context_ids": [
+        "D7:17",
+        "D7:18",
+        "D7:19",
+        "D7:20",
+        "D7:21"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D7:21",
+          "start": 77,
+          "end": 125,
+          "verbatim": "a photo of a notebook with a quote written on it"
+        }
+      ],
+      "session": 7,
+      "recorded_date": "11:04 am on 23 April, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:12"
+    },
+    {
+      "question": "What did John say about the place?",
+      "answer": "Wow, that looks like a cool place you took them!",
+      "source_ids": [
+        "D7:5"
+      ],
+      "candidate_context_ids": [
+        "D7:1",
+        "D7:2",
+        "D7:3",
+        "D7:4",
+        "D7:5",
+        "D7:6",
+        "D7:7",
+        "D7:8",
+        "D7:9",
+        "D7:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D7:5",
+          "start": 0,
+          "end": 48,
+          "verbatim": "Wow, that looks like a cool place you took them!"
+        }
+      ],
+      "session": 7,
+      "recorded_date": "11:04 am on 23 April, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:13"
+    },
+    {
+      "question": "What is the name of the person who said \"use them to learn and grow\"?",
+      "answer": "James",
+      "source_ids": [
+        "D8:6"
+      ],
+      "candidate_context_ids": [
+        "D8:1",
+        "D8:2",
+        "D8:3",
+        "D8:4",
+        "D8:5",
+        "D8:6",
+        "D8:7",
+        "D8:8",
+        "D8:9",
+        "D8:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D8:6",
+          "start": 8,
+          "end": 13,
+          "verbatim": "James"
+        }
+      ],
+      "session": 8,
+      "recorded_date": "2:36 pm on 29 April, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:14"
+    },
+    {
+      "question": "What is the name of the person who said \"It's been great applying what you learned in class\"?",
+      "answer": "James",
+      "source_ids": [
+        "D8:6"
+      ],
+      "candidate_context_ids": [
+        "D8:1",
+        "D8:2",
+        "D8:3",
+        "D8:4",
+        "D8:5",
+        "D8:6",
+        "D8:7",
+        "D8:8",
+        "D8:9",
+        "D8:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D8:6",
+          "start": 8,
+          "end": 13,
+          "verbatim": "James"
+        }
+      ],
+      "session": 8,
+      "recorded_date": "2:36 pm on 29 April, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:15"
+    },
+    {
+      "question": "What did James say about the dogs' main feature?",
+      "answer": "They are so loyal, and this is their main feature",
+      "source_ids": [
+        "D9:14"
+      ],
+      "candidate_context_ids": [
+        "D9:9",
+        "D9:10",
+        "D9:11",
+        "D9:12",
+        "D9:13",
+        "D9:14",
+        "D9:15",
+        "D9:16",
+        "D9:17",
+        "D9:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D9:14",
+          "start": 52,
+          "end": 101,
+          "verbatim": "They are so loyal, and this is their main feature"
+        }
+      ],
+      "session": 9,
+      "recorded_date": "7:01 pm on 4 May, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:16"
+    },
+    {
+      "question": "What did James say about joining John's movie night?",
+      "answer": "I'm definitely in next time",
+      "source_ids": [
+        "D9:10"
+      ],
+      "candidate_context_ids": [
+        "D9:9",
+        "D9:10",
+        "D9:11",
+        "D9:12",
+        "D9:13",
+        "D9:14",
+        "D9:15",
+        "D9:16",
+        "D9:17",
+        "D9:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D9:10",
+          "start": 20,
+          "end": 47,
+          "verbatim": "I'm definitely in next time"
+        }
+      ],
+      "session": 9,
+      "recorded_date": "7:01 pm on 4 May, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:17"
+    },
+    {
+      "question": "What did James say about John's efforts?",
+      "answer": "I'm really proud of you",
+      "source_ids": [
+        "D10:15"
+      ],
+      "candidate_context_ids": [
+        "D10:9",
+        "D10:10",
+        "D10:11",
+        "D10:12",
+        "D10:13",
+        "D10:14",
+        "D10:15"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D10:15",
+          "start": 0,
+          "end": 23,
+          "verbatim": "I'm really proud of you"
+        }
+      ],
+      "session": 10,
+      "recorded_date": "12:45 am on 8 May, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:18"
+    },
+    {
+      "question": "What did John say about the image of a wooden table with a game controller?",
+      "answer": "that looks awesome!",
+      "source_ids": [
+        "D10:3"
+      ],
+      "candidate_context_ids": [
+        "D10:1",
+        "D10:2",
+        "D10:3",
+        "D10:4",
+        "D10:5",
+        "D10:6",
+        "D10:7",
+        "D10:8",
+        "D10:9",
+        "D10:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D10:3",
+          "start": 11,
+          "end": 30,
+          "verbatim": "that looks awesome!"
+        }
+      ],
+      "session": 10,
+      "recorded_date": "12:45 am on 8 May, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:19"
+    },
+    {
+      "question": "What was the second message's content?",
+      "answer": "I'm here for you. Good luck!",
+      "source_ids": [
+        "D11:18"
+      ],
+      "candidate_context_ids": [
+        "D11:17",
+        "D11:18",
+        "D11:19"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D11:18",
+          "start": 0,
+          "end": 28,
+          "verbatim": "I'm here for you. Good luck!"
+        }
+      ],
+      "session": 11,
+      "recorded_date": "5:00 pm on 11 May, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:20"
+    },
+    {
+      "question": "What did John say about his hope for making a positive impact?",
+      "answer": "I'm hoping to make a positive impact there",
+      "source_ids": [
+        "D11:15"
+      ],
+      "candidate_context_ids": [
+        "D11:9",
+        "D11:10",
+        "D11:11",
+        "D11:12",
+        "D11:13",
+        "D11:14",
+        "D11:15",
+        "D11:16",
+        "D11:17",
+        "D11:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D11:15",
+          "start": 80,
+          "end": 122,
+          "verbatim": "I'm hoping to make a positive impact there"
+        }
+      ],
+      "session": 11,
+      "recorded_date": "5:00 pm on 11 May, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:21"
+    },
+    {
+      "question": "What did John say about determination and confidence?",
+      "answer": "determination and confidence make any project a success",
+      "source_ids": [
+        "D12:12"
+      ],
+      "candidate_context_ids": [
+        "D12:9",
+        "D12:10",
+        "D12:11",
+        "D12:12",
+        "D12:13",
+        "D12:14"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D12:12",
+          "start": 135,
+          "end": 190,
+          "verbatim": "determination and confidence make any project a success"
+        }
+      ],
+      "session": 12,
+      "recorded_date": "7:33 pm on 23 May, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:22"
+    },
+    {
+      "question": "What skills did James learn from the project?",
+      "answer": "problem-solving, patience, and perseverance",
+      "source_ids": [
+        "D12:11"
+      ],
+      "candidate_context_ids": [
+        "D12:9",
+        "D12:10",
+        "D12:11",
+        "D12:12",
+        "D12:13",
+        "D12:14"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D12:11",
+          "start": 163,
+          "end": 206,
+          "verbatim": "problem-solving, patience, and perseverance"
+        }
+      ],
+      "session": 12,
+      "recorded_date": "7:33 pm on 23 May, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:23"
+    },
+    {
+      "question": "Who is the speaker of D13:19?",
+      "answer": "John",
+      "source_ids": [
+        "D13:20"
+      ],
+      "candidate_context_ids": [
+        "D13:17",
+        "D13:18",
+        "D13:19",
+        "D13:20"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D13:20",
+          "start": 6,
+          "end": 10,
+          "verbatim": "John"
+        }
+      ],
+      "session": 13,
+      "recorded_date": "4:30 pm on 13 June, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:24"
+    },
+    {
+      "question": "Who is the speaker of D13:20?",
+      "answer": "James",
+      "source_ids": [
+        "D13:19"
+      ],
+      "candidate_context_ids": [
+        "D13:17",
+        "D13:18",
+        "D13:19",
+        "D13:20"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D13:19",
+          "start": 19,
+          "end": 24,
+          "verbatim": "James"
+        }
+      ],
+      "session": 13,
+      "recorded_date": "4:30 pm on 13 June, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:25"
+    },
+    {
+      "question": "What is the name of the dog that is described as a pro swimmer?",
+      "answer": "Max",
+      "source_ids": [
+        "D14:13",
+        "D14:14",
+        "D14:15",
+        "D14:18"
+      ],
+      "candidate_context_ids": [
+        "D14:9",
+        "D14:10",
+        "D14:11",
+        "D14:12",
+        "D14:13",
+        "D14:14",
+        "D14:15",
+        "D14:16",
+        "D14:17",
+        "D14:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D14:13",
+          "start": 8,
+          "end": 11,
+          "verbatim": "Max"
+        },
+        {
+          "source_id": "D14:14",
+          "start": 31,
+          "end": 34,
+          "verbatim": "Max"
+        },
+        {
+          "source_id": "D14:15",
+          "start": 6,
+          "end": 9,
+          "verbatim": "Max"
+        },
+        {
+          "source_id": "D14:18",
+          "start": 0,
+          "end": 3,
+          "verbatim": "Max"
+        }
+      ],
+      "session": 14,
+      "recorded_date": "5:07 pm on 16 June, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:26"
+    },
+    {
+      "question": "What does James do when he is at the park alone?",
+      "answer": "just chill",
+      "source_ids": [
+        "D14:31"
+      ],
+      "candidate_context_ids": [
+        "D14:25",
+        "D14:26",
+        "D14:27",
+        "D14:28",
+        "D14:29",
+        "D14:30",
+        "D14:31",
+        "D14:32",
+        "D14:33",
+        "D14:34"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D14:31",
+          "start": 43,
+          "end": 53,
+          "verbatim": "just chill"
+        }
+      ],
+      "session": 14,
+      "recorded_date": "5:07 pm on 16 June, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:27"
+    },
+    {
+      "question": "What did John say about the photo James shared?",
+      "answer": "That's awesome, James!",
+      "source_ids": [
+        "D15:10"
+      ],
+      "candidate_context_ids": [
+        "D15:9",
+        "D15:10",
+        "D15:11",
+        "D15:12",
+        "D15:13",
+        "D15:14",
+        "D15:15",
+        "D15:16",
+        "D15:17",
+        "D15:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D15:10",
+          "start": 0,
+          "end": 22,
+          "verbatim": "That's awesome, James!"
+        }
+      ],
+      "session": 15,
+      "recorded_date": "9:59 pm on 19 June, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:28"
+    },
+    {
+      "question": "What did John say about the purpose of volunteering?",
+      "answer": "I want to make this world a better place",
+      "source_ids": [
+        "D15:16"
+      ],
+      "candidate_context_ids": [
+        "D15:9",
+        "D15:10",
+        "D15:11",
+        "D15:12",
+        "D15:13",
+        "D15:14",
+        "D15:15",
+        "D15:16",
+        "D15:17",
+        "D15:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D15:16",
+          "start": 25,
+          "end": 65,
+          "verbatim": "I want to make this world a better place"
+        }
+      ],
+      "session": 15,
+      "recorded_date": "9:59 pm on 19 June, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:29"
+    },
+    {
+      "question": "What did James say about his current reading preference?",
+      "answer": "But now it’s summer and I want something more exciting!",
+      "source_ids": [
+        "D16:9"
+      ],
+      "candidate_context_ids": [
+        "D16:1",
+        "D16:2",
+        "D16:3",
+        "D16:4",
+        "D16:5",
+        "D16:6",
+        "D16:7",
+        "D16:8",
+        "D16:9",
+        "D16:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D16:9",
+          "start": 86,
+          "end": 141,
+          "verbatim": "But now it’s summer and I want something more exciting!"
+        }
+      ],
+      "session": 16,
+      "recorded_date": "5:13 pm on 9 July, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:30"
+    },
+    {
+      "question": "How did James feel about winning the online gaming tournament?",
+      "answer": "it blew my mind when I won",
+      "source_ids": [
+        "D16:1"
+      ],
+      "candidate_context_ids": [
+        "D16:1",
+        "D16:2",
+        "D16:3",
+        "D16:4",
+        "D16:5",
+        "D16:6",
+        "D16:7",
+        "D16:8",
+        "D16:9",
+        "D16:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D16:1",
+          "start": 159,
+          "end": 185,
+          "verbatim": "it blew my mind when I won"
+        }
+      ],
+      "session": 16,
+      "recorded_date": "5:13 pm on 9 July, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:31"
+    },
+    {
+      "question": "What did John share about a recent chess game?",
+      "answer": "Here's a pic from an intense game I played lately",
+      "source_ids": [
+        "D17:5"
+      ],
+      "candidate_context_ids": [
+        "D17:1",
+        "D17:2",
+        "D17:3",
+        "D17:4",
+        "D17:5",
+        "D17:6",
+        "D17:7",
+        "D17:8",
+        "D17:9",
+        "D17:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D17:5",
+          "start": 92,
+          "end": 141,
+          "verbatim": "Here's a pic from an intense game I played lately"
+        }
+      ],
+      "session": 17,
+      "recorded_date": "9:49 am on 22 July, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:32"
+    },
+    {
+      "question": "What event is John referring to when he mentions a shared photo from elementary school?",
+      "answer": "Remember this photo from elementary school?",
+      "source_ids": [
+        "D17:13"
+      ],
+      "candidate_context_ids": [
+        "D17:9",
+        "D17:10",
+        "D17:11",
+        "D17:12",
+        "D17:13",
+        "D17:14",
+        "D17:15",
+        "D17:16",
+        "D17:17",
+        "D17:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D17:13",
+          "start": 55,
+          "end": 98,
+          "verbatim": "Remember this photo from elementary school?"
+        }
+      ],
+      "session": 17,
+      "recorded_date": "9:49 am on 22 July, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:33"
+    },
+    {
+      "question": "What was John's previous job?",
+      "answer": "IT job",
+      "source_ids": [
+        "D18:1"
+      ],
+      "candidate_context_ids": [
+        "D18:1",
+        "D18:2",
+        "D18:3",
+        "D18:4",
+        "D18:5",
+        "D18:6",
+        "D18:7",
+        "D18:8",
+        "D18:9",
+        "D18:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D18:1",
+          "start": 85,
+          "end": 91,
+          "verbatim": "IT job"
+        }
+      ],
+      "session": 18,
+      "recorded_date": "1:45 pm on 6 August, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:34"
+    },
+    {
+      "question": "Who said Phew, great that he's okay.",
+      "answer": "John",
+      "source_ids": [
+        "D18:20"
+      ],
+      "candidate_context_ids": [
+        "D18:17",
+        "D18:18",
+        "D18:19",
+        "D18:20"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D18:20",
+          "start": 8,
+          "end": 12,
+          "verbatim": "John"
+        }
+      ],
+      "session": 18,
+      "recorded_date": "1:45 pm on 6 August, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:35"
+    },
+    {
+      "question": "What image did James share?",
+      "answer": "a photo of a man dressed in armor holding a sword",
+      "source_ids": [
+        "D19:8"
+      ],
+      "candidate_context_ids": [
+        "D19:1",
+        "D19:2",
+        "D19:3",
+        "D19:4",
+        "D19:5",
+        "D19:6",
+        "D19:7",
+        "D19:8",
+        "D19:9",
+        "D19:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D19:8",
+          "start": 166,
+          "end": 215,
+          "verbatim": "a photo of a man dressed in armor holding a sword"
+        }
+      ],
+      "session": 19,
+      "recorded_date": "9:16 am on 10 August, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:36"
+    },
+    {
+      "question": "What did John say about James's experience with other dog lovers?",
+      "answer": "Surely you gained a new experience from communicating with other dog lovers!",
+      "source_ids": [
+        "D19:13"
+      ],
+      "candidate_context_ids": [
+        "D19:9",
+        "D19:10",
+        "D19:11",
+        "D19:12",
+        "D19:13",
+        "D19:14",
+        "D19:15",
+        "D19:16",
+        "D19:17"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D19:13",
+          "start": 6,
+          "end": 82,
+          "verbatim": "Surely you gained a new experience from communicating with other dog lovers!"
+        }
+      ],
+      "session": 19,
+      "recorded_date": "9:16 am on 10 August, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:37"
+    },
+    {
+      "question": "What is the relationship between John and James?",
+      "answer": "siblings",
+      "source_ids": [
+        "D20:17"
+      ],
+      "candidate_context_ids": [
+        "D20:17",
+        "D20:18",
+        "D20:19",
+        "D20:20",
+        "D20:21",
+        "D20:22"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D20:17",
+          "start": 32,
+          "end": 40,
+          "verbatim": "siblings"
+        }
+      ],
+      "session": 20,
+      "recorded_date": "3:57 pm on 21 August, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:38"
+    },
+    {
+      "question": "What did James ask about John's gaming gear?",
+      "answer": "Cool! What kind of gear do you have now for gaming?",
+      "source_ids": [
+        "D20:10"
+      ],
+      "candidate_context_ids": [
+        "D20:1",
+        "D20:2",
+        "D20:3",
+        "D20:4",
+        "D20:5",
+        "D20:6",
+        "D20:7",
+        "D20:8",
+        "D20:9",
+        "D20:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D20:10",
+          "start": 0,
+          "end": 51,
+          "verbatim": "Cool! What kind of gear do you have now for gaming?"
+        }
+      ],
+      "session": 20,
+      "recorded_date": "3:57 pm on 21 August, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:39"
+    },
+    {
+      "question": "What is the name of the person who mentioned not liking dark beer?",
+      "answer": "John",
+      "source_ids": [
+        "D21:9"
+      ],
+      "candidate_context_ids": [
+        "D21:9",
+        "D21:10",
+        "D21:11",
+        "D21:12",
+        "D21:13",
+        "D21:14",
+        "D21:15",
+        "D21:16",
+        "D21:17",
+        "D21:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D21:9",
+          "start": 17,
+          "end": 21,
+          "verbatim": "John"
+        }
+      ],
+      "session": 21,
+      "recorded_date": "9:18 pm on 26 August, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:40"
+    },
+    {
+      "question": "What is the name of the person who mentioned creating a strategy game?",
+      "answer": "James",
+      "source_ids": [
+        "D21:10"
+      ],
+      "candidate_context_ids": [
+        "D21:9",
+        "D21:10",
+        "D21:11",
+        "D21:12",
+        "D21:13",
+        "D21:14",
+        "D21:15",
+        "D21:16",
+        "D21:17",
+        "D21:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D21:10",
+          "start": 5,
+          "end": 10,
+          "verbatim": "James"
+        }
+      ],
+      "session": 21,
+      "recorded_date": "9:18 pm on 26 August, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:41"
+    },
+    {
+      "question": "What did James say about being here for the other person?",
+      "answer": "I'm here for you, no doubt",
+      "source_ids": [
+        "D22:17"
+      ],
+      "candidate_context_ids": [
+        "D22:17",
+        "D22:18",
+        "D22:19"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D22:17",
+          "start": 23,
+          "end": 49,
+          "verbatim": "I'm here for you, no doubt"
+        }
+      ],
+      "session": 22,
+      "recorded_date": "6:53 pm on 1 September, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:42"
+    },
+    {
+      "question": "What did John ask James about the game?",
+      "answer": "This game looks great! What inspired you to create it?",
+      "source_ids": [
+        "D22:4"
+      ],
+      "candidate_context_ids": [
+        "D22:1",
+        "D22:2",
+        "D22:3",
+        "D22:4",
+        "D22:5",
+        "D22:6",
+        "D22:7",
+        "D22:8",
+        "D22:9",
+        "D22:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D22:4",
+          "start": 0,
+          "end": 54,
+          "verbatim": "This game looks great! What inspired you to create it?"
+        }
+      ],
+      "session": 22,
+      "recorded_date": "6:53 pm on 1 September, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:43"
+    },
+    {
+      "question": "What did James say he hoped to do for John?",
+      "answer": "treat you to my creation",
+      "source_ids": [
+        "D23:17"
+      ],
+      "candidate_context_ids": [
+        "D23:17",
+        "D23:18",
+        "D23:19",
+        "D23:20",
+        "D23:21"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D23:17",
+          "start": 68,
+          "end": 92,
+          "verbatim": "treat you to my creation"
+        }
+      ],
+      "session": 23,
+      "recorded_date": "9:23 pm on 4 September, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:44"
+    },
+    {
+      "question": "What did James say he hoped to do once he learned more about cooking?",
+      "answer": "treat you to my creation",
+      "source_ids": [
+        "D23:17"
+      ],
+      "candidate_context_ids": [
+        "D23:9",
+        "D23:10",
+        "D23:11",
+        "D23:12",
+        "D23:13",
+        "D23:14",
+        "D23:15",
+        "D23:16",
+        "D23:17",
+        "D23:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D23:17",
+          "start": 68,
+          "end": 92,
+          "verbatim": "treat you to my creation"
+        }
+      ],
+      "session": 23,
+      "recorded_date": "9:23 pm on 4 September, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:45"
+    },
+    {
+      "question": "What was the reason John gave for not recording the jamming sessions?",
+      "answer": "it was more about the experience and the moment",
+      "source_ids": [
+        "D24:19"
+      ],
+      "candidate_context_ids": [
+        "D24:17",
+        "D24:18",
+        "D24:19",
+        "D24:20",
+        "D24:21"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D24:19",
+          "start": 5,
+          "end": 52,
+          "verbatim": "it was more about the experience and the moment"
+        }
+      ],
+      "session": 24,
+      "recorded_date": "6:02 pm on 18 September, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:46"
+    },
+    {
+      "question": "Did James ask if John had ever been in a band?",
+      "answer": "Have you ever been in a band or just jammed with friends?",
+      "source_ids": [
+        "D24:16"
+      ],
+      "candidate_context_ids": [
+        "D24:9",
+        "D24:10",
+        "D24:11",
+        "D24:12",
+        "D24:13",
+        "D24:14",
+        "D24:15",
+        "D24:16",
+        "D24:17",
+        "D24:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D24:16",
+          "start": 6,
+          "end": 63,
+          "verbatim": "Have you ever been in a band or just jammed with friends?"
+        }
+      ],
+      "session": 24,
+      "recorded_date": "6:02 pm on 18 September, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:47"
+    },
+    {
+      "question": "What was James' main concern about his week?",
+      "answer": "trying to find a balance between work and other activities",
+      "source_ids": [
+        "D25:20"
+      ],
+      "candidate_context_ids": [
+        "D25:17",
+        "D25:18",
+        "D25:19",
+        "D25:20",
+        "D25:21",
+        "D25:22",
+        "D25:23",
+        "D25:24",
+        "D25:25"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D25:20",
+          "start": 26,
+          "end": 84,
+          "verbatim": "trying to find a balance between work and other activities"
+        }
+      ],
+      "session": 25,
+      "recorded_date": "8:56 pm on 20 September, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:48"
+    },
+    {
+      "question": "What magazine did James recommend?",
+      "answer": "a photo of a magazine with a picture of a cartoon character",
+      "source_ids": [
+        "D25:14",
+        "D25:16"
+      ],
+      "candidate_context_ids": [
+        "D25:9",
+        "D25:10",
+        "D25:11",
+        "D25:12",
+        "D25:13",
+        "D25:14",
+        "D25:15",
+        "D25:16",
+        "D25:17",
+        "D25:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D25:14",
+          "start": 243,
+          "end": 302,
+          "verbatim": "a photo of a magazine with a picture of a cartoon character"
+        },
+        {
+          "source_id": "D25:16",
+          "start": 121,
+          "end": 180,
+          "verbatim": "a photo of a magazine with a picture of a cartoon character"
+        }
+      ],
+      "session": 25,
+      "recorded_date": "8:56 pm on 20 September, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:49"
+    },
+    {
+      "question": "What did John say he hoped James would do after playing Cyberpunk 2077?",
+      "answer": "Hope you have a blast playing",
+      "source_ids": [
+        "D26:13"
+      ],
+      "candidate_context_ids": [
+        "D26:9",
+        "D26:10",
+        "D26:11",
+        "D26:12",
+        "D26:13",
+        "D26:14",
+        "D26:15"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D26:13",
+          "start": 19,
+          "end": 48,
+          "verbatim": "Hope you have a blast playing"
+        }
+      ],
+      "session": 26,
+      "recorded_date": "9:20 am on 3 October, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:50"
+    },
+    {
+      "question": "What did John say before ending the conversation?",
+      "answer": "Take care!",
+      "source_ids": [
+        "D26:15"
+      ],
+      "candidate_context_ids": [
+        "D26:9",
+        "D26:10",
+        "D26:11",
+        "D26:12",
+        "D26:13",
+        "D26:14",
+        "D26:15"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D26:15",
+          "start": 0,
+          "end": 10,
+          "verbatim": "Take care!"
+        }
+      ],
+      "session": 26,
+      "recorded_date": "9:20 am on 3 October, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:51"
+    },
+    {
+      "question": "What game did James mention as a source of inspiration?",
+      "answer": "Witcher 3",
+      "source_ids": [
+        "D27:6",
+        "D27:7"
+      ],
+      "candidate_context_ids": [
+        "D27:1",
+        "D27:2",
+        "D27:3",
+        "D27:4",
+        "D27:5",
+        "D27:6",
+        "D27:7",
+        "D27:8",
+        "D27:9",
+        "D27:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D27:6",
+          "start": 83,
+          "end": 92,
+          "verbatim": "Witcher 3"
+        },
+        {
+          "source_id": "D27:7",
+          "start": 4,
+          "end": 13,
+          "verbatim": "Witcher 3"
+        }
+      ],
+      "session": 27,
+      "recorded_date": "2:14 pm on 13 October, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:52"
+    },
+    {
+      "question": "What did John say about being there for James?",
+      "answer": "You've always been there for me, John",
+      "source_ids": [
+        "D27:14"
+      ],
+      "candidate_context_ids": [
+        "D27:9",
+        "D27:10",
+        "D27:11",
+        "D27:12",
+        "D27:13",
+        "D27:14"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D27:14",
+          "start": 15,
+          "end": 52,
+          "verbatim": "You've always been there for me, John"
+        }
+      ],
+      "session": 27,
+      "recorded_date": "2:14 pm on 13 October, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:53"
+    },
+    {
+      "question": "What did John ask James about the Nintendo console?",
+      "answer": "Did you have fun with Nintendo when you were a kid?",
+      "source_ids": [
+        "D28:24"
+      ],
+      "candidate_context_ids": [
+        "D28:17",
+        "D28:18",
+        "D28:19",
+        "D28:20",
+        "D28:21",
+        "D28:22",
+        "D28:23",
+        "D28:24",
+        "D28:25",
+        "D28:26"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D28:24",
+          "start": 23,
+          "end": 74,
+          "verbatim": "Did you have fun with Nintendo when you were a kid?"
+        }
+      ],
+      "session": 28,
+      "recorded_date": "7:36 pm on 21 October, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:54"
+    },
+    {
+      "question": "What did John say about the importance of choices in Cyberpunk 2077?",
+      "answer": "The choices here can be life-changing!",
+      "source_ids": [
+        "D28:30"
+      ],
+      "candidate_context_ids": [
+        "D28:25",
+        "D28:26",
+        "D28:27",
+        "D28:28",
+        "D28:29",
+        "D28:30",
+        "D28:31",
+        "D28:32",
+        "D28:33",
+        "D28:34"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D28:30",
+          "start": 150,
+          "end": 188,
+          "verbatim": "The choices here can be life-changing!"
+        }
+      ],
+      "session": 28,
+      "recorded_date": "7:36 pm on 21 October, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:55"
+    },
+    {
+      "question": "What is the name of the person who said they would stay safe and chat soon?",
+      "answer": "John",
+      "source_ids": [
+        "D29:14"
+      ],
+      "candidate_context_ids": [
+        "D29:9",
+        "D29:10",
+        "D29:11",
+        "D29:12",
+        "D29:13",
+        "D29:14",
+        "D29:15",
+        "D29:16"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D29:14",
+          "start": 8,
+          "end": 12,
+          "verbatim": "John"
+        }
+      ],
+      "session": 29,
+      "recorded_date": "12:37 am on 31 October, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:56"
+    },
+    {
+      "question": "What was the main activity discussed in the conversation?",
+      "answer": "a gaming tournament",
+      "source_ids": [
+        "D29:2"
+      ],
+      "candidate_context_ids": [
+        "D29:1",
+        "D29:2",
+        "D29:3",
+        "D29:4",
+        "D29:5",
+        "D29:6",
+        "D29:7",
+        "D29:8",
+        "D29:9",
+        "D29:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D29:2",
+          "start": 33,
+          "end": 52,
+          "verbatim": "a gaming tournament"
+        }
+      ],
+      "session": 29,
+      "recorded_date": "12:37 am on 31 October, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:57"
+    },
+    {
+      "question": "What did James say about wanting to check out resources on chess openings?",
+      "answer": "Sure, I'd love to check out some resources on chess openings",
+      "source_ids": [
+        "D30:11"
+      ],
+      "candidate_context_ids": [
+        "D30:9",
+        "D30:10",
+        "D30:11",
+        "D30:12",
+        "D30:13",
+        "D30:14",
+        "D30:15",
+        "D30:16",
+        "D30:17",
+        "D30:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D30:11",
+          "start": 0,
+          "end": 60,
+          "verbatim": "Sure, I'd love to check out some resources on chess openings"
+        }
+      ],
+      "session": 30,
+      "recorded_date": "5:20 pm on 5 November, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:58"
+    },
+    {
+      "question": "What did James say about the suggestion for chess openings?",
+      "answer": "Thanks for the suggestion, John",
+      "source_ids": [
+        "D30:13"
+      ],
+      "candidate_context_ids": [
+        "D30:9",
+        "D30:10",
+        "D30:11",
+        "D30:12",
+        "D30:13",
+        "D30:14",
+        "D30:15",
+        "D30:16",
+        "D30:17",
+        "D30:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D30:13",
+          "start": 0,
+          "end": 31,
+          "verbatim": "Thanks for the suggestion, John"
+        }
+      ],
+      "session": 30,
+      "recorded_date": "5:20 pm on 5 November, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_fit",
+      "id": "conv-47:source_probe:59"
+    },
+    {
+      "question": "What did John say about dogs being there for us?",
+      "answer": "They're always there for us!",
+      "source_ids": [
+        "D31:16"
+      ],
+      "candidate_context_ids": [
+        "D31:9",
+        "D31:10",
+        "D31:11",
+        "D31:12",
+        "D31:13",
+        "D31:14",
+        "D31:15",
+        "D31:16",
+        "D31:17",
+        "D31:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D31:16",
+          "start": 38,
+          "end": 66,
+          "verbatim": "They're always there for us!"
+        }
+      ],
+      "session": 31,
+      "recorded_date": "8:57 pm on 7 November, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:60"
+    },
+    {
+      "question": "What did James say about the joy of having dogs?",
+      "answer": "Every day's better with them around",
+      "source_ids": [
+        "D31:15"
+      ],
+      "candidate_context_ids": [
+        "D31:9",
+        "D31:10",
+        "D31:11",
+        "D31:12",
+        "D31:13",
+        "D31:14",
+        "D31:15",
+        "D31:16",
+        "D31:17",
+        "D31:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D31:15",
+          "start": 103,
+          "end": 138,
+          "verbatim": "Every day's better with them around"
+        }
+      ],
+      "session": 31,
+      "recorded_date": "8:57 pm on 7 November, 2022",
+      "conv_id": "conv-47",
+      "split": "probe_audit",
+      "id": "conv-47:source_probe:61"
+    },
+    {
+      "question": "What did Dave do at the event?",
+      "answer": "I even had the opportunity to speak with some of the owners",
+      "source_ids": [
+        "D1:2"
+      ],
+      "candidate_context_ids": [
+        "D1:1",
+        "D1:2",
+        "D1:3",
+        "D1:4",
+        "D1:5",
+        "D1:6",
+        "D1:7",
+        "D1:8",
+        "D1:9",
+        "D1:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D1:2",
+          "start": 213,
+          "end": 272,
+          "verbatim": "I even had the opportunity to speak with some of the owners"
+        }
+      ],
+      "session": 1,
+      "recorded_date": "11:53 am on 23 March, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:0"
+    },
+    {
+      "question": "Where will Calvin be staying in Japan?",
+      "answer": "such a nice place",
+      "source_ids": [
+        "D1:9"
+      ],
+      "candidate_context_ids": [
+        "D1:1",
+        "D1:2",
+        "D1:3",
+        "D1:4",
+        "D1:5",
+        "D1:6",
+        "D1:7",
+        "D1:8",
+        "D1:9",
+        "D1:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D1:9",
+          "start": 49,
+          "end": 66,
+          "verbatim": "such a nice place"
+        }
+      ],
+      "session": 1,
+      "recorded_date": "11:53 am on 23 March, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:1"
+    },
+    {
+      "question": "What color is Calvin's new car?",
+      "answer": "red",
+      "source_ids": [
+        "D2:5"
+      ],
+      "candidate_context_ids": [
+        "D2:1",
+        "D2:2",
+        "D2:3",
+        "D2:4",
+        "D2:5",
+        "D2:6",
+        "D2:7",
+        "D2:8",
+        "D2:9",
+        "D2:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D2:5",
+          "start": 261,
+          "end": 264,
+          "verbatim": "red"
+        }
+      ],
+      "session": 2,
+      "recorded_date": "4:45 pm on 26 March, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:2"
+    },
+    {
+      "question": "Which band did Dave say was his favorite at the music festival?",
+      "answer": "Aerosmith",
+      "source_ids": [
+        "D2:10"
+      ],
+      "candidate_context_ids": [
+        "D2:1",
+        "D2:2",
+        "D2:3",
+        "D2:4",
+        "D2:5",
+        "D2:6",
+        "D2:7",
+        "D2:8",
+        "D2:9",
+        "D2:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D2:10",
+          "start": 89,
+          "end": 98,
+          "verbatim": "Aerosmith"
+        }
+      ],
+      "session": 2,
+      "recorded_date": "4:45 pm on 26 March, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:3"
+    },
+    {
+      "question": "What did Dave ask Calvin about the event in Tokyo?",
+      "answer": "What did you learn from it?",
+      "source_ids": [
+        "D3:4"
+      ],
+      "candidate_context_ids": [
+        "D3:1",
+        "D3:2",
+        "D3:3",
+        "D3:4",
+        "D3:5",
+        "D3:6",
+        "D3:7",
+        "D3:8",
+        "D3:9",
+        "D3:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D3:4",
+          "start": 27,
+          "end": 54,
+          "verbatim": "What did you learn from it?"
+        }
+      ],
+      "session": 3,
+      "recorded_date": "4:15 pm on 20 April, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:4"
+    },
+    {
+      "question": "What is the name of the car Calvin sent a photo of?",
+      "answer": "a red sports car",
+      "source_ids": [
+        "D3:13"
+      ],
+      "candidate_context_ids": [
+        "D3:9",
+        "D3:10",
+        "D3:11",
+        "D3:12",
+        "D3:13",
+        "D3:14",
+        "D3:15",
+        "D3:16",
+        "D3:17",
+        "D3:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D3:13",
+          "start": 147,
+          "end": 163,
+          "verbatim": "a red sports car"
+        }
+      ],
+      "session": 3,
+      "recorded_date": "4:15 pm on 20 April, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:5"
+    },
+    {
+      "question": "What is the name of the person who said the necklace is a great reminder of why they keep hustling?",
+      "answer": "Calvin",
+      "source_ids": [
+        "D4:27"
+      ],
+      "candidate_context_ids": [
+        "D4:25",
+        "D4:26",
+        "D4:27",
+        "D4:28"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D4:27",
+          "start": 9,
+          "end": 15,
+          "verbatim": "Calvin"
+        }
+      ],
+      "session": 4,
+      "recorded_date": "6:24 pm on 1 May, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:6"
+    },
+    {
+      "question": "What is the name of the person who said the necklace is from another artist?",
+      "answer": "Calvin",
+      "source_ids": [
+        "D4:27"
+      ],
+      "candidate_context_ids": [
+        "D4:25",
+        "D4:26",
+        "D4:27",
+        "D4:28"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D4:27",
+          "start": 9,
+          "end": 15,
+          "verbatim": "Calvin"
+        }
+      ],
+      "session": 4,
+      "recorded_date": "6:24 pm on 1 May, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:7"
+    },
+    {
+      "question": "What is the name of the person who is talking about embracing nature as calming?",
+      "answer": "Calvin",
+      "source_ids": [
+        "D5:1",
+        "D5:3",
+        "D5:5",
+        "D5:7"
+      ],
+      "candidate_context_ids": [
+        "D5:1",
+        "D5:2",
+        "D5:3",
+        "D5:4",
+        "D5:5",
+        "D5:6",
+        "D5:7",
+        "D5:8",
+        "D5:9",
+        "D5:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D5:1",
+          "start": 4,
+          "end": 10,
+          "verbatim": "Calvin"
+        },
+        {
+          "source_id": "D5:3",
+          "start": 8,
+          "end": 14,
+          "verbatim": "Calvin"
+        },
+        {
+          "source_id": "D5:5",
+          "start": 7,
+          "end": 13,
+          "verbatim": "Calvin"
+        },
+        {
+          "source_id": "D5:7",
+          "start": 8,
+          "end": 14,
+          "verbatim": "Calvin"
+        }
+      ],
+      "session": 5,
+      "recorded_date": "1:16 pm on 3 May, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:8"
+    },
+    {
+      "question": "What did Calvin say about not giving up?",
+      "answer": "Won't give up",
+      "source_ids": [
+        "D5:14"
+      ],
+      "candidate_context_ids": [
+        "D5:9",
+        "D5:10",
+        "D5:11",
+        "D5:12",
+        "D5:13",
+        "D5:14",
+        "D5:15"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D5:14",
+          "start": 23,
+          "end": 36,
+          "verbatim": "Won't give up"
+        }
+      ],
+      "session": 5,
+      "recorded_date": "1:16 pm on 3 May, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:9"
+    },
+    {
+      "question": "What did Dave say about Calvin saving his music gear and mic?",
+      "answer": "those are the important things",
+      "source_ids": [
+        "D6:4"
+      ],
+      "candidate_context_ids": [
+        "D6:1",
+        "D6:2",
+        "D6:3",
+        "D6:4",
+        "D6:5",
+        "D6:6",
+        "D6:7",
+        "D6:8",
+        "D6:9",
+        "D6:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D6:4",
+          "start": 107,
+          "end": 137,
+          "verbatim": "those are the important things"
+        }
+      ],
+      "session": 6,
+      "recorded_date": "11:50 am on 16 May, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:10"
+    },
+    {
+      "question": "What did Dave say about his car shop being?",
+      "answer": "amazing",
+      "source_ids": [
+        "D6:8"
+      ],
+      "candidate_context_ids": [
+        "D6:1",
+        "D6:2",
+        "D6:3",
+        "D6:4",
+        "D6:5",
+        "D6:6",
+        "D6:7",
+        "D6:8",
+        "D6:9",
+        "D6:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D6:8",
+          "start": 101,
+          "end": 108,
+          "verbatim": "amazing"
+        }
+      ],
+      "session": 6,
+      "recorded_date": "11:50 am on 16 May, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:11"
+    },
+    {
+      "question": "Who is planning to share experiences when returning?",
+      "answer": "Calvin",
+      "source_ids": [
+        "D7:18"
+      ],
+      "candidate_context_ids": [
+        "D7:17",
+        "D7:18",
+        "D7:19"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D7:18",
+          "start": 7,
+          "end": 13,
+          "verbatim": "Calvin"
+        }
+      ],
+      "session": 7,
+      "recorded_date": "6:06 pm on 31 May, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:12"
+    },
+    {
+      "question": "Who is looking forward to Calvin's return?",
+      "answer": "Dave",
+      "source_ids": [
+        "D7:17"
+      ],
+      "candidate_context_ids": [
+        "D7:17",
+        "D7:18",
+        "D7:19"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D7:17",
+          "start": 8,
+          "end": 12,
+          "verbatim": "Dave"
+        }
+      ],
+      "session": 7,
+      "recorded_date": "6:06 pm on 31 May, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:13"
+    },
+    {
+      "question": "What did Dave say about seeing the peaks?",
+      "answer": "Finally gonna be able to see those majestic peaks!",
+      "source_ids": [
+        "D8:10"
+      ],
+      "candidate_context_ids": [
+        "D8:1",
+        "D8:2",
+        "D8:3",
+        "D8:4",
+        "D8:5",
+        "D8:6",
+        "D8:7",
+        "D8:8",
+        "D8:9",
+        "D8:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D8:10",
+          "start": 56,
+          "end": 106,
+          "verbatim": "Finally gonna be able to see those majestic peaks!"
+        }
+      ],
+      "session": 8,
+      "recorded_date": "2:31 pm on 9 June, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:14"
+    },
+    {
+      "question": "What is the name of the person who said they are going to be going to a place with snow on the top?",
+      "answer": "Calvin",
+      "source_ids": [
+        "D8:12",
+        "D8:14"
+      ],
+      "candidate_context_ids": [
+        "D8:9",
+        "D8:10",
+        "D8:11",
+        "D8:12",
+        "D8:13",
+        "D8:14"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D8:12",
+          "start": 5,
+          "end": 11,
+          "verbatim": "Calvin"
+        },
+        {
+          "source_id": "D8:14",
+          "start": 8,
+          "end": 14,
+          "verbatim": "Calvin"
+        }
+      ],
+      "session": 8,
+      "recorded_date": "2:31 pm on 9 June, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:15"
+    },
+    {
+      "question": "What event did Calvin mention happening since the last chat?",
+      "answer": "I had a lil car accident last Friday",
+      "source_ids": [
+        "D9:1"
+      ],
+      "candidate_context_ids": [
+        "D9:1",
+        "D9:2",
+        "D9:3",
+        "D9:4",
+        "D9:5",
+        "D9:6",
+        "D9:7",
+        "D9:8",
+        "D9:9",
+        "D9:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D9:1",
+          "start": 76,
+          "end": 112,
+          "verbatim": "I had a lil car accident last Friday"
+        }
+      ],
+      "session": 9,
+      "recorded_date": "3:15 pm on 21 June, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:16"
+    },
+    {
+      "question": "What did Calvin say about the snowy peak in the image?",
+      "answer": "Look at that snowy peak",
+      "source_ids": [
+        "D9:15"
+      ],
+      "candidate_context_ids": [
+        "D9:9",
+        "D9:10",
+        "D9:11",
+        "D9:12",
+        "D9:13",
+        "D9:14",
+        "D9:15",
+        "D9:16",
+        "D9:17",
+        "D9:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D9:15",
+          "start": 145,
+          "end": 168,
+          "verbatim": "Look at that snowy peak"
+        }
+      ],
+      "session": 9,
+      "recorded_date": "3:15 pm on 21 June, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:17"
+    },
+    {
+      "question": "What did Dave say about being hooked on Japanese music?",
+      "answer": "I'm hooked on their music",
+      "source_ids": [
+        "D10:11"
+      ],
+      "candidate_context_ids": [
+        "D10:9",
+        "D10:10",
+        "D10:11",
+        "D10:12",
+        "D10:13",
+        "D10:14",
+        "D10:15",
+        "D10:16",
+        "D10:17"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D10:11",
+          "start": 178,
+          "end": 203,
+          "verbatim": "I'm hooked on their music"
+        }
+      ],
+      "session": 10,
+      "recorded_date": "7:56 pm on 7 July, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:18"
+    },
+    {
+      "question": "What did Calvin say about being excited about the music collaborations?",
+      "answer": "I'm really excited to hear how it turns out!",
+      "source_ids": [
+        "D10:12"
+      ],
+      "candidate_context_ids": [
+        "D10:9",
+        "D10:10",
+        "D10:11",
+        "D10:12",
+        "D10:13",
+        "D10:14",
+        "D10:15",
+        "D10:16",
+        "D10:17"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D10:12",
+          "start": 191,
+          "end": 235,
+          "verbatim": "I'm really excited to hear how it turns out!"
+        }
+      ],
+      "session": 10,
+      "recorded_date": "7:56 pm on 7 July, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:19"
+    },
+    {
+      "question": "What did Dave say about chatting soon?",
+      "answer": "Let's chat soon!",
+      "source_ids": [
+        "D11:13"
+      ],
+      "candidate_context_ids": [
+        "D11:9",
+        "D11:10",
+        "D11:11",
+        "D11:12",
+        "D11:13",
+        "D11:14"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D11:13",
+          "start": 94,
+          "end": 110,
+          "verbatim": "Let's chat soon!"
+        }
+      ],
+      "session": 11,
+      "recorded_date": "6:38 pm on 21 July, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:20"
+    },
+    {
+      "question": "What did Calvin say about his feelings toward Dave's support?",
+      "answer": "Your support means a lot to me",
+      "source_ids": [
+        "D11:12"
+      ],
+      "candidate_context_ids": [
+        "D11:9",
+        "D11:10",
+        "D11:11",
+        "D11:12",
+        "D11:13",
+        "D11:14"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D11:12",
+          "start": 14,
+          "end": 44,
+          "verbatim": "Your support means a lot to me"
+        }
+      ],
+      "session": 11,
+      "recorded_date": "6:38 pm on 21 July, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:21"
+    },
+    {
+      "question": "What did Calvin say about his motivation?",
+      "answer": "Seeing it everyday keeps me motivated and reminds me to keep pushing",
+      "source_ids": [
+        "D12:9"
+      ],
+      "candidate_context_ids": [
+        "D12:9",
+        "D12:10",
+        "D12:11",
+        "D12:12",
+        "D12:13",
+        "D12:14",
+        "D12:15",
+        "D12:16",
+        "D12:17"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D12:9",
+          "start": 14,
+          "end": 82,
+          "verbatim": "Seeing it everyday keeps me motivated and reminds me to keep pushing"
+        }
+      ],
+      "session": 12,
+      "recorded_date": "1:12 pm on 3 August, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:22"
+    },
+    {
+      "question": "What did Calvin say about his determination?",
+      "answer": "I'm determined to make my dreams come true",
+      "source_ids": [
+        "D12:13"
+      ],
+      "candidate_context_ids": [
+        "D12:9",
+        "D12:10",
+        "D12:11",
+        "D12:12",
+        "D12:13",
+        "D12:14",
+        "D12:15",
+        "D12:16",
+        "D12:17"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D12:13",
+          "start": 63,
+          "end": 105,
+          "verbatim": "I'm determined to make my dreams come true"
+        }
+      ],
+      "session": 12,
+      "recorded_date": "1:12 pm on 3 August, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:23"
+    },
+    {
+      "question": "What did Dave say he had been working on?",
+      "answer": "this car, doing engine swaps and suspension modifications",
+      "source_ids": [
+        "D13:7"
+      ],
+      "candidate_context_ids": [
+        "D13:1",
+        "D13:2",
+        "D13:3",
+        "D13:4",
+        "D13:5",
+        "D13:6",
+        "D13:7",
+        "D13:8",
+        "D13:9",
+        "D13:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D13:7",
+          "start": 21,
+          "end": 78,
+          "verbatim": "this car, doing engine swaps and suspension modifications"
+        }
+      ],
+      "session": 13,
+      "recorded_date": "5:22 pm on 11 August, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:24"
+    },
+    {
+      "question": "What event did Dave mention being picked for?",
+      "answer": "a car mod workshop",
+      "source_ids": [
+        "D13:1"
+      ],
+      "candidate_context_ids": [
+        "D13:1",
+        "D13:2",
+        "D13:3",
+        "D13:4",
+        "D13:5",
+        "D13:6",
+        "D13:7",
+        "D13:8",
+        "D13:9",
+        "D13:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D13:1",
+          "start": 52,
+          "end": 70,
+          "verbatim": "a car mod workshop"
+        }
+      ],
+      "session": 13,
+      "recorded_date": "5:22 pm on 11 August, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:25"
+    },
+    {
+      "question": "What did Calvin say about Dave's talent?",
+      "answer": "You've got some serious talent!",
+      "source_ids": [
+        "D14:14"
+      ],
+      "candidate_context_ids": [
+        "D14:9",
+        "D14:10",
+        "D14:11",
+        "D14:12",
+        "D14:13",
+        "D14:14",
+        "D14:15",
+        "D14:16"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D14:14",
+          "start": 71,
+          "end": 102,
+          "verbatim": "You've got some serious talent!"
+        }
+      ],
+      "session": 14,
+      "recorded_date": "12:35 am on 14 August, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:26"
+    },
+    {
+      "question": "What did Calvin say about the moment when the audience sang along?",
+      "answer": "It was a magical moment",
+      "source_ids": [
+        "D14:6"
+      ],
+      "candidate_context_ids": [
+        "D14:1",
+        "D14:2",
+        "D14:3",
+        "D14:4",
+        "D14:5",
+        "D14:6",
+        "D14:7",
+        "D14:8",
+        "D14:9",
+        "D14:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D14:6",
+          "start": 116,
+          "end": 139,
+          "verbatim": "It was a magical moment"
+        }
+      ],
+      "session": 14,
+      "recorded_date": "12:35 am on 14 August, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:27"
+    },
+    {
+      "question": "Where is Calvin heading after his tour?",
+      "answer": "Boston",
+      "source_ids": [
+        "D15:10"
+      ],
+      "candidate_context_ids": [
+        "D15:1",
+        "D15:2",
+        "D15:3",
+        "D15:4",
+        "D15:5",
+        "D15:6",
+        "D15:7",
+        "D15:8",
+        "D15:9",
+        "D15:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D15:10",
+          "start": 131,
+          "end": 137,
+          "verbatim": "Boston"
+        }
+      ],
+      "session": 15,
+      "recorded_date": "11:06 am on 22 August, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:28"
+    },
+    {
+      "question": "What did Dave say about Calvin's work?",
+      "answer": "Keep up the great work",
+      "source_ids": [
+        "D15:13"
+      ],
+      "candidate_context_ids": [
+        "D15:9",
+        "D15:10",
+        "D15:11",
+        "D15:12",
+        "D15:13",
+        "D15:14",
+        "D15:15"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D15:13",
+          "start": 114,
+          "end": 136,
+          "verbatim": "Keep up the great work"
+        }
+      ],
+      "session": 15,
+      "recorded_date": "11:06 am on 22 August, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:29"
+    },
+    {
+      "question": "What is the second image of the guitar?",
+      "answer": "a photo of a guitar with a purple glow on it",
+      "source_ids": [
+        "D16:18"
+      ],
+      "candidate_context_ids": [
+        "D16:9",
+        "D16:10",
+        "D16:11",
+        "D16:12",
+        "D16:13",
+        "D16:14",
+        "D16:15",
+        "D16:16",
+        "D16:17",
+        "D16:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D16:18",
+          "start": 79,
+          "end": 123,
+          "verbatim": "a photo of a guitar with a purple glow on it"
+        }
+      ],
+      "session": 16,
+      "recorded_date": "2:55 pm on 31 August, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:30"
+    },
+    {
+      "question": "What did Dave say about Calvin's uniqueness?",
+      "answer": "It makes you unique and your music stand out",
+      "source_ids": [
+        "D16:25"
+      ],
+      "candidate_context_ids": [
+        "D16:17",
+        "D16:18",
+        "D16:19",
+        "D16:20",
+        "D16:21",
+        "D16:22",
+        "D16:23",
+        "D16:24",
+        "D16:25"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D16:25",
+          "start": 62,
+          "end": 106,
+          "verbatim": "It makes you unique and your music stand out"
+        }
+      ],
+      "session": 16,
+      "recorded_date": "2:55 pm on 31 August, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:31"
+    },
+    {
+      "question": "What does Calvin say before ending the conversation?",
+      "answer": "Have an awesome day",
+      "source_ids": [
+        "D18:15"
+      ],
+      "candidate_context_ids": [
+        "D18:9",
+        "D18:10",
+        "D18:11",
+        "D18:12",
+        "D18:13",
+        "D18:14",
+        "D18:15",
+        "D18:16"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D18:15",
+          "start": 43,
+          "end": 62,
+          "verbatim": "Have an awesome day"
+        }
+      ],
+      "session": 18,
+      "recorded_date": "10:56 am on 13 September, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:32"
+    },
+    {
+      "question": "What does Dave say before ending the conversation?",
+      "answer": "Have a great day",
+      "source_ids": [
+        "D18:14",
+        "D18:16"
+      ],
+      "candidate_context_ids": [
+        "D18:9",
+        "D18:10",
+        "D18:11",
+        "D18:12",
+        "D18:13",
+        "D18:14",
+        "D18:15",
+        "D18:16"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D18:14",
+          "start": 45,
+          "end": 61,
+          "verbatim": "Have a great day"
+        },
+        {
+          "source_id": "D18:16",
+          "start": 33,
+          "end": 49,
+          "verbatim": "Have a great day"
+        }
+      ],
+      "session": 18,
+      "recorded_date": "10:56 am on 13 September, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:33"
+    },
+    {
+      "question": "What did Calvin say about Dave's impact on people?",
+      "answer": "it's awesome seeing people happy thanks to you!",
+      "source_ids": [
+        "D19:10"
+      ],
+      "candidate_context_ids": [
+        "D19:9",
+        "D19:10",
+        "D19:11",
+        "D19:12"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D19:10",
+          "start": 6,
+          "end": 53,
+          "verbatim": "it's awesome seeing people happy thanks to you!"
+        }
+      ],
+      "session": 19,
+      "recorded_date": "12:13 am on 15 September, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:34"
+    },
+    {
+      "question": "What did Dave say about his future plans?",
+      "answer": "that's what I'm gonna keep doing",
+      "source_ids": [
+        "D19:11"
+      ],
+      "candidate_context_ids": [
+        "D19:9",
+        "D19:10",
+        "D19:11",
+        "D19:12"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D19:11",
+          "start": 104,
+          "end": 136,
+          "verbatim": "that's what I'm gonna keep doing"
+        }
+      ],
+      "session": 19,
+      "recorded_date": "12:13 am on 15 September, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:35"
+    },
+    {
+      "question": "What did Dave say about his car project?",
+      "answer": "Had a tough time with my car project",
+      "source_ids": [
+        "D20:1"
+      ],
+      "candidate_context_ids": [
+        "D20:1",
+        "D20:2",
+        "D20:3",
+        "D20:4",
+        "D20:5",
+        "D20:6",
+        "D20:7",
+        "D20:8",
+        "D20:9",
+        "D20:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D20:1",
+          "start": 36,
+          "end": 72,
+          "verbatim": "Had a tough time with my car project"
+        }
+      ],
+      "session": 20,
+      "recorded_date": "8:57 pm on 22 September, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:36"
+    },
+    {
+      "question": "What did Calvin say about fixing cars?",
+      "answer": "fixing cars can be tricky",
+      "source_ids": [
+        "D20:2"
+      ],
+      "candidate_context_ids": [
+        "D20:1",
+        "D20:2",
+        "D20:3",
+        "D20:4",
+        "D20:5",
+        "D20:6",
+        "D20:7",
+        "D20:8",
+        "D20:9",
+        "D20:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D20:2",
+          "start": 116,
+          "end": 141,
+          "verbatim": "fixing cars can be tricky"
+        }
+      ],
+      "session": 20,
+      "recorded_date": "8:57 pm on 22 September, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:37"
+    },
+    {
+      "question": "What did Dave say about feeling proud?",
+      "answer": "It's the small successes that make me feel proud and fulfilled",
+      "source_ids": [
+        "D21:10"
+      ],
+      "candidate_context_ids": [
+        "D21:9",
+        "D21:10",
+        "D21:11",
+        "D21:12",
+        "D21:13",
+        "D21:14",
+        "D21:15",
+        "D21:16",
+        "D21:17",
+        "D21:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D21:10",
+          "start": 99,
+          "end": 161,
+          "verbatim": "It's the small successes that make me feel proud and fulfilled"
+        }
+      ],
+      "session": 21,
+      "recorded_date": "2:44 pm on 4 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:38"
+    },
+    {
+      "question": "Where was the Ford Mustang found?",
+      "answer": "in a junkyard",
+      "source_ids": [
+        "D21:4"
+      ],
+      "candidate_context_ids": [
+        "D21:1",
+        "D21:2",
+        "D21:3",
+        "D21:4",
+        "D21:5",
+        "D21:6",
+        "D21:7",
+        "D21:8",
+        "D21:9",
+        "D21:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D21:4",
+          "start": 169,
+          "end": 182,
+          "verbatim": "in a junkyard"
+        }
+      ],
+      "session": 21,
+      "recorded_date": "2:44 pm on 4 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:39"
+    },
+    {
+      "question": "What did Calvin say about Dave's progress?",
+      "answer": "You're doing great!",
+      "source_ids": [
+        "D22:12"
+      ],
+      "candidate_context_ids": [
+        "D22:9",
+        "D22:10",
+        "D22:11",
+        "D22:12",
+        "D22:13",
+        "D22:14"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D22:12",
+          "start": 71,
+          "end": 90,
+          "verbatim": "You're doing great!"
+        }
+      ],
+      "session": 22,
+      "recorded_date": "3:13 pm on 8 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:40"
+    },
+    {
+      "question": "What did Calvin say to Dave about his work?",
+      "answer": "Keep up the good work and stay focused",
+      "source_ids": [
+        "D22:10"
+      ],
+      "candidate_context_ids": [
+        "D22:1",
+        "D22:2",
+        "D22:3",
+        "D22:4",
+        "D22:5",
+        "D22:6",
+        "D22:7",
+        "D22:8",
+        "D22:9",
+        "D22:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D22:10",
+          "start": 29,
+          "end": 67,
+          "verbatim": "Keep up the good work and stay focused"
+        }
+      ],
+      "session": 22,
+      "recorded_date": "3:13 pm on 8 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:41"
+    },
+    {
+      "question": "What did Dave say about his efforts at work?",
+      "answer": "I put in so much effort at work",
+      "source_ids": [
+        "D23:1"
+      ],
+      "candidate_context_ids": [
+        "D23:1",
+        "D23:2",
+        "D23:3",
+        "D23:4",
+        "D23:5",
+        "D23:6",
+        "D23:7",
+        "D23:8",
+        "D23:9",
+        "D23:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D23:1",
+          "start": 176,
+          "end": 207,
+          "verbatim": "I put in so much effort at work"
+        }
+      ],
+      "session": 23,
+      "recorded_date": "9:39 am on 15 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:42"
+    },
+    {
+      "question": "What did Calvin say about his job?",
+      "answer": "connecting with the crowd",
+      "source_ids": [
+        "D23:10"
+      ],
+      "candidate_context_ids": [
+        "D23:1",
+        "D23:2",
+        "D23:3",
+        "D23:4",
+        "D23:5",
+        "D23:6",
+        "D23:7",
+        "D23:8",
+        "D23:9",
+        "D23:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D23:10",
+          "start": 220,
+          "end": 245,
+          "verbatim": "connecting with the crowd"
+        }
+      ],
+      "session": 23,
+      "recorded_date": "9:39 am on 15 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:43"
+    },
+    {
+      "question": "[D24:9,D24:11] What was the feeling during the concert?",
+      "answer": "the energy was nuts - felt like the whole city came out!",
+      "source_ids": [
+        "D24:11"
+      ],
+      "candidate_context_ids": [
+        "D24:9",
+        "D24:10",
+        "D24:11",
+        "D24:12",
+        "D24:13",
+        "D24:14",
+        "D24:15",
+        "D24:16",
+        "D24:17",
+        "D24:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D24:11",
+          "start": 65,
+          "end": 121,
+          "verbatim": "the energy was nuts - felt like the whole city came out!"
+        }
+      ],
+      "session": 24,
+      "recorded_date": "10:11 am on 19 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:44"
+    },
+    {
+      "question": "[D24:5] When did Calvin and Frank Ocean first meet?",
+      "answer": "August last year",
+      "source_ids": [
+        "D24:5"
+      ],
+      "candidate_context_ids": [
+        "D24:1",
+        "D24:2",
+        "D24:3",
+        "D24:4",
+        "D24:5",
+        "D24:6",
+        "D24:7",
+        "D24:8",
+        "D24:9",
+        "D24:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D24:5",
+          "start": 15,
+          "end": 31,
+          "verbatim": "August last year"
+        }
+      ],
+      "session": 24,
+      "recorded_date": "10:11 am on 19 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:45"
+    },
+    {
+      "question": "What did Calvin agree with Dave about music?",
+      "answer": "Music has a way of bringing us together and creating unforgettable memories",
+      "source_ids": [
+        "D25:26"
+      ],
+      "candidate_context_ids": [
+        "D25:17",
+        "D25:18",
+        "D25:19",
+        "D25:20",
+        "D25:21",
+        "D25:22",
+        "D25:23",
+        "D25:24",
+        "D25:25",
+        "D25:26"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D25:26",
+          "start": 0,
+          "end": 75,
+          "verbatim": "Music has a way of bringing us together and creating unforgettable memories"
+        }
+      ],
+      "session": 25,
+      "recorded_date": "2:17 pm on 23 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:46"
+    },
+    {
+      "question": "What did Dave say was the toughest part of car restoration?",
+      "answer": "It takes a lot of patience",
+      "source_ids": [
+        "D25:19"
+      ],
+      "candidate_context_ids": [
+        "D25:17",
+        "D25:18",
+        "D25:19",
+        "D25:20",
+        "D25:21",
+        "D25:22",
+        "D25:23",
+        "D25:24",
+        "D25:25",
+        "D25:26"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D25:19",
+          "start": 0,
+          "end": 26,
+          "verbatim": "It takes a lot of patience"
+        }
+      ],
+      "session": 25,
+      "recorded_date": "2:17 pm on 23 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:47"
+    },
+    {
+      "question": "What did Calvin send as a picture?",
+      "answer": "a pic of me performing with someone I admire!",
+      "source_ids": [
+        "D26:7"
+      ],
+      "candidate_context_ids": [
+        "D26:1",
+        "D26:2",
+        "D26:3",
+        "D26:4",
+        "D26:5",
+        "D26:6",
+        "D26:7",
+        "D26:8",
+        "D26:9",
+        "D26:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D26:7",
+          "start": 179,
+          "end": 224,
+          "verbatim": "a pic of me performing with someone I admire!"
+        }
+      ],
+      "session": 26,
+      "recorded_date": "8:25 pm on 25 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:48"
+    },
+    {
+      "question": "What did Dave say about the fulfillment they both found?",
+      "answer": "It's a fortunate thing for us",
+      "source_ids": [
+        "D26:10"
+      ],
+      "candidate_context_ids": [
+        "D26:9",
+        "D26:10",
+        "D26:11",
+        "D26:12",
+        "D26:13",
+        "D26:14",
+        "D26:15"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D26:10",
+          "start": 84,
+          "end": 113,
+          "verbatim": "It's a fortunate thing for us"
+        }
+      ],
+      "session": 26,
+      "recorded_date": "8:25 pm on 25 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:49"
+    },
+    {
+      "question": "What did Calvin say about Dave's photography?",
+      "answer": "Sounds like you're having a blast",
+      "source_ids": [
+        "D27:9"
+      ],
+      "candidate_context_ids": [
+        "D27:1",
+        "D27:2",
+        "D27:3",
+        "D27:4",
+        "D27:5",
+        "D27:6",
+        "D27:7",
+        "D27:8",
+        "D27:9",
+        "D27:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D27:9",
+          "start": 11,
+          "end": 44,
+          "verbatim": "Sounds like you're having a blast"
+        }
+      ],
+      "session": 27,
+      "recorded_date": "10:49 am on 29 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:50"
+    },
+    {
+      "question": "What is Calvin's album status?",
+      "answer": "almost finished",
+      "source_ids": [
+        "D27:11"
+      ],
+      "candidate_context_ids": [
+        "D27:9",
+        "D27:10",
+        "D27:11",
+        "D27:12",
+        "D27:13"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D27:11",
+          "start": 115,
+          "end": 130,
+          "verbatim": "almost finished"
+        }
+      ],
+      "session": 27,
+      "recorded_date": "10:49 am on 29 October, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_audit",
+      "id": "conv-50:source_probe:51"
+    },
+    {
+      "question": "What did Dave post about on his blog that inspired others?",
+      "answer": "how I made this car look like a beast",
+      "source_ids": [
+        "D28:10"
+      ],
+      "candidate_context_ids": [
+        "D28:9",
+        "D28:10",
+        "D28:11",
+        "D28:12",
+        "D28:13",
+        "D28:14",
+        "D28:15",
+        "D28:16",
+        "D28:17",
+        "D28:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D28:10",
+          "start": 111,
+          "end": 148,
+          "verbatim": "how I made this car look like a beast"
+        }
+      ],
+      "session": 28,
+      "recorded_date": "5:46 pm on 2 November, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:52"
+    },
+    {
+      "question": "What did Calvin say about sharing passion through blogging?",
+      "answer": "It's really fun to share your passion through blogging",
+      "source_ids": [
+        "D28:9"
+      ],
+      "candidate_context_ids": [
+        "D28:1",
+        "D28:2",
+        "D28:3",
+        "D28:4",
+        "D28:5",
+        "D28:6",
+        "D28:7",
+        "D28:8",
+        "D28:9",
+        "D28:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D28:9",
+          "start": 12,
+          "end": 66,
+          "verbatim": "It's really fun to share your passion through blogging"
+        }
+      ],
+      "session": 28,
+      "recorded_date": "5:46 pm on 2 November, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:53"
+    },
+    {
+      "question": "What is the name of the person who asks if Calvin has tried out any new ideas lately?",
+      "answer": "Dave",
+      "source_ids": [
+        "D29:11",
+        "D29:17"
+      ],
+      "candidate_context_ids": [
+        "D29:9",
+        "D29:10",
+        "D29:11",
+        "D29:12",
+        "D29:13",
+        "D29:14",
+        "D29:15",
+        "D29:16",
+        "D29:17",
+        "D29:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D29:11",
+          "start": 8,
+          "end": 12,
+          "verbatim": "Dave"
+        },
+        {
+          "source_id": "D29:17",
+          "start": 138,
+          "end": 142,
+          "verbatim": "Dave"
+        }
+      ],
+      "session": 29,
+      "recorded_date": "9:15 pm on 13 November, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:54"
+    },
+    {
+      "question": "What is the name of the person who says they will support young musicians for a long time?",
+      "answer": "Calvin",
+      "source_ids": [
+        "D29:10",
+        "D29:12",
+        "D29:16",
+        "D29:18"
+      ],
+      "candidate_context_ids": [
+        "D29:9",
+        "D29:10",
+        "D29:11",
+        "D29:12",
+        "D29:13",
+        "D29:14",
+        "D29:15",
+        "D29:16",
+        "D29:17",
+        "D29:18"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D29:10",
+          "start": 5,
+          "end": 11,
+          "verbatim": "Calvin"
+        },
+        {
+          "source_id": "D29:12",
+          "start": 6,
+          "end": 12,
+          "verbatim": "Calvin"
+        },
+        {
+          "source_id": "D29:16",
+          "start": 9,
+          "end": 15,
+          "verbatim": "Calvin"
+        },
+        {
+          "source_id": "D29:18",
+          "start": 10,
+          "end": 16,
+          "verbatim": "Calvin"
+        }
+      ],
+      "session": 29,
+      "recorded_date": "9:15 pm on 13 November, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:55"
+    },
+    {
+      "question": "What did Calvin say about his response to Dave's congratulations?",
+      "answer": "Thanks, Dave!",
+      "source_ids": [
+        "D30:22"
+      ],
+      "candidate_context_ids": [
+        "D30:17",
+        "D30:18",
+        "D30:19",
+        "D30:20",
+        "D30:21",
+        "D30:22",
+        "D30:23",
+        "D30:24"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D30:22",
+          "start": 0,
+          "end": 13,
+          "verbatim": "Thanks, Dave!"
+        }
+      ],
+      "session": 30,
+      "recorded_date": "10:54 am on 17 November, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:56"
+    },
+    {
+      "question": "What event did Calvin attend in Boston?",
+      "answer": "a fancy gala in Boston",
+      "source_ids": [
+        "D30:2"
+      ],
+      "candidate_context_ids": [
+        "D30:1",
+        "D30:2",
+        "D30:3",
+        "D30:4",
+        "D30:5",
+        "D30:6",
+        "D30:7",
+        "D30:8",
+        "D30:9",
+        "D30:10"
+      ],
+      "answer_spans": [
+        {
+          "source_id": "D30:2",
+          "start": 78,
+          "end": 100,
+          "verbatim": "a fancy gala in Boston"
+        }
+      ],
+      "session": 30,
+      "recorded_date": "10:54 am on 17 November, 2023",
+      "conv_id": "conv-50",
+      "split": "probe_fit",
+      "id": "conv-50:source_probe:57"
+    }
+  ]
+}

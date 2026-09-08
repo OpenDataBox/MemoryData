@@ -1,0 +1,34 @@
+\begin{lstlisting}[
+  caption={Template for deriving the reward $r_t$ of action $a_t$ given current state $s_{t}$, goal $g_t$ and action $a_{t}$, as well as next observation $o_{t+1}$.},
+  label={lst:apdx_prompt_get_reward},
+]
+============================================================
+Prompt Get_Reward
+============================================================
+
+You will be given:
+Goal: the agent's overall objective.
+State (at time t): what the agent knew and had done before taking the action.
+Action (at time t): the single action the agent chose.
+Observation (at time t + 1): the immediate outcome produced by that action.
+Your task is to infer the reward - that is, a evaluation in natural language on how the agent's action contributes (positively or negatively) to achieving the overall goal, based on the resulting observation.
+Follow these steps carefully:
+1. Reasoning Process:
+Explain how the action relates to the Goal given the State, and whether the Observation matches the expected helpful or unhelpful outcome.
+Consider whether the action advances progress, causes setbacks, reveals new useful information, or wastes effort.
+Summarize your reasoning about the causal contribution of the action to the goal.
+2. Final Reward:
+Use descriptive language to write a concise natural-language evaluation of the agent's action.
+The reward should express how much and in what way the action helped or hindered achieving the goal.
+Input:
+Goal: {goal}
+State (at time t): {state}
+Action (at time t): {action}
+Observation (at time t + 1): {observation}
+Output format:
+### Reasoning
+[Your reasoning process here]
+### Reward
+[Natural-language reward statement that evaluate the agent's action]
+some prompt
+\end{lstlisting}

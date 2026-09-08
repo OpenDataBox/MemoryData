@@ -1,0 +1,347 @@
+{
+  "question": "What did James say about being here for the other person?",
+  "answer": "I'm here for you, no doubt",
+  "source_ids": [
+    "D22:17"
+  ],
+  "candidate_context_ids": [
+    "D22:17",
+    "D22:18",
+    "D22:19"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D22:17",
+      "start": 23,
+      "end": 49,
+      "verbatim": "I'm here for you, no doubt"
+    }
+  ],
+  "session": 22,
+  "recorded_date": "6:53 pm on 1 September, 2022",
+  "conv_id": "conv-47",
+  "split": "probe_fit",
+  "id": "conv-47:source_probe:42",
+  "analysis": {
+    "full_advantage": 6.525975172087357,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D22:17"
+    ],
+    "best_pair_sources": [
+      "D22:17",
+      "D22:18"
+    ],
+    "minimum_sources": [
+      "D22:17"
+    ],
+    "minimum_tokens": 46,
+    "single_policy_sources": [
+      "D22:17"
+    ],
+    "single_policy_tokens": 46,
+    "full_tokens": 123,
+    "best_pair_lift_over_best_single": 0.00018648573313839734,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D22:17",
+          "D22:18"
+        ],
+        "joint_lift": 0.00018648573313839734,
+        "interaction": 0.6999863262139732,
+        "advantage": 6.538897516642038
+      },
+      {
+        "source_ids": [
+          "D22:17",
+          "D22:19"
+        ],
+        "joint_lift": -0.060299398639465096,
+        "interaction": 5.441434252134492,
+        "advantage": 6.4784116322694345
+      },
+      {
+        "source_ids": [
+          "D22:18",
+          "D22:19"
+        ],
+        "joint_lift": -4.83144380170051,
+        "interaction": 0.6702898490734475,
+        "advantage": -5.5312436421813445
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": false
+  },
+  "generations": {
+    "empty": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "full": {
+      "text": "I'm here for you, no doubt.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D22:17",
+        "D22:18",
+        "D22:19"
+      ],
+      "context_tokens": 123,
+      "source_answer_f1": 1.0
+    },
+    "answer_removed": {
+      "text": "Here if you need someone to talk or vent to",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D22:18",
+        "D22:19"
+      ],
+      "context_tokens": 98,
+      "source_answer_f1": 0.23529411764705882
+    },
+    "best_single": {
+      "text": "I'm here for you, no doubt.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D22:17"
+      ],
+      "context_tokens": 46,
+      "source_answer_f1": 1.0
+    },
+    "best_pair": {
+      "text": "I'm here for you, no doubt.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D22:17",
+        "D22:18"
+      ],
+      "context_tokens": 85,
+      "source_answer_f1": 1.0
+    },
+    "minimum_bundle": {
+      "text": "I'm here for you, no doubt.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D22:17"
+      ],
+      "context_tokens": 46,
+      "source_answer_f1": 1.0
+    },
+    "single_policy": {
+      "text": "I'm here for you, no doubt.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D22:17"
+      ],
+      "context_tokens": 46,
+      "source_answer_f1": 1.0
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -6.539095128565833,
+        "sum_logprob": -52.312761028526666,
+        "answer_tokens": 8,
+        "token_logprobs": [
+          -13.264866828918457,
+          -5.255562782287598,
+          -1.3491154909133911,
+          -0.0002821285743266344,
+          -2.622600959512056e-06,
+          -8.000335693359375,
+          -5.942595481872559,
+          -18.5
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D22:17",
+        "D22:18",
+        "D22:19"
+      ],
+      "context_tokens": 123,
+      "score": {
+        "mean_logprob": -0.013119956478476524,
+        "sum_logprob": -0.1049596518278122,
+        "answer_tokens": 8,
+        "token_logprobs": [
+          -0.1049596518278122,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D22:17"
+      ],
+      "context_tokens": 46,
+      "score": {
+        "mean_logprob": -0.00038409765693359077,
+        "sum_logprob": -0.003072781255468726,
+        "answer_tokens": 8,
+        "token_logprobs": [
+          -0.003072781255468726,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D22:18"
+      ],
+      "context_tokens": 60,
+      "score": {
+        "mean_logprob": -7.238894969046668,
+        "sum_logprob": -57.911159752373344,
+        "answer_tokens": 8,
+        "token_logprobs": [
+          -23.376171112060547,
+          -0.0034860337618738413,
+          -8.500242233276367,
+          -0.0003392120997887105,
+          -1.1920928244535389e-07,
+          -3.7832441329956055,
+          -0.7476769089698792,
+          -21.5
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D22:19"
+      ],
+      "context_tokens": 59,
+      "score": {
+        "mean_logprob": -12.04082877933979,
+        "sum_logprob": -96.32663023471832,
+        "answer_tokens": 8,
+        "token_logprobs": [
+          -6.317257404327393,
+          0.0,
+          0.0,
+          -37.125,
+          -1.1920928244535389e-07,
+          -16.75007438659668,
+          -17.25736427307129,
+          -18.876934051513672
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:17",
+        "D22:18"
+      ],
+      "context_tokens": 85,
+      "score": {
+        "mean_logprob": -0.00019761192379519343,
+        "sum_logprob": -0.0015808953903615475,
+        "answer_tokens": 8,
+        "token_logprobs": [
+          -0.0015808953903615475,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:17",
+        "D22:19"
+      ],
+      "context_tokens": 84,
+      "score": {
+        "mean_logprob": -0.06068349629639869,
+        "sum_logprob": -0.4854679703711895,
+        "answer_tokens": 8,
+        "token_logprobs": [
+          -0.4854676127433777,
+          0.0,
+          0.0,
+          -3.576278118089249e-07,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:18",
+        "D22:19"
+      ],
+      "context_tokens": 98,
+      "score": {
+        "mean_logprob": -12.070338770747178,
+        "sum_logprob": -96.56271016597742,
+        "answer_tokens": 8,
+        "token_logprobs": [
+          -7.6602888107299805,
+          0.0,
+          0.0,
+          -39.0,
+          -3.576278118089249e-07,
+          -15.375120162963867,
+          -15.776867866516113,
+          -18.75043296813965
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [
+        "D22:18",
+        "D22:19"
+      ],
+      "context_tokens": 98,
+      "score": {
+        "mean_logprob": -11.998163729906079,
+        "sum_logprob": -95.98530983924863,
+        "answer_tokens": 8,
+        "token_logprobs": [
+          -7.380653381347656,
+          0.0,
+          0.0,
+          -38.375,
+          -2.3841855067985307e-07,
+          -15.750082015991211,
+          -15.854236602783203,
+          -18.625337600708008
+        ]
+      }
+    }
+  ]
+}

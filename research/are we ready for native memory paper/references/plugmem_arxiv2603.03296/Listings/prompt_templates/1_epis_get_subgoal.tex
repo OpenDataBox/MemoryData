@@ -1,0 +1,24 @@
+\begin{lstlisting}[
+  caption={Template for deriving the subgoal $g_t$ of turn $t$ given initiate goal $G$, current state $s_{t}$, observation $o_t$ and action $a_{t}$, as well as next observation $o_{t+1}$.},
+  label={lst:apdx_prompt_get_subgoal},
+]
+============================================================
+Prompt Get_Subgoal
+============================================================
+
+At time t, the agent takes an action based on its state, observation, and overall goal. Your task is to infer the subgoal-the immediate or intermediate objective-that best explains why the agent chose this action.
+
+Use the following information as context: Overall Goal: {goal} Current State (summary of past context): {state} Current Observation: {observation} Action at time t: {action}
+
+Step 1: Reasoning Analyze how the current state and observation relate to the overall goal. Explain how the given action helps the agent make progress toward that goal-possibly by achieving a smaller intermediate objective. Be explicit and causal: describe why this action makes sense given the context.
+
+Step 2: Subgoal Inference After reasoning, infer the agent's likely subgoal-a short natural-language statement that describes the immediate purpose behind the action.
+
+Output Format:
+
+### Reasoning
+[Your reasoning process-a few sentences explaining how the action relates to the goal and context]
+
+### Subgoal
+[A short sentence describing the inferred subgoal]
+\end{lstlisting}

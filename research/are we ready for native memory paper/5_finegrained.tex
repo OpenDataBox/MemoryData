@@ -1,0 +1,304 @@
+\section{Fine-Grained Component Comparison}
+\label{sec:finegrained}
+
+To understand the root causes behind end-to-end performance differences, we decompose agent memory systems into four fundamental modules.
+By systematically generating controlled variants that modify one module at a time, we evaluate the contribution of each module to overall system performance.
+
+\subsection{Memory Representation and Storage (M1)}
+\label{subsec:representation}
+
+% \noindent $\bullet$ \textit{Baselines.} (1) Text Blocks (MemoryBank); (2) Triplet Graph (Mem0); (3) Phrase + Passage Graph (HippoRAG2); (4) Hierarchical Context (MemGPT); (5) Token KV (MemoRAG).
+
+% \noindent $\bullet$ \textit{Metrics.} (1) Accuracy / EM; (2) Evidence Recall; (3) Information Retention Rate (IRR); (4) Bottom-up Connectivity Score.
+
+\begin{table}[!t]
+\caption{Ablation of Representation and Storage Mechanisms.}
+\label{tab:m1}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4.0pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llcccc}
+\toprule
+\multicolumn{2}{c}{\textbf{Method Variant}} & \multicolumn{2}{c}{\textbf{LoCoMo}} & \multicolumn{2}{c}{\textbf{LongMemEval}} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6}
+ & & \textbf{EM} & \textbf{Ans.\ F1} & \textbf{Substr.\ EM} & \textbf{ROUGE-L F1} \\
+\midrule
+\multirow{3}{*}{\textbf{LightMem}} & User-Only Raw & \textbf{24.2} & \textbf{38.9} & \textbf{26.0} & \textbf{31.4} \\
+ & User-Only Summary & 8.5 & 15.6 & 11.7 & 17.4 \\
+ & User-Only Compressed & 23.6 & 38.6 & 10.7 & 19.1 \\
+\midrule
+\multirow{2}{*}{\textbf{MemTree}} & Flat-biased & 18.2 & 30.7 & 23.0 & 29.9 \\
+ & Deeper Tree & \textbf{18.7} & \textbf{31.2} & \textbf{23.3} & \textbf{30.9} \\
+\midrule
+\multirow{2}{*}{\textbf{Mem0}} & Default & \textbf{3.2} & 6.2 & \textbf{9.3} & \textbf{16.5} \\
+ & Graph Store & 3.0 & \textbf{6.5} & 8.3 & 15.9 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+% \begin{figure}[!t]
+%   \centering
+%   \includegraphics[width=\linewidth]{figures/M1_representation_bar.pdf}
+%   \caption{\hsk{How does memory representation affect information fidelity and reasoning effectiveness?}}
+%   \label{fig:m1_representation}
+% \end{figure}
+\noindent \textbf{Experimental Setting.}
+For \textit{``How do memory abstraction level and structural organization affect factual fidelity and downstream reasoning effectiveness?''}, we evaluate three representation-focused variants:
+(1) \textit{LightMem}~\cite{LightMem} compares \textit{User-Only Raw}, which stores verbatim user utterances, \textit{User-Only Summary}, which rewrites each session into an LLM-generated abstractive summary, and \textit{User-Only Compressed}, which removes filler and redundant tokens while preserving the original phrasing and factual content;
+(2) \textit{MemTree}~\cite{MemTree} compares a shallow \textit{Flat-biased Setting} with a \textit{Deeper Tree Setting} to examine how hierarchical text organization affects memory fidelity.
+We assess the trade-off between fine-grained fact preservation and multi-step reasoning using \textit{LoCoMo} for compositional reasoning and \textit{LongMemEval} for multi-session factual retrieval, reporting exactness- and overlap-based metrics (e.g., \textit{EM} and \textit{ROUGE-L F1}).
+
+\noindent \textbf{O8-(Content Fidelity): Retaining the original conversational content is more important than increasing abstraction or hierarchy for sustaining both factual recall and reasoning quality.}
+Table~\ref{tab:m1} shows that \textit{LightMem} \textit{User-Only Raw} achieves the best result on all four metrics, while \textit{User-Only Compressed} remains close on \textit{LoCoMo} (\textit{Ans.\ F1}: 38.6 vs.\ 38.9; \textit{EM}: 23.6 vs.\ 24.2) but drops sharply on \textit{LongMemEval} (\textit{Substring EM}: 10.7 vs.\ 26.0), \textit{User-Only Summary} is substantially weaker on both benchmarks, and the deeper \textit{MemTree} setting provides only modest gains over the flat setting.
+It indicates that the main performance boundary is the amount of recoverable evidence the representation preserves, rather than whether it applies stronger abstraction or a deeper structure.
+In particular, (1) Raw text is most effective when the task requires recovering exact session-level details (e.g., recalling a title such as \textit{``Nu, pogodi!''}); (2) Light compression can still support compositional reasoning when the main meaning is preserved, but becomes unreliable for exact detail matching (e.g., relating two earlier events while missing the precise date or name); and (3) Deeper hierarchy can improve organization, but cannot restore information removed during representation (e.g., a parent node helps navigate related sessions, but not recover omitted details).
+
+\begin{findingbox}
+\textbf{(Representation Granularity).}
+M1 shows that preserving usable evidence matters more than making memory more compact or more structured.
+(1) \emph{High-retention forms} best support exact detail recovery, as in \textit{LightMem} \textit{User-Only Raw}; (2) \emph{Light compression} can preserve reasoning, but weakens exact matching, as in \textit{LightMem} \textit{User-Only Compressed}; (3) \emph{Hierarchy} mainly improves access, but cannot restore removed content, as reflected by the \textit{MemTree (Deeper Tree)} variant.
+\end{findingbox}
+
+% \noindent $\bullet$ \bfit{Baselines.}
+% We evaluate representation-focused methods and variants, together with broad reference baselines.
+% \textit{(1) LightMem}: We compare LightMem (User-Only Raw), LightMem (User-Only Summary), and LightMem (User-Only Compressed). These variants keep the memory scope fixed to user-only content and differ only in whether memory is stored as raw text, summarized text, or compressed text;
+% \textit{(2) MemTree}: We compare a shallow, flat-biased setting and a deeper tree setting to study how hierarchical text structure affects memory fidelity and reasoning;
+% \textit{(3) Mem0}: We include Mem0 as a structured memory method that represents memory as stored facts with an additional relation-aware structure. Under the current implementation, Mem0 is treated as a representation baseline rather than a clean vector-versus-graph ablation family;
+% \textit{(4) Zep}: We compare Zep (Facts Only), Zep (Entities Only), Zep (Episodes Only), and Zep (All Scopes) to study how different graph-based memory views affect performance under the same retrieval and answering pipeline.
+
+% \noindent $\bullet$ \bfit{Benchmarks.}
+% We select three datasets to evaluate representation fidelity and abstraction.
+% \textit{(1) LongMemEval} ($n=500$): Evaluates the system's ability to preserve fine-grained facts across multi-session boundaries using the \textit{s\_cleaned} slice;
+% \textit{(2) MemBench} ($n=1,500$): Evaluates the system's ability to encode higher-order semantic summaries over literal text using the \textit{high level preference} subset;
+% \textit{(3) LoCoMo}: Evaluates the system's ability to preserve episodic and global narrative structure across 10 conversation event-summaries and 10 session-summaries.
+
+% \noindent $\bullet$ \bfit{Metrics.}
+% We employ targeted metrics to characterize representation quality.
+% \textit{(1) QA Accuracy}: Applied to LongMemEval to measure exact-match factual answers to multi-session QA;
+% \textit{(2) High-level Recall Accuracy}: Applied to MemBench to verify exact-match selection for user preference at the abstraction level;
+% \textit{(3) Summary Overlap Score}: Utilized for LoCoMo event-summaries to measure episodic structure via ROUGE-L F1;
+% \textit{(4) Summary Factual Consistency}: Used for LoCoMo session summaries to measure factual content preservation via ROUGE-Lsum F1.
+
+% \noindent $\bullet$ \textit{Baselines.} (1) Vector Index (MemoryBank); (2) Graph Index (Zep); (3) Hybrid Graph-Vector Index (Mem0 / Mem0g); (4) Hierarchical Storage (MemGPT); (5) KV-Cache + Archive (MemoRAG).
+
+% \noindent $\bullet$ \textit{Metrics.} (1) Recall@K; (2) Effective Context Volume (ECV); (3) Latency per Query; (4) Scalability Curve; (5) Memory Growth Rate.
+
+\subsection{Memory Extraction (M2)}
+\label{subsec:extraction}
+
+\begin{table}[!t]
+\caption{Ablation of Memory Extraction Strategies.}
+\label{tab:m2_extraction_table}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4.0pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llcccc}
+\toprule
+\multicolumn{2}{c}{\textbf{Method Variant}} & \multicolumn{2}{c}{\textbf{LoCoMo}} & \multicolumn{2}{c}{\textbf{LongMemEval}} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6}
+ & & \textbf{EM} & \textbf{Ans.\ F1} & \textbf{Substr.\ EM} & \textbf{ROUGE-L F1} \\
+\midrule
+\multirow{2}{*}{\textbf{MemoChat}} & Heuristic Topic & \textbf{23.0} & 33.5 & \textbf{10.7} & \textbf{18.6} \\
+ & LLM Topic & 22.5 & \textbf{34.4} & 7.3 & 15.9 \\
+\midrule
+\multirow{2}{*}{\textbf{MemOS}} & Fast Memorize & \textbf{25.5} & \textbf{40.8} & 20.7 & 26.1 \\
+ & Fine Memorize & 2.5 & 5.0 & \textbf{22.3} & \textbf{30.2} \\
+\midrule
+\multirow{2}{*}{\textbf{LightMem}} & User-Only Raw & 24.2 & 38.9 & \textbf{26.0} & \textbf{31.4} \\
+ & Hybrid Raw & \textbf{25.5} & \textbf{39.7} & 25.3 & \textbf{31.4} \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+% \begin{figure}[!t]
+%   \centering
+%   \includegraphics[width=\linewidth]{figures/M2_extraction_bar_v2.pdf}
+%   % \vspace{-.25cm}
+%   \caption{\hsk{How do memory extraction strategies affect the effectiveness of agent memory systems?}}
+%   \label{fig:m2_extraction}
+%   % \vspace{-.25cm}
+% \end{figure}
+
+\noindent \textbf{Experimental Setting.}
+For \textit{``How do write-time extraction choices affect factual fidelity and downstream reasoning effectiveness?''}, we compare extraction-related variants in three groups:
+\textit{(1) MemoChat}~\cite{Memochat}, which contrasts \textit{Heuristic Topic} and \textit{LLM Topic} segmentation;
+\textit{(2) MemOS}~\cite{MemOS}, which contrasts \textit{Fast Memorize} and \textit{Fine Memorize} on the same \texttt{tree\_text} backend;
+and \textit{(3) LightMem}~\cite{LightMem}, which contrasts \textit{User-Only Raw} and \textit{Hybrid Raw} by extracting raw memory from user turns only or from both user and assistant turns.
+We evaluate \textit{LongMemEval} for multi-session factual retrieval fidelity and \textit{LoCoMo} for downstream multi-step reasoning, reporting exactness- and overlap-based measures (e.g., \textit{EM} and \textit{ROUGE-L F1}).
+
+\noindent \textbf{O9-(Coverage-Preserving Extraction): Coverage-preserving write-time extraction provides the most stable balance between factual retrieval and downstream reasoning.}
+As shown in Table~\ref{tab:m2_extraction_table}, \textit{MemoChat} \textit{Heuristic Topic} improves LongMemEval over \textit{LLM Topic} (10.7 vs.\ 7.3 \textit{Substr.\ EM}; 18.6 vs.\ 15.9 \textit{ROUGE-L F1}) while keeping LoCoMo nearly unchanged (23.0/33.5 vs.\ 22.5/34.4 \textit{EM}/\textit{Ans.\ F1}), \textit{MemOS} \textit{Fast Memorize} far exceeds \textit{Fine Memorize} on LoCoMo (25.5 vs.\ 2.5 \textit{EM}; 40.8 vs.\ 5.0 \textit{Ans.\ F1}) despite lower LongMemEval scores (20.7 vs.\ 22.3 \textit{Substr.\ EM}; 26.1 vs.\ 30.2 \textit{ROUGE-L F1}), and \textit{LightMem} \textit{Hybrid Raw} slightly improves LoCoMo over \textit{User-Only Raw} (25.5 vs.\ 24.2 \textit{EM}; 39.7 vs.\ 38.9 \textit{Ans.\ F1}) with nearly unchanged LongMemEval results (25.3 vs.\ 26.0 \textit{Substr.\ EM}; both 31.4 \textit{ROUGE-L F1}).
+These results suggest that broader, less selective extraction better preserves the context needed for downstream answerability, even when more selective extraction yields modest gains on lexical factual retrieval.
+In particular, (1) conservative topic grouping is less likely to split a sustained thread or isolate a brief aside (e.g., a one-off hobby mention); (2) lighter memorization is more likely to retain details that later need to be combined for reasoning; 
+and (3) including both user and assistant turns can preserve clarifying cues that user-only extraction may miss (e.g., a date or refined phrasing).
+
+% \noindent \hsk{\textbf{O1-(Conservative, Broad Extraction Preserves Downstream Answerability): Aggressive extraction, fragmented segmentation, and narrow source scope each destroy reasoning coverage for marginal precision gains, and the damage is irreversible.}
+% As shown in Figure~\ref{fig:m2_extraction}, MemOS (Fine Memorize) edges out Fast Memorize on LongMemEval precision (22.3 vs.\ 20.7 Substring EM), yet collapses on LoCoMo with an $8\times$ gap (Answer F1 of 5.0 vs.\ 40.8). The root cause is a $38\times$ compression ratio (850 vs.\ 32,500 tokens per query) that forces the extractor to pre-judge relevance at write time---single-mention details are discarded as redundant, and multi-hop questions become unanswerable because each contributing detail looks incidental in isolation and is dropped entirely. Segmentation exhibits an analogous tension: MemoChat (Heuristic Topic) leads on all three LongMemEval metrics with comparable LoCoMo reasoning. Heuristic segmentation keeps sustained topics intact but buries brief asides (e.g., a single-remark hobby mention lumped into an unrelated segment); LLM segmentation isolates asides but fragments sustained threads so neither segment holds the full picture. Extraction scope further confirms the pattern: LightMem (Hybrid Raw) slightly outperforms User-Only on LoCoMo with flat LongMemEval scores, because assistant turns sharpen user-provided facts with precise phrasings and anchor temporal cues that users omit. Overall, memory systems should default to lightweight, broad extraction and defer fine-grained filtering to retrieval time.}
+
+\begin{findingbox}
+\textbf{(Late Filtering Principle).}
+M2 suggests that memory extraction should preserve context at write time rather than aggressively filter details: 
+(1) Coarser segmentation helps thread-spanning questions by keeping related cues together;
+(2) Limited rewriting supports compositional reasoning by retaining details that matter only when combined later;
+(3) Storing both user and assistant turns helps clarification-heavy dialogues by preserving refined formulations for later access.
+\end{findingbox}
+
+% \noindent $\bullet$ \bfit{Baselines.}
+% We evaluate extraction-focused variants anchored in three method families, together with lightweight reference controls.
+% \textit{(1) MemoChat}: We compare MemoChat (LLM Topic Segmentation) and MemoChat (Heuristic Topic Segmentation) to study whether LLM-based topic boundary detection improves write-time abstraction and downstream memory recall under the same topic-memory format;
+% \textit{(2) MemOS\_tree\_text}: We compare MemOS\_tree\_text (Fast Memorize) and MemOS\_tree\_text (Fine Memorize). Both variants keep the \texttt{tree\_text} memory backend fixed and differ only in whether memory is written through a lightweight fast path or an LLM-based fine-grained extractor;
+% \textit{(3) LightMem}: We compare LightMem (User-Only Raw) and LightMem (Hybrid Raw). These variants keep the stored format fixed as raw memory and differ only in extraction scope, i.e., whether memory is extracted from user turns alone or from both user and assistant turns;
+% \textit{(4) Reference Baselines}: We include Long Context as a no-memory control floor, and Dense Retrieval as a flat-text reference without explicit memory extraction.
+
+% \noindent $\bullet$ \bfit{Benchmarks.}
+% We select three benchmarks to stress controlled recall, realistic dialogue memory, and contradiction handling, while keeping overall cost manageable.
+% \textit{(1) MemBench} ($n = 2,500$): Evaluates controlled recall and extraction robustness using the \textit{simple} ($n=1,000$), \textit{noisy} ($n=1,000$), and \textit{RecMultiSession} ($n=500$) subsets;
+% \textit{(2) LoCoMo} ($n = 600$): We use the repository's \textit{4-category 600-question} split to evaluate extraction quality on realistic long conversations across multi-hop, temporal, open-domain, and single-hop questions;
+% \textit{(3) MemoryAgentBench} (\textit{Conflict Resolution}, representative lengths only): We evaluate contradiction handling under two representative context lengths (6K and 64K) to test extraction consistency while avoiding the full four-length sweep.
+
+% \noindent $\bullet$ \bfit{Metrics.}
+% We employ extraction-oriented metrics to measure memory usefulness, robustness, and cost.
+% \textit{(1) Base and Noise-robust Memory Accuracy}: Applied to MemBench \textit{simple} and \textit{noisy} to measure intrinsic recall quality and robustness to distractors;
+% \textit{(2) Multi-session Recall Accuracy}: Applied to MemBench \textit{RecMultiSession} to assess degradation as extracted memories accumulate across sessions;
+% \textit{(3) LoCoMo QA F1 and Source-grounded Recall@K}: Used on LoCoMo to evaluate both answer quality and whether the extracted memories preserve the supporting evidence needed for retrieval;
+% \textit{(4) Conflict Resolution Accuracy}: Used on MemoryAgentBench to measure whether extracted memory remains consistent under contradictory information;
+% \textit{(5) Operational Metrics}: Includes average write time, average query latency, average stored memory count, and memory growth rate to quantify extraction cost, storage footprint, and scalability.
+
+\subsection{Memory Retrieval and Routing (M3)}
+\label{subsec:retrieval}
+
+% \noindent $\bullet$ \textit{Baselines.} (1) Dense Retrieval (MemoryBank); (2) Hybrid Graph Retrieval (Zep, Mem0); (3) Multi-Stage Retrieval (GraphRAG, MIRIX); (4) LLM-Driven Paging (MemGPT); (5) Clue-Guided Two-Stage (MemoRAG).
+
+% \noindent $\bullet$ \textit{Metrics.} (1) Retrieval Match Rate; (2) Evidence Recall; (3) Memory-Action Alignment; (4) Success Rate / Pass@k; (5) Interference Sensitivity.
+
+% \textit{(2) Mem0}: Evaluates the retrieval top-k precision-coverage trade-off via the \textit{Mem0 (Top-5)}, \textit{Mem0 (Top-20)}, and \textit{Mem0 (Top-50)} variants;
+
+\begin{table}[!t]
+% \vspace{-1.25cm}
+\caption{Ablation of Retrieval and Routing Mechanisms.}
+\vspace{-.25cm}
+\label{tab:m3_retrieval}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4.0pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llcccc}
+\toprule
+\multicolumn{2}{c}{\textbf{Method Variant}} & \multicolumn{2}{c}{\textbf{LoCoMo}} & \multicolumn{2}{c}{\textbf{LongMemEval}} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6}
+ & & \textbf{Ans.\ F1} & \textbf{Recall} & \textbf{Substr.\ EM} & \textbf{ROUGE-L F1} \\
+\midrule
+\multirow{2}{*}{\textbf{A-MEM}} & Hybrid-Balanced & \textbf{24.6} & 49.9 & \textbf{27.5} & \textbf{25.9} \\
+ & Hybrid Sparse-Leaning & 23.0 & 44.3 & 24.3 & 22.8 \\
+\midrule
+\multirow{3}{*}{\textbf{SimpleMem}} & No Planning & 18.7 & 86.4 & 17.0 & 22.9 \\
+ & Planning Only & \textbf{20.7} & \textbf{90.6} & \textbf{21.7} & \textbf{27.9} \\
+ & Planning + Reflect & 20.0 & 88.6 & 21.3 & 26.1 \\
+\bottomrule
+\end{tabular}
+}
+% \vspace{-.5cm}
+\end{table}
+
+\noindent \textbf{Experimental Setting.}
+For \textit{``How do retrieval fusion and reasoning-mediated routing affect retrieval relevance and provenance-sensitive precision?''}, we compare variants in two groups:
+(1) \textit{A-MEM} under \textit{Hybrid-Balanced}, which uses a moderate dense--sparse fusion, versus \textit{Hybrid Sparse-Leaning}, which increases the sparse contribution; and (2) \textit{SimpleMem} under \textit{No Planning}, which retrieves directly, versus \textit{Planning Only}, which adds an explicit planning step, and \textit{Planning + Reflect}, which further introduces a lightweight reflection stage.
+We evaluate on \textit{LongMemEval} to measure scattered-history retrieval relevance, and on \textit{LoCoMo} to assess provenance-sensitive memory access and supporting-memory identification, reporting overlap-based measures (e.g., \textit{Substr. EM}, \textit{ROUGE-L F1}).
+
+\noindent \textbf{O10-(Planning and Fusion): Explicit planning and balanced retrieval fusion provide the strongest improvement in retrieval effectiveness.}
+As shown in Table~\ref{tab:m3_retrieval}, \textit{A-MEM} achieves its best performance with \textit{Hybrid-Balanced}, reaching 24.6 \textit{Ans.\ F1} and 27.5 \textit{Substr.\ EM}, compared with 23.0 and 24.3 under \textit{Hybrid Sparse-Leaning}, while \textit{SimpleMem} achieves its best performance with \textit{Planning Only}, reaching 20.7 \textit{Ans.\ F1}, 90.6 \textit{Strict Rec.}, 21.7 \textit{Substr.\ EM}, and 27.9 \textit{ROUGE-L F1}, above both \textit{No Planning} and \textit{Planning + Reflect}.
+These results indicate that stronger retrieval and routing performance comes from adding useful structure, rather than from simply increasing sparse matching or extra reasoning steps.
+In particular, (1) moderate fusion appears more effective than sparse-leaning fusion for preserving both answer quality and relevance (e.g., semantically related but lexically varied facts); (2) explicit planning consistently improves over direct retrieval (e.g., multi-constraint memory queries); and (3) adding reflection on top of planning does not yield further gains, suggesting that extra deliberation may weaken rather than improve routing decisions.
+
+\begin{findingbox}
+\textbf{(Retrieval Strategy Guidance).}
+M3 indicates that retrieval quality improves most from targeted structure rather than added complexity:
+(1) moderate hybrid fusion is preferable when evidence is semantically related but lexically diverse;
+(2) lightweight planning is effective for constrained memory lookup;
+and (3) once a route is already specified, extra reflection brings limited benefit and mainly adds overhead.
+\end{findingbox}
+
+% \vspace{-.35cm}
+\subsection{Memory Maintenance (M4)}
+\label{subsec:maintenance}
+
+% \noindent $\bullet$ \textit{Baselines.} (1) Incremental Update + Decay (MemoryBank); (2) CRUD + Invalidation (Mem0); (3) Paging-Based / Eviction (MemGPT); (4) Incremental / Versioned (MemOS, MemoRAG); (5) Batch / Compaction (GraphRAG).
+
+% \noindent $\bullet$ \textit{Metrics.} (1) Update Adoption Rate (UAR); (2) Conflict Resolution Accuracy; (3) Forgetting Completeness; (4) Cross-Session Consistency (CSC); (5) Forgetting Drop.
+
+% \noindent $\blacktriangleright$ \textbf{How do update action space, summary compaction strength, and flush/merge thresholds affect update correctness and long-horizon memory consistency?}
+% To isolate maintenance behavior, we keep each system's representation, storage backend, and retrieval pipeline fixed within its native implementation and vary only maintenance-side controls around a native anchor. To avoid degenerate settings under the current codebase, we retain only variants that induce clear behavioral changes without disabling the method's update path.
+
+% \begin{table}[!t]
+% \caption{Average Performance of Agent Memory Variants over Different Maintenance Strategies\zw{change to figure!}.}
+% \label{tab:m4_maintenance}
+% \centering
+% \footnotesize
+% \begin{tabular}{llcc}
+% \toprule
+% \multicolumn{2}{c}{\textbf{Method Variant}} & \multicolumn{2}{c}{\textbf{LoCoMo}} \\
+% \cmidrule(lr){3-4}
+%  & & \textbf{Ans.\ F1} & \textbf{Substr.\ EM} \\
+% \midrule
+% \textbf{Long Context} & Default & 21.3 & 23.7 \\
+% \midrule
+% \multirow{2}{*}{\textbf{Mem0}} & Default & 1.9 & 1.1 \\
+%  & Append-Only & \textbf{2.0} & 1.1 \\
+% \midrule
+% \multirow{3}{*}{\textbf{MemoryOS}} & Default & 23.2 & 22.4 \\
+%  & Conservative-Merge & \textbf{23.5} & \textbf{22.8} \\
+%  & Delayed-Flush & 20.6 & 19.5 \\
+% \midrule
+% \multirow{2}{*}{\textbf{MemoChat}} & Default & \textbf{16.6} & \textbf{18.4} \\
+%  & Topic1 & 16.2 & 16.8 \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+
+\begin{figure}[!t]
+    % \vspace{-1.25cm}
+  \centering
+  \includegraphics[width=\linewidth]{figures/m4_maintenance_figure.pdf}
+  \vspace{-.65cm}
+  \caption {Ablation of Maintenance Strategies.}
+  \label{fig:m4_maintenance}
+  \vspace{-.5cm}
+\end{figure}
+
+% \noindent \xhm{\textbf{Experimental Setup.} As shown in Table~\ref{tab:m4_maintenance}, we evaluate three compact agent memory systems and their variants alongside a long-context reference control, holding their representation, storage, and retrieval modules fixed to strictly isolate maintenance behaviors. (1) \textit{Mem0} compares its default full CRUD (Create, Read, Update, Delete) maintenance against an \textit{Append-Only} variant. This variant explicitly disables the \textit{UPDATE} and \textit{DELETE} operations via prompt constraints, forcing the system to restrict maintenance actions to ADD/NONE. (2) \textit{MemoChat} compares its default window consolidation (allowing up to 3 topics per window) against a \textit{Topic-1} variant. This variant disables broader multi-topic partitioning by forcing each consolidation step to compress the active window into a single topic summary. (3) \textit{MemoryOS} evaluates its default immediate consolidation (short-term capacity of 1, topic-similarity threshold of 0.6) against two variants: \textit{Delayed Flush}, which disables immediate backend writes by expanding the short-term buffer capacity to 4, and \textit{Conservative Merge}, which enforces stricter memory assimilation by raising the topic-similarity threshold to 0.9. To assess update correctness and long-horizon consistency, we utilize the \textit{LoCoMo} benchmark to evaluate compositional reasoning across Open-Domain, Multi-Hop, Temporal, and Single-Hop questions using Answer F1 and Exact Match (EM).}
+
+\noindent \textbf{Experimental Setting.}
+For \textit{``How do consolidation aggressiveness, flush timing, and summary granularity affect update correctness and long-horizon memory consistency?''}, we compare maintenance-relevant variants in two groups:
+\textit{(1) MemoChat} under default multi-topic consolidation versus \textit{Topic1}, which forces each window into a single-topic summary;
+and \textit{(2) MemoryOS} under default immediate consolidation versus \textit{Delayed-Flush}, which enlarges the short-term buffer before backend writes, and \textit{Conservative-Merge}, which raises the topic-similarity threshold for stricter assimilation.
+We evaluate on \textit{LoCoMo} to assess whether these maintenance choices preserve updated facts and coherent memory use over extended contexts.
+% (e.g., \textit{Ans.\ F1} and \textit{Substr.\ EM}).
+
+\begin{sloppypar}
+\noindent \textbf{O11-(Conservative Consolidation): Conservative consolidation is more effective than delayed flushing or overly coarse summarization for maintaining answer-relevant memory.}
+As shown in Figure~\ref{fig:m4_maintenance}, the stricter-merge variant, \textit{MemoryOS (Conservative-Merge)}, improves over default \textit{MemoryOS} from 23.2 to 23.5 in \textit{Ans.\ F1} and from 22.4 to 22.8 in \textit{Substr.\ EM}, whereas delaying flushes lowers the same system to 20.6/19.5, and forcing single-topic summaries in \textit{MemoChat} also underperforms its default setting at 16.2/16.8 versus 16.6/18.4; \textit{Long Context} remains highest on \textit{Substr.\ EM} at 23.7.
+It indicates that maintenance is most effective when it selectively consolidates evidence without either leaving it unresolved or compressing it too aggressively, while raw context still better preserves exact phrasing.
+In particular, (1) conservative merging can retain related details for later recomposition (e.g., dispersed hobby mentions);
+(2) delayed flushing leaves more evidence unresolved before retrieval (e.g., activity split across turns).
+% and (3) single-topic summarization is more likely to smooth away low-frequency but still useful details (e.g., a one-off hobby mention).
+\end{sloppypar}
+
+\begin{findingbox}
+\textbf{(Maintenance Design Principle).} M4 suggests that memory maintenance works best under a balanced update regime: 
+(1) conservative integration preserves cross-turn linkages for long-horizon reasoning; 
+(2) delayed flushing leaves recent evidence fragmented at query time; 
+and (3) overly coarse summarization obscures sparse but useful cues.
+% When exact wording is critical, raw long-context access remains a useful fallback.
+\end{findingbox}
+
+% \noindent \xhm{\textbf{O1-(The Trade-off Between Evidence Composition and Temporal Fidelity): Conservative structural consolidation improves multi-hop recomposition, yet semantic merging inherently degrades chronological tracking compared to raw long-context retrieval.}
+% Strictly controlling memory assimilation establishes the most robust foundation for complex answer generation. By raising the topic-similarity threshold from 0.6 to 0.9, the \textit{MemoryOS (Conservative Merge)} variant selectively filters noise rather than aggressively collapsing the evidence base, achieving the highest Answer F1 (23.5). This careful curation preserves sparse but complementary details. Answering ``What activities does Melanie partake in?'', for instance, requires stitching together scattered turns (e.g., pottery in D5:4 and camping in D9:1) rather than discarding them as isolated anomalies. Pushing maintenance to either extreme undermines this capability: expanding short-term capacity to delay flushing leaves the memory too unstructured, while forcing the active window into a single topic summary---as seen in \textit{MemoChat (Topic-1)}---severs essential cross-segment connections, dropping Multi-Hop F1 from 13.2 to 12.2. Yet, while explicit memory structure excels at this type of evidence recomposition, it fundamentally compromises temporal fidelity. The \textit{Long Context} baseline, acting as a raw, unmaintained reference control, retains the highest Temporal Answer F1 at 22.6, visibly outperforming memory-backed architectures like MemoryOS (20.8). This disparity highlights that temporal reasoning relies heavily on the dialogue's original sequential flow, which is often anchored by fragile relative expressions rather than standalone facts. Determining ``When did Caroline go to the adoption meeting?'', for example, depends entirely on the localized cue ``the Friday before 15 July 2023'' situated in D8:9. Once semantic consolidation algorithms segment or flush content into discrete records, these fine-grained chronological cues are permanently detached from their narrative anchors. Ultimately, agentic memory frameworks should default to conservative merging for composition-heavy workloads, but must dynamically route to raw context retrieval when event order and recency dictate the answer.
+% }
+
+% \begin{findingbox}
+% \textbf{(Composition vs. Temporal Fidelity Trade-off):} Memory maintenance dictates a strict trade-off: (1) conservative structural consolidation maximizes multi-hop reasoning by filtering noise, outperforming delayed or restrictive alternatives; yet (2) semantic merging inherently destroys the original dialogue flow, permanently detaching fine-grained chronological cues. Therefore, systems should default to conservative consolidation for composition-heavy tasks, but route to raw, time-ordered context when event recency is critical.
+% \end{findingbox}

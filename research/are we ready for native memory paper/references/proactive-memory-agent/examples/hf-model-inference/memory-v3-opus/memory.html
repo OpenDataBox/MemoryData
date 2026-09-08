@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Visualization</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1a2e;
+            color: #eee;
+        }
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        .header p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+        .memory-stats {
+            background: #16213e;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+        }
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #f5576c;
+        }
+        .memory-section {
+            background: #16213e;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .section-header {
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 16px;
+            border-bottom: 2px solid;
+        }
+        .section-header.status {
+            background-color: #2d2d5e;
+            border-bottom-color: #9c27b0;
+            color: #ce93d8;
+        }
+        .section-header.knowledge {
+            background-color: #1e3a5f;
+            border-bottom-color: #2196f3;
+            color: #64b5f6;
+        }
+        .section-header.procedural {
+            background-color: #1e4d2b;
+            border-bottom-color: #4caf50;
+            color: #81c784;
+        }
+        .section-content {
+            padding: 20px;
+        }
+        .memory-entry {
+            background: #0f0f1a;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            border-left: 3px solid #444;
+        }
+        .memory-entry.env { border-left-color: #ff9800; }
+        .memory-entry.path { border-left-color: #2196f3; }
+        .memory-entry.fact { border-left-color: #9c27b0; }
+        .memory-entry.bug { border-left-color: #f44336; }
+        .memory-entry.perf { border-left-color: #4caf50; }
+        .entry-id {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .entry-content {
+            color: #ddd;
+        }
+        .entry-meta {
+            font-size: 11px;
+            color: #555;
+            margin-top: 8px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .tag-env { background: #ff9800; color: #000; }
+        .tag-path { background: #2196f3; color: #fff; }
+        .tag-fact { background: #9c27b0; color: #fff; }
+        .tag-bug { background: #f44336; color: #fff; }
+        .tag-perf { background: #4caf50; color: #fff; }
+        .status-box {
+            background: #0f0f1a;
+            border-radius: 6px;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            border-left: 3px solid #9c27b0;
+        }
+        .empty-state {
+            color: #666;
+            font-style: italic;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🧠 Memory Visualization</h1>
+        <p><strong>Total Entries:</strong> 4</p>
+    </div>
+    <div class="memory-stats">
+        <div class="stat-item">
+            <span class="stat-label">Status Length</span>
+            <span class="stat-value">494 chars</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Knowledge Entries</span>
+            <span class="stat-value">2</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Procedural Entries</span>
+            <span class="stat-value">2</span>
+        </div>
+    </div>
+
+    <div class="memory-section">
+        <div class="section-header status">
+            📊 Working Status
+        </div>
+        <div class="section-content">
+            <div class="status-box">Task COMPLETE. All components verified working:
+1. Model downloaded to /app/model_cache/sentiment_model ✓
+2. Flask API running on 0.0.0.0:5000 in background ✓
+3. Positive sentiment test: 200, sentiment=positive, confidence ~0.9999 ✓
+4. Negative sentiment test: 200, sentiment=negative, confidence ~0.9995 ✓
+5. Error handling (missing text): 400 with error message ✓
+6. Error handling (empty JSON): 400 with error message ✓
+7. Accessible from 0.0.0.0 ✓
+Agent is about to mark task_complete=true.</div>
+        </div>
+    </div>
+
+    <div class="memory-section">
+        <div class="section-header knowledge">
+            📚 Knowledge Memory
+        </div>
+        <div class="section-content">
+            <div class="memory-entry ">
+                <div class="entry-id">ID: 7CDFTq6c</div>
+                <div class="entry-content">Task: Set up Flask API for Hugging Face sentiment analysis model.
+- Model: &quot;distilbert-base-uncased-finetuned-sst-2-english&quot;
+- Save model to: /app/model_cache/sentiment_model
+- Flask endpoint: POST /sentiment on port 5000, host 0.0.0.0
+- Request: {&quot;text&quot;: &quot;your text here&quot;}
+- Response: {&quot;sentiment&quot;: &quot;positive&quot;/&quot;negative&quot;, &quot;confidence&quot;: {&quot;positive&quot;: float, &quot;negative&quot;: float}}
+- Error: {&quot;error&quot;: string} with 400 status code
+- Run service in background
+- Working directory: /app</div>
+                <div class="entry-meta">Created: 2026-03-24T04:35:36 | Accessed: 0 times</div>
+            </div>
+            <div class="memory-entry ">
+                <div class="entry-id">ID: QaaTvAyG</div>
+                <div class="entry-content">Environment: Python 3.13, packages pre-installed: transformers 4.56.0, torch 2.7.1, flask 3.1.1. All dependencies satisfied. /app directory is empty at start.</div>
+                <div class="entry-meta">Created: 2026-03-24T04:37:13 | Accessed: 0 times</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="memory-section">
+        <div class="section-header procedural">
+            🔧 Procedural Memory
+        </div>
+        <div class="section-content">
+            <div class="memory-entry ">
+                <div class="entry-id">ID: Rpvmq5nG</div>
+                <div class="entry-content">curl is not available in this environment (bash: curl: command not found). Use python3 with requests or urllib to test HTTP endpoints instead.</div>
+                <div class="entry-meta">Created: 2026-03-24T04:44:30 | Accessed: 0 times</div>
+            </div>
+            <div class="memory-entry ">
+                <div class="entry-id">ID: PK6ZpfnT</div>
+                <div class="entry-content">Bash history expansion issue: Using `!` inside double-quoted strings in bash causes &quot;event not found&quot; errors. When testing with python3 -c, avoid exclamation marks in text or use single-quoted heredocs/script files instead. The negative sentiment test and error test both passed successfully.</div>
+                <div class="entry-meta">Created: 2026-03-24T04:47:07 | Accessed: 0 times</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

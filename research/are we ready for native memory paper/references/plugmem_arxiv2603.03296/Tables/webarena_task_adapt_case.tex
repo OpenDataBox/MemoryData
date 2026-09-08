@@ -1,0 +1,47 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Example of \plugmem with manual instructions.}
+\label{tab:webarena_task_adapt_case}
+
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{p{0.97\linewidth}}
+
+\toprule
+\textbf{WebArena Manual Instruction Effect}\\
+\midrule
+\textbf{Query.} \emph{``\;What is the price range of teeth grinding mouth guard in the One Stop Market?\;''}\\
+\midrule
+\textbf{\plugmem with Manual Instruction.}\\
+\(\triangleright\) \textbf{Reasoning}\\
+The user's question is about determining the price range of wireless earphones in the One Stop Market. According to the guidelines, when asked about a specific kind of product (e.g., "wireless earphone"), the agent must use the search bar to locate the product instead of navigating through dropdown menus. The current observation shows that the search bar is present but appears disabled. However, based on the relevant experience provided, attempting to use the search bar is still recommended, as its functionality may not be accurately represented by its appearance.\\
+\(\triangleright\) \textbf{Final Information}\\
+1. Use the search bar to type "wireless earphone" and press Enter to locate relevant products.\\
+2. Once the search results are displayed, review the prices of the listed wireless earphones to determine the price range.\\
+3. If the search bar does not function, report the issue and consider alternative methods to locate the product, such as contacting support or exploring other navigation options.\\
+\midrule
+\textbf{AgentOccam Action 1:}
+\textbf{type [1913] [wireless earphone] [1]}. (agent uses the search bar)\\
+\midrule
+...\\
+\midrule
+\textbf{\plugmem without Manual Instruction.}\\
+\(\triangleright\) \textbf{Reasoning}\\
+The user's question is about finding the price range of teeth grinding mouth guards in the One Stop Market. The observation does not provide any direct information about teeth grinding mouth guards or their prices. However, the relevant experience suggests that the agent should use the hierarchical menu structure to navigate to the appropriate category (likely under "Beauty \& Personal Care" or "Health \& Household") and then refine the search to locate the specific product type. If a price filter is available, it can be applied to determine the price range.\\
+\(\triangleright\) \textbf{Final Information}\\
+To answer the question, the agent should:\\
+1. Hover over the hierarchical menu structure, starting with categories like "Beauty \& Personal Care" or "Health \& Household."\\
+2. Look for subcategories related to oral care or dental care.\\
+3. Navigate to the relevant subcategory (e.g., "Oral Care" or "Mouth Guards").\\
+4. Review the products listed in the subcategory to identify teeth grinding mouth guards and note their prices.\\
+5. If a price filter is available, apply it to determine the price range more efficiently.\\
+6. Summarize the price range of the identified products.\\
+\midrule
+\textbf{AgentOccam Action 1:}\\
+\textbf{hover [1534]}. (agent operates the dropdown menu (WRONG!))\\
+\midrule
+...\\
+\bottomrule
+\end{tabularx}
+\end{table}

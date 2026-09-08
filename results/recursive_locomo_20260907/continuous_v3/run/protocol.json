@@ -1,0 +1,549 @@
+{
+  "args": {
+    "seed_run": "runs/pilot100_v3",
+    "out": "runs/continuous_v3",
+    "queue": "continuous_v3_queue.json",
+    "parent_run": "runs/continuous_v2",
+    "data": "data/locomo10.json",
+    "environment": "environment.json",
+    "model": "Qwen/Qwen3-8B",
+    "embed_model": "Qwen/Qwen3-Embedding-0.6B",
+    "embed_batch_size": 4,
+    "seed": 20260907,
+    "budget": 2048,
+    "min_delta": 0.001
+  },
+  "source_sha256": {
+    "continuous_v3.py": "81e17ccaf3026b18ab1e7545bba4f19c2d64839832e100770ecb509f89d83abf",
+    "indexed_memory.py": "786628f2f51c1520c43a9267b20ac94b6ab3bec473de1581d8bcb1a1e7928a90",
+    "evaluate_indexed.py": "c979c626d98646247cb0c06a666a909b20014844de6b80df93ddcecbbca81123",
+    "memory_ops.py": "02504b2976393c9f9743a051b6347adbeea8af36ba572da579edb5ab6bfe8b00",
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  },
+  "environment": {
+    "models": {
+      "Qwen/Qwen3-8B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "Qwen/Qwen3-Embedding-0.6B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-Embedding-0.6B/snapshots/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+      }
+    },
+    "packages": {
+      "torch": "2.8.0",
+      "vllm": "0.10.2",
+      "transformers": "4.56.2",
+      "sentence-transformers": "5.1.0",
+      "nltk": "3.9.1",
+      "numpy": "2.2.6"
+    },
+    "data_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4"
+  },
+  "records": [
+    {
+      "id": "conv-26:23",
+      "conv_id": "conv-26",
+      "qa_index": 23,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:47",
+      "conv_id": "conv-26",
+      "qa_index": 47,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:80",
+      "conv_id": "conv-26",
+      "qa_index": 80,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:54",
+      "conv_id": "conv-26",
+      "qa_index": 54,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:64",
+      "conv_id": "conv-26",
+      "qa_index": 64,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:95",
+      "conv_id": "conv-26",
+      "qa_index": 95,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:117",
+      "conv_id": "conv-26",
+      "qa_index": 117,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:96",
+      "conv_id": "conv-26",
+      "qa_index": 96,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:110",
+      "conv_id": "conv-26",
+      "qa_index": 110,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:130",
+      "conv_id": "conv-26",
+      "qa_index": 130,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:3",
+      "conv_id": "conv-30",
+      "qa_index": 3,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:28",
+      "conv_id": "conv-30",
+      "qa_index": 28,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:12",
+      "conv_id": "conv-30",
+      "qa_index": 12,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:21",
+      "conv_id": "conv-30",
+      "qa_index": 21,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:63",
+      "conv_id": "conv-30",
+      "qa_index": 63,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:71",
+      "conv_id": "conv-30",
+      "qa_index": 71,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:62",
+      "conv_id": "conv-30",
+      "qa_index": 62,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:70",
+      "conv_id": "conv-30",
+      "qa_index": 70,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:74",
+      "conv_id": "conv-30",
+      "qa_index": 74,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:54",
+      "conv_id": "conv-30",
+      "qa_index": 54,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:3",
+      "conv_id": "conv-41",
+      "qa_index": 3,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:40",
+      "conv_id": "conv-41",
+      "qa_index": 40,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:46",
+      "conv_id": "conv-41",
+      "qa_index": 46,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:56",
+      "conv_id": "conv-41",
+      "qa_index": 56,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:125",
+      "conv_id": "conv-41",
+      "qa_index": 125,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:72",
+      "conv_id": "conv-41",
+      "qa_index": 72,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:85",
+      "conv_id": "conv-41",
+      "qa_index": 85,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:86",
+      "conv_id": "conv-41",
+      "qa_index": 86,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:65",
+      "conv_id": "conv-41",
+      "qa_index": 65,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:87",
+      "conv_id": "conv-41",
+      "qa_index": 87,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:18",
+      "conv_id": "conv-43",
+      "qa_index": 18,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:57",
+      "conv_id": "conv-43",
+      "qa_index": 57,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:33",
+      "conv_id": "conv-43",
+      "qa_index": 33,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:70",
+      "conv_id": "conv-43",
+      "qa_index": 70,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:117",
+      "conv_id": "conv-43",
+      "qa_index": 117,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:95",
+      "conv_id": "conv-43",
+      "qa_index": 95,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:76",
+      "conv_id": "conv-43",
+      "qa_index": 76,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:142",
+      "conv_id": "conv-43",
+      "qa_index": 142,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:125",
+      "conv_id": "conv-43",
+      "qa_index": 125,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:140",
+      "conv_id": "conv-43",
+      "qa_index": 140,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:35",
+      "conv_id": "conv-44",
+      "qa_index": 35,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:14",
+      "conv_id": "conv-44",
+      "qa_index": 14,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:30",
+      "conv_id": "conv-44",
+      "qa_index": 30,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:11",
+      "conv_id": "conv-44",
+      "qa_index": 11,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:33",
+      "conv_id": "conv-44",
+      "qa_index": 33,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:61",
+      "conv_id": "conv-44",
+      "qa_index": 61,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:119",
+      "conv_id": "conv-44",
+      "qa_index": 119,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:120",
+      "conv_id": "conv-44",
+      "qa_index": 120,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:90",
+      "conv_id": "conv-44",
+      "qa_index": 90,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:77",
+      "conv_id": "conv-44",
+      "qa_index": 77,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:86",
+      "conv_id": "conv-48",
+      "qa_index": 86,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:30",
+      "conv_id": "conv-48",
+      "qa_index": 30,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:29",
+      "conv_id": "conv-48",
+      "qa_index": 29,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:28",
+      "conv_id": "conv-48",
+      "qa_index": 28,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:92",
+      "conv_id": "conv-48",
+      "qa_index": 92,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:146",
+      "conv_id": "conv-48",
+      "qa_index": 146,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:101",
+      "conv_id": "conv-48",
+      "qa_index": 101,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:178",
+      "conv_id": "conv-48",
+      "qa_index": 178,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:158",
+      "conv_id": "conv-48",
+      "qa_index": 158,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:64",
+      "conv_id": "conv-48",
+      "qa_index": 64,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:48",
+      "conv_id": "conv-49",
+      "qa_index": 48,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:7",
+      "conv_id": "conv-49",
+      "qa_index": 7,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:13",
+      "conv_id": "conv-49",
+      "qa_index": 13,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:73",
+      "conv_id": "conv-49",
+      "qa_index": 73,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:57",
+      "conv_id": "conv-49",
+      "qa_index": 57,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:92",
+      "conv_id": "conv-49",
+      "qa_index": 92,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:118",
+      "conv_id": "conv-49",
+      "qa_index": 118,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:143",
+      "conv_id": "conv-49",
+      "qa_index": 143,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:107",
+      "conv_id": "conv-49",
+      "qa_index": 107,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:96",
+      "conv_id": "conv-49",
+      "qa_index": 96,
+      "category": 4,
+      "split": "dev"
+    }
+  ],
+  "excluded_holdout_conversations": [
+    "conv-42",
+    "conv-47",
+    "conv-50"
+  ],
+  "selection": "original dev70 only; no new generalization claim",
+  "reader": "Answer the question using only the provided conversation memory. Give a concise exact answer: a name, date, number, or short phrase. For a list question include every supported item, separated by commas. Use the session dates to interpret relative times, but distinguish the event date from the date someone talked about it. If unsupported, answer unknown. No explanation or introductory text.",
+  "retrieval": "same BM25+dense RRF on constructor index_text; text is reader evidence; legacy memories use core.evaluate unchanged",
+  "construction": "sessions-only, question-blind; queued generic recipes",
+  "storage": "not matched; count evidence text plus distinct retrieval-key text for indexed memories",
+  "previous_holdout": "already reported; not accessed or evaluated by this worker",
+  "parent_protocol_sha256": "2c5226cba15610cbf398aeaf3a2785952179dfc1c336ebc9e9c94264427d6c0e"
+}

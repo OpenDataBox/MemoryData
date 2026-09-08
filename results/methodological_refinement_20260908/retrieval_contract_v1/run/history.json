@@ -1,0 +1,53 @@
+{
+  "rounds": [
+    {
+      "name": "t_source_selected",
+      "recipe": {
+        "name": "t_source_selected",
+        "family": "retrieval_feedback_no_observed_source_regression",
+        "global_extra_budget": 4000,
+        "max_source_rounds": 3,
+        "source_step_budgets": [
+          1000,
+          2000
+        ],
+        "source_families": [
+          "single",
+          "joint",
+          "joint_verified"
+        ]
+      },
+      "dev": {
+        "n": 70,
+        "official_f1": 0.5912745079451328,
+        "generic_token_f1": 0.5842011898662145,
+        "read_tokens": 2015.942857142857,
+        "memory_tokens": 60635.57142857143,
+        "cited_source_recall": 0.8257142857142856,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.48919753086419754
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.6693877551020408
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.01568627450980392
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.6684355190208033
+          }
+        },
+        "failures_below_half_f1": 24,
+        "failures_missing_cited_sources": 10
+      },
+      "accepted": false
+    }
+  ],
+  "best_f1": 0.5927437370002835,
+  "winner": "s_parent_single_2000"
+}
