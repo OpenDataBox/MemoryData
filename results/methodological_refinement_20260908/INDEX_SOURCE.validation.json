@@ -1,0 +1,191 @@
+{
+  "source_hashes_verified": true,
+  "optimizer_arrays_replayed": 21,
+  "maximum_vector_replay_error": 0,
+  "original_reference_rows_exact": 70,
+  "retrieval_contexts_and_predictions_verified": 880,
+  "source_training_queries": 97,
+  "stored_texts_unchanged": true,
+  "unit_norm_and_radius_caps_verified": true,
+  "dense_bytes_per_conversation": {
+    "conv-26": 835584,
+    "conv-30": 733184,
+    "conv-41": 1302528,
+    "conv-43": 1359872,
+    "conv-44": 1327104,
+    "conv-48": 1347584,
+    "conv-49": 1003520
+  },
+  "all_selection_locks_verified": true,
+  "source_selected": "baseline",
+  "optimizer_traces": [
+    {
+      "name": "y_radius_003",
+      "conv_id": "conv-26",
+      "objective": "retrieval_loss",
+      "initial": 0.22268704496852648,
+      "final": 0.1580816042123449,
+      "max_distance": 0.03000000220565856
+    },
+    {
+      "name": "y_radius_003",
+      "conv_id": "conv-30",
+      "objective": "retrieval_loss",
+      "initial": 1.0384190874410058,
+      "final": 0.9452369354841099,
+      "max_distance": 0.030000001661065902
+    },
+    {
+      "name": "y_radius_003",
+      "conv_id": "conv-41",
+      "objective": "retrieval_loss",
+      "initial": 1.250185835610412,
+      "final": 1.0472583272602018,
+      "max_distance": 0.030000002643743997
+    },
+    {
+      "name": "y_radius_003",
+      "conv_id": "conv-43",
+      "objective": "retrieval_loss",
+      "initial": 0.8789171990084803,
+      "final": 0.7218928302683427,
+      "max_distance": 0.030000001618370648
+    },
+    {
+      "name": "y_radius_003",
+      "conv_id": "conv-44",
+      "objective": "retrieval_loss",
+      "initial": 1.179776175935475,
+      "final": 1.0032080194459996,
+      "max_distance": 0.030000001744962618
+    },
+    {
+      "name": "y_radius_003",
+      "conv_id": "conv-48",
+      "objective": "retrieval_loss",
+      "initial": 0.9888164321446528,
+      "final": 0.8214409155881865,
+      "max_distance": 0.030000001723915898
+    },
+    {
+      "name": "y_radius_003",
+      "conv_id": "conv-49",
+      "objective": "retrieval_loss",
+      "initial": 1.5034613818014593,
+      "final": 1.2824447574076354,
+      "max_distance": 0.030000001883313566
+    },
+    {
+      "name": "y_radius_010",
+      "conv_id": "conv-26",
+      "objective": "retrieval_loss",
+      "initial": 0.22268704496852648,
+      "final": 0.06879672995476818,
+      "max_distance": 0.1000000017652884
+    },
+    {
+      "name": "y_radius_010",
+      "conv_id": "conv-30",
+      "objective": "retrieval_loss",
+      "initial": 1.0384190874410058,
+      "final": 0.7532686811343173,
+      "max_distance": 0.10000000199626081
+    },
+    {
+      "name": "y_radius_010",
+      "conv_id": "conv-41",
+      "objective": "retrieval_loss",
+      "initial": 1.250185835610412,
+      "final": 0.62759118291929,
+      "max_distance": 0.10000000180216162
+    },
+    {
+      "name": "y_radius_010",
+      "conv_id": "conv-43",
+      "objective": "retrieval_loss",
+      "initial": 0.8789171990084803,
+      "final": 0.4083320264205479,
+      "max_distance": 0.10000000214145333
+    },
+    {
+      "name": "y_radius_010",
+      "conv_id": "conv-44",
+      "objective": "retrieval_loss",
+      "initial": 1.179776175935475,
+      "final": 0.6366432941413714,
+      "max_distance": 0.10000000203616614
+    },
+    {
+      "name": "y_radius_010",
+      "conv_id": "conv-48",
+      "objective": "retrieval_loss",
+      "initial": 0.9888164321446528,
+      "final": 0.4953776948959413,
+      "max_distance": 0.10000000206269666
+    },
+    {
+      "name": "y_radius_010",
+      "conv_id": "conv-49",
+      "objective": "retrieval_loss",
+      "initial": 1.5034613818014593,
+      "final": 0.808453250782753,
+      "max_distance": 0.10000000154644463
+    },
+    {
+      "name": "y_radius_030",
+      "conv_id": "conv-26",
+      "objective": "retrieval_loss",
+      "initial": 0.22268704496852648,
+      "final": 0.010981093245696235,
+      "max_distance": 0.30000000232355656
+    },
+    {
+      "name": "y_radius_030",
+      "conv_id": "conv-30",
+      "objective": "retrieval_loss",
+      "initial": 1.0384190874410058,
+      "final": 0.28469925433233806,
+      "max_distance": 0.30000000181326636
+    },
+    {
+      "name": "y_radius_030",
+      "conv_id": "conv-41",
+      "objective": "retrieval_loss",
+      "initial": 1.250185835610412,
+      "final": 0.05618283632113387,
+      "max_distance": 0.30000000249883
+    },
+    {
+      "name": "y_radius_030",
+      "conv_id": "conv-43",
+      "objective": "retrieval_loss",
+      "initial": 0.8789171990084803,
+      "final": 0.023913215664997687,
+      "max_distance": 0.3000000019554329
+    },
+    {
+      "name": "y_radius_030",
+      "conv_id": "conv-44",
+      "objective": "retrieval_loss",
+      "initial": 1.179776175935475,
+      "final": 0.07784517841217585,
+      "max_distance": 0.3000000024885611
+    },
+    {
+      "name": "y_radius_030",
+      "conv_id": "conv-48",
+      "objective": "retrieval_loss",
+      "initial": 0.9888164321446528,
+      "final": 0.06056909268910705,
+      "max_distance": 0.3000000022767453
+    },
+    {
+      "name": "y_radius_030",
+      "conv_id": "conv-49",
+      "objective": "retrieval_loss",
+      "initial": 1.5034613818014593,
+      "final": 0.07718672610667497,
+      "max_distance": 0.3000000020838565
+    }
+  ]
+}

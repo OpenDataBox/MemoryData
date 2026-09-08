@@ -1,0 +1,19 @@
+{
+  "recipe": {
+    "name": "r21_anchored_nonoverlap",
+    "parent": "r07_nonoverlap_pairs",
+    "operations": [
+      {
+        "op": "anchor_time",
+        "style": "month"
+      }
+    ]
+  },
+  "parent": "r07_nonoverlap_pairs",
+  "committed_at": 1788786014.1819038,
+  "recipe_sha256": "3a3a3c85a345d48adeb8a90ffd3fe47683fa1bca8f6f3e86ff71e9dff75aa82e",
+  "source_sha256": {
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "recipe": {
+    "name": "r35_anchored_dialogue_only",
+    "parent": "seed",
+    "operations": [
+      {
+        "op": "dialogue_blocks",
+        "size": 2,
+        "overlap": 1,
+        "append": false
+      },
+      {
+        "op": "anchor_time",
+        "style": "month"
+      }
+    ]
+  },
+  "parent": "seed",
+  "committed_at": 1788791853.852566,
+  "recipe_sha256": "8d6e20c6b88a8c46bae4570a6ba19fb5ae52b51a7012c408ab9d10d6ab0f9dac",
+  "source_sha256": {
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

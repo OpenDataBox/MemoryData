@@ -1,0 +1,145 @@
+[
+  {
+    "name": "r50a_fused_five_turn",
+    "parent": "r12_filter_current_best",
+    "operations": [
+      {
+        "op": "fuse_evidence",
+        "size": 5,
+        "overlap": 2,
+        "anchor": true
+      }
+    ]
+  },
+  {
+    "name": "r50b_fused_six_turn",
+    "parent": "r12_filter_current_best",
+    "operations": [
+      {
+        "op": "fuse_evidence",
+        "size": 6,
+        "overlap": 3,
+        "anchor": true
+      }
+    ]
+  },
+  {
+    "name": "r50c_fused_stride_one",
+    "parent": "r12_filter_current_best",
+    "operations": [
+      {
+        "op": "fuse_evidence",
+        "size": 4,
+        "overlap": 3,
+        "anchor": true
+      }
+    ]
+  },
+  {
+    "name": "r54_fact_index_single_source",
+    "parent": "r12_filter_current_best",
+    "operations": [
+      {
+        "op": "indexed_evidence",
+        "before": 0
+      }
+    ]
+  },
+  {
+    "name": "r55_fact_index_surrounding",
+    "parent": "r12_filter_current_best",
+    "operations": [
+      {
+        "op": "indexed_evidence",
+        "before": 1,
+        "after": 1
+      }
+    ]
+  },
+  {
+    "name": "r56_fact_index_prior_context",
+    "parent": "r12_filter_current_best",
+    "operations": [
+      {
+        "op": "indexed_evidence",
+        "before": 2
+      }
+    ]
+  },
+  {
+    "name": "r60_declarative_index",
+    "parent": "r16_declarative_facts",
+    "operations": [
+      {
+        "op": "indexed_evidence"
+      }
+    ]
+  },
+  {
+    "name": "r61_clean_card_index",
+    "parent": "r42_clean_source_cards",
+    "operations": [
+      {
+        "op": "indexed_evidence"
+      }
+    ]
+  },
+  {
+    "name": "r62_profile_index",
+    "parent": "r46_entity_profiles_only",
+    "operations": [
+      {
+        "op": "indexed_evidence",
+        "before": 0
+      }
+    ]
+  },
+  {
+    "name": "r63_recursive_index_context",
+    "parent": "best",
+    "operations": [
+      {
+        "op": "indexed_evidence",
+        "before": 1,
+        "after": 1
+      }
+    ]
+  },
+  {
+    "name": "r64_clean_index_best",
+    "parent": "best",
+    "operations": [
+      {
+        "op": "index_view"
+      }
+    ]
+  },
+  {
+    "name": "r65_clean_index_seed",
+    "parent": "seed",
+    "operations": [
+      {
+        "op": "index_view"
+      }
+    ]
+  },
+  {
+    "name": "r66_content_word_index",
+    "parent": "best",
+    "operations": [
+      {
+        "op": "index_view",
+        "remove_stopwords": true
+      }
+    ]
+  },
+  {
+    "name": "r69_split_current_best",
+    "parent": "best",
+    "operations": [
+      {
+        "op": "split_fused_index"
+      }
+    ]
+  }
+]

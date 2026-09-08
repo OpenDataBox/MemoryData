@@ -1,0 +1,30 @@
+{
+  "recipe": {
+    "name": "r32_anchored_single_turn",
+    "parent": "seed",
+    "operations": [
+      {
+        "op": "facts_only"
+      },
+      {
+        "op": "dialogue_blocks",
+        "size": 1,
+        "overlap": 0
+      },
+      {
+        "op": "anchor_time",
+        "style": "month"
+      },
+      {
+        "op": "filter_social_facts"
+      }
+    ]
+  },
+  "parent": "seed",
+  "committed_at": 1788791559.610985,
+  "recipe_sha256": "3be69b73a6b79652962997877d65aa19d5f30c744ad934eb273fe4162c0fc218",
+  "source_sha256": {
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

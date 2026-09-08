@@ -1,0 +1,310 @@
+{
+  "question": "What is the event's theme?",
+  "answer": "LGBTQ",
+  "source_ids": [
+    "D14:33",
+    "D14:34",
+    "D14:35"
+  ],
+  "candidate_context_ids": [
+    "D14:33",
+    "D14:34",
+    "D14:35"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D14:33",
+      "start": 24,
+      "end": 29,
+      "verbatim": "LGBTQ"
+    },
+    {
+      "source_id": "D14:34",
+      "start": 65,
+      "end": 70,
+      "verbatim": "LGBTQ"
+    },
+    {
+      "source_id": "D14:35",
+      "start": 51,
+      "end": 56,
+      "verbatim": "LGBTQ"
+    }
+  ],
+  "session": 14,
+  "recorded_date": "1:33 pm on 25 August, 2023",
+  "conv_id": "conv-26",
+  "split": "probe_fit",
+  "id": "conv-26:source_probe:27",
+  "analysis": {
+    "full_advantage": 1.7210323526924185,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D14:35"
+    ],
+    "best_pair_sources": [
+      "D14:33",
+      "D14:34"
+    ],
+    "minimum_sources": [
+      "D14:33"
+    ],
+    "minimum_tokens": 53,
+    "single_policy_sources": [
+      "D14:33"
+    ],
+    "single_policy_tokens": 53,
+    "full_tokens": 150,
+    "best_pair_lift_over_best_single": -0.0023477453305531526,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D14:33",
+          "D14:34"
+        ],
+        "joint_lift": 4.165024391545255,
+        "interaction": 2.3771070766706552,
+        "advantage": 7.868880344371671
+      },
+      {
+        "source_ids": [
+          "D14:33",
+          "D14:35"
+        ],
+        "joint_lift": -1.7898585616197427,
+        "interaction": -3.577775876494343,
+        "advantage": 6.081369528082481
+      },
+      {
+        "source_ids": [
+          "D14:34",
+          "D14:35"
+        ],
+        "joint_lift": -0.36669857336710265,
+        "interaction": -4.0705545261935185,
+        "advantage": 7.504529516335121
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": false
+  },
+  "generations": {
+    "empty": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "full": {
+      "text": "spreading understanding and acceptance",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D14:33",
+        "D14:34",
+        "D14:35"
+      ],
+      "context_tokens": 150,
+      "source_answer_f1": 0.0
+    },
+    "answer_removed": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "best_single": {
+      "text": "LGBTQ artists and their awesome talents",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D14:35"
+      ],
+      "context_tokens": 85,
+      "source_answer_f1": 0.2857142857142857
+    },
+    "best_pair": {
+      "text": "LGBTQ art show",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D14:33",
+        "D14:34"
+      ],
+      "context_tokens": 87,
+      "source_answer_f1": 0.5
+    },
+    "minimum_bundle": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D14:33"
+      ],
+      "context_tokens": 53,
+      "source_answer_f1": 0.0
+    },
+    "single_policy": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D14:33"
+      ],
+      "context_tokens": 53,
+      "source_answer_f1": 0.0
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -7.871377825728511,
+        "sum_logprob": -23.614133477185533,
+        "answer_tokens": 3,
+        "token_logprobs": [
+          -22.72524642944336,
+          -0.8888798952102661,
+          -7.152531907195225e-06
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D14:33",
+        "D14:34",
+        "D14:35"
+      ],
+      "context_tokens": 150,
+      "score": {
+        "mean_logprob": -6.150345473036093,
+        "sum_logprob": -18.451036419108277,
+        "answer_tokens": 3,
+        "token_logprobs": [
+          -18.450775146484375,
+          -0.00026127262390218675,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D14:33"
+      ],
+      "context_tokens": 53,
+      "score": {
+        "mean_logprob": -6.083460510853911,
+        "sum_logprob": -18.250381532561732,
+        "answer_tokens": 3,
+        "token_logprobs": [
+          -18.250045776367188,
+          -0.0003357561945449561,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D14:34"
+      ],
+      "context_tokens": 56,
+      "score": {
+        "mean_logprob": -4.167521872902095,
+        "sum_logprob": -12.502565618706285,
+        "answer_tokens": 3,
+        "token_logprobs": [
+          -12.502480506896973,
+          -8.511180931236595e-05,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D14:35"
+      ],
+      "context_tokens": 85,
+      "score": {
+        "mean_logprob": -0.0001497360262874281,
+        "sum_logprob": -0.0004492080788622843,
+        "answer_tokens": 3,
+        "token_logprobs": [
+          -0.00042775063775479794,
+          -2.1457441107486375e-05,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D14:33",
+        "D14:34"
+      ],
+      "context_tokens": 87,
+      "score": {
+        "mean_logprob": -0.0024974813568405807,
+        "sum_logprob": -0.007492444070521742,
+        "answer_tokens": 3,
+        "token_logprobs": [
+          -0.007156926207244396,
+          -0.0003355178632773459,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D14:33",
+        "D14:35"
+      ],
+      "context_tokens": 116,
+      "score": {
+        "mean_logprob": -1.79000829764603,
+        "sum_logprob": -5.3700248929380905,
+        "answer_tokens": 3,
+        "token_logprobs": [
+          -5.3697943687438965,
+          -0.00023052419419400394,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D14:34",
+        "D14:35"
+      ],
+      "context_tokens": 119,
+      "score": {
+        "mean_logprob": -0.3668483093933901,
+        "sum_logprob": -1.1005449281801702,
+        "answer_tokens": 3,
+        "token_logprobs": [
+          -1.1004934310913086,
+          -5.149708886165172e-05,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -8.093404312921848,
+        "sum_logprob": -24.280212938765544,
+        "answer_tokens": 3,
+        "token_logprobs": [
+          -23.475234985351562,
+          -0.8049716353416443,
+          -6.318072337307967e-06
+        ]
+      }
+    }
+  ]
+}

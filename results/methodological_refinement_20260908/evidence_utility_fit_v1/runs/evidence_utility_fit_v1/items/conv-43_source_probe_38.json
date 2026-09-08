@@ -1,0 +1,337 @@
+{
+  "question": "What did John say about the comfort of being in nature?",
+  "answer": "It's truly amazing and comforting",
+  "source_ids": [
+    "D20:42"
+  ],
+  "candidate_context_ids": [
+    "D20:41",
+    "D20:42",
+    "D20:43"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D20:42",
+      "start": 77,
+      "end": 110,
+      "verbatim": "It's truly amazing and comforting"
+    }
+  ],
+  "session": 20,
+  "recorded_date": "9:52 am on 1 December, 2023",
+  "conv_id": "conv-43",
+  "split": "probe_fit",
+  "id": "conv-43:source_probe:38",
+  "analysis": {
+    "full_advantage": 9.168896508713592,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D20:42"
+    ],
+    "best_pair_sources": [
+      "D20:41",
+      "D20:42"
+    ],
+    "minimum_sources": [
+      "D20:41",
+      "D20:42",
+      "D20:43"
+    ],
+    "minimum_tokens": 128,
+    "single_policy_sources": [
+      "D20:41",
+      "D20:42",
+      "D20:43"
+    ],
+    "single_policy_tokens": 128,
+    "full_tokens": 128,
+    "best_pair_lift_over_best_single": 1.6490617593127679,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D20:41",
+          "D20:42"
+        ],
+        "joint_lift": 1.6490617593127679,
+        "interaction": 6.597562870010554,
+        "advantage": 8.708701086541046
+      },
+      {
+        "source_ids": [
+          "D20:41",
+          "D20:43"
+        ],
+        "joint_lift": -0.45924695122327464,
+        "interaction": 4.489254159474511,
+        "advantage": -4.3486056777959075
+      },
+      {
+        "source_ids": [
+          "D20:42",
+          "D20:43"
+        ],
+        "joint_lift": 0.416198988755639,
+        "interaction": 4.305557715328272,
+        "advantage": 7.475838315983917
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": false
+  },
+  "generations": {
+    "empty": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "full": {
+      "text": "It's truly amazing and comforting.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D20:41",
+        "D20:42",
+        "D20:43"
+      ],
+      "context_tokens": 128,
+      "source_answer_f1": 1.0
+    },
+    "answer_removed": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D20:41",
+        "D20:43"
+      ],
+      "context_tokens": 94,
+      "source_answer_f1": 0.0
+    },
+    "best_single": {
+      "text": "amazing and comforting",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D20:42"
+      ],
+      "context_tokens": 55,
+      "source_answer_f1": 0.6666666666666666
+    },
+    "best_pair": {
+      "text": "comforting",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D20:41",
+        "D20:42"
+      ],
+      "context_tokens": 99,
+      "source_answer_f1": 0.2857142857142857
+    },
+    "minimum_bundle": {
+      "text": "It's truly amazing and comforting.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D20:41",
+        "D20:42",
+        "D20:43"
+      ],
+      "context_tokens": 128,
+      "source_answer_f1": 1.0
+    },
+    "single_policy": {
+      "text": "It's truly amazing and comforting.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D20:41",
+        "D20:42",
+        "D20:43"
+      ],
+      "context_tokens": 128,
+      "source_answer_f1": 1.0
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -9.259959511458874,
+        "sum_logprob": -55.55975706875324,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -20.006732940673828,
+          -1.9927973747253418,
+          -17.671472549438477,
+          -6.568755626678467,
+          -9.251703262329102,
+          -0.06829531490802765
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D20:41",
+        "D20:42",
+        "D20:43"
+      ],
+      "context_tokens": 128,
+      "score": {
+        "mean_logprob": -0.09106300274528205,
+        "sum_logprob": -0.5463780164716923,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -0.546377420425415,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -5.960462772236497e-07
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D20:41"
+      ],
+      "context_tokens": 65,
+      "score": {
+        "mean_logprob": -14.20846062215666,
+        "sum_logprob": -85.25076373293996,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -32.75117111206055,
+          -7.0510125160217285,
+          -28.62607192993164,
+          -0.03865392878651619,
+          -13.00959587097168,
+          -3.7742583751678467
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D20:42"
+      ],
+      "context_tokens": 55,
+      "score": {
+        "mean_logprob": -2.200320184230596,
+        "sum_logprob": -13.201921105383576,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -13.201919555664062,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.5497195136049413e-06
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D20:43"
+      ],
+      "context_tokens": 50,
+      "score": {
+        "mean_logprob": -13.149318238031507,
+        "sum_logprob": -78.89590942818904,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -31.750431060791016,
+          -8.501124382019043,
+          -27.05154800415039,
+          -1.3320953845977783,
+          -10.260221481323242,
+          -0.0004891153075732291
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D20:41",
+        "D20:42"
+      ],
+      "context_tokens": 99,
+      "score": {
+        "mean_logprob": -0.5512584249178284,
+        "sum_logprob": -3.3075505495069706,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -3.3075499534606934,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -5.960462772236497e-07
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D20:41",
+        "D20:43"
+      ],
+      "context_tokens": 94,
+      "score": {
+        "mean_logprob": -13.608565189254781,
+        "sum_logprob": -81.65139113552868,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -33.00861358642578,
+          -7.817911624908447,
+          -26.62069320678711,
+          -0.014194594696164131,
+          -11.793807983398438,
+          -2.396170139312744
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D20:42",
+        "D20:43"
+      ],
+      "context_tokens": 84,
+      "score": {
+        "mean_logprob": -1.7841211954749572,
+        "sum_logprob": -10.704727172849744,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -10.70472526550293,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.9073468138230965e-06
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [
+        "D20:41",
+        "D20:43"
+      ],
+      "context_tokens": 94,
+      "score": {
+        "mean_logprob": -13.623491048657646,
+        "sum_logprob": -81.74094629194587,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -33.01104736328125,
+          -7.819227695465088,
+          -26.725542068481445,
+          -0.013736008666455746,
+          -11.555909156799316,
+          -2.6154839992523193
+        ]
+      }
+    }
+  ]
+}

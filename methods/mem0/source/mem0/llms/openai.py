@@ -59,6 +59,11 @@ class OpenAILLM(LLMBase):
         model_name = str(self.config.model or "").lower()
         return "dashscope" in base_url and "qwen" in model_name
 
+    def _should_disable_thinking_for_ollama(self) -> bool:
+        base_url = self._resolved_base_url().lower()
+        model_name = str(self.config.model or "").lower()
+        return ("127.0.0.1:11434" in base_url or "localhost:11434" in base_url) and "qwen" in model_name
+
     def _inject_dashscope_non_streaming_defaults(self, params: Dict) -> None:
         """DashScope Qwen requires explicit non-thinking mode for non-streaming calls."""
         if not self._should_disable_thinking_for_dashscope():
@@ -69,6 +74,11 @@ class OpenAILLM(LLMBase):
         extra_body = dict(params.get("extra_body") or {})
         extra_body["enable_thinking"] = False
         params["extra_body"] = extra_body
+
+    def _inject_ollama_non_thinking_defaults(self, params: Dict) -> None:
+        """Ollama exposes thinking control through OpenAI reasoning_effort."""
+        if self._should_disable_thinking_for_ollama() and not params.get("stream"):
+            params["reasoning_effort"] = "none"
 
     def _parse_response(self, response, tools):
         """
@@ -149,6 +159,7 @@ class OpenAILLM(LLMBase):
             params["tools"] = tools
             params["tool_choice"] = tool_choice
         self._inject_dashscope_non_streaming_defaults(params)
+        self._inject_ollama_non_thinking_defaults(params)
 
         response = self.client.chat.completions.create(**params)
         return self._parse_response(response, tools)

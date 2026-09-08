@@ -1,0 +1,629 @@
+{
+  "args": {
+    "out": "runs/provenance_payload_v2",
+    "model": "Qwen/Qwen3-8B",
+    "embed_model": "Qwen/Qwen3-Embedding-0.6B",
+    "embed_batch_size": 4,
+    "seed": 20260907,
+    "budget": 2048
+  },
+  "source_sha256": {
+    "run_payload_refinement_v2.py": "16b86676d8676e747bb2330dc83de8ec6c6a0e469bdd15898d410e5be8d10c5f",
+    "provenance_payload_v2.py": "12ef3e93e0caa2e706a1fe30d18091bc7c9705816f4e2155417e463978573e53",
+    "provenance_payload.py": "113c8480443de9f61507faab24a92b388ac5ab52546b87e4e081a5349b893c61",
+    "contrastive_events.py": "2447719bde1ebc93993a53652b22e7a4669ddc6b6535351a971ffaff849821d2",
+    "retrieval_contract.py": "69cf8b3c5e5931eaffa447743e186e4c8aa45fdd1237d0b5c6f52829cf57bac8",
+    "crossview_probes.py": "4205d2bd663569135d9514df7a7eabeebe4b9185be6a8108f8c2a8781a22ae5e",
+    "budgeted_evidence.py": "d1e5f99306a7654124b16cf9c3ecb14e98118892dc0ed24b92470386049fddb3",
+    "evidence_fidelity.py": "ba55f8508cc16b1cea420f80198a9c6c7d3359235645886d9180c1bf0838c735",
+    "evidence_utility.py": "b6a18927a332ff96a997b24a8d36a0ff29757baeb36b8d1efe9c5aab51c9f310",
+    "run_evidence_utility.py": "534749083cd534deb00944d893ef9ed43fcb624a14fd5d9f560669d99ad03edd",
+    "evaluate_indexed.py": "c979c626d98646247cb0c06a666a909b20014844de6b80df93ddcecbbca81123",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  },
+  "environment": {
+    "models": {
+      "Qwen/Qwen3-8B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "Qwen/Qwen3-Embedding-0.6B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-Embedding-0.6B/snapshots/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+      }
+    },
+    "packages": {
+      "torch": "2.8.0",
+      "vllm": "0.10.2",
+      "transformers": "4.56.2",
+      "sentence-transformers": "5.1.0",
+      "nltk": "3.9.1",
+      "numpy": "2.2.6"
+    },
+    "data_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4"
+  },
+  "previous_protocol_sha256": "872a717ea09a3744f42845a9eddb8c4b036c987a02cf7e8ceca06ee3d340659e",
+  "baseline_memory_sha256": "66d7b35af3c0535a9aad39359af55f79e6084bbc811262b8e91ac0f1f465570a",
+  "records": [
+    {
+      "id": "conv-26:23",
+      "conv_id": "conv-26",
+      "qa_index": 23,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:47",
+      "conv_id": "conv-26",
+      "qa_index": 47,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:80",
+      "conv_id": "conv-26",
+      "qa_index": 80,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:54",
+      "conv_id": "conv-26",
+      "qa_index": 54,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:64",
+      "conv_id": "conv-26",
+      "qa_index": 64,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:95",
+      "conv_id": "conv-26",
+      "qa_index": 95,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:117",
+      "conv_id": "conv-26",
+      "qa_index": 117,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:96",
+      "conv_id": "conv-26",
+      "qa_index": 96,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:110",
+      "conv_id": "conv-26",
+      "qa_index": 110,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:130",
+      "conv_id": "conv-26",
+      "qa_index": 130,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:3",
+      "conv_id": "conv-30",
+      "qa_index": 3,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:28",
+      "conv_id": "conv-30",
+      "qa_index": 28,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:12",
+      "conv_id": "conv-30",
+      "qa_index": 12,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:21",
+      "conv_id": "conv-30",
+      "qa_index": 21,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:63",
+      "conv_id": "conv-30",
+      "qa_index": 63,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:71",
+      "conv_id": "conv-30",
+      "qa_index": 71,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:62",
+      "conv_id": "conv-30",
+      "qa_index": 62,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:70",
+      "conv_id": "conv-30",
+      "qa_index": 70,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:74",
+      "conv_id": "conv-30",
+      "qa_index": 74,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:54",
+      "conv_id": "conv-30",
+      "qa_index": 54,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:3",
+      "conv_id": "conv-41",
+      "qa_index": 3,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:40",
+      "conv_id": "conv-41",
+      "qa_index": 40,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:46",
+      "conv_id": "conv-41",
+      "qa_index": 46,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:56",
+      "conv_id": "conv-41",
+      "qa_index": 56,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:125",
+      "conv_id": "conv-41",
+      "qa_index": 125,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:72",
+      "conv_id": "conv-41",
+      "qa_index": 72,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:85",
+      "conv_id": "conv-41",
+      "qa_index": 85,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:86",
+      "conv_id": "conv-41",
+      "qa_index": 86,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:65",
+      "conv_id": "conv-41",
+      "qa_index": 65,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:87",
+      "conv_id": "conv-41",
+      "qa_index": 87,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:18",
+      "conv_id": "conv-43",
+      "qa_index": 18,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:57",
+      "conv_id": "conv-43",
+      "qa_index": 57,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:33",
+      "conv_id": "conv-43",
+      "qa_index": 33,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:70",
+      "conv_id": "conv-43",
+      "qa_index": 70,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:117",
+      "conv_id": "conv-43",
+      "qa_index": 117,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:95",
+      "conv_id": "conv-43",
+      "qa_index": 95,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:76",
+      "conv_id": "conv-43",
+      "qa_index": 76,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:142",
+      "conv_id": "conv-43",
+      "qa_index": 142,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:125",
+      "conv_id": "conv-43",
+      "qa_index": 125,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:140",
+      "conv_id": "conv-43",
+      "qa_index": 140,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:35",
+      "conv_id": "conv-44",
+      "qa_index": 35,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:14",
+      "conv_id": "conv-44",
+      "qa_index": 14,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:30",
+      "conv_id": "conv-44",
+      "qa_index": 30,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:11",
+      "conv_id": "conv-44",
+      "qa_index": 11,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:33",
+      "conv_id": "conv-44",
+      "qa_index": 33,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:61",
+      "conv_id": "conv-44",
+      "qa_index": 61,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:119",
+      "conv_id": "conv-44",
+      "qa_index": 119,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:120",
+      "conv_id": "conv-44",
+      "qa_index": 120,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:90",
+      "conv_id": "conv-44",
+      "qa_index": 90,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:77",
+      "conv_id": "conv-44",
+      "qa_index": 77,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:86",
+      "conv_id": "conv-48",
+      "qa_index": 86,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:30",
+      "conv_id": "conv-48",
+      "qa_index": 30,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:29",
+      "conv_id": "conv-48",
+      "qa_index": 29,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:28",
+      "conv_id": "conv-48",
+      "qa_index": 28,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:92",
+      "conv_id": "conv-48",
+      "qa_index": 92,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:146",
+      "conv_id": "conv-48",
+      "qa_index": 146,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:101",
+      "conv_id": "conv-48",
+      "qa_index": 101,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:178",
+      "conv_id": "conv-48",
+      "qa_index": 178,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:158",
+      "conv_id": "conv-48",
+      "qa_index": 158,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:64",
+      "conv_id": "conv-48",
+      "qa_index": 64,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:48",
+      "conv_id": "conv-49",
+      "qa_index": 48,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:7",
+      "conv_id": "conv-49",
+      "qa_index": 7,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:13",
+      "conv_id": "conv-49",
+      "qa_index": 13,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:73",
+      "conv_id": "conv-49",
+      "qa_index": 73,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:57",
+      "conv_id": "conv-49",
+      "qa_index": 57,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:92",
+      "conv_id": "conv-49",
+      "qa_index": 92,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:118",
+      "conv_id": "conv-49",
+      "qa_index": 118,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:143",
+      "conv_id": "conv-49",
+      "qa_index": 143,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:107",
+      "conv_id": "conv-49",
+      "qa_index": 107,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:96",
+      "conv_id": "conv-49",
+      "qa_index": 96,
+      "category": 4,
+      "split": "dev"
+    }
+  ],
+  "excluded_holdout_conversations": [
+    "conv-42",
+    "conv-47",
+    "conv-50"
+  ],
+  "reader": "Answer the question using only the provided conversation memory. Give a concise exact answer: a name, date, number, or short phrase. For a list question include every supported item, separated by commas. Use the session dates to interpret relative times, but distinguish the event date from the date someone talked about it. If unsupported, answer unknown. No explanation or introductory text.",
+  "reference": {
+    "name": "s_parent_single_2000",
+    "expected_f1": 0.5927437370002835
+  },
+  "recipes": [
+    {
+      "name": "aa_raw",
+      "family": "source_grounded_payload",
+      "mode": "raw"
+    },
+    {
+      "name": "aa_normalized",
+      "family": "source_grounded_payload",
+      "mode": "normalized"
+    },
+    {
+      "name": "aa_supported",
+      "family": "source_grounded_payload",
+      "mode": "supported"
+    },
+    {
+      "name": "aa_dependent",
+      "family": "source_grounded_payload",
+      "mode": "dependent"
+    }
+  ],
+  "source_q0_digest": "de4c1e809f8259e31b7ade10fce400ad279e3231d3b536bf415d83b11be0130d",
+  "source_fit_view_digest": "aa50fdfcb175e9847bc9df16861e59f1e2c41e1a02b6ec6ce0758d90813bfa73",
+  "writer": "Turn a conversation focus into up to four concise, standalone factual statements. The original source is authoritative. Each statement must concern information actually asserted in a FOCUS turn; neighboring turns may only resolve references or necessary context. Use explicit person, event, object and time attribution. Do not turn questions, wishes, suggestions, plans or someone else's experience into completed facts about the speaker. Preserve uncertainty, negation and conditions. Do not infer identity or location from a picture description alone. Use no external knowledge. A relative date may be resolved only when uniquely determined by the session date; otherwise retain the original temporal qualification. For each statement, cite one to three source IDs and a short exact quote copied from each cited turn. At least one cited turn must be a FOCUS turn. The cited turns together must support the whole statement. Prefer informative content; omit generic greetings and compliments. Return JSON {facts:[{text,evidence:[{source_id,quote}]}]}; return an empty facts list if no statement can be grounded. Do not answer an external question.",
+  "checker": "Determine whether the supplied original conversation alone supports the entire statement. Output exactly SUPPORTED if its person, event, object, time, quantity, polarity and conditions are all entailed. Output CONTRADICTED if the source establishes a conflicting fact. Otherwise output INSUFFICIENT. Missing evidence is not contradiction. Do not use outside knowledge or assume unstated identities. A recording date is not automatically the event date. An explicitly stated relative date can support only a uniquely determined conversion. No explanations.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "facts": {
+        "type": "array",
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "evidence": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "source_id": {
+                    "type": "string"
+                  },
+                  "quote": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_id",
+                  "quote"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "text",
+            "evidence"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "facts"
+    ],
+    "additionalProperties": false
+  },
+  "construction": "Generate at most four statements from each unique source-ID focus plus up to two neighboring turns on either side under a 2048-source-token context cap. Every statement has exact literal source quotes and at least one focus citation. Support judge sees cited original turns only; deletion judge sees window minus those cited turns.",
+  "generation_retry": "Reuse complete 384-token initial output; retry only incomplete JSON with unchanged source/prompt/schema at 768 then 1536 tokens. Preserve every attempt and reject any remaining incomplete output.",
+  "controls": "raw original focus; all literal-grounded statements; cited-source-supported statements; supported statements whose evidence-deleted context is INSUFFICIENT. All preserve original focus dialogue, unless it exceeds old unit token count, when all controls retain the original payload and report fallback.",
+  "invariants": "Search index strings and unit order/count identical to strongest baseline, so BM25 and dense ranking unchanged. Reader and packing algorithm fixed; packed unit membership can change with payload length. New statement source IDs may add neighboring evidence provenance.",
+  "budget": "Per-unit readable payload no longer than old payload; both fixed search key and changed payload counted. Global storage at most twice old storage, not storage-matched to original baseline. Exact dialogue is not truncated.",
+  "selection": "After source-only statements and all four memories are locked, assess matched 75 facts in Q0/A. Require positive net preserved answers in both; maximize worst gain, sum, smaller total storage, name; otherwise baseline. Lock before new dev evaluation.",
+  "limits": "Literal quotes do not prove entailment. Same-model support/deletion judgments are not truth or causality certification; repeated true evidence may fail deletion sensitivity. No novelty claim for contextualization, citations or counterfactual deletion. No audit100/B outcomes used."
+}

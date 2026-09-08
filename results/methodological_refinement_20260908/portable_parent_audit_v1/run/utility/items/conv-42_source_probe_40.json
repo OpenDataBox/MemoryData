@@ -1,0 +1,392 @@
+{
+  "question": "What ingredient did Joanna include in the dessert?",
+  "answer": "blueberries",
+  "source_ids": [
+    "D21:17"
+  ],
+  "candidate_context_ids": [
+    "D21:17",
+    "D21:18",
+    "D21:19",
+    "D21:20"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D21:17",
+      "start": 75,
+      "end": 86,
+      "verbatim": "blueberries"
+    }
+  ],
+  "session": 21,
+  "recorded_date": "1:43 pm on 14 September, 2022",
+  "conv_id": "conv-42",
+  "split": "probe_fit",
+  "id": "conv-42:source_probe:40",
+  "analysis": {
+    "full_advantage": 2.3648456077514766,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D21:17"
+    ],
+    "best_pair_sources": [
+      "D21:17",
+      "D21:18"
+    ],
+    "minimum_sources": [
+      "D21:17"
+    ],
+    "minimum_tokens": 81,
+    "single_policy_sources": [
+      "D21:17"
+    ],
+    "single_policy_tokens": 81,
+    "full_tokens": 164,
+    "best_pair_lift_over_best_single": 7.843341256830172e-05,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D21:17",
+          "D21:18"
+        ],
+        "joint_lift": 7.843341256830172e-05,
+        "interaction": 15.335921201142924,
+        "advantage": 2.364861939109119
+      },
+      {
+        "source_ids": [
+          "D21:17",
+          "D21:19"
+        ],
+        "joint_lift": -0.00019829343364108354,
+        "interaction": 12.453717927026446,
+        "advantage": 2.3645852122629094
+      },
+      {
+        "source_ids": [
+          "D21:17",
+          "D21:20"
+        ],
+        "joint_lift": 6.609545755509316e-05,
+        "interaction": 12.275129612029673,
+        "advantage": 2.3648496011541056
+      },
+      {
+        "source_ids": [
+          "D21:18",
+          "D21:19"
+        ],
+        "joint_lift": -4.587251968216151,
+        "interaction": 10.748590799514204,
+        "advantage": -17.041168188676238
+      },
+      {
+        "source_ids": [
+          "D21:18",
+          "D21:20"
+        ],
+        "joint_lift": -3.506710248067975,
+        "interaction": 11.82913251966238,
+        "advantage": -15.781773764640093
+      },
+      {
+        "source_ids": [
+          "D21:19",
+          "D21:20"
+        ],
+        "joint_lift": -2.2469141194596887,
+        "interaction": 10.207002101000398,
+        "advantage": -14.521977636031806
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": false
+  },
+  "generations": {
+    "empty": {
+      "text": "Unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "full": {
+      "text": "blueberries, coconut milk, gluten-free crust",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D21:17",
+        "D21:18",
+        "D21:19",
+        "D21:20"
+      ],
+      "context_tokens": 164,
+      "source_answer_f1": 0.2857142857142857
+    },
+    "answer_removed": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D21:18",
+        "D21:19",
+        "D21:20"
+      ],
+      "context_tokens": 105,
+      "source_answer_f1": 0.0
+    },
+    "best_single": {
+      "text": "blueberries, coconut milk, gluten-free crust",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D21:17"
+      ],
+      "context_tokens": 81,
+      "source_answer_f1": 0.2857142857142857
+    },
+    "best_pair": {
+      "text": "blueberries, coconut milk, gluten-free crust",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D21:17",
+        "D21:18"
+      ],
+      "context_tokens": 111,
+      "source_answer_f1": 0.2857142857142857
+    },
+    "minimum_bundle": {
+      "text": "blueberries, coconut milk, gluten-free crust",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D21:17"
+      ],
+      "context_tokens": 81,
+      "source_answer_f1": 0.2857142857142857
+    },
+    "single_policy": {
+      "text": "blueberries, coconut milk, gluten-free crust",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D21:17"
+      ],
+      "context_tokens": 81,
+      "source_answer_f1": 0.2857142857142857
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -2.3648652769625187,
+        "sum_logprob": -4.729730553925037,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -4.699972152709961,
+          -0.029758401215076447
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D21:17",
+        "D21:18",
+        "D21:19",
+        "D21:20"
+      ],
+      "context_tokens": 164,
+      "score": {
+        "mean_logprob": -1.9669211042128154e-05,
+        "sum_logprob": -3.933842208425631e-05,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -3.564294092939235e-05,
+          -3.6954811548639555e-06
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D21:17"
+      ],
+      "context_tokens": 81,
+      "score": {
+        "mean_logprob": -8.177126596820017e-05,
+        "sum_logprob": -0.00016354253193640034,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -0.00015877417172305286,
+          -4.768360213347478e-06
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D21:18"
+      ],
+      "context_tokens": 52,
+      "score": {
+        "mean_logprob": -17.700708044692874,
+        "sum_logprob": -35.40141608938575,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -35.37502670288086,
+          -0.026389386504888535
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D21:19"
+      ],
+      "context_tokens": 58,
+      "score": {
+        "mean_logprob": -14.818781497422606,
+        "sum_logprob": -29.63756299484521,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -29.626502990722656,
+          -0.011060004122555256
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D21:20"
+      ],
+      "context_tokens": 39,
+      "score": {
+        "mean_logprob": -14.639928793534636,
+        "sum_logprob": -29.279857587069273,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -29.25009536743164,
+          -0.02976221963763237
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D21:17",
+        "D21:18"
+      ],
+      "context_tokens": 111,
+      "score": {
+        "mean_logprob": -3.3378533998984494e-06,
+        "sum_logprob": -6.675706799796899e-06,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -4.887569048150908e-06,
+          -1.7881377516459906e-06
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D21:17",
+        "D21:19"
+      ],
+      "context_tokens": 117,
+      "score": {
+        "mean_logprob": -0.0002800646996092837,
+        "sum_logprob": -0.0005601293992185674,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -0.0005553610390052199,
+          -4.768360213347478e-06
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D21:17",
+        "D21:20"
+      ],
+      "context_tokens": 98,
+      "score": {
+        "mean_logprob": -1.5675808413107006e-05,
+        "sum_logprob": -3.135161682621401e-05,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -2.90866428258596e-05,
+          -2.264974000354414e-06
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D21:18",
+        "D21:19"
+      ],
+      "context_tokens": 88,
+      "score": {
+        "mean_logprob": -19.406033465638757,
+        "sum_logprob": -38.81206693127751,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -38.75003433227539,
+          -0.06203259900212288
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D21:18",
+        "D21:20"
+      ],
+      "context_tokens": 69,
+      "score": {
+        "mean_logprob": -18.14663904160261,
+        "sum_logprob": -36.29327808320522,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -36.25009536743164,
+          -0.04318271577358246
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D21:19",
+        "D21:20"
+      ],
+      "context_tokens": 75,
+      "score": {
+        "mean_logprob": -16.886842912994325,
+        "sum_logprob": -33.77368582598865,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -33.750431060791016,
+          -0.023254765197634697
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [
+        "D21:18",
+        "D21:19",
+        "D21:20"
+      ],
+      "context_tokens": 105,
+      "score": {
+        "mean_logprob": -21.03948125615716,
+        "sum_logprob": -42.07896251231432,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -42.00004577636719,
+          -0.07891673594713211
+        ]
+      }
+    }
+  ]
+}

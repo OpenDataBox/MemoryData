@@ -1,0 +1,23 @@
+{
+  "recipe": {
+    "name": "r07_nonoverlap_pairs",
+    "parent": "seed",
+    "operations": [
+      {
+        "op": "facts_only"
+      },
+      {
+        "op": "dialogue_blocks",
+        "size": 2,
+        "overlap": 0
+      }
+    ]
+  },
+  "parent": "seed",
+  "committed_at": 1788783421.7008135,
+  "recipe_sha256": "915f17e01b02a0248da86e0bcb272f8b0cbe712dac5dec1f34cf821101cc68c3",
+  "source_sha256": {
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

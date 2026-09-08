@@ -1,0 +1,37 @@
+{
+  "files": [
+    {
+      "name": "coverage_routes.py",
+      "bytes": 4181,
+      "sha256": "c17733c9272bccf8b80e0c37d87b8d0a0c9ffe9719a44d5dc2ff7cab5480c687"
+    },
+    {
+      "name": "test_coverage_routes.py",
+      "bytes": 1634,
+      "sha256": "f2db6db7c608c7acfaf426709129b39ad9c73b93d61c9a965c5cfa782f7fdf46"
+    },
+    {
+      "name": "run_route_refinement.py",
+      "bytes": 11323,
+      "sha256": "f203a39a9b4d788fb2df0249056f2c943fb733808947f0c3a758906d30eb8d3f"
+    },
+    {
+      "name": "run_routes_4080s.sh",
+      "bytes": 382,
+      "sha256": "a5a4f0d62a33434461aa1e86ec1628a0e0e15dfa372479cbdc094d2d2a3b7f68"
+    },
+    {
+      "name": "routes-supervisor.conf",
+      "bytes": 334,
+      "sha256": "012ef85ac7756d1d6d07e4a21ab5caa4f997a68330024f603d5bbd6bb58bb263"
+    }
+  ],
+  "total_bytes": 17854,
+  "payload_review": "All five complete files were inspected. They are newly authored experiment algorithm/runner/test/launch configuration from this task. The test contains synthetic source body / yes / no fixtures. No corpus, document, QA result, account credential or SSH key is in the upload.",
+  "destination": "root@175.155.64.231:19679 /workspace/locomo-refinement/",
+  "destination_evidence": "Read-only SSH with StrictHostKeyChecking=yes succeeded; it matched the already used rented RTX 4080 SUPER (32760 MiB), frozen evaluator and public LoCoMo corpus hashes.",
+  "frozen_evaluator_sha256": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa",
+  "public_locomo_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+  "public_dataset_source": "https://github.com/snap-research/locomo",
+  "scope": "Continue the user-authorized refinement on the same rented 4080S; no new service or recipient and no extra GPU rental."
+}

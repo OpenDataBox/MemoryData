@@ -54,6 +54,8 @@
 
 ## ✨ Introduction
 
+> **한국어 학습 가이드:** [E-mem · LightMem · SimpleMem 쉽게 이해하기](./README_MEMORY_SYSTEMS_KO.md) — 공통 예시, 저장·검색 코드 흐름, 세 방법 비교, 공식 구현과 현재 MemoryData 어댑터의 차이를 정리했습니다.
+
 Memory-augmented agents, structured memory architectures, and retrieval-based baselines are usually evaluated in isolation — each paper ships its own loader, its own runtime adapter, and its own metric harness. Results are hard to compare, and reproducing a single number across two methods often means re-implementing both.
 
 **MemoryData closes that gap.** It is a research-oriented benchmark suite that unifies four benchmark families (MemoryAgentBench, LoCoMo, LongBench, MemBench), twenty-two method presets, and a shared runtime under a single `main.py` launcher, so that heterogeneous memory formulations can be compared under one consistent execution interface and one stable artifact layout.
@@ -290,6 +292,11 @@ The taxonomy below follows the grouping used in the main RQ1 effectiveness table
 
 
 ## 📦 Output Artifacts
+
+The [published experiment index](./results/README.md) includes the completed
+LoCoMo Mem0 baseline, per-question predictions, usage evidence, and recursive
+memory research snapshots through 2026-09-08. Each report states its evaluation
+scope; ongoing baselines are listed separately from completed results.
 
 | Artifact type | Default location | Description |
 | --- | --- | --- |

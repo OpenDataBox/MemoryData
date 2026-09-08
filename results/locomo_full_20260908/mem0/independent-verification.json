@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "predictions_complete": true,
+  "usage_complete": true,
+  "expected": 1540,
+  "evaluated": 1540,
+  "prediction_rows": 1540,
+  "missing": [],
+  "prediction_issues": [],
+  "empty_predictions": 0,
+  "official_f1": 0.3649835852718084,
+  "score_scope": "all_expected_questions",
+  "by_category": {
+    "1": {
+      "count": 282,
+      "expected": 282,
+      "f1": 0.375829970735973
+    },
+    "2": {
+      "count": 321,
+      "expected": 321,
+      "f1": 0.13290807496414975
+    },
+    "3": {
+      "count": 96,
+      "expected": 96,
+      "f1": 0.24532625862412788
+    },
+    "4": {
+      "count": 841,
+      "expected": 841,
+      "f1": 0.4635860364799432
+    }
+  },
+  "by_sample": {
+    "conv-26": 152,
+    "conv-30": 81,
+    "conv-41": 152,
+    "conv-43": 178,
+    "conv-44": 123,
+    "conv-47": 150,
+    "conv-48": 191,
+    "conv-49": 156,
+    "conv-50": 158,
+    "conv-42": 199
+  },
+  "usage": {
+    "complete": true,
+    "supplied": true,
+    "requests": 64234,
+    "metered_requests": 64234,
+    "unmetered_requests": 0,
+    "invalid_usage_requests": 0,
+    "failed_requests": 0,
+    "truncated_requests": 0,
+    "incomplete_streams": 0,
+    "unknown_phase_requests": 0,
+    "missing_id_requests": 0,
+    "duplicate_request_ids": 0,
+    "duplicate_response_ids": 0,
+    "reported_tokens": {
+      "prompt_tokens": 19327997,
+      "completion_tokens": 8727547,
+      "total_tokens": 28055544
+    },
+    "by_phase": {
+      "memory_add": {
+        "calls": 61154,
+        "prompt_tokens": 17117478,
+        "completion_tokens": 8717227,
+        "total_tokens": 25834705
+      },
+      "qa": {
+        "calls": 3080,
+        "prompt_tokens": 2210519,
+        "completion_tokens": 10320,
+        "total_tokens": 2220839
+      }
+    },
+    "by_request_kind": {
+      "chat_completion": {
+        "calls": 13308,
+        "prompt_tokens": 18643082,
+        "completion_tokens": 8727547,
+        "total_tokens": 27370629
+      },
+      "embedding": {
+        "calls": 50926,
+        "prompt_tokens": 684915,
+        "completion_tokens": 0,
+        "total_tokens": 684915
+      }
+    },
+    "note": "Reported tokens include metered failed attempts. Missing or invalid usage is unknown, not zero. Completeness covers the supplied journal; every model call must be routed through the meter. Embedding tokens are separate from generation by_request_kind."
+  },
+  "runtime": {
+    "wall_seconds": null,
+    "construction_seconds": null,
+    "qa_seconds": null,
+    "peak_vram_mib": null,
+    "gpu_energy_wh": null,
+    "mean_gpu_utilization_percent": null,
+    "storage_bytes": null,
+    "question_latency_seconds": {
+      "count": 1540,
+      "mean": 0.3200398810498126,
+      "p50": 0.2989922761917114,
+      "p95": 0.45967817306518555,
+      "p95_method": "nearest_rank",
+      "missing_or_invalid": 0
+    },
+    "hourly_rate_usd": null,
+    "estimated_rental_cost_usd": null
+  },
+  "sources_sha256": {
+    "dataset": "cf50e013bb20551cba62f27a93f8310e70422ed31fff6010871031ac9e875993",
+    "official_scorer": "8e3be5d57ff2ff9ec5cd05939592f468c5f3f1fd95d13e431932bdf6bf0fd6fd"
+  }
+}

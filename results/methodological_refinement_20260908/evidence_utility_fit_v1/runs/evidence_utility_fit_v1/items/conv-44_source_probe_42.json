@@ -1,0 +1,599 @@
+{
+  "question": "What does Andrew say about Audrey's ability to make a difference?",
+  "answer": "Your hard work is really amazing",
+  "source_ids": [
+    "D22:12"
+  ],
+  "candidate_context_ids": [
+    "D22:9",
+    "D22:10",
+    "D22:11",
+    "D22:12",
+    "D22:13"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D22:12",
+      "start": 104,
+      "end": 136,
+      "verbatim": "Your hard work is really amazing"
+    }
+  ],
+  "session": 22,
+  "recorded_date": "9:41 pm on 6 October, 2023",
+  "conv_id": "conv-44",
+  "split": "probe_fit",
+  "id": "conv-44:source_probe:42",
+  "analysis": {
+    "full_advantage": 13.125452578388964,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D22:12"
+    ],
+    "best_pair_sources": [
+      "D22:11",
+      "D22:12"
+    ],
+    "minimum_sources": [
+      "D22:11",
+      "D22:12"
+    ],
+    "minimum_tokens": 96,
+    "single_policy_sources": [
+      "D22:9",
+      "D22:10",
+      "D22:11",
+      "D22:12",
+      "D22:13"
+    ],
+    "single_policy_tokens": 206,
+    "full_tokens": 206,
+    "best_pair_lift_over_best_single": 0.658554395039876,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D22:9",
+          "D22:10"
+        ],
+        "joint_lift": -0.8513797918955106,
+        "interaction": -1.009142479335214,
+        "advantage": 3.3078778982161143
+      },
+      {
+        "source_ids": [
+          "D22:9",
+          "D22:11"
+        ],
+        "joint_lift": -0.601769377569628,
+        "interaction": -0.7595320650093313,
+        "advantage": -0.2103432615454217
+      },
+      {
+        "source_ids": [
+          "D22:9",
+          "D22:12"
+        ],
+        "joint_lift": 0.1585540771484375,
+        "interaction": 0.0007913897087341581,
+        "advantage": 12.479712883631219
+      },
+      {
+        "source_ids": [
+          "D22:9",
+          "D22:13"
+        ],
+        "joint_lift": 1.4862003127794505,
+        "interaction": 1.3284376253397454,
+        "advantage": 2.716671984239971
+      },
+      {
+        "source_ids": [
+          "D22:10",
+          "D22:11"
+        ],
+        "joint_lift": -0.12926679849624634,
+        "interaction": -0.5206929145204526,
+        "advantage": 4.029990891615379
+      },
+      {
+        "source_ids": [
+          "D22:10",
+          "D22:12"
+        ],
+        "joint_lift": 0.2627213795979815,
+        "interaction": -3.8965363105136426,
+        "advantage": 12.583880186080762
+      },
+      {
+        "source_ids": [
+          "D22:10",
+          "D22:13"
+        ],
+        "joint_lift": 1.12700478235881,
+        "interaction": -0.10346688910171054,
+        "advantage": 5.286262472470435
+      },
+      {
+        "source_ids": [
+          "D22:11",
+          "D22:12"
+        ],
+        "joint_lift": 0.658554395039876,
+        "interaction": 0.2671282790156688,
+        "advantage": 12.979713201522657
+      },
+      {
+        "source_ids": [
+          "D22:11",
+          "D22:13"
+        ],
+        "joint_lift": 0.5425075949957918,
+        "interaction": 0.15108147897158375,
+        "advantage": 1.7729792664563124
+      },
+      {
+        "source_ids": [
+          "D22:12",
+          "D22:13"
+        ],
+        "joint_lift": 0.17939090728759766,
+        "interaction": -1.051080764172923,
+        "advantage": 12.50054971377038
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": true
+  },
+  "generations": {
+    "empty": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "full": {
+      "text": "Andrew says Audrey's ability to make a difference is amazing.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D22:9",
+        "D22:10",
+        "D22:11",
+        "D22:12",
+        "D22:13"
+      ],
+      "context_tokens": 206,
+      "source_answer_f1": 0.25
+    },
+    "answer_removed": {
+      "text": "Andrew says Audrey is dedicated to making a difference.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D22:9",
+        "D22:10",
+        "D22:11",
+        "D22:13"
+      ],
+      "context_tokens": 168,
+      "source_answer_f1": 0.14285714285714285
+    },
+    "best_single": {
+      "text": "Andrew says Audrey's ability to make a difference is amazing.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D22:12"
+      ],
+      "context_tokens": 59,
+      "source_answer_f1": 0.25
+    },
+    "best_pair": {
+      "text": "Andrew says Audrey's hard work is really amazing.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D22:11",
+        "D22:12"
+      ],
+      "context_tokens": 96,
+      "source_answer_f1": 0.6666666666666666
+    },
+    "minimum_bundle": {
+      "text": "Andrew says Audrey's hard work is really amazing.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D22:11",
+        "D22:12"
+      ],
+      "context_tokens": 96,
+      "source_answer_f1": 0.6666666666666666
+    },
+    "single_policy": {
+      "text": "Andrew says Audrey's ability to make a difference is amazing.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D22:9",
+        "D22:10",
+        "D22:11",
+        "D22:12",
+        "D22:13"
+      ],
+      "context_tokens": 206,
+      "source_answer_f1": 0.25
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -16.70888304710371,
+        "sum_logprob": -100.25329828262227,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -33.56466293334961,
+          -17.40749168395996,
+          -1.4305104514278355e-06,
+          -3.781116485595703,
+          -14.000004768371582,
+          -31.50002098083496
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D22:9",
+        "D22:10",
+        "D22:11",
+        "D22:12",
+        "D22:13"
+      ],
+      "context_tokens": 206,
+      "score": {
+        "mean_logprob": -3.5834304687147474,
+        "sum_logprob": -21.500582812288485,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -21.500520706176758,
+          -6.210611172718927e-05,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D22:9"
+      ],
+      "context_tokens": 62,
+      "score": {
+        "mean_logprob": -16.551120359664008,
+        "sum_logprob": -99.30672215798404,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -37.50025939941406,
+          -27.89535140991211,
+          -0.0001110968878492713,
+          -4.534795761108398,
+          -10.750582695007324,
+          -18.625621795654297
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D22:10"
+      ],
+      "context_tokens": 58,
+      "score": {
+        "mean_logprob": -12.549625356992086,
+        "sum_logprob": -75.29775214195251,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -24.95512580871582,
+          -13.33581256866455,
+          0.0,
+          -8.0004243850708,
+          -1.0061280727386475,
+          -28.000261306762695
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D22:11"
+      ],
+      "context_tokens": 58,
+      "score": {
+        "mean_logprob": -16.317456931079505,
+        "sum_logprob": -97.90474158647703,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -36.37520217895508,
+          -25.895370483398438,
+          -0.0009120118920691311,
+          -5.006893157958984,
+          -11.000749588012695,
+          -19.625614166259766
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D22:12"
+      ],
+      "context_tokens": 59,
+      "score": {
+        "mean_logprob": -4.387724240620931,
+        "sum_logprob": -26.326345443725586,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -26.326345443725586,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D22:13"
+      ],
+      "context_tokens": 53,
+      "score": {
+        "mean_logprob": -15.47841137564319,
+        "sum_logprob": -92.87046825385914,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -34.62526321411133,
+          -20.21926498413086,
+          -0.00010001159535022452,
+          -3.7739861011505127,
+          -9.001840591430664,
+          -25.25001335144043
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:9",
+        "D22:10"
+      ],
+      "context_tokens": 99,
+      "score": {
+        "mean_logprob": -13.401005148887597,
+        "sum_logprob": -80.40603089332558,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -23.075489044189453,
+          -20.81194305419922,
+          -7.152555099310121e-07,
+          -6.315293312072754,
+          -6.328299045562744,
+          -23.8750057220459
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:9",
+        "D22:11"
+      ],
+      "context_tokens": 99,
+      "score": {
+        "mean_logprob": -16.919226308649133,
+        "sum_logprob": -101.5153578518948,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -36.00523376464844,
+          -27.006128311157227,
+          -1.3232143828645349e-05,
+          -6.502130508422852,
+          -12.751142501831055,
+          -19.250709533691406
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:9",
+        "D22:12"
+      ],
+      "context_tokens": 100,
+      "score": {
+        "mean_logprob": -4.229170163472493,
+        "sum_logprob": -25.37502098083496,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -25.37502098083496,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:9",
+        "D22:13"
+      ],
+      "context_tokens": 94,
+      "score": {
+        "mean_logprob": -13.99221106286374,
+        "sum_logprob": -83.95326637718244,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -29.913164138793945,
+          -24.459434509277344,
+          -0.0001003691868390888,
+          -4.759389400482178,
+          -6.818654537200928,
+          -18.00252342224121
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:10",
+        "D22:11"
+      ],
+      "context_tokens": 95,
+      "score": {
+        "mean_logprob": -12.678892155488333,
+        "sum_logprob": -76.07335293292999,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -27.94086456298828,
+          -15.33070182800293,
+          -1.1920928244535389e-07,
+          -4.018799304962158,
+          -3.032958507537842,
+          -25.750028610229492
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:10",
+        "D22:12"
+      ],
+      "context_tokens": 96,
+      "score": {
+        "mean_logprob": -4.125002861022949,
+        "sum_logprob": -24.750017166137695,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -24.750017166137695,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:10",
+        "D22:13"
+      ],
+      "context_tokens": 90,
+      "score": {
+        "mean_logprob": -11.422620574633276,
+        "sum_logprob": -68.53572344779965,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -25.819499969482422,
+          -12.408464431762695,
+          -2.3841855067985307e-07,
+          -3.7736148834228516,
+          -1.5341362953186035,
+          -25.00000762939453
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:11",
+        "D22:12"
+      ],
+      "context_tokens": 96,
+      "score": {
+        "mean_logprob": -3.7291698455810547,
+        "sum_logprob": -22.375019073486328,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -22.375019073486328,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:11",
+        "D22:13"
+      ],
+      "context_tokens": 90,
+      "score": {
+        "mean_logprob": -14.935903780647399,
+        "sum_logprob": -89.61542268388439,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -32.018150329589844,
+          -25.319345474243164,
+          -0.0005673944251611829,
+          -6.7512078285217285,
+          -7.52299690246582,
+          -18.003154754638672
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D22:12",
+        "D22:13"
+      ],
+      "context_tokens": 91,
+      "score": {
+        "mean_logprob": -4.208333333333333,
+        "sum_logprob": -25.25,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -25.25,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [
+        "D22:9",
+        "D22:10",
+        "D22:11",
+        "D22:13"
+      ],
+      "context_tokens": 168,
+      "score": {
+        "mean_logprob": -12.184707701206056,
+        "sum_logprob": -73.10824620723633,
+        "answer_tokens": 6,
+        "token_logprobs": [
+          -25.56418228149414,
+          -14.454524040222168,
+          -1.311301275563892e-06,
+          -5.753571033477783,
+          -6.085944652557373,
+          -21.250022888183594
+        ]
+      }
+    }
+  ]
+}

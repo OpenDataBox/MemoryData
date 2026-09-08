@@ -1,0 +1,32 @@
+{
+  "mode": "joint",
+  "retain_raw": true,
+  "budget": 28027,
+  "storage_tokens": 23561,
+  "realized_only": true,
+  "raw_residual_tokens": 22422,
+  "source_fit_probes": 30,
+  "admitted_probes": 10,
+  "selected_probes": 10,
+  "selected_options": [
+    "conv-30:source_probe:11:7",
+    "conv-30:source_probe:13:9",
+    "conv-30:source_probe:16:11",
+    "conv-30:source_probe:2:2",
+    "conv-30:source_probe:20:1",
+    "conv-30:source_probe:21:7",
+    "conv-30:source_probe:26:2",
+    "conv-30:source_probe:27:4",
+    "conv-30:source_probe:6:15",
+    "conv-30:source_probe:7:32"
+  ],
+  "utility": {
+    "gain": 10.0,
+    "actual_tokens": 1139,
+    "rounded_tokens": 1160,
+    "budget": 5605,
+    "quantum": 8,
+    "unused_tokens": 4466
+  },
+  "limitation": "Utility measured on source probes, not unseen benchmark questions; no semantic guarantee."
+}

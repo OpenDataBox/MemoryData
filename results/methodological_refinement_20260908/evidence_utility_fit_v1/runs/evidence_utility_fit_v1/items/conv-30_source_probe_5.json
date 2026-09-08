@@ -1,0 +1,740 @@
+{
+  "question": "What did Gina say about staying motivated?",
+  "answer": "Stay motivated and keep going",
+  "source_ids": [
+    "D3:14"
+  ],
+  "candidate_context_ids": [
+    "D3:9",
+    "D3:10",
+    "D3:11",
+    "D3:12",
+    "D3:13",
+    "D3:14"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D3:14",
+      "start": 17,
+      "end": 46,
+      "verbatim": "Stay motivated and keep going"
+    }
+  ],
+  "session": 3,
+  "recorded_date": "12:48 am on 1 February, 2023",
+  "conv_id": "conv-30",
+  "split": "probe_fit",
+  "id": "conv-30:source_probe:5",
+  "analysis": {
+    "full_advantage": 7.756420872360468,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D3:14"
+    ],
+    "best_pair_sources": [
+      "D3:13",
+      "D3:14"
+    ],
+    "minimum_sources": [
+      "D3:14"
+    ],
+    "minimum_tokens": 52,
+    "single_policy_sources": [
+      "D3:14"
+    ],
+    "single_policy_tokens": 52,
+    "full_tokens": 252,
+    "best_pair_lift_over_best_single": 0.0,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D3:9",
+          "D3:10"
+        ],
+        "joint_lift": -0.285235927848408,
+        "interaction": 4.747274815441779,
+        "advantage": -4.836547973562848
+      },
+      {
+        "source_ids": [
+          "D3:9",
+          "D3:11"
+        ],
+        "joint_lift": -2.101892288704402,
+        "interaction": 2.930618454585785,
+        "advantage": -4.467620420735329
+      },
+      {
+        "source_ids": [
+          "D3:9",
+          "D3:12"
+        ],
+        "joint_lift": 1.5049067281288444,
+        "interaction": 6.537417471419031,
+        "advantage": 3.0526558734578426
+      },
+      {
+        "source_ids": [
+          "D3:9",
+          "D3:13"
+        ],
+        "joint_lift": -1.0437176183331758,
+        "interaction": 3.988793124957011,
+        "advantage": -4.083085779845716
+      },
+      {
+        "source_ids": [
+          "D3:9",
+          "D3:14"
+        ],
+        "joint_lift": -1.4305108066992034e-07,
+        "interaction": 5.032510600239107,
+        "advantage": 7.765865679085323
+      },
+      {
+        "source_ids": [
+          "D3:10",
+          "D3:11"
+        ],
+        "joint_lift": 1.4010480582830507,
+        "interaction": 5.95236010399749,
+        "advantage": -0.9646800737478767
+      },
+      {
+        "source_ids": [
+          "D3:10",
+          "D3:12"
+        ],
+        "joint_lift": 1.3319645881652846,
+        "interaction": 5.883276633879724,
+        "advantage": 2.879713733494283
+      },
+      {
+        "source_ids": [
+          "D3:10",
+          "D3:13"
+        ],
+        "joint_lift": -3.0954352811444537,
+        "interaction": 1.455876764569986,
+        "advantage": -6.1348034426569935
+      },
+      {
+        "source_ids": [
+          "D3:10",
+          "D3:14"
+        ],
+        "joint_lift": -1.5973979330397015e-06,
+        "interaction": 4.5513104483165066,
+        "advantage": 7.76586422473847
+      },
+      {
+        "source_ids": [
+          "D3:11",
+          "D3:12"
+        ],
+        "joint_lift": 0.4736223697662352,
+        "interaction": 2.8393505017971616,
+        "advantage": 2.0213715150952334
+      },
+      {
+        "source_ids": [
+          "D3:11",
+          "D3:13"
+        ],
+        "joint_lift": -0.7521363068604838,
+        "interaction": 2.287231854652056,
+        "advantage": -3.117864438891411
+      },
+      {
+        "source_ids": [
+          "D3:11",
+          "D3:14"
+        ],
+        "joint_lift": -4.76837058727142e-08,
+        "interaction": 2.3657280843472215,
+        "advantage": 7.765865774452697
+      },
+      {
+        "source_ids": [
+          "D3:12",
+          "D3:13"
+        ],
+        "joint_lift": 0.193426655768417,
+        "interaction": 3.232794817280956,
+        "advantage": 1.7411758010974152
+      },
+      {
+        "source_ids": [
+          "D3:12",
+          "D3:14"
+        ],
+        "joint_lift": -4.768365229779192e-07,
+        "interaction": -1.5477496221655214,
+        "advantage": 7.76586534529988
+      },
+      {
+        "source_ids": [
+          "D3:13",
+          "D3:14"
+        ],
+        "joint_lift": 0.0,
+        "interaction": 3.03936816151254,
+        "advantage": 7.765865822136403
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": false
+  },
+  "generations": {
+    "empty": {
+      "text": "Gina mentioned that staying motivated is about setting small goals and celebrating progress.",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.2222222222222222
+    },
+    "full": {
+      "text": "Stay motivated and keep going. Hard work pays off eventually. We can do this.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D3:9",
+        "D3:10",
+        "D3:11",
+        "D3:12",
+        "D3:13",
+        "D3:14"
+      ],
+      "context_tokens": 252,
+      "source_answer_f1": 0.5263157894736842
+    },
+    "answer_removed": {
+      "text": "Gina said, \"You're gonna do great with your dance studio, just keep going and stay positive! We'll get through this!\"",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D3:9",
+        "D3:10",
+        "D3:11",
+        "D3:12",
+        "D3:13"
+      ],
+      "context_tokens": 222,
+      "source_answer_f1": 0.2962962962962963
+    },
+    "best_single": {
+      "text": "Stay motivated and keep going. Hard work pays off eventually. We can do this!",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D3:14"
+      ],
+      "context_tokens": 52,
+      "source_answer_f1": 0.5263157894736842
+    },
+    "best_pair": {
+      "text": "Stay motivated and keep going. Hard work pays off eventually. We can do this!",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D3:13",
+        "D3:14"
+      ],
+      "context_tokens": 93,
+      "source_answer_f1": 0.5263157894736842
+    },
+    "minimum_bundle": {
+      "text": "Stay motivated and keep going. Hard work pays off eventually. We can do this!",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D3:14"
+      ],
+      "context_tokens": 52,
+      "source_answer_f1": 0.5263157894736842
+    },
+    "single_policy": {
+      "text": "Stay motivated and keep going. Hard work pays off eventually. We can do this!",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D3:14"
+      ],
+      "context_tokens": 52,
+      "source_answer_f1": 0.5263157894736842
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -7.76586584597826,
+        "sum_logprob": -38.8293292298913,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -16.965349197387695,
+          -0.13565509021282196,
+          -21.500001907348633,
+          -0.04172917455434799,
+          -0.18659386038780212
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D3:9",
+        "D3:10",
+        "D3:11",
+        "D3:12",
+        "D3:13",
+        "D3:14"
+      ],
+      "context_tokens": 252,
+      "score": {
+        "mean_logprob": -0.009444973617792129,
+        "sum_logprob": -0.04722486808896065,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -0.04722486808896065,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D3:9"
+      ],
+      "context_tokens": 64,
+      "score": {
+        "mean_logprob": -12.798376589268447,
+        "sum_logprob": -63.99188294634223,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -42.564002990722656,
+          -0.049937617033720016,
+          -17.750001907348633,
+          -0.1474006325006485,
+          -3.4805397987365723
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D3:10"
+      ],
+      "context_tokens": 70,
+      "score": {
+        "mean_logprob": -12.3171778916927,
+        "sum_logprob": -61.5858894584635,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -22.125185012817383,
+          -1.966933996300213e-05,
+          -15.953438758850098,
+          -10.003894805908203,
+          -13.503351211547852
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D3:11"
+      ],
+      "context_tokens": 50,
+      "score": {
+        "mean_logprob": -10.131593978009187,
+        "sum_logprob": -50.65796989004593,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -43.43757629394531,
+          -0.008846377022564411,
+          -3.421905994415283,
+          -0.0007413261337205768,
+          -3.7888998985290527
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D3:12"
+      ],
+      "context_tokens": 63,
+      "score": {
+        "mean_logprob": -6.2181167006492615,
+        "sum_logprob": -31.090583503246307,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -0.5761644244194031,
+          -28.875,
+          -0.9742931127548218,
+          -0.6651259660720825,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D3:13"
+      ],
+      "context_tokens": 63,
+      "score": {
+        "mean_logprob": -10.8052340074908,
+        "sum_logprob": -54.026170037453994,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -29.25247573852539,
+          -14.250000953674316,
+          -4.75881290435791,
+          -0.0024798137601464987,
+          -5.7624006271362305
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D3:14"
+      ],
+      "context_tokens": 52,
+      "score": {
+        "mean_logprob": -2.384185648907078e-08,
+        "sum_logprob": -1.1920928244535389e-07,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -1.1920928244535389e-07,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:9",
+        "D3:10"
+      ],
+      "context_tokens": 112,
+      "score": {
+        "mean_logprob": -12.602413819541107,
+        "sum_logprob": -63.012069097705535,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -28.1250057220459,
+          -0.00012957210128661245,
+          -17.129108428955078,
+          -7.252806186676025,
+          -10.505019187927246
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:9",
+        "D3:11"
+      ],
+      "context_tokens": 92,
+      "score": {
+        "mean_logprob": -12.233486266713589,
+        "sum_logprob": -61.16743133356795,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -45.38604736328125,
+          -0.015081546269357204,
+          -6.0135369300842285,
+          -0.0026443772949278355,
+          -9.750121116638184
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:9",
+        "D3:12"
+      ],
+      "context_tokens": 105,
+      "score": {
+        "mean_logprob": -4.713209972520417,
+        "sum_logprob": -23.566049862602085,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -0.0039155022241175175,
+          -23.5,
+          -0.06202385947108269,
+          -0.00011050090688513592,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:9",
+        "D3:13"
+      ],
+      "context_tokens": 105,
+      "score": {
+        "mean_logprob": -11.848951625823975,
+        "sum_logprob": -59.24475812911987,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -32.77975082397461,
+          -10.750574111938477,
+          -7.2508392333984375,
+          -1.4615206718444824,
+          -7.002073287963867
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:9",
+        "D3:14"
+      ],
+      "context_tokens": 94,
+      "score": {
+        "mean_logprob": -1.6689293715899112e-07,
+        "sum_logprob": -8.344646857949556e-07,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -8.344646857949556e-07,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:10",
+        "D3:11"
+      ],
+      "context_tokens": 98,
+      "score": {
+        "mean_logprob": -8.730545919726136,
+        "sum_logprob": -43.652729598630685,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -19.691116333007812,
+          -0.00025233422638848424,
+          -9.540499687194824,
+          -2.406656265258789,
+          -12.014204978942871
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:10",
+        "D3:12"
+      ],
+      "context_tokens": 111,
+      "score": {
+        "mean_logprob": -4.886152112483977,
+        "sum_logprob": -24.430760562419884,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -0.06418568640947342,
+          -24.25,
+          -0.002476722002029419,
+          -0.11409803479909897,
+          -1.1920928244535389e-07
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:10",
+        "D3:13"
+      ],
+      "context_tokens": 111,
+      "score": {
+        "mean_logprob": -13.900669288635253,
+        "sum_logprob": -69.50334644317627,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -23.000001907348633,
+          -17.2500057220459,
+          -7.00241756439209,
+          -9.227669715881348,
+          -13.0232515335083
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:10",
+        "D3:14"
+      ],
+      "context_tokens": 100,
+      "score": {
+        "mean_logprob": -1.6212397895287722e-06,
+        "sum_logprob": -8.106198947643861e-06,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -8.106198947643861e-06,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:11",
+        "D3:12"
+      ],
+      "context_tokens": 91,
+      "score": {
+        "mean_logprob": -5.744494330883026,
+        "sum_logprob": -28.72247165441513,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -0.6937225461006165,
+          -27.875,
+          -0.10637574642896652,
+          -0.04737336188554764,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:11",
+        "D3:13"
+      ],
+      "context_tokens": 91,
+      "score": {
+        "mean_logprob": -10.88373028486967,
+        "sum_logprob": -54.418651424348354,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -38.06497573852539,
+          -10.000045776367188,
+          -0.9818437695503235,
+          -0.115326426923275,
+          -5.256459712982178
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:11",
+        "D3:14"
+      ],
+      "context_tokens": 80,
+      "score": {
+        "mean_logprob": -7.152556236178498e-08,
+        "sum_logprob": -3.576278118089249e-07,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -3.576278118089249e-07,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:12",
+        "D3:13"
+      ],
+      "context_tokens": 104,
+      "score": {
+        "mean_logprob": -6.0246900448808445,
+        "sum_logprob": -30.123450224404223,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -0.0003311085747554898,
+          -28.375,
+          -1.136871337890625,
+          -0.6112477779388428,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:12",
+        "D3:14"
+      ],
+      "context_tokens": 93,
+      "score": {
+        "mean_logprob": -5.0067837946699e-07,
+        "sum_logprob": -2.50339189733495e-06,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -2.50339189733495e-06,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D3:13",
+        "D3:14"
+      ],
+      "context_tokens": 93,
+      "score": {
+        "mean_logprob": -2.384185648907078e-08,
+        "sum_logprob": -1.1920928244535389e-07,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -1.1920928244535389e-07,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [
+        "D3:9",
+        "D3:10",
+        "D3:11",
+        "D3:12",
+        "D3:13"
+      ],
+      "context_tokens": 222,
+      "score": {
+        "mean_logprob": -7.501451918366331,
+        "sum_logprob": -37.507259591831655,
+        "answer_tokens": 5,
+        "token_logprobs": [
+          -12.250396728515625,
+          -20.0,
+          -5.2552337646484375,
+          -0.0016285026213154197,
+          -5.960462772236497e-07
+        ]
+      }
+    }
+  ]
+}

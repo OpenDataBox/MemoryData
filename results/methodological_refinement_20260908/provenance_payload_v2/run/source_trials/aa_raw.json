@@ -1,0 +1,949 @@
+{
+  "result": {
+    "name": "aa_raw",
+    "q0": {
+      "regressions": [
+        "conv-30:source_probe:26",
+        "conv-30:source_probe:6",
+        "conv-41:source_probe:45",
+        "conv-41:source_probe:50",
+        "conv-43:source_probe:40",
+        "conv-48:source_probe:24",
+        "conv-49:source_probe:18"
+      ],
+      "repairs": [
+        "conv-26:source_probe:9",
+        "conv-30:source_probe:13",
+        "conv-41:source_probe:44",
+        "conv-44:source_probe:28",
+        "conv-44:source_probe:40",
+        "conv-49:source_probe:49"
+      ],
+      "feasible": false
+    },
+    "fit_a": {
+      "regressions": [
+        "conv-41:source_probe:50",
+        "conv-41:source_probe:51",
+        "conv-48:source_probe:53"
+      ],
+      "repairs": [
+        "conv-26:source_probe:9",
+        "conv-30:source_probe:26",
+        "conv-30:source_probe:7",
+        "conv-44:source_probe:12",
+        "conv-48:source_probe:33"
+      ],
+      "feasible": false
+    },
+    "net_q0": -1,
+    "net_a": 2,
+    "worst_view_gain": -1,
+    "total_storage": 629398,
+    "feasible": false
+  },
+  "q0_contract": {
+    "conv-26:source_probe:1": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Melanie",
+      "context_tokens": 2008
+    },
+    "conv-26:source_probe:13": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "\"Becoming Nicole\" by Amy Ellis Nutt",
+      "context_tokens": 2018
+    },
+    "conv-26:source_probe:24": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "The blue's really powerful.",
+      "context_tokens": 1966
+    },
+    "conv-26:source_probe:36": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Caroline",
+      "context_tokens": 1980
+    },
+    "conv-26:source_probe:37": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Caroline",
+      "context_tokens": 2022
+    },
+    "conv-26:source_probe:6": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "18th birthday",
+      "context_tokens": 2022
+    },
+    "conv-26:source_probe:9": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Melanie says Caroline's plans are awesome and that they'll make some awesome memories.",
+      "context_tokens": 2036
+    },
+    "conv-30:source_probe:11": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "online clothes store",
+      "context_tokens": 2026
+    },
+    "conv-30:source_probe:13": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Gina",
+      "context_tokens": 2041
+    },
+    "conv-30:source_probe:16": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Dance is awesome for expressing yourself and finding happiness.",
+      "context_tokens": 1985
+    },
+    "conv-30:source_probe:2": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Gina",
+      "context_tokens": 2039
+    },
+    "conv-30:source_probe:20": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "keeps my mind focused and motivated",
+      "context_tokens": 2008
+    },
+    "conv-30:source_probe:21": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Gina",
+      "context_tokens": 2011
+    },
+    "conv-30:source_probe:26": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Gina's interview for a design internship",
+      "context_tokens": 2014
+    },
+    "conv-30:source_probe:6": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Jon, Gina",
+      "context_tokens": 2036
+    },
+    "conv-30:source_probe:7": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Jon",
+      "context_tokens": 2031
+    },
+    "conv-41:source_probe:22": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "John said the motivated people around him gave him renewed energy and a purpose. It really inspired him to make a bigger difference.",
+      "context_tokens": 1977
+    },
+    "conv-41:source_probe:23": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Every small act can make a big impact.",
+      "context_tokens": 1948
+    },
+    "conv-41:source_probe:28": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Maria",
+      "context_tokens": 2048
+    },
+    "conv-41:source_probe:44": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Their actions can make a big impact on someone's life.",
+      "context_tokens": 1965
+    },
+    "conv-41:source_probe:45": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "John said, \"Thanks for the offer, Maria! It's so awesome to have friends like you.\"",
+      "context_tokens": 2028
+    },
+    "conv-41:source_probe:47": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "John",
+      "context_tokens": 2008
+    },
+    "conv-41:source_probe:48": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "John",
+      "context_tokens": 2046
+    },
+    "conv-41:source_probe:50": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "31 July 2023",
+      "context_tokens": 2046
+    },
+    "conv-41:source_probe:51": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Maria",
+      "context_tokens": 1999
+    },
+    "conv-41:source_probe:54": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "It was really cool to see everyone come together and help out - it's been amazing to see it so busy!",
+      "context_tokens": 2038
+    },
+    "conv-41:source_probe:56": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "a photo of a group of people posing for a picture",
+      "context_tokens": 2033
+    },
+    "conv-41:source_probe:57": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Spreading awareness and supporting causes through community power, positivity, and making a difference.",
+      "context_tokens": 2010
+    },
+    "conv-43:source_probe:0": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Minnesota Wolves",
+      "context_tokens": 2046
+    },
+    "conv-43:source_probe:2": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "John said, \"Giving it my all every time I'm on the court.\"",
+      "context_tokens": 1989
+    },
+    "conv-43:source_probe:29": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "The special aspect of her writing that Tim mentions is that it can transport readers into another world and make them feel so much.",
+      "context_tokens": 2028
+    },
+    "conv-43:source_probe:34": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Stay in touch.",
+      "context_tokens": 2048
+    },
+    "conv-43:source_probe:36": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Harry Potter, Star Wars, The Hobbit, Game of Thrones",
+      "context_tokens": 1973
+    },
+    "conv-43:source_probe:38": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Nature does have a way of humbling us and showing us our place in the world. It's truly amazing and comforting.",
+      "context_tokens": 1979
+    },
+    "conv-43:source_probe:40": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Tim said that encouragement is important because it helps people stay motivated, follow their dreams, and supports them in their journey.",
+      "context_tokens": 2044
+    },
+    "conv-43:source_probe:51": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "a photo of a book shelf with books and a clock",
+      "context_tokens": 1994
+    },
+    "conv-43:source_probe:52": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "John",
+      "context_tokens": 2036
+    },
+    "conv-43:source_probe:53": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Aragorn",
+      "context_tokens": 1984
+    },
+    "conv-43:source_probe:56": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "amazing food in each neighborhood",
+      "context_tokens": 2030
+    },
+    "conv-43:source_probe:9": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "world-building and character development",
+      "context_tokens": 2024
+    },
+    "conv-44:source_probe:0": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "new collars and tags",
+      "context_tokens": 1986
+    },
+    "conv-44:source_probe:12": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Audrey said nature is calming, peaceful, and makes her feel grateful. She also mentioned that nature connects us to something bigger and brings peace.",
+      "context_tokens": 2024
+    },
+    "conv-44:source_probe:23": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Counting down the days 'til our hike! Gotta get them ready soon!",
+      "context_tokens": 2006
+    },
+    "conv-44:source_probe:28": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "A dog and sunflowers",
+      "context_tokens": 1987
+    },
+    "conv-44:source_probe:33": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Did you ever go fishing before?",
+      "context_tokens": 2027
+    },
+    "conv-44:source_probe:36": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Jack Russell mixes, Chihuahua mixes",
+      "context_tokens": 2027
+    },
+    "conv-44:source_probe:37": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "A group of dogs sitting on a chair.",
+      "context_tokens": 1960
+    },
+    "conv-44:source_probe:38": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Andrew",
+      "context_tokens": 2015
+    },
+    "conv-44:source_probe:40": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "a photo of a person on a mountain with a view of the city, a photo of a person's feet resting on a rock overlooking a lake, a photography of a flower bed with many different colored flowers, a photo of a bakery display with pastries and coffee, a photo of two dogs running in a field with a ball in their mouth, a photo of two horses in a field with a fence, a photo of a dog sleeping in a dog bed on the floor,",
+      "context_tokens": 2034
+    },
+    "conv-44:source_probe:47": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Walking, hiking",
+      "context_tokens": 2042
+    },
+    "conv-48:source_probe:10": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "a photo of a swing on a beach with a blue sky",
+      "context_tokens": 1981
+    },
+    "conv-48:source_probe:15": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "lasagna",
+      "context_tokens": 2033
+    },
+    "conv-48:source_probe:18": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "a photo of a row of surfboards leaning against a palm tree",
+      "context_tokens": 2017
+    },
+    "conv-48:source_probe:20": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Deborah",
+      "context_tokens": 2039
+    },
+    "conv-48:source_probe:24": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "I'm experiencing a new level of joy and happiness!",
+      "context_tokens": 2035
+    },
+    "conv-48:source_probe:31": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "[D16:20] Jolene: Yep, I'll practice and update you. Bye!",
+      "context_tokens": 2018
+    },
+    "conv-48:source_probe:33": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "reducing dependence on non-renewables",
+      "context_tokens": 1976
+    },
+    "conv-48:source_probe:36": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Deborah",
+      "context_tokens": 2047
+    },
+    "conv-48:source_probe:40": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Unknown",
+      "context_tokens": 2024
+    },
+    "conv-48:source_probe:48": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Unknown",
+      "context_tokens": 2046
+    },
+    "conv-48:source_probe:49": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "It helps me stay balanced during my studies.",
+      "context_tokens": 2045
+    },
+    "conv-48:source_probe:53": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "excited to be on this journey with you",
+      "context_tokens": 2025
+    },
+    "conv-48:source_probe:56": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "yoga",
+      "context_tokens": 2028
+    },
+    "conv-48:source_probe:8": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Jolene said green tech could really make a difference in disadvantaged areas.",
+      "context_tokens": 2027
+    },
+    "conv-48:source_probe:9": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "To show kids their career options.",
+      "context_tokens": 1984
+    },
+    "conv-49:source_probe:10": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Canada",
+      "context_tokens": 2032
+    },
+    "conv-49:source_probe:12": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "unhealthy snacks, work stress, discomfort, health issues, weight concerns, health scare, health problems, pressure from family, health routine struggles",
+      "context_tokens": 2011
+    },
+    "conv-49:source_probe:17": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Rocky Mountains, a sunset, a painting of a mountain range with a horse, a painting of a cactus in the desert, a sunset at a beach, a white board with a bunch of writing on it",
+      "context_tokens": 2037
+    },
+    "conv-49:source_probe:18": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Sam said Evan's painting is stunning and inspiring.",
+      "context_tokens": 2032
+    },
+    "conv-49:source_probe:30": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Evan",
+      "context_tokens": 1983
+    },
+    "conv-49:source_probe:35": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Sam",
+      "context_tokens": 1998
+    },
+    "conv-49:source_probe:46": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "We all make mistakes, but it's important to learn from them.",
+      "context_tokens": 2035
+    },
+    "conv-49:source_probe:47": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Had a pee accident near someone's roses",
+      "context_tokens": 2028
+    },
+    "conv-49:source_probe:49": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "a variety of bowls of fruit and yogurt",
+      "context_tokens": 2039
+    },
+    "conv-49:source_probe:6": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "The Great Gatsby",
+      "context_tokens": 2040
+    }
+  },
+  "fit_a_contract": {
+    "conv-26:source_probe:1": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Melanie",
+      "context_tokens": 2014
+    },
+    "conv-26:source_probe:13": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "\"Becoming Nicole\"",
+      "context_tokens": 2040
+    },
+    "conv-26:source_probe:24": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "powerful",
+      "context_tokens": 2040
+    },
+    "conv-26:source_probe:36": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Caroline",
+      "context_tokens": 2024
+    },
+    "conv-26:source_probe:37": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Caroline",
+      "context_tokens": 1997
+    },
+    "conv-26:source_probe:6": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "18th birthday",
+      "context_tokens": 2042
+    },
+    "conv-26:source_probe:9": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Sounds awesome, Caroline! Have a great time and learn a lot. Have fun!",
+      "context_tokens": 2034
+    },
+    "conv-30:source_probe:11": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Online clothes store",
+      "context_tokens": 2040
+    },
+    "conv-30:source_probe:13": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Gina",
+      "context_tokens": 2000
+    },
+    "conv-30:source_probe:16": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Awesome for expressing yourself and finding happiness.",
+      "context_tokens": 1973
+    },
+    "conv-30:source_probe:2": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Gina",
+      "context_tokens": 1997
+    },
+    "conv-30:source_probe:20": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "It keeps my mind focused and motivated.",
+      "context_tokens": 2047
+    },
+    "conv-30:source_probe:21": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Gina",
+      "context_tokens": 1993
+    },
+    "conv-30:source_probe:26": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Unknown",
+      "context_tokens": 2047
+    },
+    "conv-30:source_probe:6": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Jon",
+      "context_tokens": 2047
+    },
+    "conv-30:source_probe:7": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Jon",
+      "context_tokens": 1983
+    },
+    "conv-41:source_probe:22": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Renewed energy and a purpose. It really inspired me to make a bigger difference.",
+      "context_tokens": 1948
+    },
+    "conv-41:source_probe:23": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "even small things can make a difference.",
+      "context_tokens": 2039
+    },
+    "conv-41:source_probe:28": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Unknown",
+      "context_tokens": 1971
+    },
+    "conv-41:source_probe:44": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "even little acts of kindness can have a big effect",
+      "context_tokens": 2032
+    },
+    "conv-41:source_probe:45": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "John said, \"Thanks a lot, Maria. Your offer means a lot to me. I'm getting people together to chat about this and discuss potential solutions. I'd really appreciate your thoughts.\"",
+      "context_tokens": 2010
+    },
+    "conv-41:source_probe:47": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Maria",
+      "context_tokens": 2040
+    },
+    "conv-41:source_probe:48": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "John",
+      "context_tokens": 2036
+    },
+    "conv-41:source_probe:50": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Unknown",
+      "context_tokens": 1950
+    },
+    "conv-41:source_probe:51": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Unknown",
+      "context_tokens": 2017
+    },
+    "conv-41:source_probe:54": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "It's been amazing to see it so busy!",
+      "context_tokens": 1997
+    },
+    "conv-41:source_probe:56": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "a photo of a group of people posing for a picture, a photo of a map of the streets of downtown, a photo of a sign on a door that says domestic abuse, a photo of a poster for a chili cook off event, a photo of a young girl holding a sign in her hands, a photo of a large group of people walking down a street, a photo of a medal hanging from a tree with a ribbon, a photo of a woman handing a plate of",
+      "context_tokens": 2046
+    },
+    "conv-41:source_probe:57": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Keep spreading awareness and supporting causes like this.",
+      "context_tokens": 2034
+    },
+    "conv-43:source_probe:0": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Minnesota Wolves",
+      "context_tokens": 2037
+    },
+    "conv-43:source_probe:2": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "John described his commitment during his games as \"Giving it my all every time I'm on the court.\"",
+      "context_tokens": 1998
+    },
+    "conv-43:source_probe:29": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "creative storytelling",
+      "context_tokens": 2030
+    },
+    "conv-43:source_probe:34": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Unknown",
+      "context_tokens": 1998
+    },
+    "conv-43:source_probe:36": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Harry Potter, The Hobbit",
+      "context_tokens": 1955
+    },
+    "conv-43:source_probe:38": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Nature does have a way of humbling us and showing us our place in the world. It's truly amazing and comforting.",
+      "context_tokens": 2015
+    },
+    "conv-43:source_probe:40": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "By using their own stories to encourage others.",
+      "context_tokens": 2024
+    },
+    "conv-43:source_probe:51": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "a photo of two men on horseback in front of a mountain",
+      "context_tokens": 1988
+    },
+    "conv-43:source_probe:52": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Aragorn",
+      "context_tokens": 2013
+    },
+    "conv-43:source_probe:53": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "John",
+      "context_tokens": 2033
+    },
+    "conv-43:source_probe:56": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "amazing food",
+      "context_tokens": 2021
+    },
+    "conv-43:source_probe:9": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "world-building and character development",
+      "context_tokens": 2046
+    },
+    "conv-44:source_probe:0": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "collars and tags",
+      "context_tokens": 2028
+    },
+    "conv-44:source_probe:12": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Nature has a way of bringing us back down to earth and reminding us that we're part of something bigger. It's amazing.",
+      "context_tokens": 2043
+    },
+    "conv-44:source_probe:23": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "preparing personalized tags for her dogs, getting them ready, researching an awesome place for the hike",
+      "context_tokens": 2046
+    },
+    "conv-44:source_probe:28": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "dog and sunflowers",
+      "context_tokens": 2036
+    },
+    "conv-44:source_probe:33": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Have you ever gone fishing before?",
+      "context_tokens": 2004
+    },
+    "conv-44:source_probe:36": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Jack Russell, Chihuahua",
+      "context_tokens": 2004
+    },
+    "conv-44:source_probe:37": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "a group of dogs sitting on a chair",
+      "context_tokens": 2032
+    },
+    "conv-44:source_probe:38": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey, Andrew, Audrey,",
+      "context_tokens": 2035
+    },
+    "conv-44:source_probe:40": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "a photo of a sunset over a mountain with a church on top",
+      "context_tokens": 2027
+    },
+    "conv-44:source_probe:47": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Walking and hiking",
+      "context_tokens": 2048
+    },
+    "conv-48:source_probe:10": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "a photo of a swing on a beach with a blue sky",
+      "context_tokens": 2037
+    },
+    "conv-48:source_probe:15": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "lasagna",
+      "context_tokens": 2013
+    },
+    "conv-48:source_probe:18": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "a photo of a group of people doing yoga in a room",
+      "context_tokens": 2013
+    },
+    "conv-48:source_probe:20": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Deborah",
+      "context_tokens": 2005
+    },
+    "conv-48:source_probe:24": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "yoga on top of mount Talkeetna",
+      "context_tokens": 2048
+    },
+    "conv-48:source_probe:31": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Thanks for your support, Deb!",
+      "context_tokens": 2043
+    },
+    "conv-48:source_probe:33": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Developing renewable energy, creating sustainable solutions, and devising an affordable aerial surveillance system for environmental monitoring.",
+      "context_tokens": 1985
+    },
+    "conv-48:source_probe:36": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Deborah",
+      "context_tokens": 2038
+    },
+    "conv-48:source_probe:40": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "We can really grow and learn when we listen to ourselves.",
+      "context_tokens": 2006
+    },
+    "conv-48:source_probe:48": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "An offer I can't refuse!",
+      "context_tokens": 2041
+    },
+    "conv-48:source_probe:49": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Helps me stay balanced during my studies.",
+      "context_tokens": 1980
+    },
+    "conv-48:source_probe:53": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "Excited, proud, supportive, and happy.",
+      "context_tokens": 2039
+    },
+    "conv-48:source_probe:56": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "free gardening class",
+      "context_tokens": 2032
+    },
+    "conv-48:source_probe:8": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Green tech could really make a difference in disadvantaged areas.",
+      "context_tokens": 2036
+    },
+    "conv-48:source_probe:9": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "To provide a real-world view to the kids.",
+      "context_tokens": 1991
+    },
+    "conv-49:source_probe:10": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Canada",
+      "context_tokens": 2017
+    },
+    "conv-49:source_probe:12": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "health issues, work stress, discomfort limiting movement, self-checkout machines broken at supermarket, health scare, weight issues, son's accident, personal challenges, knee injury, setbacks in health and fitness",
+      "context_tokens": 2044
+    },
+    "conv-49:source_probe:17": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Rocky Mountains",
+      "context_tokens": 2024
+    },
+    "conv-49:source_probe:18": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Sam said, \"Wow Evan, that's an awesome painting! Good on you for finding a way to de-stress.\"",
+      "context_tokens": 2043
+    },
+    "conv-49:source_probe:30": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Evan",
+      "context_tokens": 2042
+    },
+    "conv-49:source_probe:35": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Sam",
+      "context_tokens": 2048
+    },
+    "conv-49:source_probe:46": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "It's important to learn from them.",
+      "context_tokens": 2019
+    },
+    "conv-49:source_probe:47": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "Evan had a pee accident near some roses.",
+      "context_tokens": 1997
+    },
+    "conv-49:source_probe:49": {
+      "preserved": false,
+      "verdict": "DIFFERENT",
+      "prediction": "a photo of a book with a picture of a man on it, a photo of a person's feet on a car dashboard as the sun sets, a photo of a lake with rocks and mountains in the background, a photo of a person holding a paint set in a store, a photo of a woman holding flowers in front of her face, a photo of a pie with raspberries and limes on top, a photo of a wedding cake with candles and flowers on a table",
+      "context_tokens": 2035
+    },
+    "conv-49:source_probe:6": {
+      "preserved": true,
+      "verdict": "EQUIVALENT",
+      "prediction": "The Great Gatsby",
+      "context_tokens": 2042
+    }
+  }
+}

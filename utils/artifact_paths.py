@@ -23,6 +23,13 @@ _MEMORY_AGENT_HINTS = (
 )
 
 
+def sanitize_path_component(value):
+    """Return a portable filename component for config-derived identifiers."""
+    normalized = re.sub(r'[<>:"/\\|?*\x00-\x1f]+', "-", str(value or ""))
+    normalized = normalized.strip().rstrip(".")
+    return normalized or "unknown"
+
+
 def resolve_artifact_root(command_line_args=None, agent_config=None):
     """Resolve an optional artifact root override from CLI or config."""
     cli_value = getattr(command_line_args, "artifact_root", None) if command_line_args is not None else None
@@ -148,12 +155,13 @@ def generate_memory_agent_base_path(agent_config, dataset_config, artifact_root=
     chunk_component = resolve_agent_chunk_component(agent_config, dataset_config)
     variant_tag = get_agent_variant_tag(agent_config)
     variant_suffix = f"_variant{variant_tag}" if variant_tag else ""
+    model_component = sanitize_path_component(agent_config["model"])
     base_path = resolve_results_artifact_path(
         artifact_root,
         "agents",
         (
             f"{agent_name}_{dataset_config['sub_dataset']}{dataset_variant_suffix}"
-            f"_chunk{chunk_component}_model{agent_config['model']}{variant_suffix}"
+            f"_chunk{chunk_component}_model{model_component}{variant_suffix}"
         ),
     )
     if "letta" in agent_name:
@@ -166,7 +174,7 @@ def generate_rag_agent_path(agent_config, dataset_config, current_context_index,
     folder_name = (
         f"{agent_config['agent_name']}_{dataset_config['sub_dataset']}{dataset_variant_suffix}"
         f"_k{agent_config['retrieve_num']}_chunk{dataset_config['chunk_size']}"
-        f"_model{agent_config['model']}"
+        f"_model{sanitize_path_component(agent_config['model'])}"
     )
     return resolve_results_artifact_path(
         artifact_root,

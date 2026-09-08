@@ -1,0 +1,392 @@
+{
+  "question": "Who expressed enthusiasm about joining Joanna on the trails?",
+  "answer": "Nate",
+  "source_ids": [
+    "D11:19"
+  ],
+  "candidate_context_ids": [
+    "D11:17",
+    "D11:18",
+    "D11:19",
+    "D11:20"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D11:19",
+      "start": 11,
+      "end": 15,
+      "verbatim": "Nate"
+    }
+  ],
+  "session": 11,
+  "recorded_date": "3:35 pm on 12 May, 2022",
+  "conv_id": "conv-42",
+  "split": "probe_fit",
+  "id": "conv-42:source_probe:21",
+  "analysis": {
+    "full_advantage": 8.93929147720337,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D11:18"
+    ],
+    "best_pair_sources": [
+      "D11:17",
+      "D11:18"
+    ],
+    "minimum_sources": [
+      "D11:18"
+    ],
+    "minimum_tokens": 42,
+    "single_policy_sources": [
+      "D11:18"
+    ],
+    "single_policy_tokens": 42,
+    "full_tokens": 103,
+    "best_pair_lift_over_best_single": 0.0,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D11:17",
+          "D11:18"
+        ],
+        "joint_lift": 0.0,
+        "interaction": 6.759640872478485,
+        "advantage": 8.93929147720337
+      },
+      {
+        "source_ids": [
+          "D11:17",
+          "D11:19"
+        ],
+        "joint_lift": 3.6633149981498754,
+        "interaction": 10.42295587062836,
+        "advantage": 8.939291417598728
+      },
+      {
+        "source_ids": [
+          "D11:17",
+          "D11:20"
+        ],
+        "joint_lift": 4.253829274792221,
+        "interaction": 11.013470147270706,
+        "advantage": 8.935933802742511
+      },
+      {
+        "source_ids": [
+          "D11:18",
+          "D11:19"
+        ],
+        "joint_lift": 0.0,
+        "interaction": -5.2759764194488525,
+        "advantage": 8.93929147720337
+      },
+      {
+        "source_ids": [
+          "D11:18",
+          "D11:20"
+        ],
+        "joint_lift": 0.0,
+        "interaction": -4.68210452795029,
+        "advantage": 8.93929147720337
+      },
+      {
+        "source_ids": [
+          "D11:19",
+          "D11:20"
+        ],
+        "joint_lift": -0.7801997661590576,
+        "interaction": -5.462304294109348,
+        "advantage": 4.495776653289795
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": false
+  },
+  "generations": {
+    "empty": {
+      "text": "Unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "full": {
+      "text": "Nate",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D11:17",
+        "D11:18",
+        "D11:19",
+        "D11:20"
+      ],
+      "context_tokens": 103,
+      "source_answer_f1": 1.0
+    },
+    "answer_removed": {
+      "text": "Nate",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D11:17",
+        "D11:18",
+        "D11:20"
+      ],
+      "context_tokens": 86,
+      "source_answer_f1": 1.0
+    },
+    "best_single": {
+      "text": "Nate",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D11:18"
+      ],
+      "context_tokens": 42,
+      "source_answer_f1": 1.0
+    },
+    "best_pair": {
+      "text": "Nate",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D11:17",
+        "D11:18"
+      ],
+      "context_tokens": 74,
+      "source_answer_f1": 1.0
+    },
+    "minimum_bundle": {
+      "text": "Nate",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D11:18"
+      ],
+      "context_tokens": 42,
+      "source_answer_f1": 1.0
+    },
+    "single_policy": {
+      "text": "Nate",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D11:18"
+      ],
+      "context_tokens": 42,
+      "source_answer_f1": 1.0
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -8.93929147720337,
+        "sum_logprob": -17.87858295440674,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -16.63976287841797,
+          -1.2388200759887695
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D11:17",
+        "D11:18",
+        "D11:19",
+        "D11:20"
+      ],
+      "context_tokens": 103,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D11:17"
+      ],
+      "context_tokens": 54,
+      "score": {
+        "mean_logprob": -15.698932349681854,
+        "sum_logprob": -31.39786469936371,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -29.875110626220703,
+          -1.5227540731430054
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D11:18"
+      ],
+      "context_tokens": 42,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D11:19"
+      ],
+      "context_tokens": 39,
+      "score": {
+        "mean_logprob": -3.6633150577545166,
+        "sum_logprob": -7.326630115509033,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -7.326630115509033,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D11:20"
+      ],
+      "context_tokens": 34,
+      "score": {
+        "mean_logprob": -4.257186949253079,
+        "sum_logprob": -8.514373898506157,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -8.514373779296875,
+          -1.1920928244535389e-07
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D11:17",
+        "D11:18"
+      ],
+      "context_tokens": 74,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D11:17",
+        "D11:19"
+      ],
+      "context_tokens": 71,
+      "score": {
+        "mean_logprob": -5.9604641222676946e-08,
+        "sum_logprob": -1.1920928244535389e-07,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -1.1920928244535389e-07,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D11:17",
+        "D11:20"
+      ],
+      "context_tokens": 66,
+      "score": {
+        "mean_logprob": -0.0033576744608581066,
+        "sum_logprob": -0.006715348921716213,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -0.006715348921716213,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D11:18",
+        "D11:19"
+      ],
+      "context_tokens": 59,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D11:18",
+        "D11:20"
+      ],
+      "context_tokens": 54,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D11:19",
+        "D11:20"
+      ],
+      "context_tokens": 51,
+      "score": {
+        "mean_logprob": -4.443514823913574,
+        "sum_logprob": -8.887029647827148,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          -8.887029647827148,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [
+        "D11:17",
+        "D11:18",
+        "D11:20"
+      ],
+      "context_tokens": 86,
+      "score": {
+        "mean_logprob": 0.0,
+        "sum_logprob": 0.0,
+        "answer_tokens": 2,
+        "token_logprobs": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  ]
+}

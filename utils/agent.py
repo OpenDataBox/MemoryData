@@ -701,13 +701,17 @@ class AgentWrapper:
 
     def _should_disable_qwen3_thinking(self):
         """Return whether Qwen3 requests should disable thinking mode."""
-        model_name = str(self.model or "").strip().lower()
+        model_name = str(getattr(self, "model", "") or "").strip().lower()
         if "qwen3" not in model_name:
             return False
         return bool(self.agent_config.get("qwen3_disable_thinking", True))
 
     def _prepare_openai_request_kwargs(self, request_kwargs):
         """Inject request-time compatibility knobs for specific model families."""
+        reasoning_effort = self.agent_config.get("openai_reasoning_effort")
+        if reasoning_effort:
+            request_kwargs.setdefault("reasoning_effort", reasoning_effort)
+
         if not self._should_disable_qwen3_thinking():
             return request_kwargs
 
@@ -1253,11 +1257,16 @@ class AgentWrapper:
             return int(configured_dimensions)
         if not embedding_model:
             return None
-        if "Qwen3-Embedding-4B" in embedding_model:
+        normalized_model = str(embedding_model).strip().lower()
+        if "qwen3-embedding" in normalized_model and "0.6b" in normalized_model:
+            return 1024
+        if "qwen3-embedding" in normalized_model and "4b" in normalized_model:
             return 2560
-        if embedding_model == "text-embedding-3-large":
+        if "qwen3-embedding" in normalized_model and "8b" in normalized_model:
+            return 4096
+        if normalized_model == "text-embedding-3-large":
             return 3072
-        if embedding_model in {"text-embedding-3-small", "text-embedding-ada-002"}:
+        if normalized_model in {"text-embedding-3-small", "text-embedding-ada-002"}:
             return 1536
         return None
 
@@ -1579,6 +1588,7 @@ class AgentWrapper:
                 "config": {
                     "model": self.model,
                     "temperature": self.temperature,
+                    "max_tokens": int(agent_config.get("mem0_llm_max_tokens", 2000)),
                 },
             },
             "custom_fact_extraction_prompt": mem0_fact_prompt,
@@ -1602,8 +1612,10 @@ class AgentWrapper:
         os.makedirs(mem0_qdrant_path, exist_ok=True)
 
         mem0_embedder_model = agent_config.get("mem0_embedder_model", "")
-        embedding_dims = int(agent_config.get("embedding_dim") or
-                             (2560 if "Qwen3-Embedding-4B" in mem0_embedder_model else 1536))
+        embedding_dims = self._infer_embedding_dimensions(
+            mem0_embedder_model,
+            agent_config.get("mem0_embedding_dim") or agent_config.get("embedding_dim"),
+        ) or 1536
         mem0_config["history_db_path"] = os.path.join(mem0_runtime_dir, "history.db")
         mem0_config["vector_store"] = {
             "provider": "qdrant",

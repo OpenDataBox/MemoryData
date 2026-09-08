@@ -1,0 +1,23 @@
+{
+  "recipe": {
+    "name": "r16_declarative_facts",
+    "parent": "seed",
+    "operations": [
+      {
+        "op": "extract",
+        "window": 12,
+        "overlap": 2,
+        "limit": 28,
+        "max_tokens": 1200,
+        "prompt": "Extract all useful autobiographical facts from this dialogue window. Write at most 28 atomic, self-contained sentences, each beginning with exact source IDs [D1:2,D1:3]. Keep the speaker's original content words, names, titles, quantities and list items, while replacing pronouns with the correct named person. Write simple direct sentences, not descriptions such as 'mentioned', 'discussed', 'expressed interest' unless uncertainty really requires it. Preserve an exact evaluative word such as 'amazing' instead of paraphrasing it. Record facts about each person separately and distinguish the person who owns or did something from a person asking about it. Resolve short responses using adjacent dialogue. Keep original relative dates, plans, uncertainty, negation, and all historical states; do not infer unstated dates. Omit generic supportive chatter, salutations and thanks. Only supported dialogue facts; no outside knowledge. No preamble."
+      }
+    ]
+  },
+  "parent": "seed",
+  "committed_at": 1788784911.1391985,
+  "recipe_sha256": "f752de905d431a0bffaf166a2795488ae6638ddf322fa7c6f8272c9925fba0a3",
+  "source_sha256": {
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

@@ -1,0 +1,871 @@
+{
+  "args": {
+    "out": "runs/portable_parent_audit_v1",
+    "manifest": "research_data/question_audit100_manifest.json",
+    "model": "Qwen/Qwen3-8B",
+    "embed_model": "Qwen/Qwen3-Embedding-0.6B",
+    "embed_batch_size": 4,
+    "seed": 20260907,
+    "budget": 2048
+  },
+  "source_sha256": {
+    "run_portable_audit.py": "a5b03aaa6cc293e961a2afef0780e35816ced5c27efb57da51ad7f759fc779fb",
+    "portable_parent.py": "2274f14817a133cef8ce724f459f16809cc7b0718c4105601b3e117240f253a5",
+    "continuous_v2.py": "1f5e77bc5d72d59cd0de040b5eb020e07318075db35e45053b0143be1934ce32",
+    "memory_ops.py": "02504b2976393c9f9743a051b6347adbeea8af36ba572da579edb5ab6bfe8b00",
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "parent_evidence.py": "3fb9fb6d55f1ef8501aa6040d28211b552674016baaf949825d7abb396be27a7",
+    "budgeted_evidence.py": "d1e5f99306a7654124b16cf9c3ecb14e98118892dc0ed24b92470386049fddb3",
+    "compile_research_data.py": "721f5c5c3fa970a35f06db28bdd4820e119cd9936ae22f307a3436c748e6aaca",
+    "evidence_fidelity.py": "ba55f8508cc16b1cea420f80198a9c6c7d3359235645886d9180c1bf0838c735",
+    "evidence_utility.py": "b6a18927a332ff96a997b24a8d36a0ff29757baeb36b8d1efe9c5aab51c9f310",
+    "run_evidence_utility.py": "534749083cd534deb00944d893ef9ed43fcb624a14fd5d9f560669d99ad03edd",
+    "evaluate_indexed.py": "c979c626d98646247cb0c06a666a909b20014844de6b80df93ddcecbbca81123",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  },
+  "environment": {
+    "models": {
+      "Qwen/Qwen3-8B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "Qwen/Qwen3-Embedding-0.6B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-Embedding-0.6B/snapshots/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+      }
+    },
+    "packages": {
+      "torch": "2.8.0",
+      "vllm": "0.10.2",
+      "transformers": "4.56.2",
+      "sentence-transformers": "5.1.0",
+      "nltk": "3.9.1",
+      "numpy": "2.2.6"
+    },
+    "data_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4"
+  },
+  "audit_manifest": {
+    "seed": 20260908,
+    "n": 100,
+    "dataset_sha256": "af4897b4fb10ec56828e244006560d34a2c73b39dd1baab3a02ab60e05aefdac",
+    "records": [
+      {
+        "id": "conv-42:46",
+        "conv_id": "conv-42",
+        "qa_index": 46,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:70",
+        "conv_id": "conv-42",
+        "qa_index": 70,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:67",
+        "conv_id": "conv-42",
+        "qa_index": 67,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:75",
+        "conv_id": "conv-42",
+        "qa_index": 75,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:10",
+        "conv_id": "conv-42",
+        "qa_index": 10,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:74",
+        "conv_id": "conv-42",
+        "qa_index": 74,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:40",
+        "conv_id": "conv-42",
+        "qa_index": 40,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:48",
+        "conv_id": "conv-42",
+        "qa_index": 48,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:24",
+        "conv_id": "conv-42",
+        "qa_index": 24,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:65",
+        "conv_id": "conv-42",
+        "qa_index": 65,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:6",
+        "conv_id": "conv-42",
+        "qa_index": 6,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:39",
+        "conv_id": "conv-42",
+        "qa_index": 39,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:44",
+        "conv_id": "conv-42",
+        "qa_index": 44,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:87",
+        "conv_id": "conv-42",
+        "qa_index": 87,
+        "category": 3,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:85",
+        "conv_id": "conv-42",
+        "qa_index": 85,
+        "category": 3,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:113",
+        "conv_id": "conv-42",
+        "qa_index": 113,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:158",
+        "conv_id": "conv-42",
+        "qa_index": 158,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:181",
+        "conv_id": "conv-42",
+        "qa_index": 181,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:136",
+        "conv_id": "conv-42",
+        "qa_index": 136,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:186",
+        "conv_id": "conv-42",
+        "qa_index": 186,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:116",
+        "conv_id": "conv-42",
+        "qa_index": 116,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:180",
+        "conv_id": "conv-42",
+        "qa_index": 180,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:123",
+        "conv_id": "conv-42",
+        "qa_index": 123,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:140",
+        "conv_id": "conv-42",
+        "qa_index": 140,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:128",
+        "conv_id": "conv-42",
+        "qa_index": 128,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:129",
+        "conv_id": "conv-42",
+        "qa_index": 129,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:190",
+        "conv_id": "conv-42",
+        "qa_index": 190,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:103",
+        "conv_id": "conv-42",
+        "qa_index": 103,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:134",
+        "conv_id": "conv-42",
+        "qa_index": 134,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:130",
+        "conv_id": "conv-42",
+        "qa_index": 130,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:142",
+        "conv_id": "conv-42",
+        "qa_index": 142,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:165",
+        "conv_id": "conv-42",
+        "qa_index": 165,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:109",
+        "conv_id": "conv-42",
+        "qa_index": 109,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-42:135",
+        "conv_id": "conv-42",
+        "qa_index": 135,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:60",
+        "conv_id": "conv-47",
+        "qa_index": 60,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:40",
+        "conv_id": "conv-47",
+        "qa_index": 40,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:22",
+        "conv_id": "conv-47",
+        "qa_index": 22,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:51",
+        "conv_id": "conv-47",
+        "qa_index": 51,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:37",
+        "conv_id": "conv-47",
+        "qa_index": 37,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:28",
+        "conv_id": "conv-47",
+        "qa_index": 28,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:48",
+        "conv_id": "conv-47",
+        "qa_index": 48,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:39",
+        "conv_id": "conv-47",
+        "qa_index": 39,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:32",
+        "conv_id": "conv-47",
+        "qa_index": 32,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:53",
+        "conv_id": "conv-47",
+        "qa_index": 53,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:64",
+        "conv_id": "conv-47",
+        "qa_index": 64,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:47",
+        "conv_id": "conv-47",
+        "qa_index": 47,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:12",
+        "conv_id": "conv-47",
+        "qa_index": 12,
+        "category": 3,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:17",
+        "conv_id": "conv-47",
+        "qa_index": 17,
+        "category": 3,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:0",
+        "conv_id": "conv-47",
+        "qa_index": 0,
+        "category": 3,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:109",
+        "conv_id": "conv-47",
+        "qa_index": 109,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:80",
+        "conv_id": "conv-47",
+        "qa_index": 80,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:124",
+        "conv_id": "conv-47",
+        "qa_index": 124,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:139",
+        "conv_id": "conv-47",
+        "qa_index": 139,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:127",
+        "conv_id": "conv-47",
+        "qa_index": 127,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:142",
+        "conv_id": "conv-47",
+        "qa_index": 142,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:88",
+        "conv_id": "conv-47",
+        "qa_index": 88,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:87",
+        "conv_id": "conv-47",
+        "qa_index": 87,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:91",
+        "conv_id": "conv-47",
+        "qa_index": 91,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:145",
+        "conv_id": "conv-47",
+        "qa_index": 145,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:82",
+        "conv_id": "conv-47",
+        "qa_index": 82,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:95",
+        "conv_id": "conv-47",
+        "qa_index": 95,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:94",
+        "conv_id": "conv-47",
+        "qa_index": 94,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:149",
+        "conv_id": "conv-47",
+        "qa_index": 149,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:112",
+        "conv_id": "conv-47",
+        "qa_index": 112,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:141",
+        "conv_id": "conv-47",
+        "qa_index": 141,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:114",
+        "conv_id": "conv-47",
+        "qa_index": 114,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-47:69",
+        "conv_id": "conv-47",
+        "qa_index": 69,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:56",
+        "conv_id": "conv-50",
+        "qa_index": 56,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:49",
+        "conv_id": "conv-50",
+        "qa_index": 49,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:11",
+        "conv_id": "conv-50",
+        "qa_index": 11,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:22",
+        "conv_id": "conv-50",
+        "qa_index": 22,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:20",
+        "conv_id": "conv-50",
+        "qa_index": 20,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:63",
+        "conv_id": "conv-50",
+        "qa_index": 63,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:5",
+        "conv_id": "conv-50",
+        "qa_index": 5,
+        "category": 1,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:55",
+        "conv_id": "conv-50",
+        "qa_index": 55,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:44",
+        "conv_id": "conv-50",
+        "qa_index": 44,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:62",
+        "conv_id": "conv-50",
+        "qa_index": 62,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:27",
+        "conv_id": "conv-50",
+        "qa_index": 27,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:34",
+        "conv_id": "conv-50",
+        "qa_index": 34,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:43",
+        "conv_id": "conv-50",
+        "qa_index": 43,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:16",
+        "conv_id": "conv-50",
+        "qa_index": 16,
+        "category": 2,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:4",
+        "conv_id": "conv-50",
+        "qa_index": 4,
+        "category": 3,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:99",
+        "conv_id": "conv-50",
+        "qa_index": 99,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:122",
+        "conv_id": "conv-50",
+        "qa_index": 122,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:83",
+        "conv_id": "conv-50",
+        "qa_index": 83,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:151",
+        "conv_id": "conv-50",
+        "qa_index": 151,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:150",
+        "conv_id": "conv-50",
+        "qa_index": 150,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:148",
+        "conv_id": "conv-50",
+        "qa_index": 148,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:90",
+        "conv_id": "conv-50",
+        "qa_index": 90,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:134",
+        "conv_id": "conv-50",
+        "qa_index": 134,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:142",
+        "conv_id": "conv-50",
+        "qa_index": 142,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:112",
+        "conv_id": "conv-50",
+        "qa_index": 112,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:130",
+        "conv_id": "conv-50",
+        "qa_index": 130,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:135",
+        "conv_id": "conv-50",
+        "qa_index": 135,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:145",
+        "conv_id": "conv-50",
+        "qa_index": 145,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:114",
+        "conv_id": "conv-50",
+        "qa_index": 114,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:101",
+        "conv_id": "conv-50",
+        "qa_index": 101,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:106",
+        "conv_id": "conv-50",
+        "qa_index": 106,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:103",
+        "conv_id": "conv-50",
+        "qa_index": 103,
+        "category": 4,
+        "split": "question_audit"
+      },
+      {
+        "id": "conv-50:105",
+        "conv_id": "conv-50",
+        "qa_index": 105,
+        "category": 4,
+        "split": "question_audit"
+      }
+    ],
+    "conversations": [
+      "conv-42",
+      "conv-47",
+      "conv-50"
+    ],
+    "excluded_prior_question_count": 100,
+    "usage": "Evaluate only after locking a methodological policy and its declared controls; never use for refinement.",
+    "limitation": "New questions from previously used holdout conversations; not untouched conversations or an external dataset."
+  },
+  "parent_protocol_sha256": "5c358d8161aeed804082be353a66f41ddce34798abc8f3b407b5385d07af3980",
+  "plans": {
+    "r06_calendar_month": {
+      "recipe": {
+        "name": "r06_calendar_month",
+        "parent": "seed",
+        "operations": [
+          {
+            "op": "anchor_time",
+            "style": "month"
+          }
+        ]
+      },
+      "parent": "seed",
+      "committed_at": 1788783328.6385658,
+      "recipe_sha256": "1bbaa47679dac3390186d0c939ee529bac5fa2418ef09bd505642c090750a02e",
+      "source_sha256": {
+        "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+        "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+      }
+    },
+    "r12_filter_current_best": {
+      "recipe": {
+        "name": "r12_filter_current_best",
+        "parent": "best",
+        "operations": [
+          {
+            "op": "filter_social_facts"
+          }
+        ]
+      },
+      "parent": "r06_calendar_month",
+      "committed_at": 1788783816.2640479,
+      "recipe_sha256": "ba092fc6b0a7f63f6372907b1c6bd9f80a15cc4c60609102679f46ef2cf8f588",
+      "source_sha256": {
+        "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+        "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+      }
+    },
+    "r40_fused_four_turn": {
+      "recipe": {
+        "name": "r40_fused_four_turn",
+        "parent": "r12_filter_current_best",
+        "operations": [
+          {
+            "op": "fuse_evidence",
+            "size": 4,
+            "overlap": 2,
+            "anchor": true
+          }
+        ]
+      },
+      "parent": "r12_filter_current_best",
+      "committed_at": 1788792406.4656527,
+      "recipe_sha256": "fe304071b254ca3ec8f1ba4a8aeaabf9c070f590504651551b5a8b8f72641e34",
+      "source_sha256": {
+        "continuous_v2.py": "1f5e77bc5d72d59cd0de040b5eb020e07318075db35e45053b0143be1934ce32",
+        "memory_ops.py": "02504b2976393c9f9743a051b6347adbeea8af36ba572da579edb5ab6bfe8b00",
+        "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+        "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+      }
+    },
+    "r24_source_qa_cards": {
+      "recipe": {
+        "name": "r24_source_qa_cards",
+        "parent": "seed",
+        "operations": [
+          {
+            "op": "extract",
+            "window": 10,
+            "overlap": 2,
+            "limit": 24,
+            "max_tokens": 1400,
+            "prompt": "Build reusable conversation memory from this dialogue alone. Generate up to 24 short question-and-answer records for concrete personal facts, each on one line starting with exact supporting dialogue IDs [D1:2,D1:3]. Format: Q: a specific question naming the correct person and event? A: the shortest complete answer copied from the source wording. These are source-derived memory keys, not answers to any external task. Cover names, relationships and ownership, titles, interests, activities, locations, exact evaluations, reasons, quantities, event times, and plans. A list answer contains only items explicitly tied to that one event; never combine similar but distinct events. Resolve a brief answer using the adjacent question. Preserve the original relative time expression instead of guessing an absolute date. Retain the speaker's specific description of a shared image rather than replacing it with a generic automatic image caption. Do not write questions without supported answers; do not infer outside knowledge. No greetings, generic encouragement, or commentary."
+          }
+        ]
+      },
+      "parent": "seed",
+      "committed_at": 1788786320.1942086,
+      "recipe_sha256": "c69d2d1a4e65d366abac9a245c468e0ff30d1d4770b93100cc6e00c406faf6b5",
+      "source_sha256": {
+        "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+        "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+      }
+    }
+  },
+  "utility_policy": {
+    "seed": 20260908,
+    "fit_per_conversation": 4,
+    "audit_per_conversation": 2,
+    "read_budget": 2048,
+    "preservation_tolerance_nats": 0.2,
+    "minimum_full_advantage_nats": 0.1,
+    "minimum_full_answer_f1": 0.8,
+    "joint_lift_nats": 0.2,
+    "max_answer_tokens": 96,
+    "selection": "lowest token cost among full, all singleton and all pair subsets within 0.2 nats/token of full",
+    "budget_control": "same candidate set, identical tokenizer/read cap, paired single-vs-pair comparisons; storage frontier reported separately"
+  },
+  "methods": [
+    "seed",
+    "r40_fused_four_turn",
+    "s_parent_single_2000"
+  ],
+  "frozen_method": "s_parent_single_2000",
+  "frozen_method_dev_f1": 0.5927437370002835,
+  "policy": "Rebuild r06/r12/r40 from original seed, then identical source-QA prompt, literal span compiler, 2 probes/session with same seeded fit/session-audit split, all source-fit utility scores, and unverified parent_single +2000 budget. No source threshold adjustment.",
+  "boundaries": "Audit question/answer text never enters preparation, utility scoring or construction. All three memory collections locked before new-question evaluation. Original holdout conversations were exposed in initial pilot; only these 100 question indices are new. Results must not be used for further tuning. Current identity-control outcomes do not change this frozen checkpoint.",
+  "limits": "Same reader and three previously exposed conversations, not external generalization. This evaluates the already fixed parent policy, even if ongoing development later finds a different best. Stored source probe IDs depend on new source pool; sampling function and seed remain fixed."
+}

@@ -1,0 +1,39 @@
+{
+  "object": {
+    "facts": [
+      {
+        "text": "Tim is currently reading a fantasy novel called 'The Name of the Wind' by Patrick Rothfuss.",
+        "evidence": [
+          {
+            "source_id": "D28:17",
+            "quote": "I'm currently reading a fantasy novel called 'The Name of the Wind' by Patrick Rothfuss. It's really good!"
+          }
+        ]
+      },
+      {
+        "text": "John plans to add 'The Name of the Wind' to his list of books to read.",
+        "evidence": [
+          {
+            "source_id": "D28:18",
+            "quote": "'The Name of the Wind' sounds cool. I'll add it to my list. Thanks!"
+          }
+        ]
+      },
+      {
+        "text": "Tim recommends 'The Name of the Wind' to John.",
+        "evidence": [
+          {
+            "source_id": "D28:17",
+            "quote": "I'm currently reading a fantasy novel called 'The Name of the Wind' by Patrick Rothfuss. It's really good!"
+          },
+          {
+            "source_id": "D28:18",
+            "quote": "'The Name of the Wind' sounds cool. I'll add it to my list. Thanks!"
+          }
+        ]
+      }
+    ]
+  },
+  "raw": "{\n  \"facts\": [\n    {\n      \"text\": \"Tim is currently reading a fantasy novel called 'The Name of the Wind' by Patrick Rothfuss.\",\n      \"evidence\": [\n        {\n          \"source_id\": \"D28:17\",\n          \"quote\": \"I'm currently reading a fantasy novel called 'The Name of the Wind' by Patrick Rothfuss. It's really good!\"\n        }\n      ]\n    },\n    {\n      \"text\": \"John plans to add 'The Name of the Wind' to his list of books to read.\",\n      \"evidence\": [\n        {\n          \"source_id\": \"D28:18\",\n          \"quote\": \"'The Name of the Wind' sounds cool. I'll add it to my list. Thanks!\"\n        }\n      ]\n    },\n    {\n      \"text\": \"Tim recommends 'The Name of the Wind' to John.\",\n      \"evidence\": [\n        {\n          \"source_id\": \"D28:17\",\n          \"quote\": \"I'm currently reading a fantasy novel called 'The Name of the Wind' by Patrick Rothfuss. It's really good!\"\n        },\n        {\n          \"source_id\": \"D28:18\",\n          \"quote\": \"'The Name of the Wind' sounds cool. I'll add it to my list. Thanks!\"\n        }\n      ]\n    }\n  ]\n}",
+  "finish_reason": "stop"
+}

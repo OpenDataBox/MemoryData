@@ -1,0 +1,621 @@
+{
+  "args": {
+    "out": "runs/parent_evidence_v1",
+    "model": "Qwen/Qwen3-8B",
+    "embed_model": "Qwen/Qwen3-Embedding-0.6B",
+    "embed_batch_size": 4,
+    "seed": 20260907,
+    "budget": 2048
+  },
+  "source_sha256": {
+    "run_parent_refinement.py": "58d825e73074afd23ea73a98b59f5961ed569cf71ef1f6f101236a69a73e8a18",
+    "parent_evidence.py": "3fb9fb6d55f1ef8501aa6040d28211b552674016baaf949825d7abb396be27a7",
+    "budgeted_evidence.py": "d1e5f99306a7654124b16cf9c3ecb14e98118892dc0ed24b92470386049fddb3",
+    "evidence_fidelity.py": "ba55f8508cc16b1cea420f80198a9c6c7d3359235645886d9180c1bf0838c735",
+    "evidence_utility.py": "b6a18927a332ff96a997b24a8d36a0ff29757baeb36b8d1efe9c5aab51c9f310",
+    "run_evidence_utility.py": "534749083cd534deb00944d893ef9ed43fcb624a14fd5d9f560669d99ad03edd",
+    "evaluate_indexed.py": "c979c626d98646247cb0c06a666a909b20014844de6b80df93ddcecbbca81123",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  },
+  "environment": {
+    "models": {
+      "Qwen/Qwen3-8B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "Qwen/Qwen3-Embedding-0.6B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-Embedding-0.6B/snapshots/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+      }
+    },
+    "packages": {
+      "torch": "2.8.0",
+      "vllm": "0.10.2",
+      "transformers": "4.56.2",
+      "sentence-transformers": "5.1.0",
+      "nltk": "3.9.1",
+      "numpy": "2.2.6"
+    },
+    "data_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4"
+  },
+  "records": [
+    {
+      "id": "conv-26:23",
+      "conv_id": "conv-26",
+      "qa_index": 23,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:47",
+      "conv_id": "conv-26",
+      "qa_index": 47,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:80",
+      "conv_id": "conv-26",
+      "qa_index": 80,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:54",
+      "conv_id": "conv-26",
+      "qa_index": 54,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:64",
+      "conv_id": "conv-26",
+      "qa_index": 64,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:95",
+      "conv_id": "conv-26",
+      "qa_index": 95,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:117",
+      "conv_id": "conv-26",
+      "qa_index": 117,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:96",
+      "conv_id": "conv-26",
+      "qa_index": 96,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:110",
+      "conv_id": "conv-26",
+      "qa_index": 110,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-26:130",
+      "conv_id": "conv-26",
+      "qa_index": 130,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:3",
+      "conv_id": "conv-30",
+      "qa_index": 3,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:28",
+      "conv_id": "conv-30",
+      "qa_index": 28,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:12",
+      "conv_id": "conv-30",
+      "qa_index": 12,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:21",
+      "conv_id": "conv-30",
+      "qa_index": 21,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:63",
+      "conv_id": "conv-30",
+      "qa_index": 63,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:71",
+      "conv_id": "conv-30",
+      "qa_index": 71,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:62",
+      "conv_id": "conv-30",
+      "qa_index": 62,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:70",
+      "conv_id": "conv-30",
+      "qa_index": 70,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:74",
+      "conv_id": "conv-30",
+      "qa_index": 74,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-30:54",
+      "conv_id": "conv-30",
+      "qa_index": 54,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:3",
+      "conv_id": "conv-41",
+      "qa_index": 3,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:40",
+      "conv_id": "conv-41",
+      "qa_index": 40,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:46",
+      "conv_id": "conv-41",
+      "qa_index": 46,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:56",
+      "conv_id": "conv-41",
+      "qa_index": 56,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:125",
+      "conv_id": "conv-41",
+      "qa_index": 125,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:72",
+      "conv_id": "conv-41",
+      "qa_index": 72,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:85",
+      "conv_id": "conv-41",
+      "qa_index": 85,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:86",
+      "conv_id": "conv-41",
+      "qa_index": 86,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:65",
+      "conv_id": "conv-41",
+      "qa_index": 65,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-41:87",
+      "conv_id": "conv-41",
+      "qa_index": 87,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:18",
+      "conv_id": "conv-43",
+      "qa_index": 18,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:57",
+      "conv_id": "conv-43",
+      "qa_index": 57,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:33",
+      "conv_id": "conv-43",
+      "qa_index": 33,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:70",
+      "conv_id": "conv-43",
+      "qa_index": 70,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:117",
+      "conv_id": "conv-43",
+      "qa_index": 117,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:95",
+      "conv_id": "conv-43",
+      "qa_index": 95,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:76",
+      "conv_id": "conv-43",
+      "qa_index": 76,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:142",
+      "conv_id": "conv-43",
+      "qa_index": 142,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:125",
+      "conv_id": "conv-43",
+      "qa_index": 125,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-43:140",
+      "conv_id": "conv-43",
+      "qa_index": 140,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:35",
+      "conv_id": "conv-44",
+      "qa_index": 35,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:14",
+      "conv_id": "conv-44",
+      "qa_index": 14,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:30",
+      "conv_id": "conv-44",
+      "qa_index": 30,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:11",
+      "conv_id": "conv-44",
+      "qa_index": 11,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:33",
+      "conv_id": "conv-44",
+      "qa_index": 33,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:61",
+      "conv_id": "conv-44",
+      "qa_index": 61,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:119",
+      "conv_id": "conv-44",
+      "qa_index": 119,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:120",
+      "conv_id": "conv-44",
+      "qa_index": 120,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:90",
+      "conv_id": "conv-44",
+      "qa_index": 90,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-44:77",
+      "conv_id": "conv-44",
+      "qa_index": 77,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:86",
+      "conv_id": "conv-48",
+      "qa_index": 86,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:30",
+      "conv_id": "conv-48",
+      "qa_index": 30,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:29",
+      "conv_id": "conv-48",
+      "qa_index": 29,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:28",
+      "conv_id": "conv-48",
+      "qa_index": 28,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:92",
+      "conv_id": "conv-48",
+      "qa_index": 92,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:146",
+      "conv_id": "conv-48",
+      "qa_index": 146,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:101",
+      "conv_id": "conv-48",
+      "qa_index": 101,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:178",
+      "conv_id": "conv-48",
+      "qa_index": 178,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:158",
+      "conv_id": "conv-48",
+      "qa_index": 158,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-48:64",
+      "conv_id": "conv-48",
+      "qa_index": 64,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:48",
+      "conv_id": "conv-49",
+      "qa_index": 48,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:7",
+      "conv_id": "conv-49",
+      "qa_index": 7,
+      "category": 1,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:13",
+      "conv_id": "conv-49",
+      "qa_index": 13,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:73",
+      "conv_id": "conv-49",
+      "qa_index": 73,
+      "category": 2,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:57",
+      "conv_id": "conv-49",
+      "qa_index": 57,
+      "category": 3,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:92",
+      "conv_id": "conv-49",
+      "qa_index": 92,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:118",
+      "conv_id": "conv-49",
+      "qa_index": 118,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:143",
+      "conv_id": "conv-49",
+      "qa_index": 143,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:107",
+      "conv_id": "conv-49",
+      "qa_index": 107,
+      "category": 4,
+      "split": "dev"
+    },
+    {
+      "id": "conv-49:96",
+      "conv_id": "conv-49",
+      "qa_index": 96,
+      "category": 4,
+      "split": "dev"
+    }
+  ],
+  "excluded_holdout_conversations": [
+    "conv-42",
+    "conv-47",
+    "conv-50"
+  ],
+  "reader": "Answer the question using only the provided conversation memory. Give a concise exact answer: a name, date, number, or short phrase. For a list question include every supported item, separated by commas. Use the session dates to interpret relative times, but distinguish the event date from the date someone talked about it. If unsupported, answer unknown. No explanation or introductory text.",
+  "previous_protocol_sha256": "728158aae913b0d5e0fd0ea10f9a881efe6adbd6da32cfe3c5493b49f2c7e02f",
+  "parent_memory_sha256": "9591df1ab64554f001223e7038316ad30469a54aaa9fa56e369be5033b6ad754",
+  "recipes": [
+    {
+      "name": "s_raw_single_2000",
+      "family": "raw_single",
+      "extra_budget": 2000
+    },
+    {
+      "name": "s_raw_joint_2000",
+      "family": "raw_joint",
+      "extra_budget": 2000
+    },
+    {
+      "name": "s_raw_joint_verified_2000",
+      "family": "raw_joint_verified",
+      "extra_budget": 2000
+    },
+    {
+      "name": "s_parent_single_2000",
+      "family": "parent_single",
+      "extra_budget": 2000
+    },
+    {
+      "name": "s_parent_joint_2000",
+      "family": "parent_joint",
+      "extra_budget": 2000
+    },
+    {
+      "name": "s_parent_single_verified_2000",
+      "family": "parent_single_verified",
+      "extra_budget": 2000
+    },
+    {
+      "name": "s_parent_joint_verified_2000",
+      "family": "parent_joint_verified",
+      "extra_budget": 2000
+    },
+    {
+      "name": "s_raw_single_4000",
+      "family": "raw_single",
+      "extra_budget": 4000
+    },
+    {
+      "name": "s_raw_joint_4000",
+      "family": "raw_joint",
+      "extra_budget": 4000
+    },
+    {
+      "name": "s_raw_joint_verified_4000",
+      "family": "raw_joint_verified",
+      "extra_budget": 4000
+    },
+    {
+      "name": "s_parent_single_4000",
+      "family": "parent_single",
+      "extra_budget": 4000
+    },
+    {
+      "name": "s_parent_joint_4000",
+      "family": "parent_joint",
+      "extra_budget": 4000
+    },
+    {
+      "name": "s_parent_single_verified_4000",
+      "family": "parent_single_verified",
+      "extra_budget": 4000
+    },
+    {
+      "name": "s_parent_joint_verified_4000",
+      "family": "parent_joint_verified",
+      "extra_budget": 4000
+    }
+  ],
+  "reference": {
+    "name": "r40_fused_four_turn",
+    "expected_f1": 0.5862030161849054
+  },
+  "construction": "Question-blind source-fit cues; original subsets or whole parent units covering their joint source IDs; source-only behavioral verification.",
+  "budget": "Same 2000 or 4000 additional text tokens per conversation; actual spend reported; index and payload both counted.",
+  "controls": "Strong backend already includes prior calendar/filter heuristics, frozen unchanged. New construction adds no date/keyword rules. Original-subset controls isolate the parent mapping.",
+  "limitations": "Same-model verifier; likelihood proxy from original subsets may not equal utility after parent expansion; new actual generations and verification are measured. Development selection bias, not a generalization claim."
+}

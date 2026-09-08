@@ -1,0 +1,1656 @@
+{
+  "groups": [
+    [
+      {
+        "id": "conv-26:source_probe:1:1",
+        "gain": 1.0,
+        "cost": 339,
+        "unit": {
+          "text": "(Session date: 1:56 pm on 8 May, 2023) [D1:9] Caroline: Gonna continue my edu and check out career options, which is pretty exciting!\n[D1:10] Melanie: Wow, Caroline! What kinda jobs are you thinkin' of? Anything that stands out?\n[D1:11] Caroline: I'm keen on counseling or working in mental health - I'd love to support those with similar issues.\n[D1:12] Melanie: You'd be a great counselor! Your empathy and understanding will really help the people you work with. By the way, take a look at this. [image: a photo of a painting of a sunset over a lake]\n[D1:13] Caroline: Thanks, Melanie! That's really sweet. Is this your own painting?\n[D1:14] Melanie: Yeah, I painted that lake sunrise last year! It's special to me.\n[D1:15] Caroline: Wow, Melanie! The colors really blend nicely. Painting looks like a great outlet for expressing yourself.\n[D1:16] Melanie: Thanks, Caroline! Painting's a fun way to express my feelings and get creative. It's a great way to relax after a long day.\n[D1:17] Caroline: Totally agree, Mel. Relaxing and expressing ourselves is key. Well, I'm off to go do some research.\n[D1:18] Melanie: Yep, Caroline. Taking care of ourselves is vital. I'm off to go swimming with the kids. Talk to you soon!",
+          "index_text": "Who painted the sunset over a lake?",
+          "sources": [
+            "D1:9",
+            "D1:10",
+            "D1:11",
+            "D1:12",
+            "D1:13",
+            "D1:14",
+            "D1:15",
+            "D1:16",
+            "D1:17",
+            "D1:18"
+          ],
+          "session": 1,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:1"
+        },
+        "kind": "full",
+        "mean_logprob": 0.0
+      },
+      {
+        "id": "conv-26:source_probe:1:7",
+        "gain": 1.0,
+        "cost": 53,
+        "unit": {
+          "text": "(Session date: 1:56 pm on 8 May, 2023) [D1:14] Melanie: Yeah, I painted that lake sunrise last year! It's special to me.",
+          "index_text": "Who painted the sunset over a lake?",
+          "sources": [
+            "D1:14"
+          ],
+          "session": 1,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:1"
+        },
+        "kind": "single",
+        "mean_logprob": 0.0
+      },
+      {
+        "id": "conv-26:source_probe:1:37",
+        "gain": 1.0,
+        "cost": 106,
+        "unit": {
+          "text": "(Session date: 1:56 pm on 8 May, 2023) [D1:12] Melanie: You'd be a great counselor! Your empathy and understanding will really help the people you work with. By the way, take a look at this. [image: a photo of a painting of a sunset over a lake]\n[D1:14] Melanie: Yeah, I painted that lake sunrise last year! It's special to me.",
+          "index_text": "Who painted the sunset over a lake?",
+          "sources": [
+            "D1:12",
+            "D1:14"
+          ],
+          "session": 1,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:1"
+        },
+        "kind": "pair",
+        "mean_logprob": 0.0
+      }
+    ],
+    [
+      {
+        "id": "conv-26:source_probe:13:1",
+        "gain": 1.0,
+        "cost": 483,
+        "unit": {
+          "text": "(Session date: 4:33 pm on 12 July, 2023) [D7:9] Caroline: Thanks so much, Mel! Seeing this pic just made me appreciate my love of reading even more. Books guide me, motivate me and help me discover who I am. They're a huge part of my journey, and this one's reminding me to keep going and never give up!\n[D7:10] Melanie: Wow, Caroline! Books have such an awesome power! Which one has been your favorite guide?\n[D7:11] Caroline: I loved \"Becoming Nicole\" by Amy Ellis Nutt. It's a real inspiring true story about a trans girl and her family. It made me feel connected and gave me a lot of hope for my own path. Highly recommend it for sure! [image: a photo of a dog sitting in a boat on the water]\n[D7:12] Melanie: That sounds awesome! What did you take away from it to use in your life?\n[D7:13] Caroline: It taught me self-acceptance and how to find support. It also showed me that tough times don't last - hope and love exist. Pets bring so much joy too, though.\n[D7:14] Melanie: Caroline, those lessons are great - self-acceptance and finding support are key. Plus pets are awesome for joy and comfort, can't agree more!  [image: a photography of two little girls sitting on the steps with a dog]\n[D7:15] Caroline: That's so nice! What pet do you have?\n[D7:16] Melanie: We've got a pup and a kitty. That's the dog, and here's our cat! They brighten up our day and always make us smile. [image: a photo of a cat laying on the floor with its head on the floor]\n[D7:17] Caroline: Ah, they're adorable! What are their names? Pets sure do bring so much joy to us!\n[D7:18] Melanie: Luna and Oliver! They are so sweet and playful - they really liven up the house! Just got some new shoes, too! [image: a photo of a person wearing pink sneakers on a white rug]",
+          "index_text": "What book did Caroline say she loved?",
+          "sources": [
+            "D7:9",
+            "D7:10",
+            "D7:11",
+            "D7:12",
+            "D7:13",
+            "D7:14",
+            "D7:15",
+            "D7:16",
+            "D7:17",
+            "D7:18"
+          ],
+          "session": 7,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:13"
+        },
+        "kind": "full",
+        "mean_logprob": -2.0785605788230894
+      },
+      {
+        "id": "conv-26:source_probe:13:4",
+        "gain": 1.0,
+        "cost": 106,
+        "unit": {
+          "text": "(Session date: 4:33 pm on 12 July, 2023) [D7:11] Caroline: I loved \"Becoming Nicole\" by Amy Ellis Nutt. It's a real inspiring true story about a trans girl and her family. It made me feel connected and gave me a lot of hope for my own path. Highly recommend it for sure! [image: a photo of a dog sitting in a boat on the water]",
+          "index_text": "What book did Caroline say she loved?",
+          "sources": [
+            "D7:11"
+          ],
+          "session": 7,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:13"
+        },
+        "kind": "single",
+        "mean_logprob": -1.8251945733883985
+      },
+      {
+        "id": "conv-26:source_probe:13:35",
+        "gain": 1.0,
+        "cost": 157,
+        "unit": {
+          "text": "(Session date: 4:33 pm on 12 July, 2023) [D7:11] Caroline: I loved \"Becoming Nicole\" by Amy Ellis Nutt. It's a real inspiring true story about a trans girl and her family. It made me feel connected and gave me a lot of hope for my own path. Highly recommend it for sure! [image: a photo of a dog sitting in a boat on the water]\n[D7:18] Melanie: Luna and Oliver! They are so sweet and playful - they really liven up the house! Just got some new shoes, too! [image: a photo of a person wearing pink sneakers on a white rug]",
+          "index_text": "What book did Caroline say she loved?",
+          "sources": [
+            "D7:11",
+            "D7:18"
+          ],
+          "session": 7,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:13"
+        },
+        "kind": "pair",
+        "mean_logprob": -1.8376937985380208
+      }
+    ],
+    [
+      {
+        "id": "conv-26:source_probe:14:1",
+        "gain": 1.0,
+        "cost": 506,
+        "unit": {
+          "text": "(Session date: 1:51 pm on 15 July, 2023) [D8:1] Caroline: Hey Mel, what's up? Been a busy week since we talked.\n[D8:2] Melanie: Hey Caroline, it's been super busy here. So much since we talked! Last Fri I finally took my kids to a pottery workshop. We all made our own pots, it was fun and therapeutic! [image: a photography of a group of children making clay sculptures in a classroom]\n[D8:3] Caroline: Wow, Mel! Sounds like you and the kids had a blast. How'd they like it?\n[D8:4] Melanie: The kids loved it! They were so excited to get their hands dirty and make something with clay. It was special to watch their creativity and imagination come to life, they made this! [image: a photo of a cup with a dog face on it]\n[D8:5] Caroline: Aww, that's so sweet! That cup is so cute. It's awesome to see how kids show their personalities through art. What other creative projects do you do with them, besides pottery?\n[D8:6] Melanie: We love painting together lately, especially nature-inspired ones. Here's our latest work from last weekend. [image: a photo of a painting of a sunset with a palm tree]\n[D8:7] Caroline: Wow Mel, that painting's amazing! The colors are so bold and it really highlights the beauty of nature. Y'all work on it together?\n[D8:8] Melanie: Thanks, Caroline! We both helped with the painting - it was great bonding over it and chatting about nature. We found these lovely flowers. Appreciating the small things in life, too. [image: a photo of a field of purple flowers with green leaves]\n[D8:9] Caroline: That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.\n[D8:10] Melanie: Wow, Caroline, way to go! Your future fam will get a kick out of having you. What do you think of these? [image: a photo of a blue vase with a bouquet of sunflowers and roses]",
+          "index_text": "What did Melanie's kids make at the pottery workshop?",
+          "sources": [
+            "D8:1",
+            "D8:2",
+            "D8:3",
+            "D8:4",
+            "D8:5",
+            "D8:6",
+            "D8:7",
+            "D8:8",
+            "D8:9",
+            "D8:10"
+          ],
+          "session": 8,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:14"
+        },
+        "kind": "full",
+        "mean_logprob": -0.1429605630896731
+      },
+      {
+        "id": "conv-26:source_probe:14:5",
+        "gain": 1.0,
+        "cost": 92,
+        "unit": {
+          "text": "(Session date: 1:51 pm on 15 July, 2023) [D8:4] Melanie: The kids loved it! They were so excited to get their hands dirty and make something with clay. It was special to watch their creativity and imagination come to life, they made this! [image: a photo of a cup with a dog face on it]",
+          "index_text": "What did Melanie's kids make at the pottery workshop?",
+          "sources": [
+            "D8:4"
+          ],
+          "session": 8,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:14"
+        },
+        "kind": "single",
+        "mean_logprob": -0.10324722525557206
+      },
+      {
+        "id": "conv-26:source_probe:14:22",
+        "gain": 1.0,
+        "cost": 157,
+        "unit": {
+          "text": "(Session date: 1:51 pm on 15 July, 2023) [D8:2] Melanie: Hey Caroline, it's been super busy here. So much since we talked! Last Fri I finally took my kids to a pottery workshop. We all made our own pots, it was fun and therapeutic! [image: a photography of a group of children making clay sculptures in a classroom]\n[D8:4] Melanie: The kids loved it! They were so excited to get their hands dirty and make something with clay. It was special to watch their creativity and imagination come to life, they made this! [image: a photo of a cup with a dog face on it]",
+          "index_text": "What did Melanie's kids make at the pottery workshop?",
+          "sources": [
+            "D8:2",
+            "D8:4"
+          ],
+          "session": 8,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:14"
+        },
+        "kind": "pair",
+        "mean_logprob": -0.0003902689859387465
+      }
+    ],
+    [
+      {
+        "id": "conv-26:source_probe:22:1",
+        "gain": 1.0,
+        "cost": 177,
+        "unit": {
+          "text": "(Session date: 1:50 pm on 17 August, 2023) [D12:17] Caroline: Right, it was so much fun! We could do a family outting, or wanna plan something special for this summer, just us two? It'd be a great chance to catch up and explore nature! What do you think?\n[D12:18] Melanie: Sounds great, Caroline! Let's plan something special!\n[D12:19] Caroline: Sounds great, Mel! We'll make some awesome memories!\n[D12:20] Melanie: Yeah, Caroline! I'll start thinking about what we can do.\n[D12:21] Caroline: Yeah, Mel! Life's all about creating memories. Can't wait for the trip!",
+          "index_text": "What did Caroline say about the event?",
+          "sources": [
+            "D12:17",
+            "D12:18",
+            "D12:19",
+            "D12:20",
+            "D12:21"
+          ],
+          "session": 12,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:22"
+        },
+        "kind": "full",
+        "mean_logprob": -0.7383741685547508
+      },
+      {
+        "id": "conv-26:source_probe:22:2",
+        "gain": 0.9745442338443683,
+        "cost": 86,
+        "unit": {
+          "text": "(Session date: 1:50 pm on 17 August, 2023) [D12:17] Caroline: Right, it was so much fun! We could do a family outting, or wanna plan something special for this summer, just us two? It'd be a great chance to catch up and explore nature! What do you think?",
+          "index_text": "What did Caroline say about the event?",
+          "sources": [
+            "D12:17"
+          ],
+          "session": 12,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:22"
+        },
+        "kind": "single",
+        "mean_logprob": -0.9514005734370218
+      },
+      {
+        "id": "conv-26:source_probe:22:8",
+        "gain": 1.0,
+        "cost": 107,
+        "unit": {
+          "text": "(Session date: 1:50 pm on 17 August, 2023) [D12:17] Caroline: Right, it was so much fun! We could do a family outting, or wanna plan something special for this summer, just us two? It'd be a great chance to catch up and explore nature! What do you think?\n[D12:19] Caroline: Sounds great, Mel! We'll make some awesome memories!",
+          "index_text": "What did Caroline say about the event?",
+          "sources": [
+            "D12:17",
+            "D12:19"
+          ],
+          "session": 12,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:22"
+        },
+        "kind": "pair",
+        "mean_logprob": -0.6620400502131514
+      }
+    ],
+    [
+      {
+        "id": "conv-26:source_probe:24:1",
+        "gain": 1.0,
+        "cost": 413,
+        "unit": {
+          "text": "(Session date: 3:31 pm on 23 August, 2023) [D13:9] Caroline: Wow, Melanie, that's amazing! Love all the details and how you got the horse's grace and strength. Do you like painting animals?\n[D13:10] Melanie: Thanks, Caroline! Glad you like it. Yeah, I love to. It's peaceful and special. Horses have such grace! Do you like to paint too?\n[D13:11] Caroline: Painting's great for expressing myself. I love creating art! Here's a recent self-portrait I made last week. [image: a photo of a painting of a woman with a blue face]\n[D13:12] Melanie: Caroline, that's great! The blue's really powerful, huh? How'd you feel while painting it?\n[D13:13] Caroline: Thanks, Mel! I felt liberated and empowered doing it. Painting helps me explore my identity and be true to myself. It's definitely therapeutic.\n[D13:14] Melanie: Wow, Caroline, that's great! Art's awesome for showing us who we really are and getting in touch with ourselves. What else helps you out?\n[D13:15] Caroline: Thanks, Melanie. Art gives me a sense of freedom, but so does having supportive people around, promoting LGBTQ rights and being true to myself. I want to live authentically and help others to do the same.\n[D13:16] Melanie: Wow, Caroline! That's amazing. You really care about being real and helping others. Wishing you the best on your adoption journey!\n[D13:17] Caroline: Thanks, Melanie! I really appreciate it. Excited for the future! Bye!\n[D13:18] Melanie: Bye Caroline. I'm here for you. Take care of yourself.",
+          "index_text": "What did Melanie say about the blue in Caroline's self-portrait?",
+          "sources": [
+            "D13:9",
+            "D13:10",
+            "D13:11",
+            "D13:12",
+            "D13:13",
+            "D13:14",
+            "D13:15",
+            "D13:16",
+            "D13:17",
+            "D13:18"
+          ],
+          "session": 13,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:24"
+        },
+        "kind": "full",
+        "mean_logprob": -0.5330207198857515
+      },
+      {
+        "id": "conv-26:source_probe:24:5",
+        "gain": 0.9382669551100766,
+        "cost": 67,
+        "unit": {
+          "text": "(Session date: 3:31 pm on 23 August, 2023) [D13:12] Melanie: Caroline, that's great! The blue's really powerful, huh? How'd you feel while painting it?",
+          "index_text": "What did Melanie say about the blue in Caroline's self-portrait?",
+          "sources": [
+            "D13:12"
+          ],
+          "session": 13,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:24"
+        },
+        "kind": "single",
+        "mean_logprob": -1.1571014672517563
+      },
+      {
+        "id": "conv-26:source_probe:24:14",
+        "gain": 0.9950529516773872,
+        "cost": 104,
+        "unit": {
+          "text": "(Session date: 3:31 pm on 23 August, 2023) [D13:9] Caroline: Wow, Melanie, that's amazing! Love all the details and how you got the horse's grace and strength. Do you like painting animals?\n[D13:12] Melanie: Caroline, that's great! The blue's really powerful, huh? How'd you feel while painting it?",
+          "index_text": "What did Melanie say about the blue in Caroline's self-portrait?",
+          "sources": [
+            "D13:9",
+            "D13:12"
+          ],
+          "session": 13,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:24"
+        },
+        "kind": "pair",
+        "mean_logprob": -0.583032146018013
+      }
+    ],
+    [
+      {
+        "id": "conv-26:source_probe:26:1",
+        "gain": 1.0,
+        "cost": 555,
+        "unit": {
+          "text": "(Session date: 1:33 pm on 25 August, 2023) [D14:9] Caroline: Thanks Mel, really appreciate your kind words. It means a lot to me that you can feel the sense of peace and serenity. Makes me feel connected.\n[D14:10] Melanie: I feel the same way! Art is so cool like that - it connects us and helps us understand each other. I was actually just remembering yesterday, spending the day with my fam volunteering at a homeless shelter. It was hard to see how neglected some people are, but it was great to feel like we could make a difference.\n[D14:11] Caroline: Wow, Mel, you're amazing! Volunteering and making a difference- it's so heartwarming. You're an inspiration to us all! [image: a photo of a crowd of people walking down a street with a rainbow flag]\n[D14:12] Melanie: Thanks, Caroline! I really appreciate your help and motivation. What made you decide to transition and join the transgender community? [image: a photo of a bulletin board with a rainbow flag and a don't ever be afraid to]\n[D14:13] Caroline: Finding a community where I'm accepted, loved and supported has really meant a lot to me. It's made a huge difference to have people who get what I'm going through. Stuff like this mural are really special to me! [image: a photo of a building with a large eagle painted on it]\n[D14:14] Melanie: Caroline, glad you found a supportive community! Can you tell me more about why it's special to you?\n[D14:15] Caroline: The rainbow flag mural is important to me as it reflects the courage and strength of the trans community. The eagle symbolizes freedom and pride, representing my own resilience and that of others. [image: a photo of a stained glass window with a picture of a person on a horse]\n[D14:16] Melanie: I'm in awe of your courage as a trans person. Have you made any more art lately? [image: a photo of a stained glass window with a person holding a key]\n[D14:17] Caroline: Thanks, Mel! I made this stained glass window to remind myself and others that within us all is the key to discovering our true potential and living our best life. [image: a photo of three stained glass windows in a church with a clock]\n[D14:18] Melanie: Wow, Caroline, that looks amazing! What inspired it?",
+          "index_text": "What did Melanie ask about Caroline's recent art?",
+          "sources": [
+            "D14:9",
+            "D14:10",
+            "D14:11",
+            "D14:12",
+            "D14:13",
+            "D14:14",
+            "D14:15",
+            "D14:16",
+            "D14:17",
+            "D14:18"
+          ],
+          "session": 14,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:26"
+        },
+        "kind": "full",
+        "mean_logprob": -0.001041989540681243
+      },
+      {
+        "id": "conv-26:source_probe:26:9",
+        "gain": 1.0,
+        "cost": 78,
+        "unit": {
+          "text": "(Session date: 1:33 pm on 25 August, 2023) [D14:16] Melanie: I'm in awe of your courage as a trans person. Have you made any more art lately? [image: a photo of a stained glass window with a person holding a key]",
+          "index_text": "What did Melanie ask about Caroline's recent art?",
+          "sources": [
+            "D14:16"
+          ],
+          "session": 14,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:26"
+        },
+        "kind": "single",
+        "mean_logprob": -0.0007939255447126925
+      },
+      {
+        "id": "conv-26:source_probe:26:18",
+        "gain": 1.0,
+        "cost": 118,
+        "unit": {
+          "text": "(Session date: 1:33 pm on 25 August, 2023) [D14:9] Caroline: Thanks Mel, really appreciate your kind words. It means a lot to me that you can feel the sense of peace and serenity. Makes me feel connected.\n[D14:16] Melanie: I'm in awe of your courage as a trans person. Have you made any more art lately? [image: a photo of a stained glass window with a person holding a key]",
+          "index_text": "What did Melanie ask about Caroline's recent art?",
+          "sources": [
+            "D14:9",
+            "D14:16"
+          ],
+          "session": 14,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:26"
+        },
+        "kind": "pair",
+        "mean_logprob": -0.0008826164994388819
+      }
+    ],
+    [
+      {
+        "id": "conv-26:source_probe:36:1",
+        "gain": 1.0,
+        "cost": 348,
+        "unit": {
+          "text": "(Session date: 9:55 am on 22 October, 2023) [D19:9] Caroline: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.\n[D19:10] Melanie: I'm so happy for you, Caroline. You found your true self and now you're helping others. You're so inspiring!\n[D19:11] Caroline: Thanks, Melanie. Your support really means a lot. This journey has been amazing and I'm grateful I get to share it and help others with theirs. It's a real gift. [image: a photo of a clock with a green and yellow design on it]\n[D19:12] Melanie: Absolutely! I'm so glad we can always be there for each other.\n[D19:13] Caroline: Glad you agree, Caroline. Appreciate the support of those close to me. Their encouragement made me who I am.\n[D19:14] Melanie: Glad you had support. Being yourself is great!\n[D19:15] Caroline: Yeah, that's true! It's so freeing to just be yourself and live honestly. We can really accept who we are and be content. [image: a photo of a painting with the words happiness painted on it]",
+          "index_text": "Who said bringing others comfort and helping them grow brings them joy?",
+          "sources": [
+            "D19:9",
+            "D19:10",
+            "D19:11",
+            "D19:12",
+            "D19:13",
+            "D19:14",
+            "D19:15"
+          ],
+          "session": 19,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:36"
+        },
+        "kind": "full",
+        "mean_logprob": 0.0
+      },
+      {
+        "id": "conv-26:source_probe:36:2",
+        "gain": 1.0,
+        "cost": 120,
+        "unit": {
+          "text": "(Session date: 9:55 am on 22 October, 2023) [D19:9] Caroline: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.",
+          "index_text": "Who said bringing others comfort and helping them grow brings them joy?",
+          "sources": [
+            "D19:9"
+          ],
+          "session": 19,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:36"
+        },
+        "kind": "single",
+        "mean_logprob": 0.0
+      },
+      {
+        "id": "conv-26:source_probe:36:4",
+        "gain": 0.9999961068995609,
+        "cost": 98,
+        "unit": {
+          "text": "(Session date: 9:55 am on 22 October, 2023) [D19:11] Caroline: Thanks, Melanie. Your support really means a lot. This journey has been amazing and I'm grateful I get to share it and help others with theirs. It's a real gift. [image: a photo of a clock with a green and yellow design on it]",
+          "index_text": "Who said bringing others comfort and helping them grow brings them joy?",
+          "sources": [
+            "D19:11"
+          ],
+          "session": 19,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:36"
+        },
+        "kind": "single",
+        "mean_logprob": -3.93375194107648e-05
+      },
+      {
+        "id": "conv-26:source_probe:36:9",
+        "gain": 1.0,
+        "cost": 155,
+        "unit": {
+          "text": "(Session date: 9:55 am on 22 October, 2023) [D19:9] Caroline: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.\n[D19:10] Melanie: I'm so happy for you, Caroline. You found your true self and now you're helping others. You're so inspiring!",
+          "index_text": "Who said bringing others comfort and helping them grow brings them joy?",
+          "sources": [
+            "D19:9",
+            "D19:10"
+          ],
+          "session": 19,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:36"
+        },
+        "kind": "pair",
+        "mean_logprob": 0.0
+      }
+    ],
+    [
+      {
+        "id": "conv-26:source_probe:37:1",
+        "gain": 1.0,
+        "cost": 353,
+        "unit": {
+          "text": "(Session date: 9:55 am on 22 October, 2023) [D19:9] Caroline: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.\n[D19:10] Melanie: I'm so happy for you, Caroline. You found your true self and now you're helping others. You're so inspiring!\n[D19:11] Caroline: Thanks, Melanie. Your support really means a lot. This journey has been amazing and I'm grateful I get to share it and help others with theirs. It's a real gift. [image: a photo of a clock with a green and yellow design on it]\n[D19:12] Melanie: Absolutely! I'm so glad we can always be there for each other.\n[D19:13] Caroline: Glad you agree, Caroline. Appreciate the support of those close to me. Their encouragement made me who I am.\n[D19:14] Melanie: Glad you had support. Being yourself is great!\n[D19:15] Caroline: Yeah, that's true! It's so freeing to just be yourself and live honestly. We can really accept who we are and be content. [image: a photo of a painting with the words happiness painted on it]",
+          "index_text": "Who mentioned the help from friends, family, and people they looked up to was invaluable?",
+          "sources": [
+            "D19:9",
+            "D19:10",
+            "D19:11",
+            "D19:12",
+            "D19:13",
+            "D19:14",
+            "D19:15"
+          ],
+          "session": 19,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:37"
+        },
+        "kind": "full",
+        "mean_logprob": 0.0
+      },
+      {
+        "id": "conv-26:source_probe:37:2",
+        "gain": 1.0,
+        "cost": 125,
+        "unit": {
+          "text": "(Session date: 9:55 am on 22 October, 2023) [D19:9] Caroline: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.",
+          "index_text": "Who mentioned the help from friends, family, and people they looked up to was invaluable?",
+          "sources": [
+            "D19:9"
+          ],
+          "session": 19,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:37"
+        },
+        "kind": "single",
+        "mean_logprob": 0.0
+      },
+      {
+        "id": "conv-26:source_probe:37:6",
+        "gain": 1.0,
+        "cost": 73,
+        "unit": {
+          "text": "(Session date: 9:55 am on 22 October, 2023) [D19:13] Caroline: Glad you agree, Caroline. Appreciate the support of those close to me. Their encouragement made me who I am.",
+          "index_text": "Who mentioned the help from friends, family, and people they looked up to was invaluable?",
+          "sources": [
+            "D19:13"
+          ],
+          "session": 19,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:37"
+        },
+        "kind": "single",
+        "mean_logprob": 0.0
+      },
+      {
+        "id": "conv-26:source_probe:37:9",
+        "gain": 1.0,
+        "cost": 160,
+        "unit": {
+          "text": "(Session date: 9:55 am on 22 October, 2023) [D19:9] Caroline: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.\n[D19:10] Melanie: I'm so happy for you, Caroline. You found your true self and now you're helping others. You're so inspiring!",
+          "index_text": "Who mentioned the help from friends, family, and people they looked up to was invaluable?",
+          "sources": [
+            "D19:9",
+            "D19:10"
+          ],
+          "session": 19,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:37"
+        },
+        "kind": "pair",
+        "mean_logprob": 0.0
+      }
+    ],
+    [
+      {
+        "id": "conv-26:source_probe:6:1",
+        "gain": 1.0,
+        "cost": 497,
+        "unit": {
+          "text": "(Session date: 10:37 am on 27 June, 2023) [D4:1] Caroline: Hey Melanie! Long time no talk! A lot's been going on in my life! Take a look at this. [image: a photo of a person holding a necklace with a cross and a heart]\n[D4:2] Melanie: Hey, Caroline! Nice to hear from you! Love the necklace, any special meaning to it?\n[D4:3] Caroline: Thanks, Melanie! This necklace is super special to me - a gift from my grandma in my home country, Sweden. She gave it to me when I was young, and it stands for love, faith and strength. It's like a reminder of my roots and all the love and support I get from my family.\n[D4:4] Melanie: That's gorgeous, Caroline! It's awesome what items can mean so much to us, right? Got any other objects that you treasure, like that necklace? [image: a photo of a stack of bowls with different designs on them]\n[D4:5] Caroline: Yep, Melanie! I've got some other stuff with sentimental value, like my hand-painted bowl. A friend made it for my 18th birthday ten years ago. The pattern and colors are awesome-- it reminds me of art and self-expression.\n[D4:6] Melanie: That sounds great, Caroline! It's awesome having stuff around that make us think of good connections and times. Actually, I just took my fam camping in the mountains last week - it was a really nice time together!\n[D4:7] Caroline: Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?\n[D4:8] Melanie: It was an awesome time, Caroline! We explored nature, roasted marshmallows around the campfire and even went on a hike. The view from the top was amazing! The 2 younger kids love nature. It was so special having these moments together as a family - I'll never forget it!\n[D4:9] Caroline: That's awesome, Melanie! Family moments like that are so special. Glad y'all had such a great time.\n[D4:10] Melanie: Thanks, Caroline! Family time matters to me. What's up with you lately?",
+          "index_text": "What event was the hand-painted bowl made for?",
+          "sources": [
+            "D4:1",
+            "D4:2",
+            "D4:3",
+            "D4:4",
+            "D4:5",
+            "D4:6",
+            "D4:7",
+            "D4:8",
+            "D4:9",
+            "D4:10"
+          ],
+          "session": 4,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:6"
+        },
+        "kind": "full",
+        "mean_logprob": -4.948008855183919
+      },
+      {
+        "id": "conv-26:source_probe:6:6",
+        "gain": 0.8007289663923775,
+        "cost": 93,
+        "unit": {
+          "text": "(Session date: 10:37 am on 27 June, 2023) [D4:5] Caroline: Yep, Melanie! I've got some other stuff with sentimental value, like my hand-painted bowl. A friend made it for my 18th birthday ten years ago. The pattern and colors are awesome-- it reminds me of art and self-expression.",
+          "index_text": "What event was the hand-painted bowl made for?",
+          "sources": [
+            "D4:5"
+          ],
+          "session": 4,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:6"
+        },
+        "kind": "single",
+        "mean_logprob": -5.520834604899089
+      },
+      {
+        "id": "conv-26:source_probe:6:36",
+        "gain": 0.9601347125530143,
+        "cost": 148,
+        "unit": {
+          "text": "(Session date: 10:37 am on 27 June, 2023) [D4:4] Melanie: That's gorgeous, Caroline! It's awesome what items can mean so much to us, right? Got any other objects that you treasure, like that necklace? [image: a photo of a stack of bowls with different designs on them]\n[D4:5] Caroline: Yep, Melanie! I've got some other stuff with sentimental value, like my hand-painted bowl. A friend made it for my 18th birthday ten years ago. The pattern and colors are awesome-- it reminds me of art and self-expression.",
+          "index_text": "What event was the hand-painted bowl made for?",
+          "sources": [
+            "D4:4",
+            "D4:5"
+          ],
+          "session": 4,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:6"
+        },
+        "kind": "pair",
+        "mean_logprob": -5.062605857849121
+      }
+    ],
+    [
+      {
+        "id": "conv-26:source_probe:9:1",
+        "gain": 1.0,
+        "cost": 294,
+        "unit": {
+          "text": "(Session date: 1:36 pm on 3 July, 2023) [D5:9] Caroline: Nice job! You really put in the work and it definitely shows. Your creativity looks great!\n[D5:10] Melanie: Thanks, Caroline! Your kind words mean a lot. Pottery is a huge part of my life, not just a hobby - it helps me express my emotions. Clay is incredible, it brings me so much joy!\n[D5:11] Caroline: Wow, Mel, I'm so stoked for you that art is helping you express yourself and bring you joy! Keep it up!\n[D5:12] Melanie: Thanks, Caroline! I'm excited to see where pottery takes me. Anything coming up you're looking forward to?\n[D5:13] Caroline: Thanks Mel! I'm going to a transgender conference this month. I'm so excited to meet other people in the community and learn more about advocacy. It's gonna be great!\n[D5:14] Melanie: Sounds awesome, Caroline! Have a great time and learn a lot. Have fun!\n[D5:15] Caroline: Cool, thanks Mel! Can't wait. I'll keep ya posted. Bye!\n[D5:16] Melanie: Bye, Caroline! Can't wait to hear about it. Have fun and stay safe!",
+          "index_text": "What does Melanie say about Caroline's plans?",
+          "sources": [
+            "D5:9",
+            "D5:10",
+            "D5:11",
+            "D5:12",
+            "D5:13",
+            "D5:14",
+            "D5:15",
+            "D5:16"
+          ],
+          "session": 5,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:9"
+        },
+        "kind": "full",
+        "mean_logprob": -0.0011173372801679831
+      },
+      {
+        "id": "conv-26:source_probe:9:7",
+        "gain": 0.9976708901356529,
+        "cost": 55,
+        "unit": {
+          "text": "(Session date: 1:36 pm on 3 July, 2023) [D5:14] Melanie: Sounds awesome, Caroline! Have a great time and learn a lot. Have fun!",
+          "index_text": "What does Melanie say about Caroline's plans?",
+          "sources": [
+            "D5:14"
+          ],
+          "session": 5,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:9"
+        },
+        "kind": "single",
+        "mean_logprob": -0.019404801021804675
+      },
+      {
+        "id": "conv-26:source_probe:9:32",
+        "gain": 1.0,
+        "cost": 99,
+        "unit": {
+          "text": "(Session date: 1:36 pm on 3 July, 2023) [D5:13] Caroline: Thanks Mel! I'm going to a transgender conference this month. I'm so excited to meet other people in the community and learn more about advocacy. It's gonna be great!\n[D5:14] Melanie: Sounds awesome, Caroline! Have a great time and learn a lot. Have fun!",
+          "index_text": "What does Melanie say about Caroline's plans?",
+          "sources": [
+            "D5:13",
+            "D5:14"
+          ],
+          "session": 5,
+          "kind": "utility_evidence_bundle",
+          "source_probe_id": "conv-26:source_probe:9"
+        },
+        "kind": "pair",
+        "mean_logprob": -4.4932599289145753e-07
+      }
+    ]
+  ],
+  "mapped": {
+    "conv-26:source_probe:1:1": {
+      "id": "conv-26:source_probe:1:1",
+      "gain": 1.0,
+      "cost": 573,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 8 May 2023) Caroline mentioned she would continue her education and explore career options.\n(Recorded on: 8 May 2023) Melanie asked Caroline about the types of jobs she was considering.\nOriginal dialogue:\n(Recorded on: 8 May 2023) [D1:7] Caroline: The support group has made me feel accepted and given me courage to embrace myself.\n[D1:8] Melanie: That's really cool. You've got guts. What now?\n[D1:9] Caroline: Gonna continue my edu and check out career options, which is pretty exciting!\n[D1:10] Melanie: Wow, Caroline! What kinda jobs are you thinkin' of? Anything that stands out?\n\nFacts:\n(Recorded on: 8 May 2023) Caroline asked if the painting was Melanie's own work.\n(Recorded on: 8 May 2023) Melanie confirmed she painted the lake sunrise 2022 [original relative expression: last year].\nOriginal dialogue:\n(Recorded on: 8 May 2023) [D1:11] Caroline: I'm keen on counseling or working in mental health - I'd love to support those with similar issues.\n[D1:12] Melanie: You'd be a great counselor! Your empathy and understanding will really help the people you work with. By the way, take a look at this. [image: a photo of a painting of a sunset over a lake]\n[D1:13] Caroline: Thanks, Melanie! That's really sweet. Is this your own painting?\n[D1:14] Melanie: Yeah, I painted that lake sunrise 2022 [original relative expression: last year]! It's special to me.\n\nFacts:\n(Recorded on: 8 May 2023) Caroline agreed with Melanie about the importance of relaxing and expressing oneself.\nOriginal dialogue:\n(Recorded on: 8 May 2023) [D1:15] Caroline: Wow, Melanie! The colors really blend nicely. Painting looks like a great outlet for expressing yourself.\n[D1:16] Melanie: Thanks, Caroline! Painting's a fun way to express my feelings and get creative. It's a great way to relax after a long day.\n[D1:17] Caroline: Totally agree, Mel. Relaxing and expressing ourselves is key. Well, I'm off to go do some research.\n[D1:18] Melanie: Yep, Caroline. Taking care of ourselves is vital. I'm off to go swimming with the kids. Talk to you soon!",
+        "index_text": "Who painted the sunset over a lake?",
+        "sources": [
+          "D1:10",
+          "D1:11",
+          "D1:12",
+          "D1:13",
+          "D1:14",
+          "D1:15",
+          "D1:16",
+          "D1:17",
+          "D1:18",
+          "D1:7",
+          "D1:8",
+          "D1:9"
+        ],
+        "session": 1,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:1",
+        "parent_indices": [
+          3,
+          5,
+          7
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": 0.0,
+      "required_sources": [
+        "D1:9",
+        "D1:10",
+        "D1:11",
+        "D1:12",
+        "D1:13",
+        "D1:14",
+        "D1:15",
+        "D1:16",
+        "D1:17",
+        "D1:18"
+      ]
+    },
+    "conv-26:source_probe:1:7": {
+      "id": "conv-26:source_probe:1:7",
+      "gain": 1.0,
+      "cost": 208,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 8 May 2023) Caroline complimented Melanie's painting and noted the colors blended nicely.\n(Recorded on: 8 May 2023) Melanie explained painting was a fun way to express her feelings and get creative.\nOriginal dialogue:\n(Recorded on: 8 May 2023) [D1:13] Caroline: Thanks, Melanie! That's really sweet. Is this your own painting?\n[D1:14] Melanie: Yeah, I painted that lake sunrise 2022 [original relative expression: last year]! It's special to me.\n[D1:15] Caroline: Wow, Melanie! The colors really blend nicely. Painting looks like a great outlet for expressing yourself.\n[D1:16] Melanie: Thanks, Caroline! Painting's a fun way to express my feelings and get creative. It's a great way to relax after a long day.",
+        "index_text": "Who painted the sunset over a lake?",
+        "sources": [
+          "D1:13",
+          "D1:14",
+          "D1:15",
+          "D1:16"
+        ],
+        "session": 1,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:1",
+        "parent_indices": [
+          6
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": 0.0,
+      "required_sources": [
+        "D1:14"
+      ]
+    },
+    "conv-26:source_probe:1:37": {
+      "id": "conv-26:source_probe:1:37",
+      "gain": 1.0,
+      "cost": 228,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 8 May 2023) Caroline asked if the painting was Melanie's own work.\n(Recorded on: 8 May 2023) Melanie confirmed she painted the lake sunrise 2022 [original relative expression: last year].\nOriginal dialogue:\n(Recorded on: 8 May 2023) [D1:11] Caroline: I'm keen on counseling or working in mental health - I'd love to support those with similar issues.\n[D1:12] Melanie: You'd be a great counselor! Your empathy and understanding will really help the people you work with. By the way, take a look at this. [image: a photo of a painting of a sunset over a lake]\n[D1:13] Caroline: Thanks, Melanie! That's really sweet. Is this your own painting?\n[D1:14] Melanie: Yeah, I painted that lake sunrise 2022 [original relative expression: last year]! It's special to me.",
+        "index_text": "Who painted the sunset over a lake?",
+        "sources": [
+          "D1:11",
+          "D1:12",
+          "D1:13",
+          "D1:14"
+        ],
+        "session": 1,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:1",
+        "parent_indices": [
+          5
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": 0.0,
+      "required_sources": [
+        "D1:12",
+        "D1:14"
+      ]
+    },
+    "conv-26:source_probe:13:1": {
+      "id": "conv-26:source_probe:13:1",
+      "gain": 1.0,
+      "cost": 720,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 12 July 2023) Caroline loved \"Becoming Nicole\" by Amy Ellis Nutt, a true story about a trans girl and her family.\n(Recorded on: 12 July 2023) Caroline took away lessons on self-acceptance, finding support, and the importance of hope and love from the book.\nOriginal dialogue:\n(Recorded on: 12 July 2023) [D7:9] Caroline: Thanks so much, Mel! Seeing this pic just made me appreciate my love of reading even more. Books guide me, motivate me and help me discover who I am. They're a huge part of my journey, and this one's reminding me to keep going and never give up!\n[D7:10] Melanie: Wow, Caroline! Books have such an awesome power! Which one has been your favorite guide?\n[D7:11] Caroline: I loved \"Becoming Nicole\" by Amy Ellis Nutt. It's a real inspiring true story about a trans girl and her family. It made me feel connected and gave me a lot of hope for my own path. Highly recommend it for sure! [image: a photo of a dog sitting in a boat on the water]\n[D7:12] Melanie: That sounds awesome! What did you take away from it to use in your life?\n\nFacts:\n(Recorded on: 12 July 2023) Caroline asked Melanie about her pets.\n(Recorded on: 12 July 2023) Melanie mentioned they have a dog named Luna and a cat named Oliver.\nOriginal dialogue:\n(Recorded on: 12 July 2023) [D7:13] Caroline: It taught me self-acceptance and how to find support. It also showed me that tough times don't last - hope and love exist. Pets bring so much joy too, though.\n[D7:14] Melanie: Caroline, those lessons are great - self-acceptance and finding support are key. Plus pets are awesome for joy and comfort, can't agree more!  [image: a photography of two little girls sitting on the steps with a dog]\n[D7:15] Caroline: That's so nice! What pet do you have?\n[D7:16] Melanie: We've got a pup and a kitty. That's the dog, and here's our cat! They brighten up our day and always make us smile. [image: a photo of a cat laying on the floor with its head on the floor]\n\n(Recorded on: 12 July 2023) [D7:17] Caroline: Ah, they're adorable! What are their names? Pets sure do bring so much joy to us!\n[D7:18] Melanie: Luna and Oliver! They are so sweet and playful - they really liven up the house! Just got some new shoes, too! [image: a photo of a person wearing pink sneakers on a white rug]\n[D7:19] Caroline: Love that purple color! For walking or running?\n[D7:20] Melanie: Thanks, Caroline! These are for running. Been running longer since our last chat - a great way to destress and clear my mind. [image: a photo of a pair of pink sneakers in a box]",
+        "index_text": "What book did Caroline say she loved?",
+        "sources": [
+          "D7:10",
+          "D7:11",
+          "D7:12",
+          "D7:13",
+          "D7:14",
+          "D7:15",
+          "D7:16",
+          "D7:17",
+          "D7:18",
+          "D7:19",
+          "D7:20",
+          "D7:9"
+        ],
+        "session": 7,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:13",
+        "parent_indices": [
+          53,
+          55,
+          57
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -2.0785605788230894,
+      "required_sources": [
+        "D7:9",
+        "D7:10",
+        "D7:11",
+        "D7:12",
+        "D7:13",
+        "D7:14",
+        "D7:15",
+        "D7:16",
+        "D7:17",
+        "D7:18"
+      ]
+    },
+    "conv-26:source_probe:13:4": {
+      "id": "conv-26:source_probe:13:4",
+      "gain": 1.0,
+      "cost": 259,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 12 July 2023) Caroline also mentioned that pets bring joy and comfort.\nOriginal dialogue:\n(Recorded on: 12 July 2023) [D7:11] Caroline: I loved \"Becoming Nicole\" by Amy Ellis Nutt. It's a real inspiring true story about a trans girl and her family. It made me feel connected and gave me a lot of hope for my own path. Highly recommend it for sure! [image: a photo of a dog sitting in a boat on the water]\n[D7:12] Melanie: That sounds awesome! What did you take away from it to use in your life?\n[D7:13] Caroline: It taught me self-acceptance and how to find support. It also showed me that tough times don't last - hope and love exist. Pets bring so much joy too, though.\n[D7:14] Melanie: Caroline, those lessons are great - self-acceptance and finding support are key. Plus pets are awesome for joy and comfort, can't agree more!  [image: a photography of two little girls sitting on the steps with a dog]",
+        "index_text": "What book did Caroline say she loved?",
+        "sources": [
+          "D7:11",
+          "D7:12",
+          "D7:13",
+          "D7:14"
+        ],
+        "session": 7,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:13",
+        "parent_indices": [
+          54
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -1.8251945733883985,
+      "required_sources": [
+        "D7:11"
+      ]
+    },
+    "conv-26:source_probe:13:35": {
+      "id": "conv-26:source_probe:13:35",
+      "gain": 1.0,
+      "cost": 424,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 12 July 2023) Caroline also mentioned that pets bring joy and comfort.\nOriginal dialogue:\n(Recorded on: 12 July 2023) [D7:11] Caroline: I loved \"Becoming Nicole\" by Amy Ellis Nutt. It's a real inspiring true story about a trans girl and her family. It made me feel connected and gave me a lot of hope for my own path. Highly recommend it for sure! [image: a photo of a dog sitting in a boat on the water]\n[D7:12] Melanie: That sounds awesome! What did you take away from it to use in your life?\n[D7:13] Caroline: It taught me self-acceptance and how to find support. It also showed me that tough times don't last - hope and love exist. Pets bring so much joy too, though.\n[D7:14] Melanie: Caroline, those lessons are great - self-acceptance and finding support are key. Plus pets are awesome for joy and comfort, can't agree more!  [image: a photography of two little girls sitting on the steps with a dog]\n\n(Recorded on: 12 July 2023) [D7:17] Caroline: Ah, they're adorable! What are their names? Pets sure do bring so much joy to us!\n[D7:18] Melanie: Luna and Oliver! They are so sweet and playful - they really liven up the house! Just got some new shoes, too! [image: a photo of a person wearing pink sneakers on a white rug]\n[D7:19] Caroline: Love that purple color! For walking or running?\n[D7:20] Melanie: Thanks, Caroline! These are for running. Been running longer since our last chat - a great way to destress and clear my mind. [image: a photo of a pair of pink sneakers in a box]",
+        "index_text": "What book did Caroline say she loved?",
+        "sources": [
+          "D7:11",
+          "D7:12",
+          "D7:13",
+          "D7:14",
+          "D7:17",
+          "D7:18",
+          "D7:19",
+          "D7:20"
+        ],
+        "session": 7,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:13",
+        "parent_indices": [
+          54,
+          57
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -1.8376937985380208,
+      "required_sources": [
+        "D7:11",
+        "D7:18"
+      ]
+    },
+    "conv-26:source_probe:14:1": {
+      "id": "conv-26:source_probe:14:1",
+      "gain": 1.0,
+      "cost": 741,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 15 July 2023) Melanie took her kids to a pottery workshop on Friday.\n(Recorded on: 15 July 2023) Melanie's kids made a cup with a dog face on it.\nOriginal dialogue:\n(Recorded on: 15 July 2023) [D8:1] Caroline: Hey Mel, what's up? Been a busy week since we talked.\n[D8:2] Melanie: Hey Caroline, it's been super busy here. So much since we talked! Last Fri I finally took my kids to a pottery workshop. We all made our own pots, it was fun and therapeutic! [image: a photography of a group of children making clay sculptures in a classroom]\n[D8:3] Caroline: Wow, Mel! Sounds like you and the kids had a blast. How'd they like it?\n[D8:4] Melanie: The kids loved it! They were so excited to get their hands dirty and make something with clay. It was special to watch their creativity and imagination come to life, they made this! [image: a photo of a cup with a dog face on it]\n\nFacts:\n(Recorded on: 15 July 2023) Melanie and her kids painted a sunset with a palm tree.\nOriginal dialogue:\n(Recorded on: 15 July 2023) [D8:3] Caroline: Wow, Mel! Sounds like you and the kids had a blast. How'd they like it?\n[D8:4] Melanie: The kids loved it! They were so excited to get their hands dirty and make something with clay. It was special to watch their creativity and imagination come to life, they made this! [image: a photo of a cup with a dog face on it]\n[D8:5] Caroline: Aww, that's so sweet! That cup is so cute. It's awesome to see how kids show their personalities through art. What other creative projects do you do with them, besides pottery?\n[D8:6] Melanie: We love painting together lately, especially nature-inspired ones. Here's our latest work from last weekend. [image: a photo of a painting of a sunset with a palm tree]\n\nFacts:\n(Recorded on: 15 July 2023) Caroline attended an adoption council meeting on Friday.\nOriginal dialogue:\n(Recorded on: 15 July 2023) [D8:7] Caroline: Wow Mel, that painting's amazing! The colors are so bold and it really highlights the beauty of nature. Y'all work on it together?\n[D8:8] Melanie: Thanks, Caroline! We both helped with the painting - it was great bonding over it and chatting about nature. We found these lovely flowers. Appreciating the small things in life, too. [image: a photo of a field of purple flowers with green leaves]\n[D8:9] Caroline: That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.\n[D8:10] Melanie: Wow, Caroline, way to go! Your future fam will get a kick out of having you. What do you think of these? [image: a photo of a blue vase with a bouquet of sunflowers and roses]",
+        "index_text": "What did Melanie's kids make at the pottery workshop?",
+        "sources": [
+          "D8:1",
+          "D8:10",
+          "D8:2",
+          "D8:3",
+          "D8:4",
+          "D8:5",
+          "D8:6",
+          "D8:7",
+          "D8:8",
+          "D8:9"
+        ],
+        "session": 8,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:14",
+        "parent_indices": [
+          62,
+          63,
+          65
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -0.1429605630896731,
+      "required_sources": [
+        "D8:1",
+        "D8:2",
+        "D8:3",
+        "D8:4",
+        "D8:5",
+        "D8:6",
+        "D8:7",
+        "D8:8",
+        "D8:9",
+        "D8:10"
+      ]
+    },
+    "conv-26:source_probe:14:5": {
+      "id": "conv-26:source_probe:14:5",
+      "gain": 1.0,
+      "cost": 236,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 15 July 2023) Melanie and her kids painted a sunset with a palm tree.\nOriginal dialogue:\n(Recorded on: 15 July 2023) [D8:3] Caroline: Wow, Mel! Sounds like you and the kids had a blast. How'd they like it?\n[D8:4] Melanie: The kids loved it! They were so excited to get their hands dirty and make something with clay. It was special to watch their creativity and imagination come to life, they made this! [image: a photo of a cup with a dog face on it]\n[D8:5] Caroline: Aww, that's so sweet! That cup is so cute. It's awesome to see how kids show their personalities through art. What other creative projects do you do with them, besides pottery?\n[D8:6] Melanie: We love painting together lately, especially nature-inspired ones. Here's our latest work from last weekend. [image: a photo of a painting of a sunset with a palm tree]",
+        "index_text": "What did Melanie's kids make at the pottery workshop?",
+        "sources": [
+          "D8:3",
+          "D8:4",
+          "D8:5",
+          "D8:6"
+        ],
+        "session": 8,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:14",
+        "parent_indices": [
+          63
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -0.10324722525557206,
+      "required_sources": [
+        "D8:4"
+      ]
+    },
+    "conv-26:source_probe:14:22": {
+      "id": "conv-26:source_probe:14:22",
+      "gain": 1.0,
+      "cost": 260,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 15 July 2023) Melanie took her kids to a pottery workshop on Friday.\n(Recorded on: 15 July 2023) Melanie's kids made a cup with a dog face on it.\nOriginal dialogue:\n(Recorded on: 15 July 2023) [D8:1] Caroline: Hey Mel, what's up? Been a busy week since we talked.\n[D8:2] Melanie: Hey Caroline, it's been super busy here. So much since we talked! Last Fri I finally took my kids to a pottery workshop. We all made our own pots, it was fun and therapeutic! [image: a photography of a group of children making clay sculptures in a classroom]\n[D8:3] Caroline: Wow, Mel! Sounds like you and the kids had a blast. How'd they like it?\n[D8:4] Melanie: The kids loved it! They were so excited to get their hands dirty and make something with clay. It was special to watch their creativity and imagination come to life, they made this! [image: a photo of a cup with a dog face on it]",
+        "index_text": "What did Melanie's kids make at the pottery workshop?",
+        "sources": [
+          "D8:1",
+          "D8:2",
+          "D8:3",
+          "D8:4"
+        ],
+        "session": 8,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:14",
+        "parent_indices": [
+          62
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -0.0003902689859387465,
+      "required_sources": [
+        "D8:2",
+        "D8:4"
+      ]
+    },
+    "conv-26:source_probe:22:1": {
+      "id": "conv-26:source_probe:22:1",
+      "gain": 1.0,
+      "cost": 231,
+      "unit": {
+        "text": "(Recorded on: 17 August 2023) [D12:17] Caroline: Right, it was so much fun! We could do a family outting, or wanna plan something special for this summer, just us two? It'd be a great chance to catch up and explore nature! What do you think?\n[D12:18] Melanie: Sounds great, Caroline! Let's plan something special!\n[D12:19] Caroline: Sounds great, Mel! We'll make some awesome memories!\n[D12:20] Melanie: Yeah, Caroline! I'll start thinking about what we can do.\n\n(Recorded on: 17 August 2023) [D12:19] Caroline: Sounds great, Mel! We'll make some awesome memories!\n[D12:20] Melanie: Yeah, Caroline! I'll start thinking about what we can do.\n[D12:21] Caroline: Yeah, Mel! Life's all about creating memories. Can't wait for the trip!",
+        "index_text": "What did Caroline say about the event?",
+        "sources": [
+          "D12:17",
+          "D12:18",
+          "D12:19",
+          "D12:20",
+          "D12:21"
+        ],
+        "session": 12,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:22",
+        "parent_indices": [
+          116,
+          117
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -0.7383741685547508,
+      "required_sources": [
+        "D12:17",
+        "D12:18",
+        "D12:19",
+        "D12:20",
+        "D12:21"
+      ]
+    },
+    "conv-26:source_probe:22:2": {
+      "id": "conv-26:source_probe:22:2",
+      "gain": 0.9745442338443683,
+      "cost": 144,
+      "unit": {
+        "text": "(Recorded on: 17 August 2023) [D12:17] Caroline: Right, it was so much fun! We could do a family outting, or wanna plan something special for this summer, just us two? It'd be a great chance to catch up and explore nature! What do you think?\n[D12:18] Melanie: Sounds great, Caroline! Let's plan something special!\n[D12:19] Caroline: Sounds great, Mel! We'll make some awesome memories!\n[D12:20] Melanie: Yeah, Caroline! I'll start thinking about what we can do.",
+        "index_text": "What did Caroline say about the event?",
+        "sources": [
+          "D12:17",
+          "D12:18",
+          "D12:19",
+          "D12:20"
+        ],
+        "session": 12,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:22",
+        "parent_indices": [
+          116
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -0.9514005734370218,
+      "required_sources": [
+        "D12:17"
+      ]
+    },
+    "conv-26:source_probe:22:8": {
+      "id": "conv-26:source_probe:22:8",
+      "gain": 1.0,
+      "cost": 144,
+      "unit": {
+        "text": "(Recorded on: 17 August 2023) [D12:17] Caroline: Right, it was so much fun! We could do a family outting, or wanna plan something special for this summer, just us two? It'd be a great chance to catch up and explore nature! What do you think?\n[D12:18] Melanie: Sounds great, Caroline! Let's plan something special!\n[D12:19] Caroline: Sounds great, Mel! We'll make some awesome memories!\n[D12:20] Melanie: Yeah, Caroline! I'll start thinking about what we can do.",
+        "index_text": "What did Caroline say about the event?",
+        "sources": [
+          "D12:17",
+          "D12:18",
+          "D12:19",
+          "D12:20"
+        ],
+        "session": 12,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:22",
+        "parent_indices": [
+          116
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -0.6620400502131514,
+      "required_sources": [
+        "D12:17",
+        "D12:19"
+      ]
+    },
+    "conv-26:source_probe:24:1": {
+      "id": "conv-26:source_probe:24:1",
+      "gain": 1.0,
+      "cost": 629,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 23 August 2023) Caroline complimented Melanie's painting skills and asked if she likes painting animals.\nOriginal dialogue:\n(Recorded on: 23 August 2023) [D13:7] Caroline: That's so funny! I used to go horseback riding with my dad when I was a kid, we'd go through the fields, feeling the wind. It was so special. I've always had a love for horses!\n[D13:8] Melanie: Wow, that sounds great - I agree, they're awesome. Here's a photo of my horse painting I did recently. [image: a photo of a horse painted on a wooden wall]\n[D13:9] Caroline: Wow, Melanie, that's amazing! Love all the details and how you got the horse's grace and strength. Do you like painting animals?\n[D13:10] Melanie: Thanks, Caroline! Glad you like it. Yeah, I love to. It's peaceful and special. Horses have such grace! Do you like to paint too?\n\nFacts:\n(Recorded on: 23 August 2023) Caroline explained feeling liberated and empowered while painting, using it to explore her identity.\nOriginal dialogue:\n(Recorded on: 23 August 2023) [D13:11] Caroline: Painting's great for expressing myself. I love creating art! Here's a recent self-portrait I made August 2023 (the preceding week) [original relative expression: last week]. [image: a photo of a painting of a woman with a blue face]\n[D13:12] Melanie: Caroline, that's great! The blue's really powerful, huh? How'd you feel while painting it?\n[D13:13] Caroline: Thanks, Mel! I felt liberated and empowered doing it. Painting helps me explore my identity and be true to myself. It's definitely therapeutic.\n[D13:14] Melanie: Wow, Caroline, that's great! Art's awesome for showing us who we really are and getting in touch with ourselves. What else helps you out?\n\n(Recorded on: 23 August 2023) [D13:15] Caroline: Thanks, Melanie. Art gives me a sense of freedom, but so does having supportive people around, promoting LGBTQ rights and being true to myself. I want to live authentically and help others to do the same.\n[D13:16] Melanie: Wow, Caroline! That's amazing. You really care about being real and helping others. Wishing you the best on your adoption journey!\n[D13:17] Caroline: Thanks, Melanie! I really appreciate it. Excited for the future! Bye!\n[D13:18] Melanie: Bye Caroline. I'm here for you. Take care of yourself.",
+        "index_text": "What did Melanie say about the blue in Caroline's self-portrait?",
+        "sources": [
+          "D13:10",
+          "D13:11",
+          "D13:12",
+          "D13:13",
+          "D13:14",
+          "D13:15",
+          "D13:16",
+          "D13:17",
+          "D13:18",
+          "D13:7",
+          "D13:8",
+          "D13:9"
+        ],
+        "session": 13,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:24",
+        "parent_indices": [
+          121,
+          123,
+          125
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -0.5330207198857515,
+      "required_sources": [
+        "D13:9",
+        "D13:10",
+        "D13:11",
+        "D13:12",
+        "D13:13",
+        "D13:14",
+        "D13:15",
+        "D13:16",
+        "D13:17",
+        "D13:18"
+      ]
+    },
+    "conv-26:source_probe:24:5": {
+      "id": "conv-26:source_probe:24:5",
+      "gain": 0.9382669551100766,
+      "cost": 241,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 23 August 2023) Caroline explained feeling liberated and empowered while painting, using it to explore her identity.\nOriginal dialogue:\n(Recorded on: 23 August 2023) [D13:11] Caroline: Painting's great for expressing myself. I love creating art! Here's a recent self-portrait I made August 2023 (the preceding week) [original relative expression: last week]. [image: a photo of a painting of a woman with a blue face]\n[D13:12] Melanie: Caroline, that's great! The blue's really powerful, huh? How'd you feel while painting it?\n[D13:13] Caroline: Thanks, Mel! I felt liberated and empowered doing it. Painting helps me explore my identity and be true to myself. It's definitely therapeutic.\n[D13:14] Melanie: Wow, Caroline, that's great! Art's awesome for showing us who we really are and getting in touch with ourselves. What else helps you out?",
+        "index_text": "What did Melanie say about the blue in Caroline's self-portrait?",
+        "sources": [
+          "D13:11",
+          "D13:12",
+          "D13:13",
+          "D13:14"
+        ],
+        "session": 13,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:24",
+        "parent_indices": [
+          123
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -1.1571014672517563,
+      "required_sources": [
+        "D13:12"
+      ]
+    },
+    "conv-26:source_probe:24:14": {
+      "id": "conv-26:source_probe:24:14",
+      "gain": 0.9950529516773872,
+      "cost": 269,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 23 August 2023) Caroline shared a recent self-portrait painting with a blue face.\n(Recorded on: 23 August 2023) Melanie commented on the powerful effect of the blue in Caroline's painting.\nOriginal dialogue:\n(Recorded on: 23 August 2023) [D13:9] Caroline: Wow, Melanie, that's amazing! Love all the details and how you got the horse's grace and strength. Do you like painting animals?\n[D13:10] Melanie: Thanks, Caroline! Glad you like it. Yeah, I love to. It's peaceful and special. Horses have such grace! Do you like to paint too?\n[D13:11] Caroline: Painting's great for expressing myself. I love creating art! Here's a recent self-portrait I made August 2023 (the preceding week) [original relative expression: last week]. [image: a photo of a painting of a woman with a blue face]\n[D13:12] Melanie: Caroline, that's great! The blue's really powerful, huh? How'd you feel while painting it?",
+        "index_text": "What did Melanie say about the blue in Caroline's self-portrait?",
+        "sources": [
+          "D13:10",
+          "D13:11",
+          "D13:12",
+          "D13:9"
+        ],
+        "session": 13,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:24",
+        "parent_indices": [
+          122
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -0.583032146018013,
+      "required_sources": [
+        "D13:9",
+        "D13:12"
+      ]
+    },
+    "conv-26:source_probe:26:1": {
+      "id": "conv-26:source_probe:26:1",
+      "gain": 1.0,
+      "cost": 707,
+      "unit": {
+        "text": "(Recorded on: 25 August 2023) [D14:9] Caroline: Thanks Mel, really appreciate your kind words. It means a lot to me that you can feel the sense of peace and serenity. Makes me feel connected.\n[D14:10] Melanie: I feel the same way! Art is so cool like that - it connects us and helps us understand each other. I was actually just remembering 24 August 2023 [original relative expression: yesterday], spending the day with my fam volunteering at a homeless shelter. It was hard to see how neglected some people are, but it was great to feel like we could make a difference.\n[D14:11] Caroline: Wow, Mel, you're amazing! Volunteering and making a difference- it's so heartwarming. You're an inspiration to us all! [image: a photo of a crowd of people walking down a street with a rainbow flag]\n[D14:12] Melanie: Thanks, Caroline! I really appreciate your help and motivation. What made you decide to transition and join the transgender community? [image: a photo of a bulletin board with a rainbow flag and a don't ever be afraid to]\n\n(Recorded on: 25 August 2023) [D14:13] Caroline: Finding a community where I'm accepted, loved and supported has really meant a lot to me. It's made a huge difference to have people who get what I'm going through. Stuff like this mural are really special to me! [image: a photo of a building with a large eagle painted on it]\n[D14:14] Melanie: Caroline, glad you found a supportive community! Can you tell me more about why it's special to you?\n[D14:15] Caroline: The rainbow flag mural is important to me as it reflects the courage and strength of the trans community. The eagle symbolizes freedom and pride, representing my own resilience and that of others. [image: a photo of a stained glass window with a picture of a person on a horse]\n[D14:16] Melanie: I'm in awe of your courage as a trans person. Have you made any more art lately? [image: a photo of a stained glass window with a person holding a key]\n\n(Recorded on: 25 August 2023) [D14:15] Caroline: The rainbow flag mural is important to me as it reflects the courage and strength of the trans community. The eagle symbolizes freedom and pride, representing my own resilience and that of others. [image: a photo of a stained glass window with a picture of a person on a horse]\n[D14:16] Melanie: I'm in awe of your courage as a trans person. Have you made any more art lately? [image: a photo of a stained glass window with a person holding a key]\n[D14:17] Caroline: Thanks, Mel! I made this stained glass window to remind myself and others that within us all is the key to discovering our true potential and living our best life. [image: a photo of three stained glass windows in a church with a clock]\n[D14:18] Melanie: Wow, Caroline, that looks amazing! What inspired it?",
+        "index_text": "What did Melanie ask about Caroline's recent art?",
+        "sources": [
+          "D14:10",
+          "D14:11",
+          "D14:12",
+          "D14:13",
+          "D14:14",
+          "D14:15",
+          "D14:16",
+          "D14:17",
+          "D14:18",
+          "D14:9"
+        ],
+        "session": 14,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:26",
+        "parent_indices": [
+          130,
+          132,
+          133
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -0.001041989540681243,
+      "required_sources": [
+        "D14:9",
+        "D14:10",
+        "D14:11",
+        "D14:12",
+        "D14:13",
+        "D14:14",
+        "D14:15",
+        "D14:16",
+        "D14:17",
+        "D14:18"
+      ]
+    },
+    "conv-26:source_probe:26:9": {
+      "id": "conv-26:source_probe:26:9",
+      "gain": 1.0,
+      "cost": 218,
+      "unit": {
+        "text": "(Recorded on: 25 August 2023) [D14:15] Caroline: The rainbow flag mural is important to me as it reflects the courage and strength of the trans community. The eagle symbolizes freedom and pride, representing my own resilience and that of others. [image: a photo of a stained glass window with a picture of a person on a horse]\n[D14:16] Melanie: I'm in awe of your courage as a trans person. Have you made any more art lately? [image: a photo of a stained glass window with a person holding a key]\n[D14:17] Caroline: Thanks, Mel! I made this stained glass window to remind myself and others that within us all is the key to discovering our true potential and living our best life. [image: a photo of three stained glass windows in a church with a clock]\n[D14:18] Melanie: Wow, Caroline, that looks amazing! What inspired it?",
+        "index_text": "What did Melanie ask about Caroline's recent art?",
+        "sources": [
+          "D14:15",
+          "D14:16",
+          "D14:17",
+          "D14:18"
+        ],
+        "session": 14,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:26",
+        "parent_indices": [
+          133
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -0.0007939255447126925,
+      "required_sources": [
+        "D14:16"
+      ]
+    },
+    "conv-26:source_probe:26:18": {
+      "id": "conv-26:source_probe:26:18",
+      "gain": 1.0,
+      "cost": 477,
+      "unit": {
+        "text": "(Recorded on: 25 August 2023) [D14:9] Caroline: Thanks Mel, really appreciate your kind words. It means a lot to me that you can feel the sense of peace and serenity. Makes me feel connected.\n[D14:10] Melanie: I feel the same way! Art is so cool like that - it connects us and helps us understand each other. I was actually just remembering 24 August 2023 [original relative expression: yesterday], spending the day with my fam volunteering at a homeless shelter. It was hard to see how neglected some people are, but it was great to feel like we could make a difference.\n[D14:11] Caroline: Wow, Mel, you're amazing! Volunteering and making a difference- it's so heartwarming. You're an inspiration to us all! [image: a photo of a crowd of people walking down a street with a rainbow flag]\n[D14:12] Melanie: Thanks, Caroline! I really appreciate your help and motivation. What made you decide to transition and join the transgender community? [image: a photo of a bulletin board with a rainbow flag and a don't ever be afraid to]\n\n(Recorded on: 25 August 2023) [D14:15] Caroline: The rainbow flag mural is important to me as it reflects the courage and strength of the trans community. The eagle symbolizes freedom and pride, representing my own resilience and that of others. [image: a photo of a stained glass window with a picture of a person on a horse]\n[D14:16] Melanie: I'm in awe of your courage as a trans person. Have you made any more art lately? [image: a photo of a stained glass window with a person holding a key]\n[D14:17] Caroline: Thanks, Mel! I made this stained glass window to remind myself and others that within us all is the key to discovering our true potential and living our best life. [image: a photo of three stained glass windows in a church with a clock]\n[D14:18] Melanie: Wow, Caroline, that looks amazing! What inspired it?",
+        "index_text": "What did Melanie ask about Caroline's recent art?",
+        "sources": [
+          "D14:10",
+          "D14:11",
+          "D14:12",
+          "D14:15",
+          "D14:16",
+          "D14:17",
+          "D14:18",
+          "D14:9"
+        ],
+        "session": 14,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:26",
+        "parent_indices": [
+          130,
+          133
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -0.0008826164994388819,
+      "required_sources": [
+        "D14:9",
+        "D14:16"
+      ]
+    },
+    "conv-26:source_probe:36:1": {
+      "id": "conv-26:source_probe:36:1",
+      "gain": 1.0,
+      "cost": 358,
+      "unit": {
+        "text": "(Recorded on: 22 October 2023) [D19:9] Caroline: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.\n[D19:10] Melanie: I'm so happy for you, Caroline. You found your true self and now you're helping others. You're so inspiring!\n[D19:11] Caroline: Thanks, Melanie. Your support really means a lot. This journey has been amazing and I'm grateful I get to share it and help others with theirs. It's a real gift. [image: a photo of a clock with a green and yellow design on it]\n[D19:12] Melanie: Absolutely! I'm so glad we can always be there for each other.\n\n(Recorded on: 22 October 2023) [D19:13] Caroline: Glad you agree, Caroline. Appreciate the support of those close to me. Their encouragement made me who I am.\n[D19:14] Melanie: Glad you had support. Being yourself is great!\n[D19:15] Caroline: Yeah, that's true! It's so freeing to just be yourself and live honestly. We can really accept who we are and be content. [image: a photo of a painting with the words happiness painted on it]",
+        "index_text": "Who said bringing others comfort and helping them grow brings them joy?",
+        "sources": [
+          "D19:10",
+          "D19:11",
+          "D19:12",
+          "D19:13",
+          "D19:14",
+          "D19:15",
+          "D19:9"
+        ],
+        "session": 19,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:36",
+        "parent_indices": [
+          192,
+          194
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": 0.0,
+      "required_sources": [
+        "D19:9",
+        "D19:10",
+        "D19:11",
+        "D19:12",
+        "D19:13",
+        "D19:14",
+        "D19:15"
+      ]
+    },
+    "conv-26:source_probe:36:2": {
+      "id": "conv-26:source_probe:36:2",
+      "gain": 1.0,
+      "cost": 236,
+      "unit": {
+        "text": "(Recorded on: 22 October 2023) [D19:9] Caroline: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.\n[D19:10] Melanie: I'm so happy for you, Caroline. You found your true self and now you're helping others. You're so inspiring!\n[D19:11] Caroline: Thanks, Melanie. Your support really means a lot. This journey has been amazing and I'm grateful I get to share it and help others with theirs. It's a real gift. [image: a photo of a clock with a green and yellow design on it]\n[D19:12] Melanie: Absolutely! I'm so glad we can always be there for each other.",
+        "index_text": "Who said bringing others comfort and helping them grow brings them joy?",
+        "sources": [
+          "D19:10",
+          "D19:11",
+          "D19:12",
+          "D19:9"
+        ],
+        "session": 19,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:36",
+        "parent_indices": [
+          192
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": 0.0,
+      "required_sources": [
+        "D19:9"
+      ]
+    },
+    "conv-26:source_probe:36:4": {
+      "id": "conv-26:source_probe:36:4",
+      "gain": 0.9999961068995609,
+      "cost": 168,
+      "unit": {
+        "text": "(Recorded on: 22 October 2023) [D19:11] Caroline: Thanks, Melanie. Your support really means a lot. This journey has been amazing and I'm grateful I get to share it and help others with theirs. It's a real gift. [image: a photo of a clock with a green and yellow design on it]\n[D19:12] Melanie: Absolutely! I'm so glad we can always be there for each other.\n[D19:13] Caroline: Glad you agree, Caroline. Appreciate the support of those close to me. Their encouragement made me who I am.\n[D19:14] Melanie: Glad you had support. Being yourself is great!",
+        "index_text": "Who said bringing others comfort and helping them grow brings them joy?",
+        "sources": [
+          "D19:11",
+          "D19:12",
+          "D19:13",
+          "D19:14"
+        ],
+        "session": 19,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:36",
+        "parent_indices": [
+          193
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -3.93375194107648e-05,
+      "required_sources": [
+        "D19:11"
+      ]
+    },
+    "conv-26:source_probe:36:9": {
+      "id": "conv-26:source_probe:36:9",
+      "gain": 1.0,
+      "cost": 236,
+      "unit": {
+        "text": "(Recorded on: 22 October 2023) [D19:9] Caroline: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.\n[D19:10] Melanie: I'm so happy for you, Caroline. You found your true self and now you're helping others. You're so inspiring!\n[D19:11] Caroline: Thanks, Melanie. Your support really means a lot. This journey has been amazing and I'm grateful I get to share it and help others with theirs. It's a real gift. [image: a photo of a clock with a green and yellow design on it]\n[D19:12] Melanie: Absolutely! I'm so glad we can always be there for each other.",
+        "index_text": "Who said bringing others comfort and helping them grow brings them joy?",
+        "sources": [
+          "D19:10",
+          "D19:11",
+          "D19:12",
+          "D19:9"
+        ],
+        "session": 19,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:36",
+        "parent_indices": [
+          192
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": 0.0,
+      "required_sources": [
+        "D19:9",
+        "D19:10"
+      ]
+    },
+    "conv-26:source_probe:37:1": {
+      "id": "conv-26:source_probe:37:1",
+      "gain": 1.0,
+      "cost": 363,
+      "unit": {
+        "text": "(Recorded on: 22 October 2023) [D19:9] Caroline: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.\n[D19:10] Melanie: I'm so happy for you, Caroline. You found your true self and now you're helping others. You're so inspiring!\n[D19:11] Caroline: Thanks, Melanie. Your support really means a lot. This journey has been amazing and I'm grateful I get to share it and help others with theirs. It's a real gift. [image: a photo of a clock with a green and yellow design on it]\n[D19:12] Melanie: Absolutely! I'm so glad we can always be there for each other.\n\n(Recorded on: 22 October 2023) [D19:13] Caroline: Glad you agree, Caroline. Appreciate the support of those close to me. Their encouragement made me who I am.\n[D19:14] Melanie: Glad you had support. Being yourself is great!\n[D19:15] Caroline: Yeah, that's true! It's so freeing to just be yourself and live honestly. We can really accept who we are and be content. [image: a photo of a painting with the words happiness painted on it]",
+        "index_text": "Who mentioned the help from friends, family, and people they looked up to was invaluable?",
+        "sources": [
+          "D19:10",
+          "D19:11",
+          "D19:12",
+          "D19:13",
+          "D19:14",
+          "D19:15",
+          "D19:9"
+        ],
+        "session": 19,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:37",
+        "parent_indices": [
+          192,
+          194
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": 0.0,
+      "required_sources": [
+        "D19:9",
+        "D19:10",
+        "D19:11",
+        "D19:12",
+        "D19:13",
+        "D19:14",
+        "D19:15"
+      ]
+    },
+    "conv-26:source_probe:37:2": {
+      "id": "conv-26:source_probe:37:2",
+      "gain": 1.0,
+      "cost": 241,
+      "unit": {
+        "text": "(Recorded on: 22 October 2023) [D19:9] Caroline: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.\n[D19:10] Melanie: I'm so happy for you, Caroline. You found your true self and now you're helping others. You're so inspiring!\n[D19:11] Caroline: Thanks, Melanie. Your support really means a lot. This journey has been amazing and I'm grateful I get to share it and help others with theirs. It's a real gift. [image: a photo of a clock with a green and yellow design on it]\n[D19:12] Melanie: Absolutely! I'm so glad we can always be there for each other.",
+        "index_text": "Who mentioned the help from friends, family, and people they looked up to was invaluable?",
+        "sources": [
+          "D19:10",
+          "D19:11",
+          "D19:12",
+          "D19:9"
+        ],
+        "session": 19,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:37",
+        "parent_indices": [
+          192
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": 0.0,
+      "required_sources": [
+        "D19:9"
+      ]
+    },
+    "conv-26:source_probe:37:6": {
+      "id": "conv-26:source_probe:37:6",
+      "gain": 1.0,
+      "cost": 140,
+      "unit": {
+        "text": "(Recorded on: 22 October 2023) [D19:13] Caroline: Glad you agree, Caroline. Appreciate the support of those close to me. Their encouragement made me who I am.\n[D19:14] Melanie: Glad you had support. Being yourself is great!\n[D19:15] Caroline: Yeah, that's true! It's so freeing to just be yourself and live honestly. We can really accept who we are and be content. [image: a photo of a painting with the words happiness painted on it]",
+        "index_text": "Who mentioned the help from friends, family, and people they looked up to was invaluable?",
+        "sources": [
+          "D19:13",
+          "D19:14",
+          "D19:15"
+        ],
+        "session": 19,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:37",
+        "parent_indices": [
+          194
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": 0.0,
+      "required_sources": [
+        "D19:13"
+      ]
+    },
+    "conv-26:source_probe:37:9": {
+      "id": "conv-26:source_probe:37:9",
+      "gain": 1.0,
+      "cost": 241,
+      "unit": {
+        "text": "(Recorded on: 22 October 2023) [D19:9] Caroline: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.\n[D19:10] Melanie: I'm so happy for you, Caroline. You found your true self and now you're helping others. You're so inspiring!\n[D19:11] Caroline: Thanks, Melanie. Your support really means a lot. This journey has been amazing and I'm grateful I get to share it and help others with theirs. It's a real gift. [image: a photo of a clock with a green and yellow design on it]\n[D19:12] Melanie: Absolutely! I'm so glad we can always be there for each other.",
+        "index_text": "Who mentioned the help from friends, family, and people they looked up to was invaluable?",
+        "sources": [
+          "D19:10",
+          "D19:11",
+          "D19:12",
+          "D19:9"
+        ],
+        "session": 19,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:37",
+        "parent_indices": [
+          192
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": 0.0,
+      "required_sources": [
+        "D19:9",
+        "D19:10"
+      ]
+    },
+    "conv-26:source_probe:6:1": {
+      "id": "conv-26:source_probe:6:1",
+      "gain": 1.0,
+      "cost": 829,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 27 June 2023) Caroline sent an image of a person holding a necklace with a cross and a heart.\n(Recorded on: 27 June 2023) Melanie asked Caroline about the special meaning of the necklace.\n(Recorded on: 27 June 2023) Caroline mentioned the necklace was a gift from her grandma in Sweden, representing love, faith, and strength.\n(Recorded on: 27 June 2023) Melanie asked Caroline if she had other treasured objects like the necklace.\nOriginal dialogue:\n(Recorded on: 27 June 2023) [D4:1] Caroline: Hey Melanie! Long time no talk! A lot's been going on in my life! Take a look at this. [image: a photo of a person holding a necklace with a cross and a heart]\n[D4:2] Melanie: Hey, Caroline! Nice to hear from you! Love the necklace, any special meaning to it?\n[D4:3] Caroline: Thanks, Melanie! This necklace is super special to me - a gift from my grandma in my home country, Sweden. She gave it to me when I was young, and it stands for love, faith and strength. It's like a reminder of my roots and all the love and support I get from my family.\n[D4:4] Melanie: That's gorgeous, Caroline! It's awesome what items can mean so much to us, right? Got any other objects that you treasure, like that necklace? [image: a photo of a stack of bowls with different designs on them]\n\nFacts:\n(Recorded on: 27 June 2023) Caroline asked Melanie about the camping trip and if she made new family members.\n(Recorded on: 27 June 2023) Melanie described the camping trip, including exploring nature, roasting marshmallows, and hiking.\nOriginal dialogue:\n(Recorded on: 27 June 2023) [D4:5] Caroline: Yep, Melanie! I've got some other stuff with sentimental value, like my hand-painted bowl. A friend made it for my 18th birthday approximately 2013 [original relative expression: ten years ago]. The pattern and colors are awesome-- it reminds me of art and self-expression.\n[D4:6] Melanie: That sounds great, Caroline! It's awesome having stuff around that make us think of good connections and times. Actually, I just took my fam camping in the mountains June 2023 (the preceding week) [original relative expression: last week] - it was a really nice time together!\n[D4:7] Caroline: Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?\n[D4:8] Melanie: It was an awesome time, Caroline! We explored nature, roasted marshmallows around the campfire and even went on a hike. The view from the top was amazing! The 2 younger kids love nature. It was so special having these moments together as a family - I'll never forget it!\n\n(Recorded on: 27 June 2023) [D4:9] Caroline: That's awesome, Melanie! Family moments like that are so special. Glad y'all had such a great time.\n[D4:10] Melanie: Thanks, Caroline! Family time matters to me. What's up with you lately?\n[D4:11] Caroline: Lately, I've been looking into counseling and mental health as a career. I want to help people who have gone through the same things as me. [image: a photo of a book shelf with many books on it]\n[D4:12] Melanie: Sounds great! What kind of counseling and mental health services do you want to persue?",
+        "index_text": "What event was the hand-painted bowl made for?",
+        "sources": [
+          "D4:1",
+          "D4:10",
+          "D4:11",
+          "D4:12",
+          "D4:2",
+          "D4:3",
+          "D4:4",
+          "D4:5",
+          "D4:6",
+          "D4:7",
+          "D4:8",
+          "D4:9"
+        ],
+        "session": 4,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:6",
+        "parent_indices": [
+          27,
+          29,
+          31
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -4.948008855183919,
+      "required_sources": [
+        "D4:1",
+        "D4:2",
+        "D4:3",
+        "D4:4",
+        "D4:5",
+        "D4:6",
+        "D4:7",
+        "D4:8",
+        "D4:9",
+        "D4:10"
+      ]
+    },
+    "conv-26:source_probe:6:6": {
+      "id": "conv-26:source_probe:6:6",
+      "gain": 0.8007289663923775,
+      "cost": 331,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 27 June 2023) Caroline asked Melanie about the camping trip and if she made new family members.\n(Recorded on: 27 June 2023) Melanie described the camping trip, including exploring nature, roasting marshmallows, and hiking.\nOriginal dialogue:\n(Recorded on: 27 June 2023) [D4:5] Caroline: Yep, Melanie! I've got some other stuff with sentimental value, like my hand-painted bowl. A friend made it for my 18th birthday approximately 2013 [original relative expression: ten years ago]. The pattern and colors are awesome-- it reminds me of art and self-expression.\n[D4:6] Melanie: That sounds great, Caroline! It's awesome having stuff around that make us think of good connections and times. Actually, I just took my fam camping in the mountains June 2023 (the preceding week) [original relative expression: last week] - it was a really nice time together!\n[D4:7] Caroline: Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?\n[D4:8] Melanie: It was an awesome time, Caroline! We explored nature, roasted marshmallows around the campfire and even went on a hike. The view from the top was amazing! The 2 younger kids love nature. It was so special having these moments together as a family - I'll never forget it!",
+        "index_text": "What event was the hand-painted bowl made for?",
+        "sources": [
+          "D4:5",
+          "D4:6",
+          "D4:7",
+          "D4:8"
+        ],
+        "session": 4,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:6",
+        "parent_indices": [
+          29
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -5.520834604899089,
+      "required_sources": [
+        "D4:5"
+      ]
+    },
+    "conv-26:source_probe:6:36": {
+      "id": "conv-26:source_probe:6:36",
+      "gain": 0.9601347125530143,
+      "cost": 389,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 27 June 2023) Caroline shared a hand-painted bowl from a friend made for her 18th birthday approximately 2013 [original relative expression: ten years ago].\n(Recorded on: 27 June 2023) Melanie talked about taking her family camping in the mountains June 2023 (the preceding week) [original relative expression: last week].\nOriginal dialogue:\n(Recorded on: 27 June 2023) [D4:3] Caroline: Thanks, Melanie! This necklace is super special to me - a gift from my grandma in my home country, Sweden. She gave it to me when I was young, and it stands for love, faith and strength. It's like a reminder of my roots and all the love and support I get from my family.\n[D4:4] Melanie: That's gorgeous, Caroline! It's awesome what items can mean so much to us, right? Got any other objects that you treasure, like that necklace? [image: a photo of a stack of bowls with different designs on them]\n[D4:5] Caroline: Yep, Melanie! I've got some other stuff with sentimental value, like my hand-painted bowl. A friend made it for my 18th birthday approximately 2013 [original relative expression: ten years ago]. The pattern and colors are awesome-- it reminds me of art and self-expression.\n[D4:6] Melanie: That sounds great, Caroline! It's awesome having stuff around that make us think of good connections and times. Actually, I just took my fam camping in the mountains June 2023 (the preceding week) [original relative expression: last week] - it was a really nice time together!",
+        "index_text": "What event was the hand-painted bowl made for?",
+        "sources": [
+          "D4:3",
+          "D4:4",
+          "D4:5",
+          "D4:6"
+        ],
+        "session": 4,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:6",
+        "parent_indices": [
+          28
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -5.062605857849121,
+      "required_sources": [
+        "D4:4",
+        "D4:5"
+      ]
+    },
+    "conv-26:source_probe:9:1": {
+      "id": "conv-26:source_probe:9:1",
+      "gain": 1.0,
+      "cost": 336,
+      "unit": {
+        "text": "(Recorded on: 3 July 2023) [D5:9] Caroline: Nice job! You really put in the work and it definitely shows. Your creativity looks great!\n[D5:10] Melanie: Thanks, Caroline! Your kind words mean a lot. Pottery is a huge part of my life, not just a hobby - it helps me express my emotions. Clay is incredible, it brings me so much joy!\n[D5:11] Caroline: Wow, Mel, I'm so stoked for you that art is helping you express yourself and bring you joy! Keep it up!\n[D5:12] Melanie: Thanks, Caroline! I'm excited to see where pottery takes me. Anything coming up you're looking forward to?\n\nFacts:\n(Recorded on: 3 July 2023) Melanie wishes Caroline a safe and enjoyable time at the transgender conference.\nOriginal dialogue:\n(Recorded on: 3 July 2023) [D5:13] Caroline: Thanks Mel! I'm going to a transgender conference this month. I'm so excited to meet other people in the community and learn more about advocacy. It's gonna be great!\n[D5:14] Melanie: Sounds awesome, Caroline! Have a great time and learn a lot. Have fun!\n[D5:15] Caroline: Cool, thanks Mel! Can't wait. I'll keep ya posted. Bye!\n[D5:16] Melanie: Bye, Caroline! Can't wait to hear about it. Have fun and stay safe!",
+        "index_text": "What does Melanie say about Caroline's plans?",
+        "sources": [
+          "D5:10",
+          "D5:11",
+          "D5:12",
+          "D5:13",
+          "D5:14",
+          "D5:15",
+          "D5:16",
+          "D5:9"
+        ],
+        "session": 5,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:9",
+        "parent_indices": [
+          39,
+          41
+        ]
+      },
+      "kind": "full",
+      "mean_logprob": -0.0011173372801679831,
+      "required_sources": [
+        "D5:9",
+        "D5:10",
+        "D5:11",
+        "D5:12",
+        "D5:13",
+        "D5:14",
+        "D5:15",
+        "D5:16"
+      ]
+    },
+    "conv-26:source_probe:9:7": {
+      "id": "conv-26:source_probe:9:7",
+      "gain": 0.9976708901356529,
+      "cost": 177,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 3 July 2023) Melanie wishes Caroline a safe and enjoyable time at the transgender conference.\nOriginal dialogue:\n(Recorded on: 3 July 2023) [D5:13] Caroline: Thanks Mel! I'm going to a transgender conference this month. I'm so excited to meet other people in the community and learn more about advocacy. It's gonna be great!\n[D5:14] Melanie: Sounds awesome, Caroline! Have a great time and learn a lot. Have fun!\n[D5:15] Caroline: Cool, thanks Mel! Can't wait. I'll keep ya posted. Bye!\n[D5:16] Melanie: Bye, Caroline! Can't wait to hear about it. Have fun and stay safe!",
+        "index_text": "What does Melanie say about Caroline's plans?",
+        "sources": [
+          "D5:13",
+          "D5:14",
+          "D5:15",
+          "D5:16"
+        ],
+        "session": 5,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:9",
+        "parent_indices": [
+          41
+        ]
+      },
+      "kind": "single",
+      "mean_logprob": -0.019404801021804675,
+      "required_sources": [
+        "D5:14"
+      ]
+    },
+    "conv-26:source_probe:9:32": {
+      "id": "conv-26:source_probe:9:32",
+      "gain": 1.0,
+      "cost": 177,
+      "unit": {
+        "text": "Facts:\n(Recorded on: 3 July 2023) Melanie wishes Caroline a safe and enjoyable time at the transgender conference.\nOriginal dialogue:\n(Recorded on: 3 July 2023) [D5:13] Caroline: Thanks Mel! I'm going to a transgender conference this month. I'm so excited to meet other people in the community and learn more about advocacy. It's gonna be great!\n[D5:14] Melanie: Sounds awesome, Caroline! Have a great time and learn a lot. Have fun!\n[D5:15] Caroline: Cool, thanks Mel! Can't wait. I'll keep ya posted. Bye!\n[D5:16] Melanie: Bye, Caroline! Can't wait to hear about it. Have fun and stay safe!",
+        "index_text": "What does Melanie say about Caroline's plans?",
+        "sources": [
+          "D5:13",
+          "D5:14",
+          "D5:15",
+          "D5:16"
+        ],
+        "session": 5,
+        "kind": "parent_routed_evidence",
+        "source_probe_id": "conv-26:source_probe:9",
+        "parent_indices": [
+          41
+        ]
+      },
+      "kind": "pair",
+      "mean_logprob": -4.4932599289145753e-07,
+      "required_sources": [
+        "D5:13",
+        "D5:14"
+      ]
+    }
+  }
+}

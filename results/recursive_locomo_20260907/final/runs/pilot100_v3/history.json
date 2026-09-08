@@ -1,0 +1,202 @@
+{
+  "rounds": [
+    {
+      "name": "r00_session10",
+      "strategy": "session10",
+      "parent": null,
+      "accepted": true,
+      "dev": {
+        "n": 70,
+        "official_f1": 0.4755517028127865,
+        "generic_token_f1": 0.43949643490310525,
+        "read_tokens": 2038.6285714285714,
+        "memory_tokens": 9372.714285714286,
+        "cited_source_recall": 0.6733333333333333,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.6526653439153439
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.508982683982684
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.009523809523809523
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.4688014986290848
+          }
+        },
+        "failures_below_half_f1": 35,
+        "failures_missing_cited_sources": 18
+      }
+    },
+    {
+      "name": "r01_events",
+      "strategy": "events",
+      "parent": "r00_session10",
+      "accepted": false,
+      "dev": {
+        "n": 70,
+        "official_f1": 0.37370696904288236,
+        "generic_token_f1": 0.3429090071704307,
+        "read_tokens": 2038.057142857143,
+        "memory_tokens": 29385.285714285714,
+        "cited_source_recall": 0.8126190476190476,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.3844135802469136
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.43138528138528137
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.0
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.3976187418114067
+          }
+        },
+        "failures_below_half_f1": 44,
+        "failures_missing_cited_sources": 13
+      }
+    },
+    {
+      "name": "r02_audit",
+      "strategy": "audit",
+      "parent": "r00_session10",
+      "accepted": true,
+      "dev": {
+        "n": 70,
+        "official_f1": 0.4860159428097931,
+        "generic_token_f1": 0.4499157088952481,
+        "read_tokens": 2035.7714285714285,
+        "memory_tokens": 11359.285714285714,
+        "cited_source_recall": 0.7138095238095238,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.6201388888888889
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.5425324675324675
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.010526315789473684
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.48541956937479325
+          }
+        },
+        "failures_below_half_f1": 32,
+        "failures_missing_cited_sources": 16
+      }
+    },
+    {
+      "name": "r03_dialogue_residual",
+      "strategy": "dialogue_residual",
+      "parent": "r02_audit",
+      "accepted": true,
+      "dev": {
+        "n": 70,
+        "official_f1": 0.527942778998271,
+        "generic_token_f1": 0.49933133816828895,
+        "read_tokens": 2036.5714285714287,
+        "memory_tokens": 69079.85714285714,
+        "cited_source_recall": 0.9261904761904761,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.5513456450956451
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.4406462585034014
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.02608695652173913
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.6164195996685875
+          }
+        },
+        "failures_below_half_f1": 28,
+        "failures_missing_cited_sources": 4
+      }
+    },
+    {
+      "name": "r04_provenance_quotes",
+      "strategy": "provenance_quotes",
+      "parent": "r03_dialogue_residual",
+      "accepted": false,
+      "dev": {
+        "n": 70,
+        "official_f1": 0.45115990018827495,
+        "generic_token_f1": 0.4141761549954827,
+        "read_tokens": 2026.3714285714286,
+        "memory_tokens": 26024.428571428572,
+        "cited_source_recall": 0.7059523809523809,
+        "by_category": {
+          "1": {
+            "n": 12,
+            "f1": 0.521086860670194
+          },
+          "2": {
+            "n": 14,
+            "f1": 0.4532467532467533
+          },
+          "3": {
+            "n": 5,
+            "f1": 0.017777777777777778
+          },
+          "4": {
+            "n": 39,
+            "f1": 0.48445659617419196
+          }
+        },
+        "failures_below_half_f1": 33,
+        "failures_missing_cited_sources": 16
+      }
+    }
+  ],
+  "winner": "r03_dialogue_residual",
+  "schedule": [
+    {
+      "name": "r00_session10",
+      "strategy": "session10",
+      "parent": null
+    },
+    {
+      "name": "r01_events",
+      "strategy": "events",
+      "parent": "r00_session10"
+    },
+    {
+      "name": "r02_audit",
+      "strategy": "audit",
+      "parent": "r00_session10"
+    },
+    {
+      "name": "r03_dialogue_residual",
+      "strategy": "dialogue_residual",
+      "parent": "r02_audit"
+    },
+    {
+      "name": "r04_provenance_quotes",
+      "strategy": "provenance_quotes",
+      "parent": "r03_dialogue_residual"
+    }
+  ]
+}

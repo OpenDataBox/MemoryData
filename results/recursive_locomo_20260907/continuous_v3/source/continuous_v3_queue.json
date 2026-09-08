@@ -1,0 +1,712 @@
+{
+  "recipes": [
+    {
+      "name": "r05_calendar_anchor",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "anchor_time"
+        }
+      ]
+    },
+    {
+      "name": "r06_calendar_month",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "anchor_time",
+          "style": "month"
+        }
+      ]
+    },
+    {
+      "name": "r07_nonoverlap_pairs",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "facts_only"
+        },
+        {
+          "op": "dialogue_blocks",
+          "size": 2,
+          "overlap": 0
+        }
+      ]
+    },
+    {
+      "name": "r08_three_turn_blocks",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "facts_only"
+        },
+        {
+          "op": "dialogue_blocks",
+          "size": 3,
+          "overlap": 1
+        }
+      ]
+    },
+    {
+      "name": "r09_four_turn_blocks",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "facts_only"
+        },
+        {
+          "op": "dialogue_blocks",
+          "size": 4,
+          "overlap": 2
+        }
+      ]
+    },
+    {
+      "name": "r10_anchor_current_best",
+      "parent": "best",
+      "operations": [
+        {
+          "op": "anchor_time"
+        }
+      ]
+    },
+    {
+      "name": "r11_social_filter",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "filter_social_facts"
+        }
+      ]
+    },
+    {
+      "name": "r12_filter_current_best",
+      "parent": "best",
+      "operations": [
+        {
+          "op": "filter_social_facts"
+        }
+      ]
+    },
+    {
+      "name": "r13_extractive_cards",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "extract",
+          "window": 10,
+          "overlap": 2,
+          "limit": 28,
+          "max_tokens": 1200,
+          "prompt": "Construct long-term memory only from this dialogue. Output at most 28 short, specific records, one per line, each starting with exact supporting source IDs [D1:2,D1:3]. Format each record as SUBJECT | specific event or attribute | VALUE. Use the correct named person as SUBJECT; do not swap speaker and listener. VALUE should copy the shortest complete exact wording from the speaker whenever possible, retaining all items in a stated list. Include names, titles, family and pet relationships, activities, places, reasons, reactions and evaluations, plans versus completed events, and each original time expression. Resolve short answers from the immediately preceding question. Separate unrelated events; keep each event and its time together. Omit generic encouragement, greetings and thanks. Never invent facts, outside knowledge, dates, names or sources. Preserve image descriptions only when they explain a shared object. No prose outside the records."
+        }
+      ]
+    },
+    {
+      "name": "r14_anchored_cards",
+      "parent": "r13_extractive_cards",
+      "operations": [
+        {
+          "op": "anchor_time"
+        }
+      ]
+    },
+    {
+      "name": "r15_cards_with_pairs",
+      "parent": "r13_extractive_cards",
+      "operations": [
+        {
+          "op": "dialogue_blocks",
+          "size": 2,
+          "overlap": 0
+        },
+        {
+          "op": "anchor_time"
+        }
+      ]
+    },
+    {
+      "name": "r16_declarative_facts",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "extract",
+          "window": 12,
+          "overlap": 2,
+          "limit": 28,
+          "max_tokens": 1200,
+          "prompt": "Extract all useful autobiographical facts from this dialogue window. Write at most 28 atomic, self-contained sentences, each beginning with exact source IDs [D1:2,D1:3]. Keep the speaker's original content words, names, titles, quantities and list items, while replacing pronouns with the correct named person. Write simple direct sentences, not descriptions such as 'mentioned', 'discussed', 'expressed interest' unless uncertainty really requires it. Preserve an exact evaluative word such as 'amazing' instead of paraphrasing it. Record facts about each person separately and distinguish the person who owns or did something from a person asking about it. Resolve short responses using adjacent dialogue. Keep original relative dates, plans, uncertainty, negation, and all historical states; do not infer unstated dates. Omit generic supportive chatter, salutations and thanks. Only supported dialogue facts; no outside knowledge. No preamble."
+        }
+      ]
+    },
+    {
+      "name": "r17_anchored_declarative",
+      "parent": "r16_declarative_facts",
+      "operations": [
+        {
+          "op": "anchor_time"
+        }
+      ]
+    },
+    {
+      "name": "r18_declarative_with_pairs",
+      "parent": "r16_declarative_facts",
+      "operations": [
+        {
+          "op": "dialogue_blocks",
+          "size": 2,
+          "overlap": 0
+        },
+        {
+          "op": "anchor_time"
+        }
+      ]
+    },
+    {
+      "name": "r19_anchored_four_turn",
+      "parent": "r09_four_turn_blocks",
+      "operations": [
+        {
+          "op": "anchor_time",
+          "style": "month"
+        }
+      ]
+    },
+    {
+      "name": "r20_anchored_three_turn",
+      "parent": "r08_three_turn_blocks",
+      "operations": [
+        {
+          "op": "anchor_time",
+          "style": "month"
+        }
+      ]
+    },
+    {
+      "name": "r21_anchored_nonoverlap",
+      "parent": "r07_nonoverlap_pairs",
+      "operations": [
+        {
+          "op": "anchor_time",
+          "style": "month"
+        }
+      ]
+    },
+    {
+      "name": "r22_anchored_fact_raw_pair",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "facts_only"
+        },
+        {
+          "op": "anchor_time",
+          "style": "month"
+        },
+        {
+          "op": "dialogue_blocks",
+          "size": 2,
+          "overlap": 1
+        }
+      ]
+    },
+    {
+      "name": "r23_anchored_fact_raw_four",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "facts_only"
+        },
+        {
+          "op": "anchor_time",
+          "style": "month"
+        },
+        {
+          "op": "dialogue_blocks",
+          "size": 4,
+          "overlap": 2
+        }
+      ]
+    },
+    {
+      "name": "r24_source_qa_cards",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "extract",
+          "window": 10,
+          "overlap": 2,
+          "limit": 24,
+          "max_tokens": 1400,
+          "prompt": "Build reusable conversation memory from this dialogue alone. Generate up to 24 short question-and-answer records for concrete personal facts, each on one line starting with exact supporting dialogue IDs [D1:2,D1:3]. Format: Q: a specific question naming the correct person and event? A: the shortest complete answer copied from the source wording. These are source-derived memory keys, not answers to any external task. Cover names, relationships and ownership, titles, interests, activities, locations, exact evaluations, reasons, quantities, event times, and plans. A list answer contains only items explicitly tied to that one event; never combine similar but distinct events. Resolve a brief answer using the adjacent question. Preserve the original relative time expression instead of guessing an absolute date. Retain the speaker's specific description of a shared image rather than replacing it with a generic automatic image caption. Do not write questions without supported answers; do not infer outside knowledge. No greetings, generic encouragement, or commentary."
+        }
+      ]
+    },
+    {
+      "name": "r25_anchored_qa_cards",
+      "parent": "r24_source_qa_cards",
+      "operations": [
+        {
+          "op": "anchor_time",
+          "style": "month"
+        }
+      ]
+    },
+    {
+      "name": "r26_qa_cards_with_context",
+      "parent": "r24_source_qa_cards",
+      "operations": [
+        {
+          "op": "dialogue_blocks",
+          "size": 3,
+          "overlap": 1
+        },
+        {
+          "op": "anchor_time",
+          "style": "month"
+        }
+      ]
+    },
+    {
+      "name": "r27_filtered_three_turn",
+      "parent": "r20_anchored_three_turn",
+      "operations": [
+        {
+          "op": "filter_social_facts"
+        }
+      ]
+    },
+    {
+      "name": "r28_filtered_fact_anchor",
+      "parent": "r22_anchored_fact_raw_pair",
+      "operations": [
+        {
+          "op": "filter_social_facts"
+        }
+      ]
+    },
+    {
+      "name": "r29_filtered_four_turn",
+      "parent": "r19_anchored_four_turn",
+      "operations": [
+        {
+          "op": "filter_social_facts"
+        }
+      ]
+    },
+    {
+      "name": "r30_filtered_partial_four",
+      "parent": "r23_anchored_fact_raw_four",
+      "operations": [
+        {
+          "op": "filter_social_facts"
+        }
+      ]
+    },
+    {
+      "name": "r31_filtered_declarative",
+      "parent": "r18_declarative_with_pairs",
+      "operations": [
+        {
+          "op": "filter_social_facts"
+        }
+      ]
+    },
+    {
+      "name": "r32_anchored_single_turn",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "facts_only"
+        },
+        {
+          "op": "dialogue_blocks",
+          "size": 1,
+          "overlap": 0
+        },
+        {
+          "op": "anchor_time",
+          "style": "month"
+        },
+        {
+          "op": "filter_social_facts"
+        }
+      ]
+    },
+    {
+      "name": "r33_filtered_pair_blocks",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "facts_only"
+        },
+        {
+          "op": "dialogue_blocks",
+          "size": 2,
+          "overlap": 1
+        },
+        {
+          "op": "anchor_time",
+          "style": "month"
+        },
+        {
+          "op": "filter_social_facts"
+        }
+      ]
+    },
+    {
+      "name": "r34_anchored_fact_only",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "facts_only"
+        },
+        {
+          "op": "anchor_time",
+          "style": "month"
+        },
+        {
+          "op": "filter_social_facts"
+        }
+      ]
+    },
+    {
+      "name": "r35_anchored_dialogue_only",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "dialogue_blocks",
+          "size": 2,
+          "overlap": 1,
+          "append": false
+        },
+        {
+          "op": "anchor_time",
+          "style": "month"
+        }
+      ]
+    },
+    {
+      "name": "r36_selective_anchor_filtered",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "selective_anchor"
+        },
+        {
+          "op": "filter_social_facts"
+        }
+      ]
+    },
+    {
+      "name": "r37_selective_anchor",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "selective_anchor"
+        }
+      ]
+    },
+    {
+      "name": "r38_fused_pair",
+      "parent": "best",
+      "operations": [
+        {
+          "op": "fuse_evidence",
+          "size": 2,
+          "overlap": 1,
+          "anchor": true
+        }
+      ]
+    },
+    {
+      "name": "r39_fused_three_turn",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "fuse_evidence",
+          "size": 3,
+          "overlap": 1,
+          "anchor": true
+        }
+      ]
+    },
+    {
+      "name": "r40_fused_four_turn",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "fuse_evidence",
+          "size": 4,
+          "overlap": 2,
+          "anchor": true
+        }
+      ]
+    },
+    {
+      "name": "r41_fused_with_fact_index",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "fuse_evidence",
+          "size": 3,
+          "overlap": 1,
+          "anchor": true,
+          "keep_fact_index": true
+        }
+      ]
+    },
+    {
+      "name": "r42_clean_source_cards",
+      "parent": "r13_extractive_cards",
+      "operations": [
+        {
+          "op": "clean_cards"
+        }
+      ]
+    },
+    {
+      "name": "r43_clean_anchored_cards",
+      "parent": "r13_extractive_cards",
+      "operations": [
+        {
+          "op": "clean_cards"
+        },
+        {
+          "op": "anchor_time",
+          "style": "month"
+        }
+      ]
+    },
+    {
+      "name": "r44_clean_cards_with_context",
+      "parent": "r13_extractive_cards",
+      "operations": [
+        {
+          "op": "clean_cards"
+        },
+        {
+          "op": "dialogue_blocks",
+          "size": 2,
+          "overlap": 1
+        },
+        {
+          "op": "anchor_time",
+          "style": "month"
+        }
+      ]
+    },
+    {
+      "name": "r45_entity_profiles",
+      "parent": "best",
+      "operations": [
+        {
+          "op": "entity_profiles",
+          "append": true
+        }
+      ]
+    },
+    {
+      "name": "r46_entity_profiles_only",
+      "parent": "best",
+      "operations": [
+        {
+          "op": "entity_profiles",
+          "append": false
+        }
+      ]
+    },
+    {
+      "name": "r47_profiles_with_context",
+      "parent": "r46_entity_profiles_only",
+      "operations": [
+        {
+          "op": "dialogue_blocks",
+          "size": 3,
+          "overlap": 1
+        },
+        {
+          "op": "anchor_time",
+          "style": "month"
+        }
+      ]
+    },
+    {
+      "name": "r48_salient_dialogue",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "salient_dialogue"
+        }
+      ]
+    },
+    {
+      "name": "r49_salient_dialogue_only",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "salient_dialogue",
+          "include_facts": false
+        }
+      ]
+    },
+    {
+      "name": "r50_salient_longer_context",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "salient_dialogue",
+          "previous_turns": 2
+        }
+      ]
+    },
+    {
+      "name": "r50a_fused_five_turn",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "fuse_evidence",
+          "size": 5,
+          "overlap": 2,
+          "anchor": true
+        }
+      ]
+    },
+    {
+      "name": "r50b_fused_six_turn",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "fuse_evidence",
+          "size": 6,
+          "overlap": 3,
+          "anchor": true
+        }
+      ]
+    },
+    {
+      "name": "r50c_fused_stride_one",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "fuse_evidence",
+          "size": 4,
+          "overlap": 3,
+          "anchor": true
+        }
+      ]
+    },
+    {
+      "name": "r51_replay_reference",
+      "parent": "r12_filter_current_best",
+      "operations": [],
+      "expected_f1": 0.5711886887725268
+    },
+    {
+      "name": "r52_replay_seed",
+      "parent": "seed",
+      "operations": [],
+      "expected_f1": 0.527942778998271
+    },
+    {
+      "name": "m01_fused_without_rules",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "fuse_evidence",
+          "size": 4,
+          "overlap": 2,
+          "anchor": false
+        }
+      ]
+    },
+    {
+      "name": "m02_split_without_rules",
+      "parent": "m01_fused_without_rules",
+      "operations": [
+        {
+          "op": "split_fused_index"
+        }
+      ]
+    },
+    {
+      "name": "m03_key_only_intervention",
+      "parent": "m01_fused_without_rules",
+      "operations": [
+        {
+          "op": "split_fused_index",
+          "read_summary": true
+        }
+      ]
+    },
+    {
+      "name": "m04_index_without_rules",
+      "parent": "seed",
+      "operations": [
+        {
+          "op": "indexed_evidence",
+          "anchor": false
+        }
+      ]
+    },
+    {
+      "name": "r67_split_best_fused",
+      "parent": "r40_fused_four_turn",
+      "operations": [
+        {
+          "op": "split_fused_index"
+        }
+      ]
+    },
+    {
+      "name": "r68_fused_key_both_payload",
+      "parent": "r40_fused_four_turn",
+      "operations": [
+        {
+          "op": "split_fused_index",
+          "read_summary": true
+        }
+      ]
+    },
+    {
+      "name": "r53_fact_index_source_payload",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "indexed_evidence"
+        }
+      ]
+    },
+    {
+      "name": "r57_indexed_summary_and_source",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "indexed_evidence",
+          "include_summary": true
+        }
+      ]
+    },
+    {
+      "name": "r58_indexed_source_control",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "indexed_evidence",
+          "index_source": true
+        }
+      ]
+    },
+    {
+      "name": "r59_indexed_without_residual",
+      "parent": "r12_filter_current_best",
+      "operations": [
+        {
+          "op": "indexed_evidence",
+          "residual": false
+        }
+      ]
+    }
+  ],
+  "research_priority": "Architectural controls and no-rule variants; old dev F1 is exploratory. No novelty claim from key/evidence split alone."
+}

@@ -1,0 +1,23 @@
+{
+  "recipe": {
+    "name": "r68_fused_key_both_payload",
+    "parent": "r40_fused_four_turn",
+    "operations": [
+      {
+        "op": "split_fused_index",
+        "read_summary": true
+      }
+    ]
+  },
+  "parent": "r40_fused_four_turn",
+  "committed_at": 1788794835.6995301,
+  "recipe_sha256": "eb26340ae1dd8c4d5c1fb832f7f5b3eadab6653e7332359439f57706ff541591",
+  "source_sha256": {
+    "continuous_v3.py": "81e17ccaf3026b18ab1e7545bba4f19c2d64839832e100770ecb509f89d83abf",
+    "indexed_memory.py": "786628f2f51c1520c43a9267b20ac94b6ab3bec473de1581d8bcb1a1e7928a90",
+    "evaluate_indexed.py": "c979c626d98646247cb0c06a666a909b20014844de6b80df93ddcecbbca81123",
+    "memory_ops.py": "02504b2976393c9f9743a051b6347adbeea8af36ba572da579edb5ab6bfe8b00",
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

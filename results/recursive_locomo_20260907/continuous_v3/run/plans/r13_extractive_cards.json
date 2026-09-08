@@ -1,0 +1,23 @@
+{
+  "recipe": {
+    "name": "r13_extractive_cards",
+    "parent": "seed",
+    "operations": [
+      {
+        "op": "extract",
+        "window": 10,
+        "overlap": 2,
+        "limit": 28,
+        "max_tokens": 1200,
+        "prompt": "Construct long-term memory only from this dialogue. Output at most 28 short, specific records, one per line, each starting with exact supporting source IDs [D1:2,D1:3]. Format each record as SUBJECT | specific event or attribute | VALUE. Use the correct named person as SUBJECT; do not swap speaker and listener. VALUE should copy the shortest complete exact wording from the speaker whenever possible, retaining all items in a stated list. Include names, titles, family and pet relationships, activities, places, reasons, reactions and evaluations, plans versus completed events, and each original time expression. Resolve short answers from the immediately preceding question. Separate unrelated events; keep each event and its time together. Omit generic encouragement, greetings and thanks. Never invent facts, outside knowledge, dates, names or sources. Preserve image descriptions only when they explain a shared object. No prose outside the records."
+      }
+    ]
+  },
+  "parent": "seed",
+  "committed_at": 1788783923.223149,
+  "recipe_sha256": "bb9e68af81ce3289511adc225c3131c53eb5b3112c56b0abc15ab2c5347e61ee",
+  "source_sha256": {
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

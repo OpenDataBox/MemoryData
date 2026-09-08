@@ -1,0 +1,23 @@
+{
+  "recipe": {
+    "name": "r40_fused_four_turn",
+    "parent": "r12_filter_current_best",
+    "operations": [
+      {
+        "op": "fuse_evidence",
+        "size": 4,
+        "overlap": 2,
+        "anchor": true
+      }
+    ]
+  },
+  "parent": "r12_filter_current_best",
+  "committed_at": 1788792406.4656527,
+  "recipe_sha256": "fe304071b254ca3ec8f1ba4a8aeaabf9c070f590504651551b5a8b8f72641e34",
+  "source_sha256": {
+    "continuous_v2.py": "1f5e77bc5d72d59cd0de040b5eb020e07318075db35e45053b0143be1934ce32",
+    "memory_ops.py": "02504b2976393c9f9743a051b6347adbeea8af36ba572da579edb5ab6bfe8b00",
+    "continuous.py": "810bd92b0980b6f0f8327e82eac041b7521d18e790af044d913c44d6127003e5",
+    "refine.py": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa"
+  }
+}

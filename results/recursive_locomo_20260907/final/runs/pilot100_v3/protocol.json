@@ -1,0 +1,45 @@
+{
+  "args": {
+    "data": "data/locomo10.json",
+    "environment": "environment.json",
+    "out": "runs/pilot100_v3",
+    "model": "Qwen/Qwen3-8B",
+    "embed_model": "Qwen/Qwen3-Embedding-0.6B",
+    "embed_batch_size": 4,
+    "seed": 20260907,
+    "budget": 2048,
+    "per_conv": 10,
+    "max_rounds": 5,
+    "patience": 5,
+    "min_delta": 0.001,
+    "manifest_only": false,
+    "parent_run": "runs/pilot100_v2"
+  },
+  "environment": {
+    "models": {
+      "Qwen/Qwen3-8B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "Qwen/Qwen3-Embedding-0.6B": {
+        "path": "/workspace/.hf_home/hub/models--Qwen--Qwen3-Embedding-0.6B/snapshots/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+      }
+    },
+    "packages": {
+      "torch": "2.8.0",
+      "vllm": "0.10.2",
+      "transformers": "4.56.2",
+      "sentence-transformers": "5.1.0",
+      "nltk": "3.9.1",
+      "numpy": "2.2.6"
+    },
+    "data_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4"
+  },
+  "source_sha256": "71384cac6aaa260d6df4f24f605797a8a886cd51514a83c9c1d041eff99f14fa",
+  "reader": "Answer the question using only the provided conversation memory. Give a concise exact answer: a name, date, number, or short phrase. For a list question include every supported item, separated by commas. Use the session dates to interpret relative times, but distinguish the event date from the date someone talked about it. If unsupported, answer unknown. No explanation or introductory text.",
+  "selection": "dev official category F1 only",
+  "construction": "conversation sessions only; no benchmark QA or gold access",
+  "metric_source": "https://github.com/snap-research/locomo/blob/main/task_eval/evaluation.py",
+  "limits": "pilot100; holdout is evaluated only after winner selection; memory storage is not matched"
+}

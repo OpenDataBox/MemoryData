@@ -1,0 +1,85 @@
+{
+  "baseline": {
+    "n": 70,
+    "official_f1": 0.5927437370002834,
+    "generic_token_f1": 0.582176556376965,
+    "read_tokens": 2015.3857142857144,
+    "memory_tokens": 59112.857142857145,
+    "cited_source_recall": 0.8257142857142856,
+    "by_category": {
+      "1": {
+        "n": 12,
+        "f1": 0.4864197530864198
+      },
+      "2": {
+        "n": 14,
+        "f1": 0.6693877551020408
+      },
+      "3": {
+        "n": 5,
+        "f1": 0.0
+      },
+      "4": {
+        "n": 39,
+        "f1": 0.6739383585013907
+      }
+    },
+    "failures_below_half_f1": 24,
+    "failures_missing_cited_sources": 10
+  },
+  "comparisons": [
+    {
+      "name": "z_within_010",
+      "f1": 0.5512337530194673,
+      "changed_contexts": 52,
+      "changed_predictions": 17,
+      "f1_improvements": 3,
+      "f1_regressions": 10,
+      "cited_source_recall": 0.8257142857142856,
+      "f1_delta_points": -4.150998398081606,
+      "fit_mean_cosine_before": 0.7255461086554669,
+      "fit_mean_cosine_after": 0.750458671193426,
+      "maximum_document_geometry_error": 1.0374645031951957e-08
+    },
+    {
+      "name": "z_transfer_010",
+      "f1": 0.5663650336018756,
+      "changed_contexts": 41,
+      "changed_predictions": 13,
+      "f1_improvements": 3,
+      "f1_regressions": 5,
+      "cited_source_recall": 0.8257142857142856,
+      "f1_delta_points": -2.6378703398407755,
+      "fit_mean_cosine_before": 0.7255461086554668,
+      "fit_mean_cosine_after": 0.7410853655128755,
+      "maximum_document_geometry_error": 1.1637334096370466e-08
+    },
+    {
+      "name": "z_within_030",
+      "f1": 0.5674218207300914,
+      "changed_contexts": 67,
+      "changed_predictions": 23,
+      "f1_improvements": 4,
+      "f1_regressions": 13,
+      "cited_source_recall": 0.8257142857142856,
+      "f1_delta_points": -2.532191627019198,
+      "fit_mean_cosine_before": 0.7255461086554669,
+      "fit_mean_cosine_after": 0.7847632063667502,
+      "maximum_document_geometry_error": 1.3498050899229952e-08
+    },
+    {
+      "name": "z_transfer_030",
+      "f1": 0.5329468061087872,
+      "changed_contexts": 60,
+      "changed_predictions": 22,
+      "f1_improvements": 3,
+      "f1_regressions": 13,
+      "cited_source_recall": 0.8221428571428571,
+      "f1_delta_points": -5.9796930891496185,
+      "fit_mean_cosine_before": 0.7255461086554668,
+      "fit_mean_cosine_after": 0.7611073762638296,
+      "maximum_document_geometry_error": 1.2944953109439439e-08
+    }
+  ],
+  "limits": "Aggregate development diagnostics only. These are already exposed development questions, not new audit results."
+}

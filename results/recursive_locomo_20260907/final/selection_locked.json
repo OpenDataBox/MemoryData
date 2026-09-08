@@ -1,0 +1,32 @@
+{
+  "winner": "r03_dialogue_residual",
+  "dev_f1": 0.527942778998271,
+  "schedule": [
+    {
+      "name": "r00_session10",
+      "strategy": "session10",
+      "parent": null
+    },
+    {
+      "name": "r01_events",
+      "strategy": "events",
+      "parent": "r00_session10"
+    },
+    {
+      "name": "r02_audit",
+      "strategy": "audit",
+      "parent": "r00_session10"
+    },
+    {
+      "name": "r03_dialogue_residual",
+      "strategy": "dialogue_residual",
+      "parent": "r02_audit"
+    },
+    {
+      "name": "r04_provenance_quotes",
+      "strategy": "provenance_quotes",
+      "parent": "r03_dialogue_residual"
+    }
+  ],
+  "locked_at": 1788780186.3090858
+}

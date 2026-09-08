@@ -1,0 +1,383 @@
+{
+  "question": "What did Audrey say about the experience being relaxing?",
+  "answer": "Nature and the lake were so calming, exactly what I needed",
+  "source_ids": [
+    "D9:25"
+  ],
+  "candidate_context_ids": [
+    "D9:25",
+    "D9:26",
+    "D9:27"
+  ],
+  "answer_spans": [
+    {
+      "source_id": "D9:25",
+      "start": 15,
+      "end": 73,
+      "verbatim": "Nature and the lake were so calming, exactly what I needed"
+    }
+  ],
+  "session": 9,
+  "recorded_date": "1:51 pm on 26 June, 2023",
+  "conv_id": "conv-44",
+  "split": "probe_fit",
+  "id": "conv-44:source_probe:17",
+  "analysis": {
+    "full_advantage": 7.358109504580473,
+    "source_dependent": true,
+    "best_single_sources": [
+      "D9:25"
+    ],
+    "best_pair_sources": [
+      "D9:25",
+      "D9:27"
+    ],
+    "minimum_sources": [
+      "D9:25"
+    ],
+    "minimum_tokens": 47,
+    "single_policy_sources": [
+      "D9:25"
+    ],
+    "single_policy_tokens": 47,
+    "full_tokens": 105,
+    "best_pair_lift_over_best_single": 0.48583559195200604,
+    "pair_interactions": [
+      {
+        "source_ids": [
+          "D9:25",
+          "D9:26"
+        ],
+        "joint_lift": 0.1528470516204834,
+        "interaction": -0.3306084916009411,
+        "advantage": 7.913894604245797
+      },
+      {
+        "source_ids": [
+          "D9:25",
+          "D9:27"
+        ],
+        "joint_lift": 0.48583559195200604,
+        "interaction": 0.10205701367810072,
+        "advantage": 8.24688314457732
+      },
+      {
+        "source_ids": [
+          "D9:26",
+          "D9:27"
+        ],
+        "joint_lift": 0.7559991802214556,
+        "interaction": 0.37222060194755,
+        "advantage": 1.23945472344288
+      }
+    ],
+    "has_preserving_pair_without_preserving_single": false
+  },
+  "generations": {
+    "empty": {
+      "text": "unknown",
+      "finish_reason": "stop",
+      "source_ids": [],
+      "context_tokens": 0,
+      "source_answer_f1": 0.0
+    },
+    "full": {
+      "text": "Audrey said the experience was calming and exactly what she needed.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D9:25",
+        "D9:26",
+        "D9:27"
+      ],
+      "context_tokens": 105,
+      "source_answer_f1": 0.5
+    },
+    "answer_removed": {
+      "text": "Audrey said it was peaceful and calming.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D9:26",
+        "D9:27"
+      ],
+      "context_tokens": 80,
+      "source_answer_f1": 0.23529411764705882
+    },
+    "best_single": {
+      "text": "calming, exactly what I needed.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D9:25"
+      ],
+      "context_tokens": 47,
+      "source_answer_f1": 0.6666666666666666
+    },
+    "best_pair": {
+      "text": "Audrey said the experience was calming and exactly what she needed.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D9:25",
+        "D9:27"
+      ],
+      "context_tokens": 75,
+      "source_answer_f1": 0.5
+    },
+    "minimum_bundle": {
+      "text": "calming, exactly what I needed.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D9:25"
+      ],
+      "context_tokens": 47,
+      "source_answer_f1": 0.6666666666666666
+    },
+    "single_policy": {
+      "text": "calming, exactly what I needed.",
+      "finish_reason": "stop",
+      "source_ids": [
+        "D9:25"
+      ],
+      "context_tokens": 47,
+      "source_answer_f1": 0.6666666666666666
+    }
+  },
+  "subsets": [
+    {
+      "kind": "empty",
+      "source_ids": [],
+      "context_tokens": 0,
+      "score": {
+        "mean_logprob": -8.74353952268757,
+        "sum_logprob": -104.92247427225084,
+        "answer_tokens": 12,
+        "token_logprobs": [
+          -42.812660217285156,
+          -7.967301845550537,
+          -0.3069114685058594,
+          -4.9443888664245605,
+          -4.108368396759033,
+          -15.592535018920898,
+          -0.14827856421470642,
+          -6.004810810089111,
+          -21.332809448242188,
+          -0.00291482568718493,
+          -1.7014256715774536,
+          -6.913899414939806e-05
+        ]
+      }
+    },
+    {
+      "kind": "full",
+      "source_ids": [
+        "D9:25",
+        "D9:26",
+        "D9:27"
+      ],
+      "context_tokens": 105,
+      "score": {
+        "mean_logprob": -1.3854300181070964,
+        "sum_logprob": -16.625160217285156,
+        "answer_tokens": 12,
+        "token_logprobs": [
+          -16.625160217285156,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D9:25"
+      ],
+      "context_tokens": 47,
+      "score": {
+        "mean_logprob": -0.9824919700622559,
+        "sum_logprob": -11.78990364074707,
+        "answer_tokens": 12,
+        "token_logprobs": [
+          -11.78990364074707,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D9:26"
+      ],
+      "context_tokens": 52,
+      "score": {
+        "mean_logprob": -8.260083979466145,
+        "sum_logprob": -99.12100775359374,
+        "answer_tokens": 12,
+        "token_logprobs": [
+          -45.281410217285156,
+          -8.780205726623535,
+          -3.757256507873535,
+          -5.893671035766602,
+          -3.7894058227539062,
+          -8.18230152130127,
+          -0.13953083753585815,
+          -3.3479537963867188,
+          -19.73261833190918,
+          -0.21619224548339844,
+          -0.0004606377915479243,
+          -1.0728830375228426e-06
+        ]
+      }
+    },
+    {
+      "kind": "single",
+      "source_ids": [
+        "D9:27"
+      ],
+      "context_tokens": 50,
+      "score": {
+        "mean_logprob": -8.359760944413665,
+        "sum_logprob": -100.31713133296398,
+        "answer_tokens": 12,
+        "token_logprobs": [
+          -43.968910217285156,
+          -8.162077903747559,
+          -1.2624289989471436,
+          -9.259405136108398,
+          -1.705444097518921,
+          -9.042186737060547,
+          -1.2449582815170288,
+          -2.676252841949463,
+          -22.986072540283203,
+          -0.00412351917475462,
+          -0.005257708020508289,
+          -1.3351351299206726e-05
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D9:25",
+        "D9:26"
+      ],
+      "context_tokens": 77,
+      "score": {
+        "mean_logprob": -0.8296449184417725,
+        "sum_logprob": -9.95573902130127,
+        "answer_tokens": 12,
+        "token_logprobs": [
+          -9.95573902130127,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D9:25",
+        "D9:27"
+      ],
+      "context_tokens": 75,
+      "score": {
+        "mean_logprob": -0.4966563781102498,
+        "sum_logprob": -5.959876537322998,
+        "answer_tokens": 12,
+        "token_logprobs": [
+          -5.959876537322998,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "kind": "pair",
+      "source_ids": [
+        "D9:26",
+        "D9:27"
+      ],
+      "context_tokens": 80,
+      "score": {
+        "mean_logprob": -7.50408479924469,
+        "sum_logprob": -90.04901759093627,
+        "answer_tokens": 12,
+        "token_logprobs": [
+          -31.314910888671875,
+          -4.531743049621582,
+          -4.261439323425293,
+          -13.214068412780762,
+          -0.10808958113193512,
+          -9.734949111938477,
+          -0.4164302945137024,
+          -4.176305770874023,
+          -22.1440372467041,
+          -0.07582750916481018,
+          -0.07114821672439575,
+          -6.818538531661034e-05
+        ]
+      }
+    },
+    {
+      "kind": "answer_removed",
+      "source_ids": [
+        "D9:26",
+        "D9:27"
+      ],
+      "context_tokens": 80,
+      "score": {
+        "mean_logprob": -7.5337975406995,
+        "sum_logprob": -90.405570488394,
+        "answer_tokens": 12,
+        "token_logprobs": [
+          -31.31608772277832,
+          -4.651139259338379,
+          -4.328305244445801,
+          -13.331769943237305,
+          -0.10735895484685898,
+          -9.614699363708496,
+          -0.5063109397888184,
+          -4.3897905349731445,
+          -22.02320671081543,
+          -0.06581594049930573,
+          -0.07099921256303787,
+          -8.666139910928905e-05
+        ]
+      }
+    }
+  ]
+}

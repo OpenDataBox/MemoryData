@@ -1,1 +1,4 @@
 *.sh text eol=lf
+
+# Preserve published evidence bytes so SHA-256 manifests work on every platform.
+results/** -text
