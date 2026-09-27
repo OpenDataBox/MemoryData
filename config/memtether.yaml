@@ -1,0 +1,19 @@
+agent_name: MemTether_local
+model: deepseek-v4-flash
+temperature: 0
+input_length_limit: 30000
+buffer_length: 4000
+output_dir: ./results/outputs/memtether
+
+retrieve_num: 12
+
+# MemTether-specific configuration
+memtether_source: memorydata_bench
+memtether_embedding_backend: local    # bge-m3 int8 (zero API cost)
+# memtether_dir: E:\RUANJIAN\memory_hub  # uncomment for local dev, omit for pip-installed
+
+# LLM configuration (for answer generation, not for MemTether itself)
+provider: openai_compatible
+api_key_env: OPENAI_API_KEY
+base_url: http://127.0.0.1:7863/v1    # workbuddy2api gateway (free)
+tokenizer_encoding: cl100k_base
